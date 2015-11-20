@@ -1,0 +1,32 @@
+T1	1Position 182 207	北京市 城区 第五 建筑工程 股份 有限公司 经理
+T2	1Person 208 211	李文华
+T3	1Money_Person 247 253	43 万余元
+T4	1Money_Person 259 265	8952 元
+T5	1Crime 226 238	单独 或 结伙 侵吞公款
+T6	1Crime 256 258	行贿
+T7	2Position 268 292	中国 华阳 技术 贸易 总公司 贸易部 项目经理
+T8	2Person 293 296	刘淑兰
+T9	2Crime 302 311	索取 、 收受贿赂
+T10	2Money_Person 319 327	66.5 万余元
+T11	3Position 330 356	北京 清河 牛皮癣 专科医院 院长 助理 兼 采购员
+T12	3Person 357 360	庞顺财
+T13	3Crime 363 373	单独 或 合伙 贪污
+T14	3Money_Person 381 389	73.5 万余元
+T15	1Punish 408 423	死刑 ， 剥夺 政治权利 终身
+T16	2Punish 408 423	死刑 ， 剥夺 政治权利 终身
+T17	3Punish 408 423	死刑 ， 剥夺 政治权利 终身
+T18	4Position 426 447	北京市 煤炭 总公司 三厂 供应科 业务员
+T19	4Person 448 451	窦武斌
+T20	4Crime 454 478	与 他人 勾结 ， 大肆 克扣 煤炭 变卖 牟利
+T21	4Money_Person 486 494	96.25 万元
+T22	5Position 497 525	北京 国际 艺苑 服务 有限公司 广告 艺术 部副 经理
+T23	5Person 526 529	王若鹏
+T24	5Crime 532 536	侵吞公款
+T25	5Money_Person 537 545	12.4 万余元
+T26	4Punish 754 756	死缓
+T27	5Punish 759 763	无期徒刑
+T28	1Province 89 92	北京市
+T29	2Province 89 92	北京市
+T30	3Province 89 92	北京市
+T31	4Province 89 92	北京市
+T32	5Province 89 92	北京市

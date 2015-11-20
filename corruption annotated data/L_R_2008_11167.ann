@@ -1,0 +1,31 @@
+T1	1Event 252 253	中
+T2	1Position 255 276	航天工业 供销 公司 深圳 公司 原 经理
+T3	1Person 277 280	王大庆
+T4	1Crime 292 310	贪污 、 挪用 900 余万元 公款
+T5	1Money_Person 300 307	900 余万元
+T6	1Event 359 360	。
+T7	2Event 373 374	湘
+T8	2Position 377 385	发改委 原 主任
+T9	2Person 386 389	潘翔凌
+T10	2Crime 444 452	收受 他人 贿赂
+T11	2Crime 463 473	挪用 及 贪污 公款
+T12	2Money_Person 453 460	200 多万元
+T13	2Money_Person 477 487	人民币 152 万元
+T14	2Event 510 511	。
+T15	3Event 524 525	海
+T16	3City 524 527	海口市
+T17	3Position 528 539	人大常委会 原副 主任
+T18	3Person 540 544	朱德 华
+T19	3Crime 566 570	借 公款
+T20	3Money_Person 571 576	上 千万元
+T21	3Punish 648 652	批准逮捕
+T22	2Punish 505 509	公开审理
+T23	1Punish 353 358	依法 起诉
+T24	3Event 653 654	。
+T25	4Event 1558 1559	信
+T26	4Event 1671 1672	。
+T27	4City 1578 1581	沈阳市
+T28	4Position 1582 1587	原副 市长
+T29	4Person 1588 1591	马向东
+T30	4Crime 1614 1619	输掉 公款
+T31	4Money_Person 1620 1627	4000 万元

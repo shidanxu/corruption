@@ -1,0 +1,38 @@
+T1	1Event 45 46	本
+T2	1Person 578 580	李真
+T3	1Position 586 621	河北省委 办公厅 秘书 、 副 主任 、 省 国税局 副局长 、 局长
+T4	1Money_Person 686 705	676 万余元 、 美元 16 万余元
+T5	1Money_Person 747 754	1872 万元
+T6	1Money_Person 798 806	2967 万余元
+T7	1Crime 866 875	受贿罪 、 贪污罪
+T8	1Punish 887 919	死刑 ， 剥夺 政治权利 终身 ， 并处 没收 个人 全部 财产
+T9	2Person 934 937	吴庆五
+T10	2Position 944 956	省政府 办公厅 副 主任
+T11	2Money_Person 1001 1008	1872 万元
+T12	2Money_Person 1052 1060	2967 万余元
+T13	2Crime 1168 1180	贪污罪 、 介绍 贿赂罪
+T14	2Punish 1193 1236	死刑 ， 缓期 二年 执行 ， 剥夺 政治权利 终身 ， 并处 没收 个人 全部 财产
+T15	3Person 1251 1254	王福友
+T16	3Position 1261 1286	河北省政府 副 秘书长 、 省 驻京 办公室 主任
+T17	3Money_Person 1316 1322	551 万元
+T18	3Money_Person 1340 1358	65 万余元 、 美元 1800 元
+T19	3Money_Person 1370 1376	374 万元
+T20	3Crime 1458 1476	贪污罪 、 受贿罪 、 挪用公款 罪
+T21	3Punish 1490 1524	无期徒刑 ， 剥夺 政治权利 终身 ， 并处 没收 个人 全部 财产
+T22	4Person 1539 1542	薄绍铨
+T23	4Position 1555 1563	沧州市 市委书记
+T24	4Money_Person 1597 1617	港币 80 余万元 、 美元 10 万元
+T25	4Crime 1638 1641	受贿罪
+T26	4Punish 1645 1649	无期徒刑
+T27	5Person 1694 1697	杨益铭
+T28	5Position 1704 1726	河北省委 办公厅 副 主任 兼 督察 室主任
+T29	5Money_Person 1764 1775	人民币 100 万余元
+T30	5Crime 1795 1798	受贿罪
+T31	5Punish 1802 1810	有期徒刑 十五年
+T32	1Event 2065 2066	。
+T33	5Province 1704 1707	河北省
+T34	4Province 1551 1554	河北省
+T35	4City 1555 1558	沧州市
+T36	3Province 1261 1264	河北省
+T37	2Province 989 992	河北省
+T38	1Province 735 738	河北省

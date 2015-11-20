@@ -1,0 +1,29 @@
+T1	1Position 226 238	公安部 预审 局 副处长
+T2	1Person 239 242	王乃刚
+T3	1Year_Crime 255 261	1988 年
+T4	1Year_Disc 265 274	989 年 8 月
+T5	1Crime 292 294	贪污
+T6	1Money_Person 295 318	港币 34.5 万元 、 人民币 2.3 万元
+T7	1Punish 362 370	已 被 依法逮捕
+T8	1Event 249 250	王
+T9	1Event 389 390	。
+T10	2Position 426 440	甘肃省 工商行政管理局 局长
+T11	2Person 441 445	段 开盛
+T12	2Year_Crime 448 454	1988 年
+T13	2Crime 513 524	收受 建筑 单位 贿赂
+T14	2Money_Person 546 552	1.3 万元
+T15	3Position 575 592	江苏省 经济协作 委员会 副 主任
+T16	3Person 593 596	徐 安
+T17	3Year_Crime 600 610	1988 年 7 月
+T18	3Crime 672 676	收受贿赂
+T19	3Money_Person 677 687	人民币 1000 元
+T20	3Money_Person 759 769	人民币 4000 元
+T21	3Punish 792 798	被 立案侦查
+T22	4Position 825 842	浙江 金华县 印 铁制 罐厂 厂长
+T23	4Person 843 846	徐招根
+T24	4Crime 853 857	贪污受贿
+T25	4Money_Person 858 863	41 万元
+T26	5Position 872 891	黄埔区 商业 综合 贸易 公司 副经理
+T27	5Person 892 896	何国 明
+T28	5Crime 897 902	贪污 公款
+T29	5Money_Person 903 909	100 万元

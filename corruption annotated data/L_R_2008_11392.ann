@@ -1,0 +1,35 @@
+T2	1Province 125 127	河北
+T3	1City 128 131	石家庄
+T4	1Position 262 277	市 建设 局局长 、 党组书记
+T5	1Person 278 281	王瑞生
+T6	1Crime 284 292	负有 领导 责任
+T7	1Punish 299 301	免职
+T1	1Event 61 62	本
+T8	2Position 697 727	石家庄市 建设局 党组 成员 、 建筑 市场 管理中心 主任
+T9	2Person 728 731	王荣芝
+T10	3Position 736 745	该局 办公室 主任
+T11	3Person 746 749	贾兵山
+T12	4Position 752 758	人教 处处长
+T13	4Person 759 761	李建
+T14	5Position 764 770	村镇 处处长
+T15	5Person 771 773	刘成
+T16	2Crime 826 838	打 扑克牌 赌钱 被查获
+T17	3Crime 826 838	打 扑克牌 赌钱 被查获
+T18	4Crime 826 838	打 扑克牌 赌钱 被查获
+T19	5Crime 826 838	打 扑克牌 赌钱 被查获
+T20	5Punish 909 920	党内 严重 警告 处分
+T21	4Punish 909 920	党内 严重 警告 处分
+T22	3Punish 909 920	党内 严重 警告 处分
+T23	2Punish 857 892	行政职务 被 撤销 ， 王荣芝 被 撤销 市 建设局 党组 成员 职务
+T24	3Punish 857 866	行政职务 被 撤销
+T25	4Punish 857 866	行政职务 被 撤销
+T26	5Punish 857 866	行政职务 被 撤销
+T27	1Event 1167 1168	。
+T28	2Province 125 127	河北
+T29	2City 128 131	石家庄
+T30	3Province 125 127	河北
+T31	3City 128 131	石家庄
+T32	4Province 125 127	河北
+T33	4City 128 131	石家庄
+T34	5Province 125 127	河北
+T35	5City 128 131	石家庄

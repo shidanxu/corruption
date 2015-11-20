@@ -1,0 +1,17 @@
+T1	1Province 96 99	北京市
+T2	1Position 111 113	所长
+T3	1Person 114 116	孙勇
+T4	2Position 119 121	政委
+T5	2Person 122 126	陈 百年
+T6	3Person 144 147	王海燕
+T7	3Position 141 143	主任
+T8	1Event 154 155	在
+T9	1Event 214 215	。
+T10	4Province 220 222	安徽
+T11	4City 236 239	阜阳市
+T12	4Position 256 259	副所长
+T13	4Person 260 264	李亭 君
+T14	5Person 267 270	白启祥
+T15	4Event 737 738	李
+T16	4Event 854 855	赂
+T17	4Money_Sum 846 852	1000 元

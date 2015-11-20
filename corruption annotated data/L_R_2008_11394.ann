@@ -1,0 +1,25 @@
+T1	1Event 71 72	本
+T2	1City 153 156	深圳市
+T3	2City 153 156	深圳市
+T4	3City 153 156	深圳市
+T5	4City 153 156	深圳市
+T6	5City 153 156	深圳市
+T8	1Position 157 175	龙岗区 公安分局 同乐 派出所 所长
+T9	1Person 176 180	杨周 武
+T7	2Person 314 317	陈旭明
+T10	3Person 336 340	刘力 飚
+T11	4Person 368 370	陈峰
+T12	5Person 409 411	黄忠
+T13	5Position 382 408	街道 综合执法 队一 中队 龙东 社区 巡查 组组长
+T14	4Position 349 367	公安分局 消防大队 一 中队 中队长
+T15	3Position 322 335	龙岗区 同乐 派出所 民警
+T16	2Position 301 313	龙岗区 公安分局 副局长
+T17	1Crime 685 706	玩忽职守 罪 、 徇私枉法 罪 、 受贿罪
+T18	1Money_Person 546 551	30 万元
+T19	2Crime 854 866	玩忽职守 罪 、 受贿罪
+T20	2Money_Person 839 843	6 万元
+T21	3Crime 968 972	徇私枉法
+T22	3Money_Person 905 911	3000 元
+T23	4Crime 1021 1027	玩忽职守 罪
+T24	5Crime 1021 1027	玩忽职守 罪
+T25	1Event 1139 1140	。

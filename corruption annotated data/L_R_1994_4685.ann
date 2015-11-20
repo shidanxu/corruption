@@ -1,0 +1,18 @@
+T1	1Event 706 707	该
+T2	1Event 1446 1447	。
+T3	2Event 1509 1513	1993
+T4	2Event 2168 2169	。
+T5	1Province 652 655	湖南省
+T6	1City 656 659	邵阳市
+T7	1Position 709 720	原某 研究室 副 主任
+T8	1Person 721 723	李某
+T9	1Money_Person 727 730	数万元
+T10	1Crime 724 726	贪污
+T11	1Crime 777 779	潜逃
+T12	2Year_Crime 1509 1515	1993 年
+T13	2Province 1518 1521	四川省
+T14	2County 1522 1525	云阳县
+T15	2Position 1535 1542	云 硐 供销社
+T16	2Person 1543 1545	谢土
+T17	2Crime 1546 1552	挪用 销货款
+T18	2Money_Person 1553 1558	12 万元

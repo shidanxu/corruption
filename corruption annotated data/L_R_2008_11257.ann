@@ -1,0 +1,13 @@
+T1	1Event 55 56	本
+T2	1Province 122 126	贵州 省
+T3	1City 130 140	黔南布依族苗族自治州
+T4	1County 150 154	瓮安 县
+T5	1Position 150 157	瓮安 县委书记
+T6	1Person 158 160	王勤
+T7	2Position 163 165	县长
+T8	2Person 166 169	王海平
+T9	2Crime 486 491	失职 渎职
+T10	1Crime 486 491	失职 渎职
+T11	1Punish 173 175	免职
+T12	2Punish 173 175	免职
+T13	1Event 785 786	。

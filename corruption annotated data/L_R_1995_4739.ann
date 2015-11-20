@@ -1,0 +1,11 @@
+T1	1Person 524 528	曹 桂林
+T2	1Position 517 523	公安局 科长
+T3	1Province 439 442	福建省
+T4	1City 513 516	龙岩市
+T5	2Position 531 534	副科长
+T6	2Person 535 538	章耀耀
+T7	1Crime 548 550	受贿
+T8	1Event 511 512	原
+T9	1Event 944 945	。
+T10	1Money_Sum 551 556	9 万余元
+T11	2Crime 784 792	收受 巨额 贿赂

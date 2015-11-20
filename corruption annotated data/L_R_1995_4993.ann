@@ -1,0 +1,10 @@
+T1	1Province 88 90	北京
+T2	1Position 631 643	北京市委 书记 、 市长
+T3	1Person 123 126	陈希同
+T4	1Event 281 282	会
+T5	1Event 894 895	。
+T6	1Crime 714 718	利用职权
+T7	1Crime 732 740	谋取 非法 利益
+T8	1Crime 760 767	收受 贵重物品
+T9	1Punish 870 872	罢免
+T10	1Year_Crime 918 932	1993 年 2 月 3 日

@@ -1,0 +1,18 @@
+T1	1Position 159 167	厦门市 副 市长
+T2	1Person 168 171	陈植汉
+T3	1Crime 210 213	受贿罪
+T4	2Person 238 241	张秀明
+T5	2Crime 245 254	受贿罪 和 行贿罪
+T6	1Punish 224 232	有期徒刑 6 年
+T7	2Punish 272 280	有期徒刑 3 年
+T8	1Year_Crime 297 303	1988 年
+T9	1Money_Person 417 438	港币 6000 元 、 美元 1000 元
+T10	2Money_Person 516 542	港币 5000 元 和 价值 人民币 7000 多元
+T11	2Year_Crime 297 303	1988 年
+T12	2Position 628 643	厦门市 土地 管理局 任 会计
+T13	2Money_Person 749 755	2.5 万元
+T14	2Money_Person 804 834	港币 10000 元 、 美元 600 元 和 录像机 一台
+T15	1Province 132 135	福建省
+T16	1City 159 162	厦门市
+T17	1Event 132 133	福
+T18	1Event 971 972	。

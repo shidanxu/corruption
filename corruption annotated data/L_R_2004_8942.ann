@@ -1,0 +1,28 @@
+T2	1Position 421 423	市长
+T3	1Person 424 427	慕绥新
+T4	1Punish 410 412	死缓
+T5	1Crime 387 404	受贿罪 、 巨额财产 来源不明 罪
+T6	2Crime 633 642	贪污罪 、 受贿罪
+T7	2Position 670 672	局长
+T8	2Position 692 696	党组书记
+T10	1Event 582 583	。
+T11	2Person 673 676	王秀珍
+T14	3Person 1069 1071	周伟
+T15	4Person 877 880	王宏明
+T16	4Position 873 876	董事长
+T17	3City 1061 1063	鞍山
+T9	1Event 385 386	以
+T1	1City 417 420	沈阳市
+T18	2Punish 648 657	19 年 有期徒刑
+T12	2Event 630 631	因
+T19	2Event 817 818	。
+T20	3Event 835 836	原
+T21	3Event 1013 1014	。
+T22	3Position 1108 1121	烟草 局 副局长 、 局长
+T23	4Event 1061 1062	鞍
+T24	4Event 1217 1218	。
+T25	5Person 1281 1284	王秀珍
+T26	5City 1235 1238	沈阳市
+T27	5Position 1239 1242	物价局
+T28	5Event 1235 1236	沈
+T13	5Event 1359 1360	。

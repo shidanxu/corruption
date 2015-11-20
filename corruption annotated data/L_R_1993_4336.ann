@@ -1,0 +1,12 @@
+T1	1Position 121 138	鄂城区 人民检察院 反贪局 副局长
+T2	1Province 81 84	湖北省
+T3	1City 85 88	鄂州市
+T4	1County 89 92	鄂城区
+T5	1Crime 107 118	挪用公款 、 收受贿赂
+T6	1Person 139 142	杨布学
+T7	1Punish 143 168	开除党籍 、 撤销 其 行政 反贪局 副局长 职务
+T8	1Year_Crime 246 252	1992 年
+T9	1Money_Person 331 337	3.9 万元
+T10	1Money_Person 584 589	600 元
+T11	1Event 188 189	经
+T12	1Event 696 697	。

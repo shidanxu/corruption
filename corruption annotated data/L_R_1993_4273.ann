@@ -1,0 +1,25 @@
+T1	1Position 687 693	原 联防队员
+T2	1Person 694 698	王 进军
+T3	1Punish 403 405	死刑
+T4	1Crime 648 653	故意伤害罪
+T5	2Position 687 693	原 联防队员
+T6	2Person 701 704	赵金喜
+T7	2Punish 408 425	无期徒刑 ， 剥夺 政治权利 终身
+T8	2Crime 648 653	故意伤害罪
+T9	3Position 687 693	原 联防队员
+T10	3Person 713 716	祝传济
+T11	3Crime 648 653	故意伤害罪
+T12	3Punish 452 461	有期徒刑 12 年
+T13	4Person 707 710	纪洪礼
+T14	4Position 687 693	原 联防队员
+T15	4Punish 464 467	7 年
+T16	4Crime 648 653	故意伤害罪
+T17	5Position 477 486	原 派出所 副所长
+T18	5Person 487 490	彭志忠
+T19	5Punish 496 505	有期徒刑 15 年
+T20	5Crime 470 474	执法犯法
+T21	1Event 267 268	本
+T22	1Event 1108 1109	。
+T23	1Province 306 309	安徽省
+T24	1City 310 315	阜阳 地区
+T25	1County 329 332	利辛县

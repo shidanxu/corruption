@@ -1,0 +1,11 @@
+T1	1Province 94 97	北京市
+T3	1Person 126 129	王雪冰
+T5	1Money_Person 333 338	115 万
+T6	1Punish 412 421	有期徒刑 12 年
+T7	1Crime 401 404	受贿罪
+T8	1Punish 427 438	没收 个人 部分 财产
+T9	1Event 94 95	北
+T10	1Event 456 457	。
+T2	1Position 114 125	中国建设银行 原 行长
+T4	1Year_Crime 248 254	1993 年
+T11	1Year_Disc 257 263	2001 年

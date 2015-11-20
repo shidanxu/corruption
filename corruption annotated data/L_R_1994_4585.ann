@@ -1,0 +1,14 @@
+T1	1Province 135 138	湖北省
+T2	1County 139 142	谷城县
+T3	1Position 135 147	湖北省 谷城县 县委书记
+T4	1Person 148 151	刘有庆
+T5	2Position 222 234	县委 副 书记 、 县长
+T6	2Person 157 160	朱有学
+T7	1Crime 171 180	连续 更换 小汽车
+T8	2Crime 171 180	连续 更换 小汽车
+T9	1Punish 194 210	撤销 刘有庆 的 县委书记 职务
+T10	2Punish 213 237	撤销 朱有学 的 县委 副 书记 、 县长 职务
+T11	1Event 256 257	经
+T12	1Event 1017 1018	。
+T13	1Money_Sum 650 655	82 万元
+T14	1Year_Crime 282 288	1990 年

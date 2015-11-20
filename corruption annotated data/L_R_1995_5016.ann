@@ -1,0 +1,28 @@
+T1	1Province 93 96	河北省
+T3	1Event 759 762;763 765;766 770	。 
+  
+     
+T4	1Position 128 149	省 农业 开发 办公室 主任 、 党组书记
+T5	1Person 150 153	李景华
+T6	1Crime 175 183	公款 出国 旅游
+T7	1Crime 155 172	违反规定 购买 更换 进口 小轿车
+T8	1Punish 189 201	撤销 党内外 职务 处分
+T9	2Position 205 212	省 建委 主任
+T10	2Person 213 215	靳庆
+T2	1Year_Crime 377 389	1995 年 3 月 ，
+T11	1Event 390 391	新
+T12	1Event 617 618	。
+T13	2Crime 218 226	挪用 企业 资金
+T14	2Crime 229 237	超标准 建 私房
+T15	2Punish 243 251	党内 严重 警告
+T16	3City 259 263	正定 县
+T17	3Position 265 278	副 书记 兼 政法委 书记
+T18	3Person 279 282	刘维平
+T19	3Crime 299 301	敛财
+T20	3Punish 306 310	开除党籍
+T21	1Money_Person 584 589	38 万元
+T22	1Money_Person 752 758	48 万余元
+T23	2Year_Crime 779 791	1994 年 4 月 起
+T24	2Money_Person 907 913	450 万元
+T25	2Money_Person 929 943	三居室 和 二居室 各 一套
+T26	3Money_Person 1405 1412	32240 元

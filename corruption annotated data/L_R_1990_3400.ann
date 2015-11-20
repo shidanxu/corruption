@@ -1,0 +1,15 @@
+T1	1Province 215 217	广西
+T2	1City 217 222	壮族自治区
+T3	1Year_Crime 432 442	1988 年 3 月
+T4	1Position 452 472	农牧厅 所属 的 深圳 华洋 商行 经理
+T5	1Person 473 477	高寿 仪
+T6	2Position 480 494	香港 通恒 贸易 公司 经理
+T7	2Person 495 498	陈京昌
+T8	3Position 685 690	侨办 主任
+T9	3Person 691 695	邱 国华
+T10	1Event 421 422	这
+T11	1Event 1242 1243	。
+T12	1Money_Sum 1229 1241	2000 多万元 人民币
+T13	1Crime 992 994	倒卖
+T14	3Crime 782 784	越权
+T15	2Crime 1109 1111	倒卖

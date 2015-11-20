@@ -1,0 +1,11 @@
+T1	1Province 225 227	四川
+T2	1City 228 231	泸州市
+T3	1Position 225 252	四川 泸州市 大中专 招生 委员会 办公室 原副 主任
+T4	1Person 253 256	石仁富
+T5	1Crime 284 301	受贿罪 和 巨额财产 来源不明 罪
+T6	1Punish 313 328	死刑 ， 剥夺 政治权利 终身
+T7	1Year_Crime 670 676	1984 年
+T8	1Money_Sum 1765 1770	74 万元
+T9	1Money_Person 1765 1770	74 万元
+T10	1Event 198 199	建
+T11	1Event 1900 1901	。

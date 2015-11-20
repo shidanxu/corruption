@@ -1,0 +1,16 @@
+T1	1Province 135 138	吉林省
+T2	1City 83 85	长春
+T3	1County 139 143	前 郭县
+T4	1Person 165 168	潘清海
+T5	1Crime 228 235	受贿 、 贪污
+T6	1Punish 658 702	受贿罪 死刑 ， 贪污罪 7 年 ； 数罪并罚 ， 执行 死刑 ， 剥夺 政治权利 终身
+T7	1Position 274 286	前 郭 县公安局 副局长
+T8	1Year_Crime 319 325	1987 年
+T9	2Person 340 342	刘辉
+T10	2Position 345 358	前 郭 灌区 公安局 干部
+T11	2Crime 385 389	收受贿赂
+T12	1Money_Person 580 588	12.4 万多元
+T13	2Money_Person 740 747	7.9 万多元
+T14	2Punish 755 772	无期徒刑 ， 剥夺 政治权利 终身
+T15	1Event 262 263	潘
+T16	1Event 773 774	。

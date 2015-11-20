@@ -1,0 +1,36 @@
+T1	1Position 250 260	国家科委 原副 主任
+T2	1Person 261 264	李效时
+T3	1Crime 265 272	受贿 、 贪污
+T4	2Position 275 298	原 北京市 长城 机电 科技产业 总公司 总裁
+T5	2Person 299 302	沈太福
+T6	2Crime 303 310	贪污 、 行贿
+T7	1Money_Person 354 385	收受 沈太福 等 人 贿赂 5.2 万余元 、 贪污 2 万元
+T8	1Punish 424 433	有期徒刑 20 年
+T9	2Money_Person 449 493	伙同 其妻 共同 贪污 100 万元 、 个人 贪污 200 万元 、 行贿 25 万元
+T10	2Punish 526 530	判处死刑
+T11	1Event 234 235	关
+T12	1Event 567 568	。
+T13	2Event 585 586	关
+T14	2Event 905 906	。
+T15	1Province 277 280	北京市
+T16	3Province 615 618	山东省
+T17	3City 619 622	乳山市
+T18	3Position 615 631	山东省 乳山市 商业局 原 局长
+T19	3Person 632 635	刘起山
+T20	3Crime 744 753	走私罪 、 受贿罪
+T21	4Position 768 782	威海市 边防 分局 原 政委
+T22	4Person 783 786	范占武
+T23	5Position 796 804	业务 处 副处长
+T24	5Person 805 807	刘宁
+T25	5Punish 808 810	死刑
+T26	4Punish 808 810	死刑
+T27	3Punish 808 810	死刑
+T28	3Event 959 960	福
+T29	3Event 1072 1073	。
+T30	3Money_Sum 1064 1071	300 多万元
+T31	4Event 1074 1075	辽
+T32	4Event 1266 1267	。
+T33	4Money_Sum 1258 1265	3200 万元
+T34	5Event 1322 1323	贵
+T35	5Event 1382 1383	。
+T36	5Money_Sum 1375 1381	10 多万元

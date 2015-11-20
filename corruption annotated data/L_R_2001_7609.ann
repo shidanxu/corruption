@@ -1,0 +1,12 @@
+T1	1Event 82 83	在
+T2	1Position 98 110	某 科学 研究院 研究员
+T3	1Person 111 113	金某
+T4	1Crime 211 221	科研经费 擅自 挪用
+T5	1Money_Person 203 208	50 万元
+T6	1Event 222 223	。
+T7	2Event 236 237	某
+T8	2Event 393 394	…
+T9	2Position 238 256	新型 计算机 建筑 软件 的 开发者
+T10	2Person 257 261	曾 某某
+T11	2Crime 377 380	贪污罪
+T12	2Punish 386 390	无期徒刑

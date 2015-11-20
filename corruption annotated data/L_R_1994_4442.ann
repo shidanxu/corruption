@@ -1,0 +1,16 @@
+T1	1Crime 792 796	收受贿赂
+T2	1Position 799 808	原 沈丘 县委书记
+T3	1Person 809 812	刘炜东
+T4	2Position 815 823	原 主管 副县长
+T5	2Person 824 828	崔 东华
+T6	3Position 831 844	原 沈丘县 农委 副 主任
+T7	3Person 845 849	赵 海滨
+T8	4Position 852 868	原 河南省 畜牧局 兽医 处处长
+T9	4Person 869 873	靳 广义
+T10	5Person 899 902	王志强
+T11	5Crime 712 739	行贿罪 、 伪造 公文 印章 罪 、 非法拘禁 罪 等
+T12	1Province 568 571	河南省
+T13	1County 572 575	沈丘县
+T14	1Year_Crime 617 623	1986 年
+T15	1Event 553 554	最
+T16	1Event 981 982	！

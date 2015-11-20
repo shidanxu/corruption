@@ -1,0 +1,13 @@
+T1	1Year_Crime 404 410	1990 年
+T2	1Position 636 656	牧鹿 湖乡 东耳 垸 村前 党支部 书记
+T3	1Person 657 659	谭某
+T4	1Money_Person 709 717	1.74 万余元
+T5	1Event 397 398	请
+T6	1Event 478 479	。
+T7	2Event 483 484	公
+T8	2Event 575 576	。
+T9	3Event 587 588	贪
+T10	3Event 758 759	。
+T11	1Money_Sum 451 459	374.8 万元
+T12	3Money_Sum 750 757	36.5 万元
+T13	1Crime 587 592	贪污 挪用

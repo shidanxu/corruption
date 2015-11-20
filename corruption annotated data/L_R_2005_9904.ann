@@ -1,0 +1,9 @@
+T1	1Position 1628 1630	科长
+T2	1Person 1631 1633	赵某
+T3	1Crime 1637 1639	贪污
+T4	1Money_Person 1640 1646	14 万余元
+T5	2Person 1892 1895	房 某
+T6	2Position 1885 1892	银行 代办 员
+T7	2Crime 1896 1900	挪用公款
+T8	2Money_Person 1901 1907	40 余万元
+T9	1City 201 204	西安市

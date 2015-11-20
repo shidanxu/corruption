@@ -1,0 +1,22 @@
+T1	1Year_Crime 131 137	1994 年
+T2	1Money_Sum 163 170	3.94 亿元
+T3	1Province 234 237	江苏省
+T4	1City 238 241	江阴市
+T5	1Crime 332 356	投机倒把 罪 、 贪污罪 、 行贿罪 、 偷税罪
+T6	1Person 366 368	胡明
+T7	1Punish 369 384	死刑 ， 剥夺 政治权利 终身
+T8	2Crime 389 392	受贿罪
+T9	2Person 403 405	王震
+T10	2Punish 406 421	死刑 ， 剥夺 政治权利 终身
+T11	2Money_Person 1167 1171	6 万元
+T12	1Crime 465 471	1994 年
+T13	1Age 1735 1739	31 岁
+T14	1Position 1186 1198	鸿雁 毛纺 制衣厂 厂长
+T15	2Position 1092 1101	河塘 税务 组组长
+T16	1Money_Person 3301 3307	130 万元
+T17	2Money_Person 3682 3689	3800 余元
+T18	3Person 1905 1908	张玉根
+T19	1Money_Person 4298 4305	26.2 万元
+T20	3Crime 4120 4135	虚开 江苏省 增值税 专用发票
+T21	1Event 131 135	1994
+T22	1Event 4306 4307	。

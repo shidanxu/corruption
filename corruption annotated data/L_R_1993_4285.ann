@@ -1,0 +1,34 @@
+T1	1Position 214 238	原 中国银行 总行 营业 二处 汇入 科 业务员
+T2	1Province 88 91	北京市
+T3	1Person 239 242	罗玉海
+T4	1Crime 245 250	贪污 公款
+T5	1Crime 261 265	挪用公款
+T6	1Money_Person 251 258	252 万余元
+T7	1Money_Person 266 273	360 万余元
+T8	1Punish 283 285	死刑
+T9	2Position 288 318	原 中国 华北电力 联合 公司 物资供应 公司 交通 科科长
+T10	2Person 319 322	吴卫东
+T11	2Crime 325 327	受贿
+T12	2Money_Person 328 334	49 万余元
+T13	2Punish 344 346	死刑
+T14	3Position 349 380	原 北京市 工艺 进出口 集团公司 第八 业务部 外销 业务员
+T15	3Person 381 384	封兰芬
+T16	3Crime 387 392	贪污 公款
+T17	3Money_Person 393 399	22 万余元
+T18	3Punish 409 422	死刑 ， 缓期 两年 执行
+T19	4Position 425 446	原 北京市 对外 经济 贸易 委员会 委员
+T20	4Person 447 450	蒋珠凤
+T21	4Crime 453 456	受 贿
+T22	4Crime 479 484	贪污 公款
+T23	4Money_Person 470 476	13 万余元
+T24	4Money_Person 485 492	1.5 万余元
+T25	4Punish 504 508	无期徒刑
+T26	5Position 551 565	原 北京市公安局 五处 干部
+T27	5Person 566 570	钟 兴华
+T28	5Crime 573 590	伪造 公文 ， 贿 3.6 万余元
+T29	5Money_Person 583 590	3.6 万余元
+T30	5Punish 602 624	有期徒刑 14 年 ， 剥夺 政治权利 二年
+T31	2Province 88 91	北京市
+T32	3Province 88 91	北京市
+T33	4Province 88 91	北京市
+T34	5Province 88 91	北京市

@@ -1,0 +1,33 @@
+T1	1Event 57 58	本
+T2	1Province 75 77	广西
+T3	1County 89 91	南丹
+T4	1Position 512 533	广西 地质矿产 厅 矿产 管理处 原 处长
+T5	1Person 534 538	钟烈 雄
+T6	1Money_Person 577 608	收受贿赂 共计 17 万元 ， 并 向 他人 行贿 10 万元
+T7	1Crime 615 624	受贿罪 、 行贿罪
+T8	1Punish 631 668	有期徒刑 十三年 ， 并处 追缴 赃款 ， 没收 个人财产 14.7 万元
+T9	2Position 671 693	广西 高峰 矿业 有限责任 公司 原 总经理
+T10	2Person 694 697	张栋志
+T11	2Money_Person 729 734	20 万元
+T12	2Crime 724 728	收受贿赂
+T13	2Punish 742 771	有期徒刑 十三年 ， 并处 追缴 赃款 ， 没收 个人财产
+T14	2Province 671 673	广西
+T15	3Province 774 776	广西
+T16	3Position 774 791	广西 新洲 锡矿 原 采矿 工程师
+T17	3Person 792 795	朱天金
+T18	4Position 798 806	新洲 锡矿 干部
+T19	4Person 807 810	梁务华
+T20	4Province 774 776	广西
+T21	3Money_Person 860 866	26 万余元
+T22	4Money_Person 876 881	25 万元
+T23	3Crime 855 859	收受贿赂
+T24	4Crime 873 875	受贿
+T25	3Punish 892 900	有期徒刑 十三年
+T26	4Punish 903 906	十一年
+T27	5Province 930 932	广西
+T30	5Person 954 958	毛荣 高
+T31	5Money_Person 996 1001	13 万元
+T32	5Crime 989 993	收受贿赂
+T33	5Punish 1009 1037	有期徒刑 十年 ， 并处 追缴 赃款 ， 没收 个人财产
+T34	1Event 1850 1851	。
+T28	5Position 930 953	广西 高峰 矿业 有限责任 公司 原 纪委书记

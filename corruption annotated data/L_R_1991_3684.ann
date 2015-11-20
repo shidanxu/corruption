@@ -1,0 +1,18 @@
+T1	1Province 95 98	四川省
+T2	1City 99 103	遂宁 市
+T3	1County 175 178	射洪县
+T4	1Position 179 182	副县长
+T5	1Person 183 186	李庆玉
+T6	2County 189 192	蓬溪县
+T7	2Position 193 200	工商局 副局长
+T8	2Person 201 204	彭家庆
+T9	1Year_Crime 244 251	1989 年底
+T10	1Year_Disc 823 833	1990 年 4 月
+T11	1Crime 278 282	贪污受贿
+T12	2Crime 755 768	藏匿 赃物 ， 转移 赃款
+T15	1Event 916 917	在
+T16	1Event 978 979	。
+T17	1Punish 1246 1263	撤销 县委 委员 、 副县长 职务
+T18	2Punish 1272 1293	开除党籍 ， 行政 开除 留用 察看 一年
+T13	1Event 445 446	射
+T14	1Event 528 529	。

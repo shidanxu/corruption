@@ -1,0 +1,26 @@
+T1	1Event 838 839	市
+T4	2Event 1486 1487	。
+T5	2Event 1543 1544	荆
+T7	1City 768 771	荆门市
+T8	1Province 512 515	湖北省
+T9	2Province 512 515	湖北省
+T10	2City 768 771	荆门市
+T11	3City 768 771	荆门市
+T12	3Province 512 515	湖北省
+T13	1Position 838 846	市 税务局 局长
+T14	1Person 847 849	章炜
+T15	2Position 852 855	副局长
+T16	2Person 856 859	云昌杰
+T17	1Crime 876 912	利用 手中 权力 ， 大肆 贪污受贿 ， 参与 骗税 、 挪用 税款 等
+T18	2Crime 876 912	利用 手中 权力 ， 大肆 贪污受贿 ， 参与 骗税 、 挪用 税款 等
+T2	1Money_Person 1423 1429	20 余万元
+T3	1Money_Sum 954 961	1000 万元
+T19	1Punish 1481 1485	依法逮捕
+T20	2Position 1543 1556	荆门市 纺织品 公司 经理
+T21	3Person 1557 1561	杨明 新
+T22	3Crime 1586 1595	骗取 国家 退税款
+T23	3Crime 1609 1613	贪污受贿
+T24	3Money_Person 1596 1604	1700 多万元
+T25	3Money_Person 1614 1619	1 万多元
+T6	2Event 2244 2245	。
+T26	3Punish 2205 2209	被 逮捕

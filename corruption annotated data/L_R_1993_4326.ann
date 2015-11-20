@@ -1,0 +1,23 @@
+T1	1Position 290 296	瑞昌市 市长
+T2	1Person 297 300	陈定荣
+T3	1Punish 304 322	留党察看 两年 、 撤销 市长 职务
+T4	2Position 330 336	武宁县 县长
+T5	2Person 337 340	蔡定鑫
+T6	2Punish 344 352	撤销 县长 职务
+T7	3Position 360 368	东乡县 县委书记
+T8	3Person 369 372	颜承荣
+T9	4Position 375 381	东乡县 县长
+T10	4Person 382 385	胡发群
+T11	5Position 388 394	宜黄县 县长
+T12	5Person 395 398	万怀德
+T13	1Year_Crime 528 534	1992 年
+T14	1Money_Sum 705 715	1549.43 万元
+T15	1Crime 443 451	支持 骗税 活动
+T16	2Crime 443 451	支持 骗税 活动
+T17	3Crime 443 451	支持 骗税 活动
+T18	4Crime 443 451	支持 骗税 活动
+T19	5Crime 443 451	支持 骗税 活动
+T20	1Province 164 167	江西省
+T21	1Event 164 165	江
+T22	1Event 1268 1269	。
+T23	1County 182 215	瑞昌市 、 武宁县 、 宜黄县 、 东乡县 、 横峰县 、 遂川县

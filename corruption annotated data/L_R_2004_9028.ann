@@ -1,0 +1,11 @@
+T1	1Person 1346 1348	吴某
+T3	2Person 1478 1480	路民
+T4	1Money_Sum 1590 1594	7 万元
+T5	2Money_Person 1618 1625	2.15 万元
+T6	1Year_Crime 1545 1569	1999 年 10 月 至 2000 年 6 月
+T7	1Event 1325 1326	日
+T8	1Event 1632 1633	。
+T9	1Province 1330 1333	云南省
+T10	1City 1462 1465	玉溪市
+T2	2Position 1466 1477	中级法院 刑二庭 庭长
+T11	1Position 1334 1345	华信 律师 事务所律师

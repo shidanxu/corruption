@@ -1,0 +1,18 @@
+T1	1Gender 165 166	女
+T2	1Province 151 153	陕西
+T3	1City 154 157	咸阳市
+T4	1Position 167 170	企业家
+T5	1Person 171 174	张威梅
+T6	2Position 181 208	原 广东省 珠海市 彩珠 电子 工业 有限公司 总经理
+T7	2Person 209 212	朱来友
+T8	1Crime 220 233	挪用 、 贪污 巨额 公款
+T9	2Crime 220 233	挪用 、 贪污 巨额 公款
+T10	1Age 264 268	43 岁
+T11	1Year_Crime 460 466	1989 年
+T12	2Year_Crime 460 466	1989 年
+T13	2Punish 816 831	死刑 ， 剥夺 政治权利 终身
+T14	1Punish 816 831	死刑 ， 剥夺 政治权利 终身
+T15	2Money_Person 664 685	人民币 210 万元 、 港币 20 万元
+T16	1Money_Sum 664 685	人民币 210 万元 、 港币 20 万元
+T17	1Event 261 262	今
+T18	1Event 881 882	。

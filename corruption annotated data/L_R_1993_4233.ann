@@ -1,0 +1,10 @@
+T1	1Province 97 100	陕西省
+T2	1County 101 104	大荔县
+T3	1Position 97 113	陕西省 大荔县 建设银行 出纳员
+T4	1Person 114 116	薛炜
+T5	1Crime 117 130	贪污 、 挪用 银行 资金
+T6	1Money_Person 131 137	32 万多元
+T7	1Punish 149 153	依法逮捕
+T8	1Age 156 160	28 岁
+T9	1Event 97 98	陕
+T10	1Event 329 330	。

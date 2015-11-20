@@ -1,0 +1,17 @@
+T1	1Event 41 42	据
+T2	1Province 76 79	浙江省
+T3	1Crime 517 520	贪污罪
+T4	2Crime 517 520	贪污罪
+T5	1Money_Person 119 126	3100 万元
+T6	2Money_Person 119 126	3100 万元
+T7	1Person 129 132	刘俊峰
+T8	1Punish 152 154	死刑
+T9	2Person 160 163	刘伟峰
+T10	2Punish 169 171	死缓
+T11	1Year_Crime 198 204	2000 年
+T12	1Year_Disc 295 301	2002 年
+T13	2Year_Crime 198 205	2000 年初
+T14	2Year_Disc 295 301	2002 年
+T15	2City 223 226	义乌市
+T16	2Position 216 243	中国建设银行 义乌市 支行 信贷 经营 科任 客户经理
+T17	1Event 748 749	。

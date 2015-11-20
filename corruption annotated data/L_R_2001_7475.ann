@@ -1,0 +1,15 @@
+T1	1Event 51 52	今
+T2	1Province 173 175	湖北
+T3	1City 176 179	鄂州市
+T4	1Position 196 218	梁子湖区 区委 委员 、 沼 山乡 党委书记
+T5	1Person 219 221	柯某
+T6	1Crime 222 226	贪污受贿
+T7	1Money_Person 470 476	29 万余元
+T8	1Event 674 675	。
+T9	2Event 1154 1155	1
+T10	2Position 1192 1205	梁子湖 管理局 原 副局长
+T11	2Person 1206 1208	王某
+T12	2Crime 1213 1224	玩忽职守 、 收受贿赂
+T13	2Event 1492 1493	。
+T14	2Year_Disc 1154 1160	1997 年
+T15	1Year_Disc 151 157	1996 年

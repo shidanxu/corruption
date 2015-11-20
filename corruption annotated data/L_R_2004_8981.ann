@@ -1,0 +1,23 @@
+T1	1Province 63 65	湖南
+T2	1City 66 69	岳阳市
+T4	1Person 404 406	金某
+T5	1Crime 413 417	贪污贿赂
+T8	1Money_Sum 923 929	100 万元
+T10	2Person 1039 1041	徐某
+T11	3Position 1066 1068	厂长
+T12	3Person 1069 1070	邓
+T13	4Person 1074 1076	许某
+T14	3Money_Sum 1318 1323	12 万元
+T15	4Money_Sum 1326 1331	10 万元
+T16	3Punish 1504 1521	有期徒刑 10 年 零 6 个 月
+T17	3Crime 1440 1450	受贿 近 30 万元
+T18	5Position 1755 1758	副组长
+T19	5Position 1771 1797	区委 常委 、 纪委书记 ， 后任 市建委 副 主任
+T20	5Person 1800 1803	朱 某
+T21	5Crime 1816 1820	收受贿赂
+T22	5Money_Sum 1879 1885	3.3 万元
+T23	5Punish 1902 1918	有期徒刑 两年 ， 缓刑 3 年
+T3	1Position 385 403	中国 建筑 五局 七 公司 原 经理
+T6	1Event 352 353	2
+T7	1Event 930 931	。
+T9	2Position 1016 1038	中国 化学工程 第四 建设 公司 原 总经理

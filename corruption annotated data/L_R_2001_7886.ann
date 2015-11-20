@@ -1,0 +1,14 @@
+T1	1Event 58 59	近
+T2	1Province 104 107	山 西
+T3	1County 107 109	吉县
+T4	1Position 112 115	副县长
+T5	1Person 116 119	姜建仲
+T6	2Province 128 130	广东
+T7	2County 131 134	和平县
+T8	2Position 137 139	县长
+T9	2Person 140 143	钟洪茂
+T10	1Crime 120 122	贿选
+T11	2Crime 147 149	贿选
+T12	1Event 154 155	。
+T13	2Event 58 59	近
+T14	2Event 154 155	。

@@ -1,0 +1,20 @@
+T1	1City 118 121	成都市
+T2	1Position 122 128	交通局 局长
+T3	1Person 129 132	石全志
+T4	1Crime 133 137	贪污受贿
+T5	1Punish 179 188	有期徒刑 20 年
+T6	1Year_Crime 219 235	1992 年 11 月 24 日
+T7	2Person 263 266	冷明辉
+T8	2Position 249 262	市 交通局 机关 党委书记
+T9	1Money_Person 330 336	1.5 万元
+T10	2Money_Person 346 352	1.4 万元
+T11	1Money_Person 455 463	9.769 万元
+T12	1Money_Person 543 561	挪用 市 交通局 公款 100 万元
+T13	2Money_Person 543 561	挪用 市 交通局 公款 100 万元
+T14	1Event 207 208	经
+T15	1Event 860 861	。
+T16	1Money_Person 634 651	价值 2.14 万元 的 家用电器
+T17	1Money_Person 737 741	5 万元
+T18	1Punish 917 926	开除 石全志 党籍
+T19	1Punish 951 972	撤销 石全志 成都市 交通 局长 的 职务
+T20	1Year_Disc 878 888	1995 年 3 月

@@ -1,0 +1,14 @@
+T1	1Province 873 876	广东省
+T2	1Position 882 885	副行长
+T3	1Person 886 890	叶家 声
+T4	1Position 917 921	副总经理
+T5	2Person 943 946	林俊江
+T6	3Position 962 964	行长
+T7	3Person 965 968	林裕行
+T8	4Position 981 983	局长
+T9	4Person 984 987	孙伯宽
+T10	5Person 990 993	何伟林
+T11	1Crime 1024 1041	贿赂 、 违法 放贷 、 玩忽职守
+T12	1Punish 1048 1081	开除党籍 、 开除公职 ， 并 移交 司法机关 依法追究 刑事责任
+T13	1Event 83 84	广
+T14	1Event 342 343	。

@@ -1,0 +1,21 @@
+T1	1Person 73 75	薛根
+T2	1Crime 82 99	贪污 、 挪用公款 、 偷越 国境
+T3	2Person 107 109	冯阳
+T4	2Crime 110 124	贪污 、 偷 越国 、 边境
+T5	3Person 132 135	罗玉海
+T6	3Crime 136 145	贪污 、 挪用公款
+T7	4Person 153 156	徐晓春
+T8	4Crime 157 159	贪污
+T9	4Province 150 152	广东
+T10	3Province 129 131	北京
+T11	2Province 104 106	浙江
+T12	1Province 70 72	海南
+T13	1Money_Sum 575 582	3300 万元
+T14	1Event 70 71	海
+T15	1Event 102 103	，
+T16	2Event 104 105	浙
+T17	2Event 127 128	，
+T18	3Event 129 130	北
+T19	3Event 148 149	和
+T20	4Event 150 151	广
+T21	4Event 190 191	。

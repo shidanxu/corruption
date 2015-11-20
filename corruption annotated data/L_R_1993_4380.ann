@@ -1,0 +1,22 @@
+T1	1Position 858 861	业务员
+T2	1Year_Crime 864 870	1991 年
+T3	1Money_Person 904 909	5 万多元
+T4	1Crime 937 941	挪用公款
+T5	1Punish 951 955	立案侦查
+T6	1Event 791 792	这
+T7	1Event 956 957	。
+T8	2Position 1008 1029	烟台市 环海 工商 总公司 业务部 负责人
+T9	2Person 1030 1033	曲维健
+T10	1City 258 261	烟台市
+T11	2City 1008 1011	烟台市
+T12	2Money_Person 1059 1064	21 万元
+T13	2Crime 27 31	挪用公款
+T14	2Event 998 999	去
+T15	2Event 1350 1351	。
+T16	3Year_Crime 2252 2258	1991 年
+T17	3Age 2265 2269	23 岁
+T18	3Person 2272 2275	王军强
+T19	3Crime 2294 2298	挪用公款
+T20	3Money_Person 2299 2304	13 万元
+T21	3Event 2252 2256	1991
+T22	3Event 2684 2685	。

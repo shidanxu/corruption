@@ -1,0 +1,31 @@
+T1	1Position 403 418	中信实业银行 深圳 分行 行长
+T2	1Person 419 422	高森祥
+T3	1Crime 355 359	收受贿赂
+T4	1Money_Person 360 398	人民币 63.03 万元 、 港币 172.3 万元 、 美元 5000 元
+T5	2Crime 430 432	受贿
+T6	2Money_Person 433 445	人民币 23.86 万元
+T7	2Position 450 471	廉江 县委 常委 兼 长青 水果 场场 长
+T8	2Person 471 474	叶树章
+T9	3Crime 482 486	索贿受贿
+T10	3Money_Person 487 499	人民币 18.94 万元
+T11	3County 504 507	英德县
+T12	3Position 508 514	公安局 局长
+T13	3Person 515 518	张文列
+T14	4Crime 529 531	贪污
+T15	4Money_Person 532 544	港币 182.13 万元
+T16	4City 549 552	江门市
+T17	4Position 553 571	三 桁瓦 厨房设备 工业 公司 经理
+T18	4Person 572 575	汤伯亨
+T19	5Crime 578 580	贪污
+T20	5Money_Person 581 594	飞机 票款 313 万余元
+T21	5Position 599 620	中国民航 广州 管理局 运输 公司 售票员
+T22	5Person 621 623	易芳
+T23	1Punish 696 698	处决
+T24	2Punish 696 698	处决
+T25	3Punish 696 698	处决
+T26	4Punish 696 698	处决
+T27	5Punish 696 698	处决
+T28	5City 687 689	广州
+T29	1City 667 669	深圳
+T30	2City 672 674	湛江
+T31	3City 677 679	清远

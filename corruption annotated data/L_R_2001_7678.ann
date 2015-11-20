@@ -1,0 +1,23 @@
+T1	1Event 48 49	本
+T2	1Position 247 250	副县长
+T3	1Province 80 83	青海省
+T4	1County 92 95	同仁县
+T5	1Punish 1283 1292	撤销 副县长 职务
+T6	1Person 240 244	龙昀 青
+T7	2Position 1295 1328	县 农牧 水利局 （ 该县 林业 由 农牧 水利局 主管 ） 局长
+T8	2Person 1329 1332	魏生林
+T9	3Position 1335 1338	副局长
+T10	3Person 1339 1341	戴彪
+T11	2Punish 1344 1349	免去 职务
+T12	3Punish 1344 1349	免去 职务
+T13	4Position 1371 1374	副局长
+T14	4Person 1375 1378	马建国
+T15	5Position 1381 1389	加吾乡 党委书记
+T16	5Person 1390 1394	夏旦 正
+T17	4Punish 1443 1461	党内 严重 警告 、 警告 等 处分
+T18	5Punish 1443 1461	党内 严重 警告 、 警告 等 处分
+T19	1Event 1549 1550	。
+T20	2Province 1213 1216	青海省
+T21	3Province 1213 1216	青海省
+T22	4Province 1213 1216	青海省
+T23	5Province 1213 1216	青海省

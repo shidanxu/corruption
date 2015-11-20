@@ -1,0 +1,34 @@
+T1	1Province 232 235	辽宁省
+T2	1County 236 239	昌图县
+T3	1Position 288 300	原 昌图县 粮食局 局长
+T4	1Person 301 304	桂秉权
+T5	1Crime 2032 2050	受贿罪 、 贪污罪 、 玩忽职守 罪
+T6	1Punish 2067 2082	死刑 ， 剥夺 政治权利 终身
+T7	2Crime 2087 2096	贪污罪 、 受贿罪
+T8	2Position 1183 1197	原 昌图县 大兴 粮库 主任
+T9	2Person 1198 1200	赵福
+T10	2Punish 2108 2123	死刑 ， 剥夺 政治权利 终身
+T11	3Crime 2128 2131	贪污罪
+T12	3Punish 2139 2154	死刑 ， 剥夺 政治权利 终身
+T13	3Position 1205 1222	原县 农业银行 大兴 营业所 主任
+T14	3Person 1223 1226	胡玉章
+T15	4Crime 2159 2177	投机倒把 罪 、 销售 伪劣产品 罪
+T16	4Punish 2190 2207	无期徒刑 ， 剥夺 政治权利 终身
+T17	4Position 1540 1553	原 昌图县 政协 副 主席
+T18	4Person 1554 1557	许连忠
+T19	5Crime 2221 2224	受贿罪
+T20	5Punish 2234 2242	有期徒刑 7 年
+T21	5Position 1674 1695	原 辽宁省 锦州 粮油 转运 公司 副经理
+T22	5Person 1696 1699	胡万有
+T23	1Year_Crime 927 933	1986 年
+T24	1Money_Person 991 999	25.8 万余元
+T25	1Money_Person 1044 1051	2.7 万余元
+T26	2Money_Person 1514 1521	12.6 万元
+T27	2Money_Person 1471 1478	10.5 万元
+T28	3Money_Person 1471 1478	10.5 万元
+T29	2Money_Person 1334 1339	50 万元
+T30	3Money_Person 1334 1339	50 万元
+T31	4Money_Person 1649 1655	31 万多元
+T32	5Money_Person 1755 1761	4.2 万元
+T33	1Event 394 395	地
+T34	1Event 2585 2586	。

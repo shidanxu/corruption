@@ -1,0 +1,28 @@
+T1	1Position 578 602	重庆 市中区 储 奇门 粮油 复制品 厂 出纳员
+T2	1Person 603 606	林建萍
+T3	1Money_Person 739 747	28.8 万余元
+T4	1Event 578 579	重
+T5	1Event 748 749	。
+T6	1Crime 733 738	鲸吞 公款
+T7	1Province 578 582	重庆 市
+T8	1City 582 584	中区
+T9	2Province 750 753	重庆市
+T10	2Event 886 887	。
+T11	2Event 750 751	重
+T12	2City 754 757	万盛区
+T13	2Position 750 768	重庆市 万盛区 饮食 服务公司 会计
+T14	2Person 769 772	李建忠
+T15	2Crime 848 853	支取 公款
+T16	2Money_Person 854 862	23.2 万余元
+T17	3Event 952 953	沙
+T18	3Event 1237 1238	。
+T19	3City 952 956	沙坪坝区
+T20	3Province 750 753	重庆市
+T21	3Position 952 966	沙坪坝区 农贸 公司 业务员
+T22	3Person 967 970	马渝波
+T23	3Crime 1018 1058	将 本 公司 公款 24.6 万元 倒入 “ 朋友 ” 郑某 提供 的 帐户 上
+T24	3Money_Person 1028 1035	24.6 万元
+T25	4Money_Person 1199 1205	8200 元
+T26	4Person 1171 1173	郑某
+T27	4Crime 1174 1198	从 “ 倒款 ” 中 也 吃 到 “ 管理费 ”
+T28	3Year_Crime 989 995	1992 年

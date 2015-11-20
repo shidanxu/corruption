@@ -1,0 +1,12 @@
+T1	1Province 173 176	辽宁省
+T2	1City 177 180	丹东市
+T3	1Position 173 183	辽宁省 丹东市 市长
+T4	1Person 184 186	常义
+T5	1Crime 220 241	同意 丹东市 一些 单位 走私 大量 汽车
+T6	1Punish 304 341	开除党籍 、 撤销 丹东市 市长 职务 的 处分 ， 移送 司法机关 处理
+T7	1Year_Crime 366 372	1993 年
+T8	1Year_Disc 541 547	1993 年
+T9	1Event 146 147	据
+T10	1Event 342 343	。
+T11	1Event 360 361	据
+T12	1Event 581 582	。

@@ -1,0 +1,17 @@
+T1	1Position 233 240	村委 副 主任
+T2	1Person 241 243	宋某
+T3	1Money_Person 251 257	4494 元
+T4	1Crime 3 5	贪污
+T5	2Position 305 320	蔡村 乡 薛家堡 村 某 村民
+T6	2Money_Person 376 382	1800 元
+T7	2Crime 8 16	占用 水利 资金
+T8	3Position 402 409	村委 一 干部
+T9	3Money_Person 441 447	1272 元
+T10	3Crime 8 16	占用 水利 资金
+T11	1Year_Crime 191 197	1989 年
+T12	2Year_Crime 191 197	1989 年
+T13	3Year_Crime 191 197	1989 年
+T14	1Province 630 632	山西
+T15	1County 633 636	稷山县
+T16	1Event 191 195	1989
+T17	1Event 616 617	。

@@ -1,0 +1,15 @@
+T1	1Province 103 106	青海省
+T2	1Position 124 134	人大常委会 副 主任
+T3	1Person 135 138	韩福才
+T4	1Crime 148 150	受贿
+T5	1Money_Person 169 176	3.5 万多元
+T6	1Punish 182 189	有期徒刑 八年
+T7	2Person 195 199	马 玉龙
+T8	2Crime 203 205	受贿
+T9	2Punish 211 228	有期徒刑 3 年 ， 缓刑 5 年
+T10	1Age 250 254	61 岁
+T11	1Year_Crime 270 276	1988 年
+T12	1Year_Disc 302 306	1990
+T13	1Punish 503 514	开除 了 韩福才 党籍
+T14	1Event 529 530	法
+T15	1Event 869 870	。

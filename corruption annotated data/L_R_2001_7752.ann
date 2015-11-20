@@ -1,0 +1,12 @@
+T1	1Event 37 38	本
+T2	1Province 91 94	海南省
+T3	1City 95 99	东方 市
+T4	1Position 99 116	原 市委书记 兼 人大常委会 主任
+T5	1Person 117 120	戚火贵
+T6	1Crime 125 142	受贿罪 、 巨额财产 来源不明 罪
+T7	1Punish 163 165	死刑
+T8	1Year_Crime 192 198	1992 年
+T9	1Year_Disc 205 211	1998 年
+T10	1Money_Person 282 302	187 万余元 、 港币 3.5 万余元
+T11	1Money_Person 325 375	1065 万余元 人民币 、 61 万余元 港币 、 3 万余元 美元 以及 97 件 黄金首饰 等
+T12	1Event 556 557	。

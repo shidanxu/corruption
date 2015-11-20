@@ -1,0 +1,31 @@
+T1	1Event 435 436	乳
+T2	1Event 2131 2132	。
+T3	2Event 2149 2153	1993
+T4	2Event 2609 2610	。
+T5	1Position 699 709	乳山市 商业局 局长
+T6	1Person 710 713	刘起山
+T7	2Position 507 525	威海 公安局 边防 保卫 分局 政委
+T8	2Person 526 529	范占武
+T9	3Position 532 540	业务 处 副处长
+T10	3Person 541 543	刘宁
+T11	1Money_Person 1682 1689	6.2 万多元
+T12	2Money_Person 1699 1707	15.4 万多元
+T13	3Money_Person 1716 1724	25.8 万多元
+T14	4Position 1499 1506	乳山 市委书记
+T15	4Person 1507 1510	王建智
+T16	4Money_Person 1734 1742	22.1 万多元
+T17	4Crime 1576 1604	掩盖 事实真相 ， 帮助 刘起山 等 人 逃避 法律制裁
+T18	5Position 1049 1059	乳山 公安局 负责人
+T19	5Person 1060 1063	孙锡平
+T20	1Punish 1838 1840	死刑
+T21	2Punish 1838 1840	死刑
+T22	3Punish 1838 1840	死刑
+T23	4Punish 1857 1867	死刑 、 缓期 二年
+T24	5Punish 1880 1884	无期徒刑
+T25	1Province 159 162	山东省
+T26	1City 163 166	乳山市
+T27	2Province 2162 2165	广东省
+T28	2City 2166 2169	珠海市
+T29	4Crime 1731 1733	受贿
+T30	1Year_Crime 494 500	1993 年
+T31	2Money_Sum 2433 2440	517 万多元

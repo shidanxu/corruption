@@ -1,0 +1,13 @@
+T1	1Position 128 169	中共天津市委 委员 、 市委 组织部 副 部长 、 市 人事局 党组书记 、 局长
+T2	1Event 251 252	曾
+T3	1Event 718 719	。
+T4	1Person 170 173	王志平
+T5	1Money_Person 387 395	1.28 万多元
+T6	1Money_Person 423 435	公款 开支 3138 元
+T7	1Money_Person 606 619	费 公款 2.17 万多元
+T8	1Money_Person 712 717	1 万多元
+T9	1Punish 845 863	撤销 王志平 的 人事局 局长 职务
+T10	1Crime 995 1000	借机 敛财
+T11	1Crime 1005 1013	公款 挥霍 浪费
+T12	1Province 254 257	天津市
+T13	1Year_Crime 275 285	1993 年 7 月

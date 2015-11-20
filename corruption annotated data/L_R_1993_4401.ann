@@ -1,0 +1,47 @@
+T1	1Province 231 234	云南省
+T2	1City 235 238	昆明市
+T3	1County 239 242	西山区
+T4	1Position 243 261	食品 公司 原黑林 铺 门市部 主任
+T5	1Person 262 265	李兰珍
+T6	1Gender 268 269	女
+T7	2Position 276 299	昆明市 肉类 联合 加工厂 冷冻 车间 司磅员
+T8	2Person 300 303	刘桂芬
+T9	2Gender 306 307	女
+T10	1Crime 310 315	共同 贪污
+T11	2Crime 310 315	共同 贪污
+T12	1Year_Crime 346 352	1987 年
+T13	2Year_Crime 346 352	1987 年
+T14	1Money_Sum 507 514	374 万余元
+T15	1Punish 655 670	死刑 ， 剥夺 政治权利 终身
+T16	2Punish 655 670	死刑 ， 剥夺 政治权利 终身
+T17	1Event 231 232	云
+T18	1Event 822 823	。
+T19	3Position 840 874	福建省 南平 纺织品 采购供应 站 原 财务科 针织 组 主办 会计
+T20	3Person 875 879	蒋家 徐
+T21	2Province 840 843	福建省
+T22	3Year_Crime 902 908	1986 年
+T23	3Money_Person 1039 1046	111 万余元
+T24	3Money_Person 1232 1236	2 万元
+T25	3Crime 1000 1024	伙同他人 通过 银行 ， 先后 办理 托收 承付
+T26	3Crime 1210 1222	私填 付款 通知单 一张
+T27	3Punish 1344 1359	死刑 ， 剥夺 政治权利 终身
+T28	2Event 840 841	福
+T29	2Event 1360 1361	。
+T30	3Province 1378 1381	广东省
+T31	3City 1382 1385	深圳市
+T32	4Position 1378 1412	广东省 深圳市 兴华 轻工业 联合 股份公司 原 天山 分部 业务员
+T33	4Person 1413 1415	李强
+T34	4Year_Crime 1418 1424	1989 年
+T35	5Position 1480 1482	案犯
+T36	5Person 1483 1486	王万彬
+T37	3Money_Sum 1446 1453	100 万余元
+T38	4Crime 1741 1744	贪污罪
+T39	4Punish 1804 1819	死刑 ， 剥夺 政治权利 终身
+T40	5Punish 1581 1590	被 公安机关 抓获
+T41	5Year_Crime 1418 1424	1989 年
+T42	3Event 1378 1379	广
+T43	3Event 1820 1821	。
+T44	4Event 1838 1839	浙
+T45	4Event 2809 2810	。
+T46	4Province 1838 1841	浙江省
+T47	4County 1842 1845	天台县

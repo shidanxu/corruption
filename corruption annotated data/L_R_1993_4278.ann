@@ -1,0 +1,20 @@
+T1	1Position 222 234	南平 地区 水电局 局长
+T2	1Person 235 238	邱阿旺
+T3	1Money_Sum 2048 2055	93.4 万元
+T4	1Money_Person 1751 1757	2.5 万元
+T5	1Crime 1748 1750	受贿
+T6	2Position 1772 1778	地区 水电局
+T7	2Person 1781 1783	黄某
+T8	3Position 1786 1793	水利 技术 队
+T9	3Person 1794 1796	蔡某
+T10	4Position 1799 1807	水利水电 管理站
+T11	4Person 1808 1810	廖某
+T12	2Crime 1817 1819	受贿
+T13	3Crime 1817 1819	受贿
+T14	4Crime 1817 1819	受贿
+T15	1Year_Disc 329 335	1992 年
+T16	1Age 931 935	60 岁
+T17	1Province 59 62	福建省
+T18	1County 347 352	南平 地区
+T19	1Event 329 333	1992
+T20	1Event 2603 2604	。

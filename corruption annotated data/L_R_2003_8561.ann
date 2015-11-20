@@ -1,0 +1,33 @@
+T1	1Event 485 486	如
+T2	1County 488 492	吉庆 镇
+T3	1Position 493 502	畜牧 兽医站 站长
+T4	2Position 508 512	副 站长
+T5	3Position 518 520	会计
+T6	1Person 503 505	刘某
+T7	2Person 513 515	王某
+T8	3Person 521 523	王某
+T9	1Year_Crime 528 534	2000 年
+T10	2Year_Crime 528 534	2000 年
+T11	3Year_Crime 528 534	2000 年
+T12	1Year_Disc 541 547	2001 年
+T13	2Year_Disc 541 547	2001 年
+T14	3Year_Disc 541 547	2001 年
+T15	1Money_Person 643 650	18850 元
+T16	2Money_Person 643 650	18850 元
+T17	3Money_Person 643 650	18850 元
+T18	1Event 654 655	。
+T19	2Event 831 832	如
+T21	4Position 840 871	畜牧 服务中心 副 主任 ， 兼县 畜牧 兽医站 推广站 站长
+T22	4Person 832 835	黄 某
+T23	4Year_Crime 874 880	1998 年
+T24	4Year_Disc 884 890	2000 年
+T25	4Crime 988 1012	先后 收受 由严 某 、 章 某 转送 的 贿赂
+T26	4Money_Person 1022 1029	19500 元
+T27	2Event 1030 1031	。
+T28	3Event 1178 1179	如
+T29	3Event 1422 1423	。
+T30	5Person 1184 1186	王某
+T20	5Position 1194 1201	医院 副 院长
+T31	5Year_Crime 1209 1215	1992 年
+T32	5Crime 1376 1396	收受 7 家 业务 单位 业务人员 贿赂
+T33	5Money_Person 1414 1421	43500 元

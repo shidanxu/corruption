@@ -1,0 +1,26 @@
+T1	1Position 117 125	原 吉县 副县长
+T2	1Person 126 129	姜建仲
+T3	1Punish 130 165	被 开除党籍 ， 撤销 副县长 职务 ， 由 司法机关 追究 刑事责任
+T4	1Crime 596 599	贿选案
+T5	1Event 233 234	去
+T6	1Event 374 375	。
+T7	1Event 117 118	原
+T8	1Event 166 167	。
+T10	2Event 532 533	。
+T9	2Event 376 377	近
+T11	2Province 76 79	山西省
+T12	2City 80 83	临汾市
+T13	1Province 76 79	山西省
+T14	1City 80 83	临汾市
+T15	2Position 431 440	唐宫 酒楼 总经理
+T16	2Person 441 445	岳 更生
+T17	3Position 448 459	郭 家庄 村委会 主任
+T18	3Person 460 463	侯福江
+T19	4Position 466 475	福利 机械厂 厂长
+T20	4Person 476 479	赵景范
+T21	5Position 482 493	枕头 乡党委 副 书记
+T22	5Person 494 497	徐靖华
+T23	5Crime 524 531	请客送礼 当选
+T24	4Crime 524 531	请客送礼 当选
+T25	3Crime 524 531	请客送礼 当选
+T26	2Crime 524 531	请客送礼 当选

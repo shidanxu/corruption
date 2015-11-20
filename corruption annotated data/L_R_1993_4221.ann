@@ -1,0 +1,26 @@
+T1	1Position 192 208	建设银行 北京 朝阳 支行 行长
+T2	1Person 209 212	王启升
+T3	1Province 197 199	北京
+T4	1City 200 202	朝阳
+T5	2Position 217 240	北京市 宣武区 永安 城市 信用 合作社 经理
+T6	2Person 241 243	徐仁
+T7	1Crime 265 268	受贿罪
+T8	2Crime 265 268	受贿罪
+T9	1Punish 271 296	死刑 缓期 2 年 执行 、 剥夺 政治权利 终身
+T10	2Punish 299 316	无期徒刑 、 剥夺 政治权利 终身
+T11	3Position 321 338	交通银行 北京分行 信贷部 信贷员
+T12	3Person 339 341	曹蔚
+T13	3Punish 347 370	有期徒刑 15 年 ， 剥夺 政治权利 3 年
+T14	4Position 375 395	建设银行 北京 朝阳 支行 计划 科科长
+T15	4Person 396 398	吴焕
+T16	5Position 403 422	人民银行 北京分行 稽核 处 稽核 员
+T17	5Person 423 427	福建 顺
+T18	4Punish 508 512	10 年
+T19	4Punish 531 535	有期徒刑
+T20	5Punish 515 518	9 年
+T21	5Punish 531 535	有期徒刑
+T22	3Crime 265 268	受贿罪
+T23	4Crime 265 268	受贿罪
+T24	5Crime 265 268	受贿罪
+T25	1Event 110 111	8
+T26	1Event 924 925	。

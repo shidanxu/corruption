@@ -1,0 +1,20 @@
+T1	1Province 118 121	河南省
+T2	1City 122 125	周口市
+T3	1Year_Crime 204 215	1992 年 12 月
+T4	1Person 278 281	王树忠
+T5	1Event 248 249	新
+T6	1Event 649 650	。
+T7	2Person 490 493	张秉来
+T8	1Position 271 275	市委书记
+T9	1Year_Disc 44 48	1995
+T10	2Position 487 489	市长
+T11	3Position 496 502	人武部 政委
+T12	3Person 503 506	徐公敏
+T13	4Position 509 513	组织部长
+T14	4Person 514 517	任克允
+T15	5Position 520 524	副 市长
+T16	5Person 525 528	李素兰
+T17	2Punish 1007 1016	撤销 党内外 职务
+T18	2Punish 1020 1029	资 降 两级 处分
+T19	3Punish 1068 1079	党内 严重 警告 处分
+T20	1Crime 136 152	严重 违纪 超标准 自 建 住房

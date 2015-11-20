@@ -1,0 +1,13 @@
+T1	1Position 409 415	某营 教导员
+T2	1Person 416 420	贾 玉河
+T3	1Crime 426 441	领着 连队 干部 打麻将 赌博
+T4	1Event 409 410	某
+T5	1Event 672 673	。
+T6	1Punish 600 610	撤职 和 降级 处分
+T7	2Position 677 680	副团长
+T8	2Event 674 675	有
+T9	2Event 772 773	。
+T10	2Crime 691 725	利用职权 之 便 ， 私下 把 团里 的 养猪场 包 给 自己 家属
+T11	2Punish 751 771	点名 批评 ， 并 责令 其 立即 纠正
+T12	1Province 109 111	沈阳
+T13	2Province 109 111	沈阳

@@ -1,0 +1,22 @@
+T1	1Position 667 669	会计
+T2	1Person 670 673	李松坡
+T3	1Crime 677 679	贪污
+T4	2Position 687 689	出纳
+T5	1Year_Crime 734 740	1999 年
+T6	1Year_Disc 649 655	2001 年
+T7	1Event 743 744	李
+T8	1Event 854 855	。
+T9	1Punish 1438 1447	有期徒刑 12 年
+T10	1Event 938 939	他
+T11	1Event 1158 1159	。
+T12	2Punish 1318 1333	有期徒刑 二年 ， 缓刑 三年
+T13	3Person 1490 1494	娄 新安
+T14	3Position 1486 1489	村支书
+T15	3Money_Person 1700 1705	2 万余元
+T16	3Punish 1718 1736	有期徒刑 三年 ， 缓期 五年 执行
+T17	4Position 1787 1790	村支书
+T18	4Person 1798 1801	李仁恩
+T19	4Money_Person 1906 1913	22630 元
+T20	4Crime 1937 1940	贪污罪
+T21	4Punish 1946 1961	有期徒刑 三年 ， 缓期 五年
+T22	3Crime 1689 1691	贪污

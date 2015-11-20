@@ -1,0 +1,54 @@
+T1	1Event 199 200	河
+T2	1Event 482 483	。
+T3	1Province 199 202	河南省
+T4	1Position 203 214	人大常委会 原副 主任
+T5	1Person 215 218	王有杰
+T6	1Crime 219 221	受贿
+T7	1Year_Crime 225 231	1994 年
+T8	1Year_Disc 234 240	2005 年
+T9	1Position 253 301	河南省 漯河 市委书记 ， 河南 省委常委 、 郑州 市委书记 ， 河南省 人大常委会 副 主任
+T10	1City 257 261	漯河 市
+T11	1Money_Person 380 392	人民币 634.5 万元
+T12	1Money_Person 398 410	人民币 890.1 万元
+T13	1Punish 467 481	死刑 ， 缓期 2 年 执行
+T14	2Event 500 501	天
+T15	2Event 745 746	。
+T16	2City 500 503	天津市
+T17	2Position 504 520	渤海 化工 集团公司 原 董事长
+T18	2Person 521 525	戴 成文
+T19	2Crime 526 528	受贿
+T20	2Year_Crime 532 538	1997 年
+T21	2Year_Disc 541 547	1998 年
+T22	2Money_Person 642 654	人民币 215.4 万元
+T23	2Money_Person 674 686	公款 508.2 万美元
+T24	2Punish 735 744	有期徒刑 11 年
+T25	3Event 763 764	浙
+T26	3Event 998 999	。
+T27	3Province 763 766	浙江省
+T28	4Event 1016 1017	宁
+T29	4Event 1312 1313	。
+T30	5Event 1330 1331	中
+T31	5Event 1518 1519	。
+T32	5Province 1337 1339	西藏
+T33	4Province 1016 1023	宁夏回族自治区
+T34	3Position 767 775	交通厅 原 厅长
+T35	3Person 776 779	赵詹奇
+T36	3Crime 780 782	受贿
+T37	3Year_Crime 786 792	1994 年
+T38	3Year_Disc 795 801	2006 年
+T39	3Money_Person 913 950	人民币 560.8 万元 、 美元 7.6 万元 、 新加坡 币 1 万元
+T40	3Punish 993 997	无期徒刑
+T41	4Position 1024 1036	政协 办公厅 原 巡视员
+T42	4Person 1037 1041	王英 福
+T43	4Crime 1042 1044	受贿
+T44	4Year_Crime 1048 1054	1998 年
+T45	4Year_Disc 1057 1063	2003 年
+T46	4Position 1076 1119	宁夏回族自治区 国土资源厅 副厅长 、 自治区 土地 局局长 ， 自治区 残联 理事长
+T47	4Money_Person 1183 1268	人民币 270.3 万元 ； 另有 人民币 882.5 万元 、 美元 15.9 万元 、 欧元 3200 元 、 日元 11 万元 巨额财产 不能 说明 其 合法 来源
+T48	5Position 1330 1347	中国农业银行 西藏 分行 原 行长
+T49	5Person 1348 1352	韩 文明
+T50	5Crime 1353 1355	受贿
+T51	5Year_Crime 1359 1365	2001 年
+T52	5Year_Disc 1368 1374	2005 年
+T53	5Money_Person 1446 1469	人民币 430.9 万元 、 美元 16 万元
+T54	5Punish 1513 1517	无期徒刑

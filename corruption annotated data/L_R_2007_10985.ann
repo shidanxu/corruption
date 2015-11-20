@@ -1,0 +1,17 @@
+T1	1Event 273 274	当
+T2	1Person 282 284	张某
+T3	1Crime 287 289	挪用
+T4	1Money_Person 563 570	1355 万元
+T5	1Province 354 356	云南
+T6	1City 356 358	昆明
+T7	2City 675 678	许昌市
+T8	1Event 616 617	。
+T9	2Event 666 667	2
+T10	2Position 679 693	企业 发展 服务局 党委委员
+T11	2Person 694 696	金某
+T12	2Crime 700 709	贪污 、 挪用公款
+T13	2Money_Person 805 810	12 万元
+T14	2Money_Person 948 954	1200 万
+T15	2Money_Person 979 986	2195 万元
+T16	2Money_Person 999 1005	865 万元
+T17	2Event 1013 1014	。

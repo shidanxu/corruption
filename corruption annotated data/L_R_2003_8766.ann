@@ -1,0 +1,26 @@
+T1	1Event 81 82	据
+T2	1Province 112 115	甘肃省
+T3	1Position 116 124	档案局 原 局长
+T4	1Person 125 128	王爱彦
+T5	1Crime 129 145	动用 档案 设备 专项 购置 款
+T6	1Money_Person 146 151	30 万元
+T7	1Punish 235 259	留党察看 两年 、 撤销 正厅级 职级 的 处分
+T8	1Event 318 319	。
+T9	2Position 365 376	白银 公司 原 副经理
+T10	2Person 377 381	万国 英
+T11	2Crime 382 403	受贿 、 挪用公款 、 巨额财产 来源不明
+T12	3Position 408 422	人民银行 甘南州 支行 行长
+T13	3Person 423 427	马良 成
+T14	3Crime 428 430	受贿
+T15	4Position 434 442	民乐县 原 县长
+T16	5Position 449 457	县委 原副 书记
+T17	4Person 443 446	杨生茂
+T18	5Person 458 460	孙云
+T19	5Crime 467 474	贪污 、 受贿
+T20	4Crime 467 474	贪污 、 受贿
+T21	4Event 478 479	。
+T22	4Event 434 435	民
+T23	3Event 432 433	；
+T24	3Event 408 409	人
+T25	2Event 406 407	；
+T26	2Event 365 366	白

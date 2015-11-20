@@ -1,0 +1,30 @@
+T1	1Province 148 151	江苏省
+T2	1Position 1313 1331	省 建设 系统 政工 研究会 秘书长
+T3	1Person 1332 1334	渠时
+T4	1Crime 1356 1373	收受 省 国际 工商 研究所 贿赂
+T5	1Money_Person 1374 1380	5.5 万元
+T6	2Position 1383 1394	省 轻工 学会 秘书长
+T7	2Person 1395 1399	陈家 付
+T8	2Crime 1407 1411	收受贿赂
+T9	2Money_Person 1412 1416	6 万元
+T10	3Position 1419 1433	省 建设 法 研究会 秘书长
+T11	3Person 1434 1438	万年 华
+T12	3Crime 1439 1441	受贿
+T13	3Money_Person 1442 1448	2.7 万元
+T14	1Punish 1455 1459	被 逮捕
+T15	2Punish 1455 1459	被 逮捕
+T16	3Punish 1455 1459	被 逮捕
+T17	2Crime 1540 1585	出具 8 张计 5 万余元 的 假发票 ， 让 9 名 参加 旅游 人员 回原 单位 报销
+T18	4Position 1604 1612	海安县 法院院长
+T19	4Person 1613 1616	何克君
+T20	4Crime 1638 1643	重复 报支
+T21	4Money_Person 1644 1650	7000 元
+T22	4Punish 1657 1668	开除党籍 、 撤销职务
+T23	5Position 1828 1846	某市 原 旅游 部门 一名 负责干部
+T24	5Year_Crime 1856 1881	将 组织 出国 旅游 收入 14 万元 私存 银行
+T25	5Money_Person 1870 1875	14 万元
+T26	5Punish 1886 1900	由 纪检监察 机关 立案查处
+T27	1Money_Sum 1250 1257	400 多万元
+T28	1Money_Sum 1303 1310	100 多万元
+T29	1Event 1107 1108	查
+T30	1Event 1901 1902	。

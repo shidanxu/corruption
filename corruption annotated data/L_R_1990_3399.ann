@@ -1,0 +1,29 @@
+T1	1Person 1164 1168	邢安 家
+T2	1City 18 21	临汾市
+T3	1Province 150 153	山西省
+T4	1Year_Disc 300 315	1986 年 4 月 14 日
+T5	1Year_Crime 738 744	1981 年
+T6	1Crime 1182 1186	挪用公款
+T7	1Money_Person 1187 1194	69.5 万元
+T8	1Crime 1200 1208	盗窃 国库 资金
+T9	1Money_Person 1209 1216	72.8 万元
+T10	1Money_Sum 1249 1257	153.5 万元
+T11	1Punish 1297 1299	死刑
+T12	2Person 1302 1305	安小梅
+T13	2Punish 1311 1313	死缓
+T14	2Crime 1182 1186	挪用公款
+T15	1Event 954 955	全
+T16	1Event 1162 1163	。
+T17	1County 561 564	大阳镇
+T19	2Position 597 605	负责人 兼 会计
+T18	3Person 2397 2400	乔永贵
+T20	3Position 1676 1689	临汾地区 木材 公司 科长
+T21	3Crime 2410 2415	贪污 公款
+T22	3Money_Person 2416 2423	14.5 万元
+T23	3Punish 2489 2493	无期徒刑
+T24	4Position 2566 2585	临汾地区 交警支队 原 车管所 副所长
+T25	4Person 2586 2590	于 振国
+T26	5Position 2599 2602	副所长
+T27	5Person 2603 2606	陈希刚
+T28	5Crime 2641 2645	收受贿赂
+T29	4Crime 2641 2645	收受贿赂

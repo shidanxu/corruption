@@ -1,0 +1,24 @@
+T1	1Province 124 127	湖南省
+T2	1Event 412 413	为
+T3	1Event 658 659	。
+T4	1City 128 131	衡阳市
+T5	1Position 132 139	政协 副 主席
+T6	1Person 140 143	符孝桐
+T7	2Person 146 149	刘仁贵
+T8	2Position 132 139	政协 副 主席
+T9	3Position 152 157	市委 顾问
+T10	3Person 158 161	徐作生
+T11	4Position 164 171	市政府 巡视员
+T12	4Person 172 175	刘谋发
+T13	1Crime 201 203	贪污
+T14	1Crime 206 208	挪用
+T15	1Crime 211 222	侵占 国家 巨额 资财
+T16	1Punish 284 291	开除党籍 处分
+T17	4Punish 301 308	留党察看 一年
+T18	4Punish 311 316	行政 撤职
+T19	2Punish 284 291	开除党籍 处分
+T20	3Punish 284 291	开除党籍 处分
+T21	1Punish 336 352	职务 依照 规定 程序 被 撤销
+T22	1Year_Crime 528 538	1992 年 8 月
+T23	1Money_Sum 651 657	67 万多元
+T24	1Year_Disc 47 54	1995.05

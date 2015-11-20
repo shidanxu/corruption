@@ -1,0 +1,15 @@
+T1	1Province 114 117	吉林省
+T2	1Position 684 688	县委书记
+T3	1Punish 706 714	党内 警告 处分
+T4	2Position 723 739	县长 、 现任 东丰县 县委书记
+T5	2Punish 757 768	党内 严重 警告 处分
+T6	3Position 777 793	县委 副 书记 、 东丰县 县长
+T7	3Punish 797 805	党内 警告 处分
+T8	4Position 812 815	副县长
+T9	4Person 816 820	于 贵宝
+T10	1Event 823 824	担
+T11	1Event 976 977	。
+T12	1Event 432 433	该
+T13	1Event 622 625	。 
+T14	4Punish 942 953	党内 严重 警告 处分
+T15	4Punish 964 975	免去 其 副县长 职务

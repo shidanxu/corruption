@@ -1,0 +1,27 @@
+T1	1Position 266 295	原 郑州市 农业银行 中原 支行 钢铁 路 储蓄 代办 员
+T2	1Person 296 299	李冬林
+T4	2Position 393 401	储蓄所 代办 员
+T5	2Person 402 405	李江涛
+T6	3Position 408 420	郑州 纺织 机械厂 工人
+T7	3Person 421 425	李 宝林
+T8	1Money_Sum 445 453	37.6 万余元
+T3	1Crime 461 464	贪污罪
+T11	1Punish 475 490	死刑 、 剥夺 政治权利 终身
+T12	2Punish 508 534	死刑 、 缓期 二年 执行 、 剥夺 政治权利 终身
+T13	3Punish 508 534	死刑 、 缓期 二年 执行 、 剥夺 政治权利 终身
+T9	2Crime 461 464	贪污罪
+T10	3Crime 461 464	贪污罪
+T14	4Position 312 328	巩义市 夹津口 乡 信用社 会计
+T15	4Person 329 332	周学辉
+T16	4Crime 333 342	贪污 、 挪用公款
+T17	5Position 347 369	郑州铁路局 襄樊 分局 枝城 车站 进款 员
+T18	5Person 369 371	钱军
+T19	5Crime 372 374	贪污
+T20	1Province 136 139	河南省
+T21	2Province 136 139	河南省
+T22	3Province 136 139	河南省
+T23	1City 268 271	郑州市
+T24	2City 312 315	巩义市
+T25	3City 140 143	郑州市
+T26	1Event 384 385	李
+T27	1Event 576 577	。

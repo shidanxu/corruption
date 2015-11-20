@@ -1,0 +1,17 @@
+T1	1Event 358 359	翻
+T2	1Province 407 410	广东省
+T3	1City 411 415	湛江 市
+T4	1Position 414 421	市委 原 书记
+T5	1Person 422 426	陈 同庆
+T6	1Crime 430 437	卖官 ， 受贿
+T7	1Event 518 519	。
+T8	2Province 532 535	四川省
+T9	2Event 532 533	四
+T10	2Event 672 673	。
+T11	2Position 536 545	交通厅 原 副厅长
+T12	2Person 546 549	郑道访
+T13	2Punish 568 570	死刑
+T14	2Crime 634 642	收受 他人 贿赂
+T15	2Year_Crime 573 579	1994 年
+T16	2Year_Disc 582 588	2000 年
+T17	2Money_Person 652 671	621.2 万元 ， 美元 10 万元

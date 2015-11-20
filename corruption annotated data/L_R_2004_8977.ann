@@ -1,0 +1,20 @@
+T1	1Province 107 110	北京市
+T2	1Person 238 240	赵安
+T3	1Position 216 237	文艺节目 中心 副 主任 兼 文艺部 主任
+T4	1Crime 255 258	受贿罪
+T5	1Punish 267 276	有期徒刑 10 年
+T6	1Punish 282 299	没收 个人财产 人民币 20 万元
+T7	2Position 304 307	词作者
+T8	2Person 308 310	张俊
+T9	2Crime 314 323	行贿罪 、 诽谤罪
+T10	2Punish 340 348	有期徒刑 6 年
+T12	1Event 674 677	。 
+T13	1Money_Sum 645 650	11 万元
+T15	1Money_Sum 660 665	50 万元
+T11	1Event 107 108	北
+T19	1Year_Crime 383 389	1994 年
+T20	1Year_Disc 392 398	2000 年
+T21	2Year_Crime 383 389	1994 年
+T22	2Year_Disc 392 398	2000 年
+T16	2Position 700 743	北京 生命 之星 广告 有限公司 董事 、 北京 生命 之星 科技开发 有限公司 股东
+T14	1Event 744 745	。

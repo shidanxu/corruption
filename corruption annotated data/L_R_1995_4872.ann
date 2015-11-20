@@ -1,0 +1,30 @@
+T1	1Province 137 140	广东省
+T5	1County 159 162	鼎湖区
+T2	1City 155 158	肇庆市
+T3	1Position 205 210	税务局 长
+T4	1Crime 219 223	玩忽职守
+T6	1Crime 226 228	受贿
+T9	2County 1630 1633	鼎湖区
+T10	2Position 1641 1648	税务所 副所长
+T11	2Person 1649 1652	黄强球
+T12	2Money_Person 1826 1831	7 万余元
+T13	2Crime 1823 1825	贿赂
+T14	2Punish 1841 1843	死刑
+T7	1Event 80 81	新
+T8	1Event 238 239	。
+T15	3Position 1872 1876	税务所长
+T16	3Person 1877 1880	陈岳嵩
+T17	4Position 1886 1893	税务所 专管员
+T18	4Person 1894 1897	梁卓洪
+T19	4Year_Crime 1902 1918	1994 年 1 月 至 2 月
+T20	3Year_Crime 1902 1918	1994 年 1 月 至 2 月
+T21	3Money_Person 2092 2097	4.7 万
+T22	4Money_Person 2101 2107	2.4 万元
+T23	3Crime 2087 2091	收受贿赂
+T24	4Crime 2087 2091	收受贿赂
+T25	3Punish 2137 2141	无期徒刑
+T26	4Punish 2137 2141	无期徒刑
+T27	5Person 2170 2177	工商所 副所长
+T28	5Person 2178 2181	罗华基
+T29	5Punish 2264 2272	5 年 有期徒刑
+T30	5Crime 2184 2205	利用 职务 之 便 ， 为 他人 谋取私利

@@ -1,0 +1,24 @@
+T1	1Position 233 253	中共 侯马 市委 副 书记 兼 宣传部长
+T2	1Person 254 257	张洪生
+T3	2Position 262 270	侯马市 政协主席
+T4	2Person 271 273	李刚
+T5	1Crime 279 283	收受贿赂
+T6	1Money_Person 705 711	3300 元
+T7	2Money_Person 705 711	3300 元
+T8	2Punish 749 756	两年 有期徒刑
+T9	1Year_Disc 310 321	1994 年 9 月初
+T10	2Year_Crime 794 811	有期徒刑 2 年 ， 缓刑 2 年
+T11	3Position 832 844	省公安厅 正科级 侦察员
+T12	3Money_Person 871 883	9000 余元 的 财物
+T13	1Event 458 459	今
+T14	1Event 712 713	。
+T15	3Punish 933 942	判处 7 年 徒刑
+T16	4Position 947 961	侯马市 滨 办事处 副 主任
+T17	4Person 962 966	姚 和平
+T18	4Year_Crime 969 975	1991 年
+T19	4Year_Disc 978 984	1994 年
+T21	4Crime 1002 1004	分子
+T22	4Punish 1027 1033	判刑 3 年
+T20	5Position 1038 1056	侯马市 公安局 路西 刑警队 副队长
+T23	5Person 1057 1059	刘林
+T24	5Crime 1076 1091	收受 文物 犯罪分子 的 财物

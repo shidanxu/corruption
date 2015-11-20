@@ -1,0 +1,36 @@
+T1	1City 164 167	安阳县
+T2	1County 168 172	安丰 乡
+T3	1Person 183 185	陈某
+T4	1Position 175 182	信用社 信贷员
+T5	1Crime 215 217	挪用
+T6	2City 269 272	安阳县
+T7	2Position 273 286	农行 曲沟 营业所 信贷员
+T8	2Person 287 289	王某
+T9	2Crime 117 121	挪用公款
+T10	3City 430 433	安阳县
+T12	3Person 450 452	王某
+T13	3Crime 422 427	私动 库款
+T14	4Crime 636 641	空开 汇票
+T15	4Position 651 657	信用社 会计
+T16	4City 644 647	安阳县
+T17	4County 648 650	曲沟
+T11	3Position 446 449	出纳员
+T18	3County 437 441	蒋村 乡
+T19	4Crime 665 673	收受 他人 好处
+T20	4Year_Crime 680 694	1993 年 9 月 7 日
+T21	1Event 154 155	截
+T22	1Event 243 246;247 249	。 
+  
+T23	5Crime 804 809	超常 贷款
+T24	5City 812 815	安阳县
+T25	5County 819 821	白壁
+T26	5Position 826 828	主任
+T27	5Person 829 831	邓某
+T28	5Year_Crime 834 840	1991 年
+T29	5Year_Disc 843 850	1993 年间
+T30	5Crime 885 892	超 规模 贷款
+T31	5Money_Person 893 899	70 余万元
+T32	4Money_Person 717 724	25000 元
+T33	3Money_Person 589 596	42000 元
+T34	3Year_Crime 491 506	1991 年 9 月 15 日
+T35	2Money_Person 371 375	1 万元

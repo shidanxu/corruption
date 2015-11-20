@@ -1,0 +1,15 @@
+T1	1Province 96 99	云南省
+T2	1City 100 103	个旧市
+T3	1Year_Crime 224 234	1988 年 5 月
+T4	1Year_Disc 237 248	1990 年 12 月
+T5	1Money_Sum 270 276	201 万元
+T6	1Position 395 397	厂长
+T7	1Person 398 401	郭邦旺
+T8	2Position 406 419	副厂长 兼厂 科协 代主席
+T9	2Person 420 423	丁树祥
+T10	1Crime 486 491	截留 收入
+T11	2Crime 532 537	截留 私分
+T12	1Crime 606 620	开除党籍 、 撤销 行政职务
+T13	1Event 329 330	在
+T14	1Event 538 539	。
+T15	2Crime 636 657	留党察看 2 年 、 撤销 行政职务 处分

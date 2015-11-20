@@ -1,0 +1,10 @@
+T1	1Province 97 100	河南省
+T2	1County 101 104	西平县
+T3	1Position 97 122	河南省 西平县 公路 段原 段长 兼 党支部 书记
+T4	1Person 123 127	杨 爱民
+T5	1Year_Crime 244 250	1993 年
+T6	1Crime 130 170	伙同他人 非法 印制 、 销售 公路 通行 票据 ， 乱支 乱用 收费 的 收入
+T7	1Money_Sum 305 311	750 万元
+T8	1Money_Sum 465 472	57.8 万元
+T9	1Money_Sum 503 509	41 万多元
+T10	1Money_Person 570 576	97 万多元

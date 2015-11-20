@@ -1,0 +1,17 @@
+T1	1Province 85 87	江西
+T2	1City 88 91	新建县
+T3	1County 92 96	石岗 镇
+T4	1Position 97 101	党委书记
+T5	1Person 102 105	龚洪壹
+T6	1Year_Crime 108 118	1988 年 6 月
+T7	1Event 289 290	1
+T8	1Event 2542 2543	。
+T9	2Position 122 125	镇党委
+T10	2Person 131 134	丁星明
+T11	3Position 137 140	出纳员
+T12	3Person 141 144	罗时庆
+T13	1Crime 220 222	贪污
+T14	1Year_Disc 706 721	1990 年 10 月 4 日
+T15	2Money_Person 812 821	公款 7230 元
+T16	1Money_Person 851 857	3000 元
+T17	1Crime 1891 1899	挪用 救灾 款项

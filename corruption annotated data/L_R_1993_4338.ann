@@ -1,0 +1,25 @@
+T1	1Province 282 284	北京
+T2	1Position 282 300	北京海关 首都机场 旅检 科 办事员
+T3	1Person 301 303	赵滨
+T4	1Crime 306 329	为 外商 逃避 关税 提供 便利 、 收受贿赂
+T5	1Money_Person 330 334	2 万元
+T6	2City 339 342	宣武区
+T7	2Position 339 358	宣武区 公安分局 陶然亭 派出所 民警
+T8	2Person 359 363	沈 立志
+T9	2Crime 366 398	为 两名 盗窃犯 要 回 已 被 扣留 的 盗窃 物品 ， 受贿
+T10	2Money_Person 399 405	6000 元
+T11	3Position 409 420	市 公安局 五处 干部
+T12	3Province 104 107	北京市
+T13	3Person 421 424	王建军
+T14	3Crime 427 457	利用 职务 之 便 为 他人 办理 出国 护照 ， 收受贿赂
+T15	3Money_Person 458 494	2 万余元 以及 电冰箱 、 录像机 等 价值 2.7 万余元 的 物品
+T16	4Position 499 520	市 税务局 朝阳区 税务 稽查 四队 干部
+T17	4Province 104 107	北京市
+T18	4Person 521 523	张林
+T19	4Crime 526 579	强行 让 自己 管辖 的 纳税户 为 他 报销 近 3000 元 各种 发票 ， 并 索取 “ 过节费 ”
+T20	4Money_Person 552 558	3000 元
+T21	4Money_Person 580 585	600 元
+T22	1Punish 715 722	起诉 到 法院
+T23	2Punish 715 722	起诉 到 法院
+T24	3Punish 715 722	起诉 到 法院
+T25	4Punish 715 722	起诉 到 法院

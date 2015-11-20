@@ -1,0 +1,11 @@
+T1	1Position 166 171	该厂 职工
+T2	1Province 102 105	湖南省
+T3	1City 106 109	衡阳市
+T4	1Person 172 174	周民
+T5	1Punish 180 214	党内 严重 警告 处分 ， 并 建议 该厂 给予 行政 记大过 处分
+T6	1Crime 138 149	诬告 厂长 欧阳 振芬
+T7	2Person 227 229	王琪
+T8	2Punish 232 246	建议 给予 行政 记过 处理
+T9	1Year_Crime 265 271	1992 年
+T10	1Event 265 269	1992
+T11	1Event 815 816	。

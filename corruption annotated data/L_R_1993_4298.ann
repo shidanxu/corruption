@@ -1,0 +1,38 @@
+T1	1Province 126 129	湖北省
+T2	1City 94 96	武汉
+T3	1Position 254 261	省 计委 处长
+T4	1Person 262 265	李纪东
+T5	1Punish 466 470	依法逮捕
+T6	1Event 254 255	省
+T7	1Event 471 472	。
+T8	2Position 268 287	省 一家 公司 驻 北京 办事处 主任
+T9	2Person 288 291	喻尚德
+T10	3Position 397 402	公司 经理
+T11	3Person 403 406	冯际雄
+T12	3Crime 415 417	行贿
+T13	1Money_Sum 341 347	二十七 万元
+T14	1Money_Sum 386 392	三十三 万元
+T15	1Crime 297 333	将 自己 掌握 的 二百五十 吨 平价 柴油 拨给 某 公司 高价 销售
+T16	1Crime 356 377	利用职权 给 该 公司 调拨 尿素 一千吨
+T17	2Crime 297 333	将 自己 掌握 的 二百五十 吨 平价 柴油 拨给 某 公司 高价 销售
+T18	2Province 126 129	湖北省
+T19	2City 94 96	武汉
+T20	4Position 489 506	省 财政厅 所属 某 公司 总经理
+T21	4Person 507 510	丁敬东
+T22	5Position 513 515	会计
+T23	5Person 516 518	朱虹
+T24	4Crime 539 543	挪用公款
+T25	4Crime 600 604	收受贿赂
+T26	5Crime 539 543	挪用公款
+T27	2Event 489 490	省
+T28	2Event 661 662	。
+T29	3Event 663 664	与
+T30	3Event 737 738	。
+T31	4Event 755 756	省
+T32	4Event 822 823	。
+T33	4Money_Person 605 608	数万元
+T34	2Money_Sum 544 548	一百万元
+T35	3Province 126 129	湖北省
+T36	3City 94 96	武汉
+T37	4Province 126 129	湖北省
+T38	4City 94 96	武汉

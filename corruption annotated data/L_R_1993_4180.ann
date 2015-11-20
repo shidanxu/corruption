@@ -1,0 +1,24 @@
+T1	1Event 332 333	原
+T2	1Event 591 592	。
+T3	2Event 609 610	去
+T4	2Event 843 844	。
+T5	3Event 861 862	去
+T6	3Event 1165 1166	。
+T7	1Position 332 350	原 杉板 信用社 坪 山 分社 会计
+T8	1Person 351 355	曾 召荣
+T9	1Crime 391 393	贪污
+T10	1Money_Person 402 407	7 万余元
+T11	1Province 111 114	湖南省
+T12	1City 115 118	临澧县
+T13	2Province 111 114	湖南省
+T14	2City 115 118	临澧县
+T15	3Province 111 114	湖南省
+T16	3City 115 118	临澧县
+T17	2Position 614 636	原 县城 关 信用社 迎宾路 储蓄所 负责人
+T18	2Person 637 640	张丽洲
+T19	2Crime 643 647	挪用公款
+T20	2Money_Person 648 653	27 万元
+T21	3Position 870 882	县 农业银行 信贷 股长
+T22	3Person 883 885	李某
+T23	3Crime 886 890	收受贿赂
+T24	3Money_Person 891 897	3000 元

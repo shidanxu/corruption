@@ -1,0 +1,13 @@
+T1	1Position 136 162	中国 华阳 贸易 总公司 贸易部 贸易 处 项目经理
+T2	1Person 163 166	刘淑兰
+T3	2Position 169 202	中国 化工 进出口 总公司 江苏省 分公司 包装 样宣科 开票 员
+T4	2Person 202 206	仲开 龙
+T5	1Year_Crime 264 274	1988 年 4 月
+T6	1Year_Disc 277 287	1989 年 9 月
+T7	1Crime 311 313	贪污
+T8	1Crime 357 373	索要 国内 厂家 和 外商 贿赂
+T9	1Money_Person 388 400	人民币 68.5 万多元
+T10	2Year_Crime 454 465	1987 年 10 月
+T11	2Year_Disc 468 478	1990 年 5 月
+T12	2Crime 621 623	贪污
+T13	2Money_Person 624 631	113 万多元

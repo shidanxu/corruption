@@ -1,0 +1,17 @@
+T1	1Province 88 91	安徽省
+T2	1City 92 95	阜阳市
+T3	1Position 96 121	政协 原副 主席 、 市 中级 人民法院 原 院长
+T4	1Person 122 126	刘家 义
+T6	1Money_Person 137 143	90 多万元
+T7	1Punish 183 215	有期徒刑 13 年 ， 并处 没收 个人财产 人民币 15 万元
+T9	2Person 322 325	张自民
+T10	2Punish 326 351	有期徒刑 9 年 ， 并处 没收 财产 10 万元
+T11	2Crime 282 299	受贿罪 、 巨额财产 来源不明 罪
+T5	1Crime 171 173	受贿
+T12	1Event 88 89	安
+T13	1Event 247 248	。
+T14	2Event 261 262	安
+T15	2Event 413 414	。
+T8	2City 305 308	阜阳市
+T16	2Position 309 321	中级 人民法院 原 院长
+T17	2Province 261 264	安徽省

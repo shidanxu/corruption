@@ -1,0 +1,15 @@
+T1	1Event 94 95	北
+T2	1Crime 122 125	受贿罪
+T3	1Position 129 144	山西 襄汾县 公安局 原 局长
+T4	1Person 145 148	韩春喜
+T5	1Punish 149 157	有期徒刑 5 年
+T6	2Position 243 258	新塔 矿业 有限公司 大 股东
+T7	2Person 259 262	张佩亮
+T8	1Money_Person 266 270	4 万元
+T9	3Position 328 335	筹备组 负责人
+T10	3Person 336 339	程香民
+T11	1Province 187 189	山西
+T12	1County 190 193	襄汾县
+T13	3Crime 575 579	玩忽职守
+T14	3Punish 594 602	有期徒刑 3 年
+T15	1Event 603 604	。

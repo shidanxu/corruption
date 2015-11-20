@@ -1,0 +1,19 @@
+T1	1Province 125 128	河北省
+T2	1Event 355 356	原
+T3	1Event 411 412	。
+T4	1County 221 224	阜平县
+T5	1Position 357 361	县委书记
+T6	1Person 373 376	王振荣
+T7	2Position 364 366	县长
+T8	2Person 379 382	宋锡九
+T9	3Position 369 372	副县长
+T10	3Person 385 388	杨发成
+T11	4Person 391 394	刘丙臣
+T12	1Crime 399 403	索贿受贿
+T13	2Crime 399 403	索贿受贿
+T14	3Crime 399 403	索贿受贿
+T15	4Crime 399 403	索贿受贿
+T16	5Position 413 421	县 化工厂 厂长
+T17	5Person 422 424	吴明
+T18	5Crime 453 455	贪污
+T19	5Money_Person 459 464	2 万余元

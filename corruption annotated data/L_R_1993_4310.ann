@@ -1,0 +1,31 @@
+T1	1Position 217 226	原 沈丘 县委书记
+T2	1Person 227 230	刘炜东
+T3	1Province 153 156	河南省
+T4	1County 219 223	沈丘 县
+T5	1City 157 159	周口
+T6	1Crime 443 445	受贿
+T7	1Money_Person 446 452	1.4 万元
+T8	2Position 506 515	原 沈丘县 副县长
+T9	2Person 516 520	崔 东华
+T10	2Crime 544 548	收受贿赂
+T11	2Money_Person 549 567	1 万元 ， 并 接受 录像机 一台
+T12	3Position 570 583	原 沈丘县 农委 副 主任
+T13	3Person 584 588	赵 海滨
+T14	3Money_Person 609 615	2500 元
+T15	3Crime 594 600	索要 录像机
+T16	4Position 618 642	原 农业部 郑州 动植物 检疫局 筹备组 负责人
+T17	4Person 643 647	靳 广义
+T18	4Crime 679 690	接受 兽药厂 的 现金
+T19	4Money_Person 693 699	2000 元
+T20	1Punish 1226 1230	依法逮捕
+T21	2Punish 1226 1230	依法逮捕
+T22	3Punish 1226 1230	依法逮捕
+T23	4Punish 1226 1230	依法逮捕
+T24	5Punish 1226 1230	依法逮捕
+T25	5Position 927 938	原 沈丘县 农业 局长
+T26	5Person 939 943	卢成 云
+T27	5Crime 944 949	索要 现金
+T28	5Money_Person 950 956	5000 元
+T29	5Punish 962 976	开除党籍 ， 行政 撤职处分
+T30	1Event 153 154	河
+T31	1Event 1339 1340	。

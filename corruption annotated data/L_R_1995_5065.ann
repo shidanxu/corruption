@@ -1,0 +1,45 @@
+T1	1Province 288 291	福建省
+T2	1Position 292 299	体委 副 主任
+T3	1Person 326 329	倪志钦
+T4	1Year_Crime 332 342	1991 年 9 月
+T5	1Year_Disc 345 349	12 月
+T6	1Crime 405 407	贿赂
+T7	1Money_Person 409 419	5.7 万元 人民币
+T8	1Event 279 280	通
+T9	1Event 501 504;505 507;508 510	。 
+  
+   
+T10	1Event 501 502	。
+T11	1Punish 492 500	有期徒刑 8 年
+T12	2Position 525 536	工商银行 保卫处 处长
+T13	2Person 537 541	顾 道德
+T14	2Year_Crime 544 554	1993 年 6 月
+T15	2Year_Disc 557 568	1994 年 12 月
+T16	2Crime 678 688	非法 买卖 子弹 罪
+T17	2Money_Person 663 669	13 万余元
+T18	2Province 521 524	江苏省
+T19	3Province 729 732	云南省
+T20	3Position 733 740	人事厅 副厅长
+T21	3Person 749 753	束 开泰
+T22	3Year_Crime 756 766	1993 年 7 月
+T23	3Punish 974 978	无期徒刑
+T24	3Crime 896 897	贿
+T25	3Money_Person 898 907	26 万元 人民币
+T26	4Province 1025 1028	陕西省
+T27	4County 1029 1031	眉县
+T28	4Position 1032 1049	县委书记 、 县 人大常委会 主任
+T29	4Person 1050 1053	马根旺
+T30	4Crime 1070 1072	贪污
+T31	4Money_Person 1076 1082	5885 元
+T32	4Crime 1085 1087	受贿
+T33	4Money_Person 1099 1107	1.924 万元
+T34	4Money_Person 1145 1175	礼品 等 价值 4.3167 万元 人民币 和 100 美元
+T35	4Punish 1277 1286	开除 马根旺 党籍
+T36	4Punish 1328 1336	有期徒刑 6 年
+T37	4Year_Crime 1178 1188	1993 年 1 月
+T38	5Province 1357 1360	吉林省
+T39	5County 1361 1368	伊通满族自治县
+T40	5Position 1371 1379	局子 粮库 主任
+T41	5Person 1380 1384	李俊 启
+T42	5Punish 1532 1536	开除党籍
+T43	5Crime 1421 1472	追求 部门 利益 ， 指使 粮库 先后 两次 向 3938 吨 玉米 中 掺 兑 砂石 约 146 吨

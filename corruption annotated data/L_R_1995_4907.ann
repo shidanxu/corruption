@@ -1,0 +1,16 @@
+T1	1Province 114 117	陕西省
+T2	1City 118 120	眉县
+T3	1Position 123 140	县委书记 、 县 人大常委会 主任
+T4	1Person 141 144	马根旺
+T5	1Crime 147 153	贪污 受贿罪
+T6	1Punish 173 181	有期徒刑 6 年
+T7	1Year_Crime 238 244	1987 年
+T8	1Year_Disc 247 253	1994 年
+T9	1Money_Person 288 294	5885 元
+T10	1Money_Person 300 307	19240 元
+T11	1Money_Person 322 329	42567 元
+T12	1Money_Person 338 352	财物 价值 17780 多元
+T13	1Money_Person 472 481	1 · 6 万多元
+T14	1Money_Person 517 521	5 万元
+T15	1Event 200 201	陕
+T16	1Event 522 525;526 528	。   

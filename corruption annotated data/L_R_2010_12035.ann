@@ -1,0 +1,21 @@
+T1	1Crime 281 290	重大 责任事故 罪
+T2	1Position 317 335	新密市 东兴 煤业 有限公司 出资人
+T3	1Person 336 340	付 满仓
+T4	2Position 343 347	法人代表
+T5	2Person 348 350	付晓
+T6	3Position 353 355	矿长
+T7	3Person 356 359	白小博
+T8	4Position 362 367	安全 矿长
+T9	4Person 368 371	李丙灿
+T10	5Position 374 379	机电 矿长
+T11	5Person 380 383	王双彬
+T12	2Crime 281 290	重大 责任事故 罪
+T13	3Crime 281 290	重大 责任事故 罪
+T14	4Crime 281 290	重大 责任事故 罪
+T15	5Crime 281 290	重大 责任事故 罪
+T16	1Province 94 97	河南省
+T17	1City 98 101	新密市
+T18	1Event 87 91	30 日
+T19	1Event 145 146	。
+T20	1Event 274 275	这
+T21	1Event 384 385	。

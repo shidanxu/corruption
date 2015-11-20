@@ -1,0 +1,18 @@
+T1	1Position 367 369	局长
+T2	1Position 372 376	党组书记
+T3	1Person 377 380	陈建辉
+T4	2Position 393 396	副厅长
+T5	2Person 405 409	卢 国盛
+T6	2Punish 410 427	行政 记大过 、 党内 警告 处分
+T7	3Position 437 449	市长 、 市委 副 书记
+T8	3Person 450 453	何正拔
+T9	4Position 483 496	常务副 市长 、 市委常委
+T10	4Person 497 500	蔡小驹
+T11	4Punish 501 520	行政 撤职 、 撤销 党内 职务 处分
+T12	3Punish 454 473	行政 降级 、 党内 严重 警告 处分
+T13	5Person 571 574	曾祥海
+T14	5Position 558 570	市长 、 市委 副 书记
+T15	1Province 123 125	广东
+T16	1City 126 132	梅州 兴宁市
+T17	1Event 133 134	大
+T18	1Event 281 282	。

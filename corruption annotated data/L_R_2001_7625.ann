@@ -1,0 +1,26 @@
+T2	1Province 851 854	陕西省
+T3	1Position 855 857	省长
+T4	1Person 858 861	程安东
+T5	1Punish 865 872	行政 记过处分
+T6	2Person 1031 1033	李潮
+T7	2Position 1036 1047	陈家山 煤矿 总工程师
+T8	2Punish 1053 1085	开除公职 处分 、 开除党籍 处分 ， 并 移交 司法机关 处理
+T9	3Person 1088 1091	宋战宏
+T10	3Position 1094 1106	陈家山 煤矿 代理 矿长
+T11	3Punish 1112 1130	行政 撤职 、 留党察看 一年 处分
+T12	4Person 1133 1137	南 民生
+T13	4Position 1140 1151	陈家山 煤矿 党委书记
+T14	4Punish 1157 1167	撤销 党委书记 处分
+T15	5Person 1170 1173	任克龙
+T16	5Position 1176 1189	铜川 矿务局 通风处 处长
+T17	5Punish 1195 1202	行政 记过处分
+T18	2Province 85 88	陕西省
+T19	3Province 85 88	陕西省
+T20	4Province 85 88	陕西省
+T21	5Province 85 88	陕西省
+T1	1Event 995 996	对
+T22	1Event 1386 1387	。
+T23	2Event 1400 1401	对
+T24	2Event 2020 2021	。
+T25	3Event 2034 2035	对
+T26	3Event 2293 2294	。

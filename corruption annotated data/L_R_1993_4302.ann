@@ -1,0 +1,24 @@
+T1	1Position 424 440	哈尔滨 分局 收入 检查室 干部
+T2	1Person 441 444	张春海
+T3	2Position 424 440	哈尔滨 分局 收入 检查室 干部
+T4	2Person 447 450	王晓明
+T5	1Crime 580 590	非法 截留 补 票款
+T6	2Crime 580 590	非法 截留 补 票款
+T7	1Money_Sum 617 626	77655.5 元
+T8	1City 424 427	哈尔滨
+T9	1Event 424 425	哈
+T10	1Event 627 628	。
+T11	1Year_Crime 547 553	1992 年
+T12	2City 786 790	佳木斯市
+T13	2Event 641 642	佳
+T14	2Event 969 970	。
+T15	3Position 641 657	佳木斯 分局 宝泉岭 站 值班员
+T16	3Person 658 661	王海斌
+T17	3Year_Crime 664 670	1992 年
+T18	3Crime 924 939	接受 贺长军 先后 两次 贿赂
+T19	3Money_Person 942 949	10500 元
+T20	4Person 952 955	赵长鹏
+T21	4Position 837 846	宝泉岭 站制 动员
+T22	4Crime 956 961	接受 赃款
+T23	4Money_Person 962 968	5000 元
+T24	2Money_Sum 907 915	216594 元

@@ -1,0 +1,27 @@
+T1	1Province 80 82	北京
+T2	1Person 105 108	管志诚
+T3	2Person 111 114	刘国修
+T4	1Position 172 191	首都钢铁公司 北京 钢铁公司 党委书记
+T5	1Year_Crime 197 207	1986 年 8 月
+T6	1Year_Disc 210 220	1990 年 4 月
+T7	1Crime 230 232	受贿
+T8	1Money_Person 233 244	人民币 141 万余元
+T9	1Crime 247 249	贪污
+T10	1Money_Person 253 262	人民币 8 万余元
+T11	2Position 347 374	中国 土木工程 公司 驻 泰国 办事处 筹备组 负责人
+T12	2Year_Crime 380 384	1986
+T13	2Year_Disc 389 399	1988 年 9 月
+T14	2Crime 401 423	利用 职务 之 便 编造 6 份 虚假 合同
+T15	2Crime 440 444	据为己有
+T16	2Money_Person 429 439	26.9 万余 美元
+T17	3Person 482 485	李志坤
+T18	4Person 488 493	于 再 先
+T19	5Person 496 499	张治中
+T20	3Crime 507 509	贪污
+T21	4Crime 512 514	受贿
+T22	5Crime 517 528	挪用公款 、 投机倒把
+T23	1Punish 605 607	死刑
+T24	2Punish 605 607	死刑
+T25	3Punish 605 607	死刑
+T26	4Punish 605 607	死刑
+T27	5Punish 605 607	死刑

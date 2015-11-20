@@ -1,0 +1,22 @@
+T1	1Person 191 194	董庆尧
+T2	1Province 126 129	湖南省
+T4	1Money_Sum 206 212	265 万元
+T5	1Position 197 200	副处级
+T6	1Position 168 171	总经理
+T7	2Position 241 252	副行长 （ 正处级 ）
+T8	2Person 253 256	戴天敏
+T9	3Position 267 269	主任
+T10	3Person 270 274	孙 建新
+T11	2Money_Person 726 734	港币 45 万元
+T12	3Money_Person 737 746	人民币 30 万元
+T13	1Year_Crime 330 340	1992 年 3 月
+T14	1Year_Disc 343 353	1993 年 2 月
+T3	1City 356 359	惠州市
+T15	1County 360 381	惠城区 、 大亚湾 区 、 惠阳县 淡水镇
+T16	1Money_Person 446 449	265
+T17	2Year_Crime 592 602	1992 年 3 月
+T18	2Year_Disc 605 615	1993 年 6 月
+T19	3Year_Crime 592 602	1992 年 3 月
+T20	3Year_Disc 605 615	1993 年 6 月
+T21	1Event 325 326	董
+T22	1Event 527 528	。

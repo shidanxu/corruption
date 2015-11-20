@@ -1,0 +1,11 @@
+T1	1Position 123 145	广东省 新会市 侨区 经济 发展 公司 经理
+T2	1Person 146 150	余 豪杰
+T3	1Money_Person 162 172	1700 多 万港元
+T4	1Province 123 126	广东省
+T5	1City 127 130	新会市
+T6	1County 131 133	侨区
+T7	1Year_Crime 234 240	1990 年
+T8	1Punish 211 215	捉拿归案
+T9	1Crime 157 161	挪用公款
+T10	1Event 234 238	1990
+T11	1Event 995 996	。

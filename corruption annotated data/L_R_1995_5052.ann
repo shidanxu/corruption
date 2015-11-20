@@ -1,0 +1,18 @@
+T1	1County 434 437	无锡县
+T2	1Event 432 433	原
+T3	1Event 560 561	。
+T4	1Position 442 446	退休干部
+T5	1Person 447 450	金惠珍
+T6	1Crime 461 466	非法 利益
+T7	1Money_Sum 502 509	1876 万元
+T8	1Money_Person 521 529	99.99 万元
+T9	1Punish 548 559	开除党籍 、 开除公职
+T10	2City 605 608	无锡市
+T11	2Position 609 613	副 市长
+T12	2Person 614 617	丁浩兴
+T13	3City 622 625	无锡市
+T14	3Position 626 635	人民检察院 检察长
+T15	3Person 636 639	高振家
+T16	4City 708 711	锡山市
+T17	4Position 714 721	政协 副 主席
+T18	4Person 722 725	倪品良

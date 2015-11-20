@@ -1,0 +1,38 @@
+T1	1Province 196 199	河南省
+T2	1County 200 203	汝州市
+T3	1Position 196 208	河南省 汝州市 原 市长
+T4	1Person 209 213	徐中 和
+T5	1Crime 214 221	受贿 、 贪污
+T6	2Province 225 228	广东省
+T7	2City 229 232	惠州市
+T8	2Position 225 241	广东省 惠州市 原 公安局 局长
+T9	2Person 242 245	洪永林
+T10	2Crime 246 260	受贿 、 巨额财产 来源不明
+T11	3Province 265 268	广东省
+T12	3City 269 272	深圳市
+T13	3Position 265 284	广东省 深圳市 原 房产 管理局 局长
+T14	3Person 285 288	陈炳根
+T15	3Crime 289 296	受贿 、 贪污
+T16	1Event 646 647	河
+T17	1Event 1299 1300	。
+T18	2Event 1317 1318	现
+T19	2Event 2126 2127	。
+T20	3Event 2144 2145	被
+T21	3Event 2847 2848	。
+T22	1Age 669 673	56 岁
+T23	1Year_Crime 725 731	1989 年
+T24	1Money_Person 1180 1187	47.5 万元
+T25	1Money_Person 1196 1200	1 万元
+T26	1Punish 1261 1298	死刑 ， 剥夺 政治权利 终身 ， 并 没收 随案移送 的 赃物 和 财产
+T27	2Age 1320 1324	58 岁
+T28	2Year_Crime 1350 1356	1983 年
+T29	2Money_Person 1831 1856	港币 91.4 万元 、 人民币 34.89 万元
+T30	2Money_Person 1921 1952	144.499 万元 的 港币 和 69.379 万元 人民币
+T31	2Punish 2085 2125	死刑 ， 剥夺 政治权利 终身 ， 并 判处 没收 随案移送 的 赃物 和 财产
+T32	3Age 2187 2191	55 岁
+T33	3Year_Crime 2196 2202	1989 年
+T34	3Money_Person 2784 2789	12 万元
+T35	3Money_Person 2795 2800	11 万元
+T36	3Money_Person 2572 2576	6 万元
+T37	3Money_Person 2383 2388	11 万元
+T38	3Punish 373 375	死刑

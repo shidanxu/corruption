@@ -1,0 +1,17 @@
+T1	1Province 89 92	河北省
+T2	1County 93 96	永年县
+T3	1Position 620 629	工业品 公司 经理
+T4	1Crime 630 632	贪污
+T5	1Money_Person 633 639	2800 元
+T6	2Position 642 656	五矿 公司 某 委托 代理人
+T7	2Crime 657 661	挪用公款
+T8	2Money_Person 662 667	30 万元
+T9	3Position 670 684	永信 公司 原 办公室 主任
+T10	3Crime 685 689	挪用公款
+T11	3Money_Person 690 696	2.9 万元
+T12	4Position 699 706	皮毛 厂 厂长
+T13	4Crime 707 709	贪污
+T14	4Money_Person 710 716	2.5 万元
+T15	1Event 79 80	一
+T16	1Event 785 786	。
+T17	1Money_Sum 730 736	100 万元

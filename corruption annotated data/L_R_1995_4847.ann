@@ -1,0 +1,19 @@
+T1	1Province 576 579	河北省
+T2	1Event 576 577	河
+T3	1Event 637 638	。
+T4	1Position 594 597	总经理
+T5	1Person 598 600	高镇
+T6	1Crime 626 628	受贿
+T7	1Money_Person 630 636	150 万元
+T8	2Province 639 642	四川省
+T9	2Position 660 662	经理
+T10	2Person 663 666	阁光武
+T11	2Crime 670 674	挪用公款
+T12	2Crime 696 725	挪用 总金额 1413 万元 ， 造成 亏损 340 万元
+T13	3Province 870 873	广东省
+T14	3Position 874 884	人大常委会 副 主任
+T15	3Person 885 889	欧阳 德
+T16	3Crime 890 892	受贿
+T17	4Province 896 899	山东省
+T18	4City 907 910	泰安市
+T19	4Position 917 921	市委书记

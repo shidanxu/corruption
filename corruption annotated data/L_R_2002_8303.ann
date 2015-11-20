@@ -1,0 +1,17 @@
+T1	1Event 354 355	其
+T2	1Position 359 384	原市 工行 鼓楼 支行 自由 路 分理处 副 主任
+T3	1Person 385 387	焦侃
+T4	1Crime 390 394	挪用公款
+T5	1Money_Person 395 400	59 万元
+T6	1Punish 401 413	被判 有期徒刑 19 年
+T7	2Position 416 435	原市 工行 行宫 角 支行 计划 科长
+T8	2Person 436 439	张永全
+T9	2Crime 442 446	挪用公款
+T10	2Money_Person 447 453	415 万元
+T11	2Punish 457 466	有期徒刑 13 年
+T12	3Position 469 499	中国 人寿保险 公司 开封 分公司 第二 营业部 业务 组长
+T13	3Person 500 504	熊 建华
+T14	3Crime 507 509	贪污
+T15	3Money_Person 510 515	14 万元
+T16	3Punish 521 530	有期徒刑 11 年
+T17	1Event 648 649	。

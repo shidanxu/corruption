@@ -1,0 +1,21 @@
+T1	1Event 381 382	对
+T2	1Event 606 607	。
+T3	1Province 406 409	贵州省
+T4	1Position 410 418	煤炭工业局 局长
+T5	1Person 419 423	张 显荣
+T6	2Position 426 429	副局长
+T7	2Person 430 432	何刚
+T8	2Punish 435 466	给予 行政 降级 处分 ， 建议 给予 党内 严重 警告 处分
+T9	1Punish 435 466	给予 行政 降级 处分 ， 建议 给予 党内 严重 警告 处分
+T10	3Position 469 478	水城 矿务局 局长
+T11	3Person 479 483	赵 安国
+T12	3Punish 486 516	给予 行政 撤职处分 ， 建议 给予 撤销 党内 职务 处分
+T13	4Position 519 530	水城 矿务局 党委书记
+T14	4Person 531 534	魏永柱
+T15	4Punish 537 554	建议 给予 党内 严重 警告 处分
+T16	2Event 620 621	去
+T17	2Event 894 895	。
+T18	2Province 635 638	内蒙古
+T19	5Position 749 764	呼伦贝尔 煤业 集团 党委书记
+T20	5Person 765 768	何清海
+T21	5Punish 771 785	建议 给予 党内 警告 处分

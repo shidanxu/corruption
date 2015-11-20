@@ -1,0 +1,32 @@
+T1	1Province 173 176	辽宁省
+T2	1City 229 233	鞍山 市
+T3	1Event 226 227	中
+T4	1Event 572 573	。
+T5	1Person 241 244	张文效
+T6	1Position 232 240	市委 原副 书记
+T7	1Year_Crime 247 257	1992 年 5 月
+T8	1Year_Disc 260 270	1993 年 3 月
+T9	1Money_Sum 554 563	19 · 6 万元
+T10	1Punish 529 536	开除党籍 处分
+T11	1Punish 566 571	收缴 归公
+T12	1Crime 294 303	索要 股票 认购证
+T13	1Crime 496 501	编造 伪证
+T14	2Position 594 609	人大常委会 主任 、 党组书记
+T15	2Person 610 613	娄登亚
+T16	3Person 660 663	桂秉权
+T17	3Position 652 659	原 粮食 局长
+T19	3Crime 675 679	贪污受贿
+T18	2Crime 726 728	失职
+T20	4Position 808 820	铁岭市 政府 副 秘书长
+T21	4Person 821 825	杨 国民
+T22	4Crime 871 886	没有 采取有效 措施 加以解决
+T23	4Crime 893 897	利用职权
+T24	4Crime 953 974	支持 倒卖 粮食 资材 的 违法违纪 活动
+T25	5Position 1040 1050	丹东市 旅游局 局长
+T26	5Person 1051 1054	郜福东
+T27	5Crime 1055 1058	受贿案
+T28	4Punish 999 1003	撤职处分
+T29	4Year_Crime 828 841	在 任 昌图县 县长 期间
+T30	5Punish 1119 1130	开除党籍 和 撤职处分
+T31	2Punish 740 761	撤销 娄登亚县 人大常委会 党组书记 职务
+T32	3Punish 670 672	处决

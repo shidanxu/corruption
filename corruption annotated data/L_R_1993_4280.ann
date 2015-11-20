@@ -1,0 +1,18 @@
+T1	1Position 746 757	安徽省 机械厅 副厅长
+T2	1Province 548 551	安徽省
+T3	1Person 758 762	刘 玉山
+T4	1Crime 763 765	贪污
+T5	1Money_Person 766 772	7.5 万元
+T6	2City 777 780	阜阳市
+T7	2Province 548 551	安徽省
+T8	2Position 777 785	阜阳市 工商银行
+T9	2Person 786 789	顾荣胜
+T10	2Crime 790 792	贪污
+T11	2Money_Person 793 798	49 万元
+T12	2Crime 801 805	挪用公款
+T13	2Money_Person 806 812	680 万元
+T14	3Position 820 828	省 电力局 干部
+T15	3Money_Person 829 831	李津
+T16	3Crime 832 834	贪污
+T17	3Money_Person 835 840	49 万元
+T18	3Province 548 551	安徽省

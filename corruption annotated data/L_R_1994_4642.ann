@@ -1,0 +1,48 @@
+T1	1Event 304 305	江
+T2	1Event 756 757	。
+T3	2Event 770 771	浙
+T4	2Event 1107 1108	。
+T5	3Event 1121 1122	河
+T6	3Event 1363 1364	。
+T7	4Event 1377 1378	同
+T8	4Event 1698 1699	。
+T9	5Event 1700 1701	李
+T10	5Event 1862 1863	。
+T11	1Province 304 307	江苏省
+T12	1City 308 311	江阴市
+T13	1Position 304 327	江苏省 江阴市 河塘 邮电 实业公司 原 经理
+T14	1Person 328 330	胡明
+T15	2Position 343 369	江阴市 税务局 长泾 税务所 河塘 税务 组原 组长
+T16	2Person 370 372	王震
+T17	1Money_Sum 527 534	800 多万元
+T18	1Money_Person 586 592	26 万多元
+T19	1Crime 679 703	贪污罪 、 投机倒把 罪 、 行贿罪 、 偷税罪
+T20	2Crime 730 733	受贿罪
+T21	1Punish 710 725	死刑 ， 剥夺 政治权利 终身
+T22	2Punish 740 755	死刑 ， 剥夺 政治权利 终身
+T23	2Money_Person 614 642	人民币 6 万元 和 价值 3800 多元 的 金 首饰
+T24	1Year_Crime 412 418	1994 年
+T25	2Province 770 773	浙江省
+T26	2City 774 777	黄岩市
+T27	3Position 770 793	浙江省 黄岩市 天吉 轻纺 有限公司 原 经理
+T28	3Person 794 797	陈二头
+T29	3Money_Person 1025 1030	30 万元
+T30	2Money_Sum 1025 1030	30 万元
+T31	3Crime 1066 1072	投机倒把 罪
+T32	3Punish 1080 1106	死刑 ， 剥夺 政治权利 终身 ， 并处 没收 财产
+T33	3Province 1121 1124	河北省
+T34	3County 1125 1128	文安县
+T35	4Position 1121 1142	河北省 文安县 苏桥 镇 供销社 退休工人
+T36	4Person 1143 1146	崔文瑞
+T37	4Year_Crime 1182 1188	1993 年
+T38	4Crime 1333 1339	投机倒把 罪
+T39	4Punish 1347 1362	死刑 ， 剥夺 政治权利 终身
+T40	4Money_Person 1276 1284	34.8 万多元
+T41	4City 1381 1384	武汉市
+T42	4Province 1514 1517	湖北省
+T43	4County 1385 1388	蔡甸区
+T44	5Position 1381 1396	武汉市 蔡甸区 个体 印刷 户
+T45	5Person 1399 1401	邓革
+T46	5Crime 1462 1468	投机倒把 罪
+T47	5Punish 1471 1486	死刑 、 剥夺 政治权利 终身
+T48	5Year_Crime 1630 1636	1992 年

@@ -1,0 +1,38 @@
+T1	1Province 237 243	内蒙古自治区
+T2	1Event 348 349	工
+T3	1Event 498 499	。
+T4	2Event 516 517	内
+T5	2Event 944 945	。
+T6	3Event 962 966	1992
+T7	3Event 1191 1192	。
+T8	1City 353 356	包头市
+T9	1County 357 360	东河区
+T10	1Position 348 383	工商银行 包头市 东河区 环城路 办事处 巴颜 特拉 分理处 复核 员
+T11	1Person 384 386	陈茹
+T12	1Crime 494 496	贪污
+T13	1Money_Sum 457 464	223 万多元
+T14	1Year_Crime 429 435	1987 年
+T15	2Person 422 424	周青
+T16	2Position 417 421	记帐 员
+T17	3Position 516 534	内蒙古自治区 临河市 水利局 出纳员
+T18	3Person 535 538	李君玲
+T19	2City 523 526	临河市
+T20	2Province 516 522	内蒙古自治区
+T21	3Year_Crime 875 881	1989 年
+T22	3Age 860 864	28 岁
+T23	3Crime 926 935	贪污 、 挪用公款
+T24	2Money_Sum 936 943	110 余万元
+T25	4Year_Crime 962 968	1992 年
+T26	3City 980 982	呼市
+T27	3Province 237 243	内蒙古自治区
+T28	4Age 1012 1016	29 岁
+T30	1Gender 293 294	女
+T29	3Gender 293 294	女
+T31	4Gender 293 294	女
+T32	4Person 1022 1024	江红
+T33	4Position 1030 1043	2 支行 审计 科 审计员
+T34	5Position 1145 1161	2 支行 贝尔 路 分理处 主任
+T35	5Person 1162 1165	刘玉明
+T36	3Money_Sum 1183 1190	250 余万元
+T37	5Crime 1172 1182	合伙 贪污 挪用公款
+T38	4Crime 1175 1182	贪污 挪用公款

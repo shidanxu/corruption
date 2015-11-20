@@ -1,0 +1,18 @@
+T1	1Position 295 318	贵州 文德 矿冶 有限公司 湛江 分公司 经理
+T2	1Person 319 321	曾伟
+T3	1Crime 403 405	贪污
+T4	1Money_Person 417 430	二十五万 九千 零 九十元
+T5	1Crime 476 481	非法 经营
+T6	1Money_Person 485 491	二十九 万元
+T7	1Punish 499 524	判处死刑 ， 立即 执行 ， 剥夺 政治权利 终身
+T8	1Province 653 656	贵州省
+T9	1Event 293 294	原
+T10	1Event 525 526	。
+T11	2Position 527 540	原 盘县特区 政府 副区长
+T12	2Person 541 545	袁 世德
+T13	3Position 548 570	原 贵州 茅台酒 厂 基建 科 聘用 施工员
+T14	3Person 571 575	王 德钦
+T15	2Crime 593 601	严重 经济 犯罪
+T16	3Crime 593 601	严重 经济 犯罪
+T17	2Punish 611 613	死刑
+T18	3Punish 616 620	无期徒刑

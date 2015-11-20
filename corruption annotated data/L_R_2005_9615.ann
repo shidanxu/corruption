@@ -1,0 +1,36 @@
+T1	1Province 395 398	广东省
+T2	1City 399 402	肇庆市
+T3	1Position 405 417	市委 副 书记 、 市长
+T4	1Person 418 422	邓 耀华
+T5	1Punish 513 520	开除党籍 处分
+T6	1Crime 423 438	2001 年 至 2004 年
+T7	2Position 578 589	市委常委 、 公安局长
+T8	2Person 590 593	吴华立
+T9	2Year_Crime 594 617	2002 年 1 月 至 2004 年 3 月
+T10	2Crime 618 639	频繁 出境 赌博 ， 且 涉案 金额 巨大
+T11	3Position 730 737	正处级 调研员
+T12	3Person 738 742	于 长亮
+T13	3Crime 746 750	挪用公款
+T14	2Province 568 571	广东省
+T15	2City 572 575	惠州市
+T16	2Event 753 754	从
+T17	1Event 822 823	。
+T18	3Province 716 719	山东省
+T19	3City 720 723	济南市
+T20	4Province 874 877	江苏省
+T21	4City 878 881	金坛市
+T22	4Person 899 901	程宏
+T23	4Position 894 898	副 主任
+T24	4Money_Sum 954 960	47 万余元
+T25	5Province 1035 1038	河北省
+T26	5Money_Sum 1087 1093	39 万多元
+T27	5Event 1046 1047	粮
+T28	5Event 1103 1104	。
+T29	4Event 904 905	利
+T30	4Event 1033 1034	。
+T31	4Punish 1023 1032	有期徒刑 10 年
+T32	3Punish 845 871	开除党籍 、 开除公职 ， 并 移送 司法机关 处理
+T33	5Punish 1125 1134	开除党籍 和 撤职
+T34	2Punish 662 667	免去 职务
+T35	1Event 445 446	由
+T36	1Event 464 465	。

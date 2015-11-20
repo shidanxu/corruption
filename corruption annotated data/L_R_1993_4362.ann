@@ -1,0 +1,11 @@
+T1	1Province 113 116	北京市
+T2	1City 117 120	昌平县
+T3	1Position 113 130	北京市 昌平县 人民检察院 检察长
+T4	1Person 131 134	陈志文
+T5	1Crime 152 156	收受贿赂
+T6	1Punish 177 196	开除党籍 ， 移交 司法机关 立案侦查
+T7	1Money_Person 351 358	2.1 万余元
+T8	1Money_Person 370 377	7400 余元
+T9	1Age 399 403	57 岁
+T10	1Event 113 114	北
+T11	1Event 535 536	。

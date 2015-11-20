@@ -1,0 +1,17 @@
+T1	1Province 184 187	湖北省
+T2	1City 188 191	咸宁市
+T3	1Position 25 31	咸宁市 市长
+T4	2Position 52 57	税务局 长
+T5	1Person 368 371	陈恢友
+T6	2Person 417 420	尹传升
+T7	1Punish 375 384	撤销 党内外 职务
+T8	2Punish 423 452	开除党籍 和 公职 ， 并 移送 司法机关 追究 刑事责任
+T9	1Crime 350 358	支持 骗税 活动
+T10	2Crime 392 405	直接 指使 和 参与 骗税
+T11	3Person 463 467	张汉 宣
+T12	3Crime 455 457	骗税
+T13	1Year_Crime 689 695	1992 年
+T14	1Money_Sum 260 268	1200 多万元
+T15	3Punish 469 482	被 深圳市 检察机关 抓获
+T16	1Event 350 351	支
+T17	1Event 1098 1099	。

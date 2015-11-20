@@ -1,0 +1,12 @@
+T1	1Person 131 134	阙敬德
+T2	2Person 137 141	张 志琴
+T3	1Crime 185 188	贪污罪
+T4	2Crime 185 188	贪污罪
+T5	1Money_Sum 164 172	3370 万余元
+T6	1Money_Person 208 214	4.4 亿元
+T7	2Crime 247 253	挪用资金 罪
+T8	1Punish 264 268	无期徒刑
+T9	2Punish 264 268	无期徒刑
+T10	1City 103 105	上海
+T11	1Event 86 87	上
+T12	1Event 269 270	。

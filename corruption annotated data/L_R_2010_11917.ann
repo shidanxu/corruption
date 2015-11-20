@@ -1,0 +1,28 @@
+T1	1Person 607 609	段波
+T2	1City 614 617	临汾市
+T3	1Position 618 625	公安局 副局长
+T4	2Position 657 666	新塔 矿原 董事长
+T5	2Person 667 670	张佩亮
+T6	1Crime 729 733	收受贿赂
+T7	1Money_Person 834 847	共计 2454.7 万余元
+T8	3Position 866 871	原副 市长
+T9	3Person 872 874	周杰
+T10	3Money_Person 954 963	274.08 万元
+T11	3Crime 924 937	收受 他人 贿赂 和 礼金
+T12	4Person 1046 1049	张金凤
+T13	4Position 1054 1060	襄汾县 县长
+T14	4Crime 1115 1128	收受 他人 贿赂 和 礼金
+T15	4Money_Person 1145 1154	357.4 万余元
+T16	5Person 1216 1219	张德英
+T17	5Position 1224 1232	翼城县 县委书记
+T18	5Money_Person 1329 1338	104.56 万元
+T19	5Crime 1299 1312	收受 他人 贿赂 和 礼金
+T20	1Punish 300 314	开除党籍 、 开除公职 处分
+T21	2Punish 300 314	开除党籍 、 开除公职 处分
+T22	3Punish 300 314	开除党籍 、 开除公职 处分
+T23	4Punish 300 314	开除党籍 、 开除公职 处分
+T24	5Punish 300 314	开除党籍 、 开除公职 处分
+T25	1Event 166 167	日
+T26	1Event 349 350	。
+T27	1Event 602 603	经
+T28	1Event 1760 1761	。

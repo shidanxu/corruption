@@ -1,0 +1,19 @@
+T1	1Event 187 188	原
+T2	1Event 333 334	。
+T3	1Person 210 214	唐元 中
+T4	1Position 205 209	副大队长
+T5	2Person 217 221	唐国 成
+T6	2Punish 316 326	有期徒刑 1 年 半
+T7	3Punish 329 332	1 年
+T8	1Money_Person 283 290	19000 元
+T9	2Province 1008 1010	山西
+T10	1Province 170 173	湖南省
+T11	1County 174 177	临武县
+T12	2County 1011 1013	盂县
+T13	2Event 1067 1068	每
+T14	2Event 1539 1540	。
+T15	4Position 1125 1129	党委书记
+T16	4Person 1130 1134	杨 安祥
+T17	5Position 1155 1157	法官
+T18	5Person 1158 1161	黄跃武
+T19	4Money_Sum 1279 1285	20 多万元

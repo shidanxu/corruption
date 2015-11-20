@@ -1,0 +1,14 @@
+T1	1Event 318 319	查
+T2	1Event 394 395	。
+T3	1Province 155 158	江西省
+T4	1City 321 324	上饶县
+T5	1Position 325 331	财政局 干部
+T6	1Person 332 335	何培锦
+T7	1Crime 336 338	贪污
+T8	1Crime 347 351	挪用公款
+T9	1Money_Person 339 344	21 万元
+T10	1Money_Person 352 359	22.3 万元
+T11	2Position 362 372	省皮塑 公司 业务员
+T12	2Person 373 375	安杰
+T13	2Crime 376 378	索贿
+T14	2Money_Person 379 386	27.7 万元

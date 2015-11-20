@@ -1,0 +1,36 @@
+T1	1Province 27 30	河北省
+T2	1County 31 33	涉县
+T3	1Position 1791 1799	县 中学 副校长
+T4	1Person 1800 1803	冯玉明
+T5	1Year_Crime 1808 1812	1986
+T6	1Crime 1845 1850	贪污 公款
+T7	1Money_Person 1851 1858	42328 元
+T8	2Position 1861 1867	县 中学校长
+T9	2Person 1868 1871	孙新顺
+T10	2Year_Crime 1876 1880	1990
+T11	2Crime 1888 1927	趁 神头 建筑队 为 学校 建楼 之机 ， 让 该 建筑队 为 自己 建 私房
+T12	2Money_Person 1953 1959	2458 元
+T13	3Position 1962 1973	县 中学 党支部 书记
+T14	3Person 1974 1977	王兰堂
+T15	3Year_Crime 1982 1988	1986 年
+T16	3Year_Crime 1980 2040	在 1986 年 学校 建 教学楼 承包 时 ， 提出 让 神头 建筑队 为 自己 建 私房 出工 和 购买 部分 物料
+T17	3Money_Person 2061 2067	3198 元
+T18	4Position 2086 2097	县 文教局 财务 科长
+T19	4Person 2098 2101	张喜元
+T20	4Crime 2168 2170	贪污
+T21	4Crime 2183 2192	接受 建筑队 贿赂
+T22	4Money_Person 2158 2164	3000 元
+T23	4Money_Person 2193 2202	2456.15 元
+T24	5Position 2221 2235	原县 文教局 财务科 副科长
+T25	5Person 2236 2240	武福 太
+T26	5Year_Crime 2243 2249	1987 年
+T27	5Year_Crime 2285 2321	采取 多 拨 基建 款 、 开伪票 、 下 假帐 的 手段 ， 贪污受贿
+T28	5Money_Person 2322 2325	数万元
+T29	1Money_Sum 2404 2410	25 万多元
+T30	3Punish 2492 2502	留党察看 一年 处分
+T31	2Punish 2516 2536	受到 留党察看 一年 、 行政 撤职处分
+T32	1Punish 2554 2566	开除公职 、 判刑 五年
+T33	4Punish 2587 2607	开除党籍 、 行政 撤职 、 判刑 半年
+T34	5Punish 2631 2643	移交 司法部门 立案查处
+T35	1Event 1791 1792	县
+T36	1Event 2644 2645	。

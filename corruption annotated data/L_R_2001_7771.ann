@@ -1,0 +1,15 @@
+T1	1Event 458 459	原
+T2	1Position 460 472	中共 厦门市委 副 书记
+T3	1City 463 465	厦门
+T4	1Person 473 475	刘丰
+T5	1Crime 572 575	受贿罪
+T6	1Crime 589 600	巨额财产 来源不明 罪
+T7	1Punish 620 637	无期徒刑 ， 剥夺 政治权利 终身
+T8	1Event 638 639	。
+T9	2Event 652 653	原
+T10	2Province 654 657	湖南省
+T11	2Position 658 681	建筑工程 集团 总公司 副总经理 、 党委委员
+T12	2Person 682 686	蒋 艳萍
+T13	2Crime 757 761	贪污受贿
+T14	2Money_Person 736 744	1000 余万元
+T15	2Event 824 825	。

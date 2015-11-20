@@ -1,0 +1,12 @@
+T1	1Position 161 171	原 惠州市 公安局长
+T2	1Person 172 175	洪永林
+T3	1Province 142 145	广东省
+T4	1City 163 166	惠州市
+T5	1Crime 244 247	受贿罪
+T6	1Crime 272 283	巨额财产 来源不明 罪
+T7	1Punish 306 321	死刑 ， 剥夺 政治权利 终身
+T8	1Year_Crime 438 444	1988 年
+T9	1Money_Person 491 516	港币 91.4 万元 ， 人民币 34.89 万元
+T10	1Money_Person 591 618	港币 1444996 元 ， 人民币 693799 元
+T11	1Event 142 143	广
+T12	1Event 785 786	。

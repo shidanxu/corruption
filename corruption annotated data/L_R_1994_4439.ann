@@ -1,0 +1,18 @@
+T1	1Position 152 167	铁道部 运输局 原 局长 助理
+T2	1Person 168 172	魏国 范
+T3	2Position 175 194	太原 铁路分局 太原 北站 货运 主任
+T4	2Person 195 199	阎 长春
+T5	2Crime 237 240	受贿罪
+T6	1Crime 237 240	受贿罪
+T7	1Year_Crime 358 364	1988 年
+T12	1Punish 625 640	有期徒刑 一年 ， 缓刑 一年
+T14	1Event 1402 1403	。
+T13	1Event 270 271	铁
+T15	2Year_Crime 1463 1469	1987 年
+T16	2Money_Person 1561 1567	7700 元
+T17	2Event 1420 1421	阎
+T18	2Event 2652 2653	。
+T19	2Province 1505 1508	山西省
+T20	2County 1509 1512	阳曲县
+T8	1Money_Sum 471 510	人民币 3000 元及 价值 人民币 2354 元 的 冰熊 牌 电冰柜 一台
+T9	1Money_Person 471 510	人民币 3000 元及 价值 人民币 2354 元 的 冰熊 牌 电冰柜 一台

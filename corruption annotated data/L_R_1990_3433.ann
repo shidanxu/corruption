@@ -1,0 +1,18 @@
+T1	1Position 156 164	铁道部 副 部长
+T2	1Person 165 168	罗云光
+T3	1Crime 179 183	利用职权
+T4	1Crime 186 197	非法 收受 他人 钱物
+T5	1Punish 225 242	撤销 他 的 铁道部 副 部长职务
+T6	1Punish 245 260	责令 他 退出 全部 非法所得
+T7	1Punish 274 282	继续 进行 审查
+T8	2Position 346 355	郑州铁路局 副局长
+T9	2Person 356 359	潘克明
+T10	2Crime 370 377	贪污 、 受贿
+T11	1Event 285 286	据
+T12	1Event 1460 1461	。
+T13	1Crime 945 947	失职
+T14	1Year_Crime 998 1008	1988 年 1 月
+T15	1Money_Person 1027 1037	人民币 1000 元
+T16	1Money_Person 1071 1090	人民币 1000 元 和 一枚 金戒指
+T17	1Money_Person 1160 1172	“ 冰熊 ” 牌 电冰柜
+T18	1Money_Person 1308 1337	以车 谋私 获取 的 各种 非法收入 中分 得 950 元

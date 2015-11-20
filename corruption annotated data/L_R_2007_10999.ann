@@ -1,0 +1,15 @@
+T1	1Event 1268 1269	如
+T2	1Province 1270 1273	山东省
+T3	1City 1274 1277	青岛市
+T4	1Position 1278 1286	规划局 原 局长
+T5	1Person 1287 1290	张志光
+T6	1Crime 1296 1298	受贿
+T7	1Money_Person 1362 1368	300 万元
+T8	1Event 1369 1370	。
+T9	2Event 1540 1541	如
+T10	2Province 1542 1545	浙江省
+T11	2City 1546 1549	杭州市
+T12	2Position 1571 1584	某 公司 行政 处原 处长
+T13	2Crime 1606 1610	收受贿赂
+T14	2Money_Person 1625 1632	160 余万元
+T15	2Event 1633 1634	。

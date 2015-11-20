@@ -1,0 +1,13 @@
+T1	1Position 721 733	县 房产 二 公司 经理
+T2	1Province 106 109	山西省
+T3	1County 110 113	高平县
+T4	1Event 691 692	1
+T5	1Event 1250 1251	。
+T6	1Person 933 936	林栋材
+T7	1Punish 950 954	开除党籍
+T8	1Crime 744 749	贪占 公房
+T9	1Crime 752 756	贪污受贿
+T10	2Position 1015 1021	党总支 书记
+T11	2Crime 1022 1026	假公济私
+T12	2Money_Person 1058 1066	耕地 4.5 亩
+T13	2Crime 1069 1105	借 集资 修建 职工 家属 住宅 为 自己 及其 子女 捞取 三套 住房

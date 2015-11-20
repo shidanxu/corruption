@@ -1,0 +1,36 @@
+T1	1Position 276 295	北京市 长城 机电 科技产业 公司总裁
+T2	1Person 296 299	沈太福
+T3	2Position 340 351	原 国家科委 副 主任
+T4	2Person 352 355	李效时
+T5	1Crime 305 314	贪污罪 和 行贿罪
+T6	2Crime 359 368	受贿罪 和 贪污罪
+T9	1Year_Crime 1078 1084	1989 年
+T10	2Year_Crime 1668 1674	1990 年
+T7	3Person 1404 1407	孙继红
+T8	3Crime 1409 1412	贪污罪
+T11	3Punish 1418 1441	有期徒刑 15 年 ， 剥夺 政治权利 3 年
+T12	2Punish 2115 2152	有期徒刑 20 年 ， 剥夺 政治权利 4 年 ， 没收 个人 部分 财产
+T13	1Punish 1366 1397	死刑 ， 剥夺 政治权利 终身 ， 并 没收 个人 全部 财产
+T14	4Person 2440 2443	孙树兴
+T15	4Crime 2482 2491	受贿罪 和 行贿罪
+T16	4Punish 2514 2536	有期徒刑 7 年 ， 剥夺 政治权利 1 年
+T17	4Position 2426 2439	《 科技日报 》 社 记者
+T18	5Position 2539 2550	中央人民广播电台 记者
+T19	5Person 2551 2554	蔡原江
+T20	5Crime 2558 2561	受贿罪
+T21	5Punish 2584 2592	有期徒刑 6 年
+T22	2Event 2270 2271	人
+T23	2Event 2831 2832	。
+T24	1Event 262 263	经
+T25	1Event 2228 2229	。
+T26	1Crime 1213 1215	行贿
+T27	1Money_Person 875 881	100 万元
+T28	1Money_Person 970 976	100 万元
+T29	1Money_Person 600 606	100 万元
+T30	2Money_Person 1661 1665	4 万元
+T31	2Money_Person 1754 1763	港币 5000 元
+T32	2Money_Person 1766 1775	美金 1000 元
+T33	2Money_Person 1849 1855	3500 元
+T34	2Money_Person 1944 1948	2 万元
+T35	1Province 276 279	北京市
+T36	2Province 2448 2451	北京市

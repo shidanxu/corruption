@@ -1,0 +1,11 @@
+T1	1Province 73 76	浙江省
+T2	1City 77 80	瑞安市
+T3	1Money_Sum 164 169	100 万
+T4	1Position 1159 1164	院长 助理
+T5	1Person 1165 1167	蔡某
+T6	2Position 1189 1191	主任
+T7	2Person 1192 1194	钟某
+T8	3Position 1204 1206	主任
+T9	3Person 1207 1209	陈某
+T10	1Event 397 398	对
+T11	1Event 949 950	。

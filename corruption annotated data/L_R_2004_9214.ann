@@ -1,0 +1,17 @@
+T1	1Province 144 147	陕西省
+T2	1County 148 151	周至县
+T3	1Year_Crime 192 196	2002
+T4	1Event 205 206	周
+T5	1Event 688 689	。
+T6	2Position 1037 1043	常务 副县长
+T7	1Position 994 996	县长
+T8	1Person 997 1000	倪广天
+T9	2Person 1044 1048	张 武平
+T10	3Position 1096 1099	副县长
+T11	3Person 1100 1104	任 胜利
+T12	4Position 1120 1125	县长 助理
+T13	4Person 1126 1129	蔡兴瑜
+T14	4Punish 1144 1152	行政 警告 处分
+T15	1Punish 1021 1029	行政 降级 处分
+T16	3Punish 1105 1112	行政 撤职处分
+T17	2Punish 1069 1090	党内 严重 警告 处分 ， 并 责令 辞职

@@ -1,0 +1,12 @@
+T1	1Event 88 89	4
+T2	1Year_Disc 88 96	4 月 18 日
+T3	1Position 120 130	侯马市 公安局 局长
+T4	1Position 137 143	局 党委书记
+T5	1Person 131 134	张小宁
+T6	2Position 170 186	公安局 党委 副 书记 兼 政委
+T7	2Person 187 190	池世禄
+T8	2Punish 191 202	党内 严重 警告 处分
+T9	1Event 203 204	。
+T10	1Punish 117 164	撤销 侯马市 公安局 局长 张小宁 的 局 党委书记 职务 ， 建议 免去 其 公安局长 职务
+T11	1Province 99 102	山西省
+T12	1City 120 123	侯马市

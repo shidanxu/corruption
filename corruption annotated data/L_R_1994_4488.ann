@@ -1,0 +1,17 @@
+T1	1Province 113 117	山西 省
+T2	1Person 269 272	牛二红
+T3	1Position 151 170	原 财政厅 党组 副 书记 、 副厅长
+T4	2Position 177 202	原 省政府 农业 办公室 党组 成员 、 副 主任
+T5	2Person 203 206	王福水
+T6	1Year_Crime 274 280	1992 年
+T7	1Crime 323 334	收受 该厂 厂长 贿赂
+T8	1Money_Person 340 344	3 万元
+T9	2Crime 434 442	收受 赵某 贿赂
+T10	2Money_Person 446 450	1 万元
+T11	1Punish 511 549	开除党籍 、 行政 开除公职 处分 ， 山西省 检察院 已 将 其 依法逮捕
+T12	2Punish 559 587	开除党籍 、 行政 撤职处分 ， 并 移交 检察院 处理
+T13	1Event 269 270	牛
+T14	1Event 345 346	。
+T15	2Event 347 348	王
+T16	2Event 451 452	。
+T17	2Province 113 117	山西 省

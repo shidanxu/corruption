@@ -1,0 +1,24 @@
+T1	1Event 44 45	本
+T2	1Position 295 308	省 高级人民法院 原 院长
+T3	1Person 309 312	麦崇楷
+T4	2Position 373 383	省 交通厅 原 厅长
+T5	2Person 384 387	牛和恩
+T6	1Event 320 321	、
+T7	2Event 363 364	还
+T8	2Event 388 389	、
+T9	3Position 392 406	交通 集团公司 原 副总经理
+T10	3Person 407 410	王志仁
+T11	3Crime 411 413	受贿
+T12	4Position 419 433	广州 市委常委 、 宣传部长
+T13	4Person 434 437	黎元江
+T14	5Position 451 478	云浮 市委 原 统战部 部长 、 新兴县 原 县委书记
+T15	5Person 479 483	张 国权
+T16	5Crime 484 486	受贿
+T17	5City 451 455	云浮 市
+T18	5Event 488 489	，
+T19	5Event 451 452	云
+T20	4Event 449 450	，
+T21	4Event 417 418	原
+T22	4City 419 423	广州 市
+T23	3Event 415 416	，
+T24	3Event 390 391	省

@@ -1,0 +1,29 @@
+T1	1Age 164 168	41 岁
+T2	1Person 171 174	吴卫东
+T3	1Position 180 208	中国 华北电力 联合 公司 物资供应 公司 交通 科科长
+T4	1Year_Crime 211 217	1986 年
+T5	1Crime 865 868	受贿罪
+T6	1Punish 873 888	死刑 ， 剥夺 政治权利 终身
+T7	1Money_Person 342 361	48.96 万余元 及 金戒指 2 枚
+T8	1Money_Person 423 429	1.5 万元
+T9	1Event 161 162	现
+T10	1Event 455 456	。
+T11	2Position 457 479	中国 港湾 建设 总公司 办公室 原 技术员
+T12	2Person 480 484	金志 麟
+T13	2Year_Crime 489 495	1989 年
+T14	2Crime 898 907	贪污罪 、 受贿罪
+T15	2Money_Sum 582 609	贪污 公款 75.12 万余元 ， 受贿 2000 元
+T16	2Punish 919 948	死刑 ， 剥夺 政治权利 终身 ， 没收 个人 全部 财产
+T17	3Crime 955 958	贪污罪
+T18	3Punish 963 992	死刑 ， 剥夺 政治权利 终身 ， 没收 个人 全部 财产
+T19	3Position 612 633	北京市 化工 轻工 橡胶 公司 原 业务员
+T20	3Person 634 636	谢鹏
+T21	3Year_Crime 641 647	1990 年
+T22	3Money_Sum 761 769	13.1 万余元
+T23	1Province 125 128	北京市
+T24	2Province 125 128	北京市
+T25	3Province 125 128	北京市
+T26	2Event 457 458	中
+T27	2Event 610 611	。
+T28	3Event 612 613	北
+T29	3Event 816 817	。

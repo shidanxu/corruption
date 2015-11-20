@@ -1,0 +1,10 @@
+T1	1Event 54 55	4
+T2	1Province 216 219	陕西省
+T3	1City 220 223	汉中市
+T4	1Position 224 243	副 市长 、 中共 洋县 原 县委书记
+T5	1Person 244 246	邱军
+T6	1Crime 251 262	违反 组织 人事 纪律
+T7	1Punish 299 320	开除党籍 、 撤销 汉中市 副 市长 职务
+T8	1Year_Crime 335 341	1995 年
+T9	1Year_Disc 349 355	1996 年
+T10	1Event 505 506	。

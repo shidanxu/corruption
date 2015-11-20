@@ -1,0 +1,23 @@
+T1	1Position 420 450	深圳 蛇口 对外 经济 发展 公司 驻 青岛 办事处 业务员
+T2	1Person 451 454	罗芳礼
+T3	1Crime 469 490	先后 9 次 监守自盗 轮胎 700 余套
+T4	1Money_Person 500 506	60 余万元
+T5	2Position 509 527	民盟 青岛 科技 学校 财务处 主任
+T6	2Person 528 531	岳景熙
+T7	2Crime 568 600	将 公款 20 余万元 人民币 存入 个人帐户 ， 还 挪用公款
+T8	2Money_Person 573 579	20 余万元
+T9	2Money_Person 601 607	10 余万元
+T10	3Position 610 630	青岛市 崂山 机制 花边 有限公司 经理
+T11	3Person 631 633	孙刚
+T12	3Crime 636 676	接受 本 单位 和 客户 “ 好处费 ” 1.1 万元 人民币 ， 还 挪用公款
+T13	3Money_Person 657 663	1.1 万元
+T14	3Money_Person 677 682	9 万余元
+T15	1Event 420 421	深
+T16	1Event 507 508	。
+T17	2Event 509 510	民
+T18	2Event 608 609	。
+T19	3Event 610 611	青
+T20	3Event 710 711	。
+T21	1City 77 80	青岛市
+T22	2City 77 80	青岛市
+T23	3City 77 80	青岛市

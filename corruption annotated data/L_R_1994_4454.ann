@@ -1,0 +1,20 @@
+T1	1Position 379 394	首钢 北钢 公司 总经理 助理
+T2	1Person 395 398	杨立宇
+T3	1Crime 399 403	索贿受贿
+T4	1Money_Person 404 411	32.7 万元
+T5	2Position 414 429	原 首钢 北钢 公司 副总经理
+T6	2Person 430 433	赵东祥
+T7	2Crime 434 438	受 贿赂
+T8	2Money_Person 439 446	2.9 万余元
+T9	3Position 449 467	原某 金融 单位 北京 业务部 处长
+T10	3Person 468 470	胡聪
+T11	3Crime 471 473	索贿
+T12	3Money_Person 474 481	136 万余元
+T13	4Position 484 506	原 北京市 无线电 元件 十厂 财务科 科长
+T14	4Person 507 509	王宁
+T15	4Crime 510 519	贪污受贿 挪用公款
+T16	4Money_Person 520 526	105 万元
+T17	1Province 86 89	北京市
+T18	2Province 86 89	北京市
+T19	3Province 86 89	北京市
+T20	4Province 86 89	北京市

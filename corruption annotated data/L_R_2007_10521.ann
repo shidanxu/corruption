@@ -1,0 +1,31 @@
+T1	1City 198 200	沈阳
+T2	1Punish 325 339	死刑 ， 缓期 2 年 执行
+T3	2Crime 357 365	有期徒刑 4 年
+T4	1Person 317 324	直接 行凶 者
+T5	2Person 345 356	3 名 高层 管理人员
+T6	1Crime 275 295	暴力 强迁 ， 造成 一人 被 殴 致死
+T7	1Event 198 199	沈
+T8	1Event 366 367	。
+T9	2Event 380 381	新
+T11	2Province 380 382	新疆
+T12	2City 413 417	乌鲁木齐
+T10	2Crime 479 486	欺骗 、 胁迫
+T13	3Province 527 530	吉林省
+T14	3City 564 567	四平市
+T15	3Crime 584 606	将 36 套 商品房 分别 卖 给 77 户
+T16	3Person 622 625	周云伟
+T17	3Position 615 621	法定代表 人
+T18	3Crime 626 630	挪用资金
+T19	4Province 659 661	新疆
+T20	4City 701 706	乌鲁木齐市
+T21	4Crime 751 759	擅自 开工 建设
+T22	5Province 774 776	河北
+T23	5City 814 818	石家庄市
+T25	3Event 527 528	吉
+T26	2Event 513 514	。
+T27	3Event 645 646	。
+T28	4Event 760 761	。
+T29	4Event 659 660	新
+T30	5Event 774 775	河
+T24	5Event 890 891	。
+T31	5Crime 839 889	不 具备 销售 条件 的 情况 下 ， 对外 销售 60 套 住房 ， 收取 预定 款 100 万元

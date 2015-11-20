@@ -1,0 +1,13 @@
+T1	1Position 128 166	宁夏回族自治区 烟草专卖局 局长 、 党组书记 兼 自治区 烟草 公司 经理
+T2	1Person 167 169	杨杰
+T3	2Position 214 222	公司 销售 处长
+T4	2Person 223 226	王艳菊
+T5	1Punish 232 249	无期徒刑 ， 剥夺 政治权利 终身
+T6	2Punish 232 249	无期徒刑 ， 剥夺 政治权利 终身
+T7	1Money_Person 812 819	9.2 万余元
+T8	2Money_Person 834 842	12.9 万余元
+T9	1Crime 174 178	贪污受贿
+T10	2Crime 174 178	贪污受贿
+T11	1Event 126 127	原
+T12	1Event 896 897	。
+T13	1Province 128 135	宁夏回族自治区

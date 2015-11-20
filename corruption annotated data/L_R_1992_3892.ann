@@ -1,0 +1,22 @@
+T1	1Position 317 338	青海省 地方志 编纂 委员会 办公室 主任
+T2	1Person 339 342	韩得祥
+T3	1Crime 469 477	受贿 和 行贿罪
+T4	1Money_Person 400 407	62000 元
+T5	1Punish 542 550	有期徒刑 3 年
+T6	2Position 567 583	格尔木市 副 市长 兼 公安局长
+T7	2Person 584 588	杨 文山
+T8	2Crime 659 662	受贿罪
+T9	2Money_Person 646 653	15334 元
+T10	2Punish 668 676	有期徒刑 5 年
+T11	3Position 681 708	格尔木市 黄金 公司 副经理 兼 黄金 派出所 副所长
+T12	3Person 709 713	荆 智谋
+T13	3Money_Person 784 791	91428 元
+T14	3Crime 797 800	受贿罪
+T15	3Punish 895 903	有期徒刑 7 年
+T16	4Position 920 933	格尔木市 黄金 公司 经理
+T17	4Person 934 937	李柏春
+T18	1City 222 226	格尔木市
+T19	1Province 134 137	青海省
+T20	1Year_Crime 234 240	1989 年
+T21	1Event 124 125	三
+T22	1Event 1034 1035	。

@@ -1,0 +1,29 @@
+T1	1Event 549 550	徐
+T2	1Person 549 552	徐凤娟
+T3	1Province 555 557	广东
+T4	1County 558 561	徐闻县
+T5	1Position 564 568	县委书记
+T6	1Year_Crime 583 589	1991 年
+T7	1Money_Person 847 852	60 多万
+T8	1Event 853 854	。
+T9	2Event 867 868	戚
+T10	2Event 1029 1030	。
+T11	2Person 867 870	戚火贵
+T12	2Province 873 875	海南
+T13	2City 876 880	东方 市
+T14	2Position 880 886	原 市委书记
+T15	2Money_Person 952 957	5 万多元
+T16	3Event 1043 1044	最
+T17	3Event 1166 1167	。
+T18	3Province 1064 1067	辽宁省
+T19	3City 1068 1071	沈阳市
+T20	3Position 1072 1076	副 市长
+T21	3Money_Person 1148 1152	数十万元
+T22	4Event 1770 1771	河
+T23	4Event 1950 1951	。
+T24	4Province 1770 1772	河南
+T25	4City 1773 1776	鹤壁市
+T26	4Position 1777 1781	原 市长
+T27	4Person 1782 1785	朱振江
+T28	4Crime 1931 1934	受贿罪
+T29	4Punish 1940 1949	有期徒刑 12 年

@@ -1,0 +1,15 @@
+T1	1Event 48 49	本
+T2	1Position 119 134	湖南省 株洲 冶炼厂 原 厂长
+T3	1Province 119 122	湖南省
+T4	1Person 135 138	曾维伦
+T5	2Position 141 153	株冶 进出口 公司 经理
+T6	2Person 154 157	徐跃东
+T7	1Crime 745 751	玩忽职守 罪
+T8	1Punish 759 776	有期徒刑 2 年 ， 缓刑 3 年
+T9	1Year_Crime 292 298	1995 年
+T10	1Year_Disc 305 311	1997 年
+T11	2Year_Crime 292 298	1995 年
+T12	2Year_Disc 305 311	1997 年
+T13	2Crime 781 797	玩忽职守 罪 和 信用证 诈骗罪
+T14	2Punish 805 828	有期徒刑 16 年 ， 剥夺 政治权利 3 年
+T15	1Event 829 830	。

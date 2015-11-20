@@ -1,0 +1,16 @@
+T1	1Event 495 496	如
+T2	1Event 570 571	；
+T3	1Position 497 510	西南航空公司 财务部 经理
+T4	1Person 511 513	刘然
+T5	2Position 516 527	航材 处 财务科 科长
+T6	2Person 528 531	邓龙辉
+T7	1Money_Sum 549 555	700 万元
+T8	2Event 596 597	如
+T9	2Event 703 704	；
+T10	3Position 598 622	成都 信 达 股份 有限公司 董事长 兼 总经理
+T11	4Position 629 633	副总经理
+T12	3Person 623 626	谢成润
+T13	4Person 634 637	周继荣
+T14	3Money_Person 668 674	208 万元
+T15	4Money_Person 668 674	208 万元
+T16	2City 598 600	成都

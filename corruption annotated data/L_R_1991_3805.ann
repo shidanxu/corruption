@@ -1,0 +1,24 @@
+T1	1City 84 87	哈尔滨
+T2	1Event 256 257	原
+T3	1Event 403 404	。
+T4	1County 258 260	桃山
+T5	1Position 261 274	林业局 局长 、 党委书记
+T6	1Person 275 278	卢守安
+T7	1Crime 390 392	贿赂
+T8	1Money_Person 395 402	4.25 万元
+T9	2Position 407 428	黑龙江 制药 有限公司 董事长 兼 总经理
+T10	2Person 429 433	王忠 才
+T11	2Crime 517 519	贿赂
+T12	2Money_Person 523 534	人民币 2.55 万元
+T13	3Position 543 557	武装部 军事 科 征集 参谋
+T14	3Person 558 562	李广 柱
+T15	4Position 565 570	作训 参谋
+T16	4Person 571 574	杜万伟
+T17	3Crime 620 622	收贿
+T18	4Year_Crime 620 622	收贿
+T19	3Money_Person 623 627	1 万元
+T20	4Money_Person 623 627	1 万元
+T21	1Punish 641 667	开除党籍 处分 ， 并 由 司法部门 追究 刑事责任
+T22	2Punish 641 667	开除党籍 处分 ， 并 由 司法部门 追究 刑事责任
+T23	3Punish 641 667	开除党籍 处分 ， 并 由 司法部门 追究 刑事责任
+T24	4Punish 641 667	开除党籍 处分 ， 并 由 司法部门 追究 刑事责任

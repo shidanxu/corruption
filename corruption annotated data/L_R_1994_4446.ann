@@ -1,0 +1,12 @@
+T1	1Province 147 150	浙江省
+T2	1City 151 154	湖州市
+T3	1County 155 158	乔溪乡
+T5	1Position 562 565	村干部
+T6	2Position 568 572	财会人员
+T7	3Position 575 580	部分 村民
+T4	1Money_Sum 544 550	1.13 万
+T8	1Crime 521 540	挪用 、 乱 借支 、 白条 抵库 等
+T9	2Crime 521 540	挪用 、 乱 借支 、 白条 抵库 等
+T10	3Crime 521 540	挪用 、 乱 借支 、 白条 抵库 等
+T11	1Event 321 322	前
+T12	1Event 657 658	。

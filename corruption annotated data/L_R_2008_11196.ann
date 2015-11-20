@@ -1,0 +1,26 @@
+T1	1Event 159 160	去
+T2	1Event 278 279	。
+T3	1City 169 172	重庆市
+T4	1Position 173 182	渝中区 原 副区长
+T5	1Person 183 185	王政
+T6	2Position 188 199	渝中区 委原 副 书记
+T7	2Person 200 202	郑维
+T8	3Position 205 215	沙坪坝区 原 副区长
+T9	3Person 216 218	陈明
+T10	1Crime 226 242	收受 房地产 开发商 巨额 贿赂
+T11	2Crime 226 242	收受 房地产 开发商 巨额 贿赂
+T12	3Crime 226 242	收受 房地产 开发商 巨额 贿赂
+T13	1Punish 256 259	死 缓
+T14	2Punish 261 265	13 年
+T15	3Punish 268 277	10 年 有期徒刑
+T16	2Event 280 281	今
+T17	2Event 332 333	。
+T18	2City 307 310	重庆市
+T19	4Position 311 317	规划 局局长
+T20	4Person 318 320	蒋勇
+T21	4Punish 327 329	双规
+T22	1Money_Person 1116 1123	100 多万元
+T23	3Money_Person 1382 1387	15 万元
+T24	2Money_Person 1770 1775	10 万元
+T25	1Event 606 607	在
+T26	1Event 1786 1787	。

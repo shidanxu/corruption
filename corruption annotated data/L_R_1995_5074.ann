@@ -1,0 +1,25 @@
+T1	1Province 90 93	四川省
+T2	1Event 706 707	一
+T3	1Event 1140 1141	。
+T5	1City 885 888	简阳市
+T4	1Position 889 893	副 市长
+T6	1Person 894 898	卿 文才
+T7	1Crime 899 903	收受贿赂
+T8	1Money_Person 904 911	28.9 万元
+T9	1Punish 920 924	无期徒刑
+T10	2Position 927 929	市长
+T11	2Person 930 933	王善武
+T12	3Position 936 940	副 市长
+T13	3Person 941 943	金锋
+T14	4Position 946 953	市委 副 书记
+T15	4Person 954 957	刘贵祥
+T16	2Crime 961 964	受贿罪
+T17	1Crime 961 964	受贿罪
+T18	3Crime 961 964	受贿罪
+T19	4Crime 961 964	受贿罪
+T20	1Money_Sum 1124 1131	200 多万元
+T21	5Year_Crime 1236 1246	1993 年 2 月
+T22	5Year_Disc 1249 1259	1994 年 5 月
+T23	5Person 1265 1269	石嘉 平
+T24	5Crime 1316 1323	索要 和 收受
+T25	5Money_Person 1338 1344	19 万多元

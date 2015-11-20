@@ -1,0 +1,20 @@
+T2	1Province 77 79	陕西
+T3	1County 80 83	靖边县
+T4	1Position 105 117	靖边县 林业局 原 局长
+T5	1Person 118 122	高 玉川
+T6	2Position 143 154	靖边县 公安局 副局长
+T7	2Person 155 157	王平
+T8	2Punish 161 166	免职 处理
+T9	2Crime 137 140	作伪证
+T10	3City 169 172	榆林市
+T11	3Person 209 219	15 名 执法 干警
+T12	3Punish 233 240	党纪政纪 处分
+T13	3Position 202 208	公检法 部门
+T14	3Crime 178 194	导致 高 玉川 一审 从轻 判决
+T15	1Crime 304 306	贪污
+T16	1Money_Person 333 343	88973.65 元
+T17	1Punish 725 733	有期徒刑 6 年
+T18	4Person 806 808	魏东
+T19	4Position 803 805	民警
+T22	1Event 953 954	。
+T1	1Event 77 78	陕
