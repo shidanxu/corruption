@@ -4,7 +4,7 @@
 import os, sys
 import numpy as np
 import urllib, urllib2
-
+import parse_text.parse_text
 
 class NameQueue(object):
     """docstring for ClassName"""
