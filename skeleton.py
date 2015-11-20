@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from __future__ import print_function
 from __future__ import division
 import os
 import collections
@@ -62,17 +61,18 @@ def main():
            《 人民日报 》         〔 19950224 № Ｃ 〕 
  
 '''
-    # outputList = bosonNer(text, sensitivity = 3)
-    # for item in outputList:
-    #     print(type(item))
-    #     if type(item) == dict:
-    #         for key2, value2 in item.iteritems():
-    #             print(key2)
-    #             for x in value2:
-    #                 print(x)
-    #     else:
-    #         print(item)
-    ltpGet(text)
+    outputList = bosonNer(text, sensitivity = 3)
+    
+    for item in outputList:
+        print(type(item))
+        if type(item) == dict:
+            for key2, value2 in item.iteritems():
+                print(key2)
+                for x in value2:
+                    print(x)
+        else:
+            print(item)
+    # ltpGet(text)
 
 
     # 1. Load datasets
