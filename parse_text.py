@@ -14,15 +14,27 @@ def bosonNer(text, sensitivity):
 
 def parsed_text(original_text):
     result = bosonNer(original_text, 3)
+    print "result from boson=", result
     # entities is of format [(中方， org_name)]
     entities = []
+    myresults = []
     # print "Type of result is: ", type(result), len(result)
+    old_endIndex = 0
     for startIndex, endIndex, entityName in result[0]['entity']:
-    	entities.append([''.join(result[0]['word'][startIndex:endIndex]), entityName])
-    	result[0]['word'][startIndex:endIndex] = ((''.join(result[0]['word'][startIndex: endIndex]), entityName))
+        entities.append((''.join(result[0]['word'][startIndex:endIndex]), entityName))
+
+        if startIndex>old_endIndex:
+            myresults.append((result[0]['word'][old_endIndex:startIndex],'unknown'))
+        myresults.append(([''.join(result[0]['word'][startIndex:endIndex])],entityName))
+        old_endIndex = endIndex
+
+    if endIndex < len(result[0]['word']):
+        myresults.append(([result[0]['word'][endIndex:]],'unknown'))
+
+    return myresults, entities
 
 
-    
-    return result[0]['word'], entities
 if __name__ == '__main__':
-	print(parsed_text("中央情报局予以强烈谴责。白宫表示同意。"))
+    results, entities = parsed_text("中央情报局局长许诗旦予以强烈谴责。白宫表示同意。")
+    print entities
+    print results
