@@ -5,7 +5,7 @@
 死刑[, {缓期\d+年执行, [并]* 立即执行}!]*
 死缓
 
-免去 \person_name \place_name \title 职务
+免去 \person_name \organization \title 职务
 开除 {\empty, \person_name}! 党籍
 撤销 {\person_name, \title, 党内外}! 职务
 
