@@ -15,11 +15,11 @@ for filename in os.listdir("./corruption annotated data/"):
 					tag = values[1]
 					value = values[-1]
 
-					mytag = tag.split(" ")[0].strip()
+					mytag = tag.split(" ")[0].strip()[1:]
 					
-					if mytag.endswith("Punish"):
+					if mytag == "Punish":
 						punish.add(value)
-					if mytag.endswith("Crime"):
+					if mytag == "Crime":
 						crimes.add(value)
 
 with open("crimes_auto.txt", 'w') as f:
