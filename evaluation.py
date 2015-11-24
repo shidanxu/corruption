@@ -3,6 +3,7 @@
 
 from sets import Set
 import difflib
+import os
 
 # This method returns the tags in a file in the format
 # dictionary['Shidan'] = {'Crime': '贪污', 'Punish': '无期徒刑'}
@@ -113,11 +114,22 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 	return precisionScore, recallScore
 
 if __name__ == '__main__':
-	file1 = "corruption annotated data/L_R_1990_3420.ann"
-	file2 = "corruption annotated data/L_R_1990_3420_mod.ann"
-	# outputDict = process(file1)
-	# for name in outputDict:
-	# 	print name
-	# 	for element in outputDict[name]['Punish']:
-	# 		print element
-	print(evaluate(file1, file2))
+	foldername = "corruption annotated data/"
+	# file1 = "corruption annotated data/L_R_1990_3420.ann"
+	# file2 = "corruption annotated data/L_R_1990_3420_mod.machine"
+
+	scores = []
+	suffix = ".machine"
+
+	filesInFolder = os.listdir(foldername)
+	for filename in filesInFolder:
+		if filename.endswith(".ann"):
+			if filename + suffix in filesInFolder:
+				scores.append(evaluate(foldername + filename, foldername + filename+suffix))
+
+
+	# Prints scores list, average precision, avg recall
+	print scores
+	print "AVG Precision: ", sum([pair[0] for pair in scores]) / len(scores)
+	print "AVG Recall: ", sum([pair[1] for pair in scores]) / len(scores)
+	# print(evaluate(file1, file2))
