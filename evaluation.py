@@ -4,6 +4,7 @@
 from sets import Set
 import difflib
 import os
+import json
 
 # This method returns the tags in a file in the format
 # dictionary['Shidan'] = {'Crime': '贪污', 'Punish': '无期徒刑'}
@@ -11,22 +12,50 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
     dictionary = {}
     outputDict = {}
     with open(filename, 'r') as f:
-        listtags = f.readlines()
+        document = []
+        if filename.endswith('.machine'):
+            document = json.load(f)['content']
+        else:
+            document = f.read()
+        
+
+        
+
+        # print document
+        listtags = document.split("\n")
+        for item in listtags:
+            print item
+        print "\n\n"
+        # print listtags
+        # print "type of document", type(document)
+        
+        # print "listtags: ", listtags
+
+        # print listtags
+        # try 
 
         for line in listtags:
-            tag, tagType, value = line.split("\t")
-            tagType = tagType.split(" ")[0]
-            tagIndex, tagType = int(tagType[:1]), tagType[1:]
-
-            if tagType in fields:
-                if tagIndex in dictionary:
-                    if tagType in dictionary[tagIndex]:
-                        dictionary[tagIndex][tagType].add(value)
+            if line.strip():
+                # print line
+                tagType, value = "", ""
+                try:
+                    tag, tagType, value = line.split("\t")
+                    tagType = tagType.split(" ")[0]
+                    tagIndex, tagType = int(tagType[:1]), tagType[1:]
+                except Exception:
+                    tagType, value = line.split("\t")
+                    tagType = tagType.split(" ")[0]
+                    tagIndex, tagType = int(tagType[:1]), tagType[1:]
+                    
+                if tagType in fields:
+                    if tagIndex in dictionary:
+                        if tagType in dictionary[tagIndex]:
+                            dictionary[tagIndex][tagType].add(value)
+                        else:
+                            dictionary[tagIndex][tagType] = Set([value])
                     else:
+                        dictionary[tagIndex] = {}
                         dictionary[tagIndex][tagType] = Set([value])
-                else:
-                    dictionary[tagIndex] = {}
-                    dictionary[tagIndex][tagType] = Set([value])
 
         for index in dictionary:
             name = list(dictionary[index]['Person'])[0]
