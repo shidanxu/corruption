@@ -10,6 +10,13 @@ TAGS = (
     'location',
     'org_name',
     'crime',
-    'penalty',
+    'punish',
     'amount',
+    )
+
+EVAL_TAGS = (
+    'Crime',
+    'Money_Person',
+    'Punish',
+    'Position',
     )

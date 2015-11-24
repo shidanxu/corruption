@@ -5,7 +5,7 @@ import os
 from sets import Set
 import re
 from parse_text import recognize_names
-from tags import TAGS
+from tags import TAGS, EVAL_TAGS
 
 # label the sentence with 1 of the following 3
 # 1. crime
@@ -48,7 +48,7 @@ def labelSentence(sentence):
         found = re.search(AMOUNT_REGEX, sentence)
         # print found.group()
         amountScore += len(found.group())
-    d = {'crime': crimeScore, 'penalty': punishmentScore, 'amount': amountScore, 'unknown': unknownScore}
+    d = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'unknown': unknownScore}
     return max(d, key=d.get)
 
 
@@ -75,9 +75,9 @@ def annotate_paragraph(paragraph):
     annotation_dict['company_name']=[]
     annotation_dict['location']=[]
     annotation_dict['time']=[]
-    annotation_dict['crime']=[]
-    annotation_dict['penalty']=[]
-    annotation_dict['amount']=[]
+    for tag in EVAL_TAGS:
+        annotation_dict[tag]=[]
+
 
     for ii, sentence in enumerate(sentences):
         anchor = sentence_anchor[ii]
@@ -115,18 +115,43 @@ def test_baselineRecognizer1(path):
                             if labelSentence(line) != 'unknown':
                                 print line, labelSentence(line)
 
+def calculate_dist(anchor, list_anchors):
+    scores = [0]*len(list_anchors)
+    mean_pos0 = sum(anchor)/2.0
+    for ii, person_anchor in enumerate(list_anchors):
+        mean_pos = sum(person_anchor)/2.0
+        score = (mean_pos-mean_pos0)*(mean_pos-mean_pos0)
+        scores[ii] = score
+    mean_score = min(score)
+    return scores.index(mean_score)
+
 def test_baselineRecognizer(path, filename):
+    outputDict = {}
+    persons = []
     with open(path + filename, 'r') as f:
         paragraph = f.read()
         # for paragraph in paragraphs:
         annotation_dict, word_list = annotate_paragraph(paragraph)
+        persons_ind = [0]*len(annotation_dict['person_name'])
         print "annotation_dict=", annotation_dict
         print "words:\n", word_list
-        for tag in TAGS:
+        ind = 0
+        for ii, anchor in enumerate(annotation_dict['person_name']):
+            name = word_list[anchor[0]:anchor[1]]
+            name = ''.join(word_list)
+            if name not in persons:
+                persons.append(name)
+                outputDict[name]={}
+                persons_ind[ii] = ind
+                ind += 1
+            else:
+                persons_ind[ii] = persons.index(name)
+
+        for tag in EVAL_TAGS:
             anchors = annotation_dict[tag]
-            print "tag=", tag
+            # print "tag=", tag
             for anchor in anchors:
-                print "anchor=", anchor
+                # print "anchor=", anchor
                 # print "type of anchor[1]=", type(anchor[1])
                 # print [unicode(x, 'utf-8') for x in word_list[anchor[0]:anchor[1]]]
                 newlist = []
@@ -136,15 +161,38 @@ def test_baselineRecognizer(path, filename):
                     except Exception, e:
                         pass
                     newlist.append(x)
-                    print x
+                    # print x
+                newlist = ''.join(newlist)
+                ind = calculate_dist(anchor, annotation_dict['person_name'])
+                name = persons[persons_ind[ind]]
+                if tag not in outputDict[name]:
+                    outputDict[name][tag]=[]
+                outputDict[name][tag].append((anchor,newlist))
                 # print newlist
                 # print word_list[anchor[0]:anchor[1]]
+    return outputDict
+
+def output(outputDict, filename):
+    with open(filename, 'w') as f:
+        ind = 1
+        for person in outputDict:
+            numbered_person = str(ind)+"Person"
+            f.write(numbered_person+" "+person)
+            for tag in EVAL_TAGS:
+                numbered_tag = str(ind)+tag
+                for item in person[tag]:
+                    f.write(numbered_tag+" "+item)
+            ind += 1
 
 
 if __name__ == '__main__':
     filename = "L_R_1994_4643.txt"
     path = "./corruption annotated data/"
-    test_baselineRecognizer(path, filename)
+    outputfilename = "L_R_1994_4643_parsed.ann"
+    outputDict = test_baselineRecognizer(path, filename)
+    output(outputDict, path+outputfilename)
+
+
     # with open(path + filename, 'r') as f:
     #     paragraph = f.read()
     #     sentences = re.split('[。 | ； | ， | ： | 、]+', paragraph, flags=re.UNICODE)
