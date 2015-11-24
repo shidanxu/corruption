@@ -3,6 +3,7 @@ from sets import Set
 
 crimes = Set()
 punish = Set()
+positions = Set()
 
 prefix = "./corruption annotated data/"
 for filename in os.listdir("./corruption annotated data/"):
@@ -21,6 +22,8 @@ for filename in os.listdir("./corruption annotated data/"):
 						punish.add(value)
 					if mytag == "Crime":
 						crimes.add(value)
+					if mytag == "Position":
+						positions.add(value)
 
 with open("crimes_auto.txt", 'w') as f:
 	for item in crimes:
@@ -28,6 +31,10 @@ with open("crimes_auto.txt", 'w') as f:
 
 with open("punish_auto.txt", 'w') as f:
 	for item in punish:
+		f.write(item)
+
+with open("position_auto.txt", 'w') as f:
+	for item in positions:
 		f.write(item)
 # for item in punish:
 # 	print item
