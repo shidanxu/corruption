@@ -217,7 +217,8 @@ def output(outputDict, filename):
         # f.write(total_str.decode(encoding='utf-8'))
         print "\n\n"
         print total_str
-        json.dump(total_str, f)
+        data = {'content': total_str}
+        json.dump(data, f)
 
 if __name__ == '__main__':
     filename = "L_R_1994_4643.txt"
