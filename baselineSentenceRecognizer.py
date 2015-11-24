@@ -203,7 +203,7 @@ def output(outputDict, filename):
         for person in outputDict:
             numbered_person = str(ind)+"Person"
             print numbered_person
-            tmpstr = numbered_person+" "+person+"\n"
+            tmpstr = numbered_person+"\t"+person+"\n"
             total_str += tmpstr
             for tag in EVAL_TAGS:
                 numbered_tag = str(ind)+tag
@@ -211,7 +211,7 @@ def output(outputDict, filename):
                 print 'outputDict[person] = ', outputDict[person]
                 if tag in outputDict[person]:
                     for item in outputDict[person][tag]:
-                        tmpstr = numbered_tag+" "+item[1]+"\n"
+                        tmpstr = numbered_tag+"\t"+item[1]+"\n"
                         total_str += tmpstr
             ind += 1
         # f.write(total_str.decode(encoding='utf-8'))
