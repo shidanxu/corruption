@@ -6,29 +6,34 @@ from sets import Set
 import re
 from parse_text import recognize_names
 from tags import TAGS, EVAL_TAGS
+import json
 
 # label the sentence with 1 of the following 3
 # 1. crime
 # 2. punishment
 # 3. amount
 # 4. unknown
-punish_regex_string = '有期徒刑 (\d+|[一二三四五六七八九十]+)年|缓刑 (\d+|[一二三四五六七八九十]+)年'
-punish_regex_string += '|(\d+|[一二三四五六七八九十]+)年 有期徒刑'
-punish_regex_string += '|死刑|死缓|开除公职|依法逮捕|双规|没收个人财产|剥夺政治权利(终身|(\d+|[一二三四五六七八九十]+)年)+'
-punish_regex_string += '|免去|开除|撤销'
+punish_regex_string = unicode('有期徒刑 (\d+|[一二三四五六七八九十]+)年|缓刑 (\d+|[一二三四五六七八九十]+)年', 'utf-8')
+punish_regex_string += unicode('|(\d+|[一二三四五六七八九十]+)年 有期徒刑','utf-8')
+punish_regex_string += unicode('|死刑|死缓|开除公职|依法逮捕|双规|没收个人财产|剥夺政治权利(终身|(\d+|[一二三四五六七八九十]+)年)+','utf-8')
+punish_regex_string += unicode('|免去|开除|撤销','utf-8')
 
-crime_regex_string = '诈骗罪|经济犯罪|挪用公款|盗窃|贿赂|贪污|行贿|销赃|贪污受贿|假捐赠|倒卖|走私|索贿|报复陷害'
-crime_regex_string += '|失职|渎职|以权谋私|嫖娼'
+crime_regex_string = unicode('诈骗罪|经济犯罪|挪用公款|盗窃|贿赂|贪污|行贿|销赃|贪污受贿|假捐赠|倒卖|走私|索贿|报复陷害','utf-8')
+crime_regex_string += unicode('|失职|渎职|以权谋私|嫖娼','utf-8')
 
-amount_regex_string = '(\d+|[一二三四五六七八九十]+)[ ]?[多|余]?[万|千|个|十|百|亿]+[余]?[美|日|欧|港]?元'
-amount_regex_string += '|共计折合|茅台酒'
-amount_regex_string += '|数[万千个十百亿]+[美日欧港]?元'
+amount_regex_string = unicode('(\d+|[一二三四五六七八九十]+)[ ]?[多|余]?[万|千|个|十|百|亿]+[余]?[美|日|欧|港]?元','utf-8')
+amount_regex_string += unicode('|共计折合|茅台酒','utf-8')
+amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','utf-8')
 
 PUNISH_REGEX = re.compile(punish_regex_string, flags = re.UNICODE)
 CRIME_REGEX = re.compile(crime_regex_string, flags = re.UNICODE)
 AMOUNT_REGEX = re.compile(amount_regex_string, flags = re.UNICODE)
 
 def labelSentence(sentence):
+    try:
+        sentence = unicode(sentence, 'utf-8')
+    except Exception, e:
+        pass
     crimeScore = 0
     punishmentScore = 0
     amountScore = 0
@@ -53,7 +58,8 @@ def labelSentence(sentence):
 
 
 def sentence_index(paragraph):
-    sentences = re.split('。 | ；| ，| ：| 、', paragraph, flags=re.UNICODE)
+    sentences = re.split(unicode('。 | ；| ，| ：| 、', 'utf-8'), paragraph, flags=re.UNICODE)
+
     word_list = re.split('\s+', paragraph, flags=re.UNICODE)
     sentence_anchor = []
     start = 0
@@ -68,6 +74,7 @@ def sentence_index(paragraph):
     return word_list, sentences, sentence_anchor
 
 def annotate_paragraph(paragraph):
+    print "\n\nin annotate_paragraph\n"
     word_list, sentences, sentence_anchor = sentence_index(paragraph)
     annotation_dict = {}
     annotation_dict['person_name']=[]
@@ -80,13 +87,20 @@ def annotate_paragraph(paragraph):
 
 
     for ii, sentence in enumerate(sentences):
+        # print 'sentence=', sentence
+        # print 'encoded:', [sentence]
         anchor = sentence_anchor[ii]
         tag = labelSentence(sentence)
         if tag=="unknown":
+            # print "tag=unknown"
             continue
-        # print "tag = ", tag
+        else:
+            pass
+            # print "tag=", tag
+        # print "\n\ntag = ", tag
         # print "anchor = ", anchor
         # print "type of anchor=", type(anchor)
+
         annotation_dict[tag].append(anchor)
 
     name_entities = recognize_names(paragraph)
@@ -96,6 +110,8 @@ def annotate_paragraph(paragraph):
         # print "tag = ", tag
         # print "anchor = ", anchor
         # print "type of anchor=", type(anchor)
+        if tag=="person_name":
+            print "\n\nfound person_name. anchor=", anchor
         annotation_dict[tag].append(anchor)
 
     return annotation_dict, word_list
@@ -130,26 +146,31 @@ def test_baselineRecognizer(path, filename):
     persons = []
     with open(path + filename, 'r') as f:
         paragraph = f.read()
+        paragraph = unicode(paragraph, 'utf-8')
+        print paragraph
         # for paragraph in paragraphs:
         annotation_dict, word_list = annotate_paragraph(paragraph)
         persons_ind = [0]*len(annotation_dict['person_name'])
-        print "annotation_dict=", annotation_dict
-        print "words:\n", word_list
+        print "\n\nannotation_dict=", annotation_dict
+        # print "\n\nwords:\n", word_list
         ind = 0
         for ii, anchor in enumerate(annotation_dict['person_name']):
+            print 'anchor=', anchor
             name = word_list[anchor[0]:anchor[1]]
-            name = ''.join(word_list)
+            name = ''.join(name)
             if name not in persons:
                 persons.append(name)
+                print 'new name=', name
                 outputDict[name]={}
                 persons_ind[ii] = ind
                 ind += 1
             else:
                 persons_ind[ii] = persons.index(name)
-
+        print "annotation_dict", annotation_dict.keys()
         for tag in EVAL_TAGS:
             anchors = annotation_dict[tag]
-            # print "tag=", tag
+            print "tag=", tag
+            print "anchors=", anchors
             for anchor in anchors:
                 # print "anchor=", anchor
                 # print "type of anchor[1]=", type(anchor[1])
@@ -165,31 +186,47 @@ def test_baselineRecognizer(path, filename):
                 newlist = ''.join(newlist)
                 ind = calculate_dist(anchor, annotation_dict['person_name'])
                 name = persons[persons_ind[ind]]
+                print "\n\ncurrent outputDict[name]=", outputDict[name]
                 if tag not in outputDict[name]:
+                    print '\n\ntag=', tag
                     outputDict[name][tag]=[]
+                    print "outputDict[name] = ", outputDict[name]
                 outputDict[name][tag].append((anchor,newlist))
                 # print newlist
                 # print word_list[anchor[0]:anchor[1]]
     return outputDict
 
 def output(outputDict, filename):
+    total_str = ''
     with open(filename, 'w') as f:
         ind = 1
         for person in outputDict:
             numbered_person = str(ind)+"Person"
-            f.write(numbered_person+" "+person)
+            print numbered_person
+            tmpstr = numbered_person+" "+person+"\n"
+            total_str += tmpstr
             for tag in EVAL_TAGS:
                 numbered_tag = str(ind)+tag
-                for item in person[tag]:
-                    f.write(numbered_tag+" "+item)
+                print "\n\n\ntag = ", tag
+                print 'outputDict[person] = ', outputDict[person]
+                if tag in outputDict[person]:
+                    for item in outputDict[person][tag]:
+                        tmpstr = numbered_tag+" "+item[1]+"\n"
+                        total_str += tmpstr
             ind += 1
-
+        # f.write(total_str.decode(encoding='utf-8'))
+        print "\n\n"
+        print total_str
+        json.dump(total_str, f)
 
 if __name__ == '__main__':
     filename = "L_R_1994_4643.txt"
     path = "./corruption annotated data/"
-    outputfilename = "L_R_1994_4643_parsed.ann"
+    outputfilename = "L_R_1994_4643.ann.machine"
     outputDict = test_baselineRecognizer(path, filename)
+    print "\n\n\n\noutputDict:"
+    print outputDict
+    print "\n\n\n"
     output(outputDict, path+outputfilename)
 
 
