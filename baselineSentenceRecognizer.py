@@ -122,7 +122,7 @@ def calculate_dist(anchor, list_anchors):
         mean_pos = sum(person_anchor)/2.0
         score = (mean_pos-mean_pos0)*(mean_pos-mean_pos0)
         scores[ii] = score
-    mean_score = min(score)
+    mean_score = min(scores)
     return scores.index(mean_score)
 
 def test_baselineRecognizer(path, filename):
