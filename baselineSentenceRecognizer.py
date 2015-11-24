@@ -223,12 +223,16 @@ def output(outputDict, filename):
 if __name__ == '__main__':
     filename = "L_R_1994_4643.txt"
     path = "./corruption annotated data/"
-    outputfilename = "L_R_1994_4643.ann.machine"
-    outputDict = test_baselineRecognizer(path, filename)
-    print "\n\n\n\noutputDict:"
-    print outputDict
-    print "\n\n\n"
-    output(outputDict, path+outputfilename)
+
+    for filename in os.listdir(path):
+        if filename.endswith(".txt"):
+            outputfilename = filename[:-4] + ".ann.machine"
+
+            outputDict = test_baselineRecognizer(path, filename)
+            print "\n\n\n\noutputDict:"
+            print outputDict
+            print "\n\n\n"
+            output(outputDict, path+outputfilename)
 
 
     # with open(path + filename, 'r') as f:
