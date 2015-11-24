@@ -153,9 +153,7 @@ if __name__ == '__main__':
     filesInFolder = os.listdir(foldername)
     for filename in filesInFolder:
         if filename.endswith(".ann"):
-            print filename
             if filename + suffix in filesInFolder:
-                print "filename:=", filename + suffix
                 scores.append(evaluate(foldername + filename, foldername + filename+suffix))
 
 
