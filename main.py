@@ -32,7 +32,7 @@ def main():
         original_text = f.read()
     # parse the text from the file:
     # should annotate names, crimes, time, amount, penalty
-    parsed_text = parse_text(original_text)
+    parsed_text = recognize_names(original_text)
     # below is the naive sequence correspondence as a baseline
     # name_queue = NameQueue()
     crimes =[]
@@ -43,9 +43,9 @@ def main():
             if tmp_name not in output_dict:
                 output_dict[tmp_name] = {}
                 output_dict[tmp_name]['crimes']=[]
-                if len(crimes):
-                    output_dict[tmp_name]['crimes'].extend(crimes)
-                    crimes = []
+                # if len(crimes):
+                #     output_dict[tmp_name]['crimes'].extend(crimes)
+                    # crimes = []
                 output_dict[tmp_name]['amount']=[]
                 output_dict[tmp_name]['time']=[]
                 output_dict[tmp_name]['penalty']=[]
@@ -54,9 +54,6 @@ def main():
                 output_dict[tmp_name]['crimes'].append(current_word)
             else:
                 crimes.append(current_word)
-
-
-
 
 
 
