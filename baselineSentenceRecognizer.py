@@ -211,7 +211,8 @@ def output(outputDict, filename):
                 print 'outputDict[person] = ', outputDict[person]
                 if tag in outputDict[person]:
                     for item in outputDict[person][tag]:
-                        tmpstr = numbered_tag+"\t"+item[1]+"\n"
+                        anchor_tmp = item[0]
+                        tmpstr = numbered_tag+" "+str(anchor_tmp[0])+" "+str(anchor_tmp[1])+"\t"+item[1]+"\n"
                         total_str += tmpstr
             ind += 1
         # f.write(total_str.decode(encoding='utf-8'))
