@@ -14,7 +14,11 @@ def bosonNer(text, sensitivity):
 
 def recognize_names(original_text):
     result = bosonNer(original_text, 3)
-    print "result from boson=", result
+    print "result from boson:"
+    string = ' '.join(result[0]['word'])
+    print "segmentation:", string
+    entities = '; '.join(map(' '.join, map(str,result[0]['entity'])))
+    print "entities:", entities
     # entities is of format [(中方， org_name)]
 
     # entities = []

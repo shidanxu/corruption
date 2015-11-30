@@ -87,7 +87,7 @@ def annotate_paragraph(paragraph):
 
 
     for ii, sentence in enumerate(sentences):
-        # print 'sentence=', sentence
+        print 'sentence=', sentence
         # print 'encoded:', [sentence]
         anchor = sentence_anchor[ii]
         tag = labelSentence(sentence)
@@ -111,12 +111,12 @@ def annotate_paragraph(paragraph):
     for entity in name_entities:
         tag = entity[2]
         anchor = entity[:2]
-        anchor, displace = align_words(ner_words, anchor, word_list, sentence_anchor, displace, old_pos)
-        # print "tag = ", tag
+        print "\n\ntag = ", tag
         # print "anchor = ", anchor
         # print "type of anchor=", type(anchor)
+        anchor, displace = align_words(ner_words, anchor, word_list, sentence_anchor, displace, old_pos)
         if tag=="person_name":
-            print "\n\nfound person_name. anchor=", anchor
+            print "\nfound person_name. anchor=", anchor, "\n\n"
         if anchor[1]!=-1:
             annotation_dict[tag].append(anchor)
             old_pos = anchor[1]
@@ -143,29 +143,32 @@ def align_words(ner_words, anchor, word_list, sentence_anchor, displace, old_pos
             continue
         if ii[0]-displace-search_range>start:
             continue
-        print 'found the corresponding sentence, anchor=',ii
+        # print 'found the corresponding sentence, anchor=',ii
         current_sentence = word_list[ii[0]]
         small = ii[0]
         if old_pos>=ii[0]:
             small = old_pos
+        # print 'small=', small
         current_sentence = word_list[small]
         ind = 0
         for jj in range(ii[0], small):
             ind+=len(word_list[jj])
-        print 'the old_pos ind=', ind
+        # print 'the old_pos ind=', ind
         index = [ind]
         pos = ind
+        # print 'len of word_list=', len(word_list)
         for jj in range(small+1,ii[1]):
+            # print 'looping over the remaining part of the sentence. jj=', jj
             current_sentence += word_list[jj]
             pos+=len(word_list[jj-1])
             index.append(pos)
-        print 'index=', index
-        print 'current_sentence=', current_sentence
+        # print 'index=', index
+        # print 'current_sentence=', current_sentence
         total_ind = current_sentence.find(entity_word)
-        print 'find function returns ', total_ind
+        # print 'find function returns ', total_ind
         if total_ind==-1:
-            print "named entity %s not recovered in the paragraph!" % entity_word
-            break
+            print "named entity %s not recovered in the sentence!" % entity_word
+            continue
         total_ind += ind
         # total_ind is the ind of character in this sentence.
         start = 0
@@ -174,20 +177,19 @@ def align_words(ner_words, anchor, word_list, sentence_anchor, displace, old_pos
         print 'll=',ll
         start_flag = 0
         for pos, jj in enumerate(index):
-            pos = pos + old_pos - ii[0]
-            if old_pos<0:
-                pos += 1
+            if old_pos>ii[0]:
+                pos = pos + old_pos - ii[0]
             # pos is the index of word in this sentence. starting from the old_pos-ii[0] count.
             # jj is the character index of pos_th word in this sentence.
-            print 'old_pos-ii[0], pos, jj=', old_pos-ii[0], pos, ',', jj
+            # print 'old_pos-ii[0], pos, jj=', old_pos-ii[0], pos, ',', jj
             if start_flag==0 and jj>total_ind:
                 start = pos-1
                 start_flag=1
-                print 'found start=', start
+                # print 'found start=', start
                 continue
             if jj>=total_ind+ll:
                 stop=pos-1
-                print 'found stop=', stop
+                # print 'found stop=', stop
                 break
         if stop==0:
             start = ii[1]-1
@@ -198,7 +200,7 @@ def align_words(ner_words, anchor, word_list, sentence_anchor, displace, old_pos
         displace = (start + stop - (anchor[0]+anchor[1]))/2
         break
     if total_ind==-1:
-        print 'ind==-1!'
+        # print 'ind==-1!'
         return [-1,-1], displace
     tmp = ''
     for word in word_list[start:stop]:
@@ -325,6 +327,7 @@ if __name__ == '__main__':
             print outputDict
             print "\n\n\n"
             output(outputDict, path+outputfilename)
+        raw_input()
 
 
     # with open(path + filename, 'r') as f:
