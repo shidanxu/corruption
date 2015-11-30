@@ -33,10 +33,26 @@ def recognize_names(original_text):
     #     myresults.append(([result[0]['word'][endIndex:]],'unknown'))
 
     # return myresults, entities
-    return result[0]['entity']
+    return result[0]
 
 
 if __name__ == '__main__':
-    results, entities = recognize_names("中央情报局局长许诗旦予以强烈谴责。白宫表示同意。北京")
-    print entities
-    print results
+    results = recognize_names("中央情报局局长许诗旦予以强烈谴责。 白宫表示同意。北京")
+
+    print 'words: '
+    words = results['word']
+    sentence = ''
+    for word in words:
+        # print word
+        sentence += word
+    entities = results['entity']
+    for entity in entities:
+        tmp = entity[:2]
+        ent = words[tmp[0]]
+        for ii in range(tmp[0]+1,tmp[1]):
+            ent += words[ii]
+        print ent
+        print 'len of entity word = ', len(ent)
+    print 'find position=', sentence.find(unicode("长谴",'utf-8'))
+
+
