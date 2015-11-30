@@ -77,12 +77,15 @@ def annotate_paragraph(paragraph):
     print "\n\nin annotate_paragraph\n"
     word_list, sentences, sentence_anchor = sentence_index(paragraph)
     annotation_dict = {}
-    annotation_dict['person_name']=[]
-    annotation_dict['org_name']=[]
-    annotation_dict['company_name']=[]
-    annotation_dict['location']=[]
-    annotation_dict['time']=[]
+    # annotation_dict['person_name']=[]
+    # annotation_dict['org_name']=[]
+    # annotation_dict['company_name']=[]
+    # annotation_dict['location']=[]
+    # annotation_dict['time']=[]
+    # annotation_dict['product_name']=[]
     for tag in EVAL_TAGS:
+        annotation_dict[tag]=[]
+    for tag in TAGS:
         annotation_dict[tag]=[]
 
 
@@ -107,14 +110,16 @@ def annotate_paragraph(paragraph):
     name_entities = ner_results['entity']
     ner_words = ner_results['word']
     displace = 0
-    old_pos=-1
+    # old_pos=-1
+    old_pos = 0
     for entity in name_entities:
         tag = entity[2]
         anchor = entity[:2]
         print "\n\ntag = ", tag
         # print "anchor = ", anchor
         # print "type of anchor=", type(anchor)
-        anchor, displace = align_words(ner_words, anchor, word_list, sentence_anchor, displace, old_pos)
+        # anchor, displace = align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos)
+        anchor = align_words(ner_words, anchor, word_list, old_pos)
         if tag=="person_name":
             print "\nfound person_name. anchor=", anchor, "\n\n"
         if anchor[1]!=-1:
@@ -123,7 +128,56 @@ def annotate_paragraph(paragraph):
 
     return annotation_dict, word_list
 
-def align_words(ner_words, anchor, word_list, sentence_anchor, displace, old_pos):
+def align_words(ner_words, anchor, word_list, old_pos):
+    start = anchor[0]
+    stop = anchor[1]
+    search_range = 5
+    entity_word = ner_words[start]
+    for ii in range(start+1,stop):
+        entity_word += ner_words[ii]
+    print '\nentity_word=',entity_word
+
+    start = old_pos
+    stop = start
+    flag = 1
+    string = ''
+    while flag:
+        print 'start=', start,'; len of word_list=', len(word_list)
+        word = word_list[start]
+        if word in entity_word:
+            print 'found a starting word %s.' % word
+            stop = start + 1
+            string = word
+            if entity_word in string:
+                flag = 0
+            while flag:
+                if stop>len(word_list)-1:
+                    flag = -1
+                    break
+                string += word_list[stop]
+                # print 'now using word %s.' % string
+                stop += 1
+                if entity_word in string:
+                    flag = 0
+        elif entity_word in word:
+            print 'found a word %s containing the entity.' % word
+            flag = 0
+            string = word
+            stop = start+1
+        if flag==0:
+            break
+        start += 1
+        if start>len(word_list)-1:
+            flag = -1
+            break
+    if flag==0:
+        print 'entity %s recovered as %s.' % (entity_word, string)
+        return [start, stop]
+    else:
+        print 'entity %s not recovered!' % entity_word
+        return -1, -1
+
+def align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos):
     start = anchor[0]
     stop = anchor[1]
     search_range = 5
@@ -327,7 +381,7 @@ if __name__ == '__main__':
             print outputDict
             print "\n\n\n"
             output(outputDict, path+outputfilename)
-        raw_input()
+        # raw_input()
 
 
     # with open(path + filename, 'r') as f:

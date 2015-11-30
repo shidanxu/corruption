@@ -7,11 +7,11 @@ from sets import Set
 
 TAGS = (
     'person_name',
+    'time',
+    'company_name',
     'location',
     'org_name',
-    'crime',
-    'punish',
-    'amount',
+    'product_name',
     )
 
 EVAL_TAGS = (
