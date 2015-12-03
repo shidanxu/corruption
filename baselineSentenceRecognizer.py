@@ -54,24 +54,62 @@ def labelSentence(sentence):
         # print found.group()
         amountScore += len(found.group())
     d = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'unknown': unknownScore}
+    if max(d, key = d.get) != 'unknown':
+        print sentence, max(d, key = d.get)
     return max(d, key=d.get)
 
 
 def sentence_index(paragraph):
-    sentences = re.split(unicode('。 | ；| ，| ：| 、', 'utf-8'), paragraph, flags=re.UNICODE)
+    sentences = re.split(unicode('(。|；|，|：|、|？|\n)', 'utf-8'), paragraph, flags=re.UNICODE)
 
-    word_list = re.split('\s+', paragraph, flags=re.UNICODE)
+
+    word_list = []
+    for sentence in sentences:
+        sentenceToWords = re.split('\s+', sentence, flags = re.UNICODE)
+        word_list.extend(sentenceToWords)
+    # word_list = re.split('\s+', paragraph, flags=re.UNICODE)
+    print "word list:="
+    print " ".join(word_list)
+
+    # for each in word_list:
+        # if len(each) == 1:
+            # print "This word: " + each
+    # Here the spaces cause sentence anchor to be off
     sentence_anchor = []
     start = 0
     stop = 0
+    new_sentences = []
     for sentence in sentences:
         split_sentence = re.split('\s+', sentence, flags=re.UNICODE)
+        # split_sentence = [item.strip() for item in split_sentence]
+        split_sentence = filter(None, split_sentence)
+        if not split_sentence:
+            continue
+        # print "split_sentence=", " ".join(split_sentence)
+        new_sentences.append("".join(split_sentence))
         stop += len(split_sentence)
-        stop += 1
+        # stop += 1
+
+        print word_list[start], type(word_list[start])
+        print word_list[start][0]
+        while word_list[start][0] != sentence.strip()[0]:
+            print "aaaaaaaaa: ", word_list[start][0], sentence.strip()[0]
+            raw_input()
+            start -= 1
+            stop -= 1
+        
         anchor = [start, stop]
+        assert word_list[anchor[0]][0] == sentence.strip()[0], [word_list[anchor[0]], sentence.strip()[0]]
+        
+        while word_list[stop-1][-1] != sentence.strip()[-1]:
+            # print word_list[stop-1][-1], sentence.strip()[-1]
+            stop -= 1
+
+        assert word_list[anchor[1] - 1][-1] == sentence.strip()[-1], [word_list[anchor[1]-1][-1], sentence.strip()[-1]]
         sentence_anchor.append(anchor)
-        start = stop
-    return word_list, sentences, sentence_anchor
+        start = stop+1
+    print 'new_sentences = ', ''.join(new_sentences)
+    return word_list, new_sentences, sentence_anchor
 
 def annotate_paragraph(paragraph):
     print "\n\nin annotate_paragraph\n"
@@ -90,7 +128,7 @@ def annotate_paragraph(paragraph):
 
 
     for ii, sentence in enumerate(sentences):
-        print 'sentence=', sentence
+        # print 'sentence=', sentence
         # print 'encoded:', [sentence]
         anchor = sentence_anchor[ii]
         tag = labelSentence(sentence)
@@ -104,6 +142,13 @@ def annotate_paragraph(paragraph):
         # print "anchor = ", anchor
         # print "type of anchor=", type(anchor)
 
+        # print "ii = ", ii
+        # print "sentence =", sentence
+        # print "by anchor= ", 
+        # for item in word_list[anchor[0] : anchor[1]]:
+            # print item
+        # print "anchor = ", anchor
+        # print "tag =", tag
         annotation_dict[tag].append(anchor)
 
     ner_results = recognize_names(paragraph)
@@ -115,13 +160,14 @@ def annotate_paragraph(paragraph):
     for entity in name_entities:
         tag = entity[2]
         anchor = entity[:2]
-        print "\n\ntag = ", tag
+        # print "\n\ntag = ", tag
         # print "anchor = ", anchor
         # print "type of anchor=", type(anchor)
         # anchor, displace = align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos)
         anchor = align_words(ner_words, anchor, word_list, old_pos)
         if tag=="person_name":
-            print "\nfound person_name. anchor=", anchor, "\n\n"
+            # print "\nfound person_name. anchor=", anchor, "\n\n"
+            pass
         if anchor[1]!=-1:
             annotation_dict[tag].append(anchor)
             old_pos = anchor[1]
@@ -135,17 +181,17 @@ def align_words(ner_words, anchor, word_list, old_pos):
     entity_word = ner_words[start]
     for ii in range(start+1,stop):
         entity_word += ner_words[ii]
-    print '\nentity_word=',entity_word
+    # print '\nentity_word=',entity_word
 
     start = old_pos
     stop = start
     flag = 1
     string = ''
     while flag:
-        print 'start=', start,'; len of word_list=', len(word_list)
+        # print 'start=', start,'; len of word_list=', len(word_list)
         word = word_list[start]
         if word in entity_word:
-            print 'found a starting word %s.' % word
+            # print 'found a starting word %s.' % word
             stop = start + 1
             string = word
             if entity_word in string:
@@ -160,7 +206,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
                 if entity_word in string:
                     flag = 0
         elif entity_word in word:
-            print 'found a word %s containing the entity.' % word
+            # print 'found a word %s containing the entity.' % word
             flag = 0
             string = word
             stop = start+1
@@ -171,10 +217,10 @@ def align_words(ner_words, anchor, word_list, old_pos):
             flag = -1
             break
     if flag==0:
-        print 'entity %s recovered as %s.' % (entity_word, string)
+        # print 'entity %s recovered as %s.' % (entity_word, string)
         return [start, stop]
     else:
-        print 'entity %s not recovered!' % entity_word
+        # print 'entity %s not recovered!' % entity_word
         return -1, -1
 
 def align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos):
@@ -271,7 +317,7 @@ def test_baselineRecognizer1(path):
                 paragraphs = f.readlines()
 
                 for paragraph in paragraphs:
-                    lines = re.split('。 | ； | ， | ： | 、', paragraph, flags=re.UNICODE)
+                    lines = re.split('。|；|，|：|、', paragraph, flags=re.UNICODE)
 
                     for line in lines:
                         if line.strip():
@@ -298,7 +344,7 @@ def test_baselineRecognizer(path, filename):
         # for paragraph in paragraphs:
         annotation_dict, word_list = annotate_paragraph(paragraph)
         persons_ind = [0]*len(annotation_dict['person_name'])
-        print "\n\nannotation_dict=", annotation_dict
+        # print "\n\nannotation_dict=", annotation_dict
         # print "\n\nwords:\n", word_list
         ind = 0
         for ii, anchor in enumerate(annotation_dict['person_name']):
@@ -313,11 +359,11 @@ def test_baselineRecognizer(path, filename):
                 ind += 1
             else:
                 persons_ind[ii] = persons.index(name)
-        print "annotation_dict", annotation_dict.keys()
+        # print "annotation_dict", annotation_dict.keys()
         for tag in EVAL_TAGS:
             anchors = annotation_dict[tag]
-            print "tag=", tag
-            print "anchors=", anchors
+            # print "tag=", tag
+            # print "anchors=", anchors
             for anchor in anchors:
                 # print "anchor=", anchor
                 # print "type of anchor[1]=", type(anchor[1])
@@ -333,11 +379,11 @@ def test_baselineRecognizer(path, filename):
                 newlist = ''.join(newlist)
                 ind = calculate_dist(anchor, annotation_dict['person_name'])
                 name = persons[persons_ind[ind]]
-                print "\n\ncurrent outputDict[name]=", outputDict[name]
+                # print "\n\ncurrent outputDict[name]=", outputDict[name]
                 if tag not in outputDict[name]:
-                    print '\n\ntag=', tag
+                    # print '\n\ntag=', tag
                     outputDict[name][tag]=[]
-                    print "outputDict[name] = ", outputDict[name]
+                    # print "outputDict[name] = ", outputDict[name]
                 outputDict[name][tag].append((anchor,newlist))
                 # print newlist
                 # print word_list[anchor[0]:anchor[1]]
@@ -354,8 +400,8 @@ def output(outputDict, filename):
             total_str += tmpstr
             for tag in EVAL_TAGS:
                 numbered_tag = str(ind)+tag
-                print "\n\n\ntag = ", tag
-                print 'outputDict[person] = ', outputDict[person]
+                # print "\n\n\ntag = ", tag
+                # print 'outputDict[person] = ', outputDict[person]
                 if tag in outputDict[person]:
                     for item in outputDict[person][tag]:
                         anchor_tmp = item[0]
@@ -381,6 +427,7 @@ if __name__ == '__main__':
             print outputDict
             print "\n\n\n"
             output(outputDict, path+outputfilename)
+            break
         # raw_input()
 
 
