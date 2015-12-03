@@ -164,8 +164,7 @@ def annotate_paragraph(paragraph):
         # anchor, displace = align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos)
         anchor = align_words(ner_words, anchor, word_list, old_pos)
         if tag=="person_name":
-            # print "\nfound person_name. anchor=", anchor, "\n\n"
-            pass
+            print "\nfound person_name. anchor=", anchor,
         if anchor[1]!=-1:
             annotation_dict[tag].append(anchor)
             old_pos = anchor[1]
@@ -186,7 +185,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
     flag = 1
     string = ''
     while flag:
-        # print 'start=', start,'; len of word_list=', len(word_list)
+        print 'start=', start,'; word=', word_list[start]
         word = word_list[start]
         if word in entity_word:
             print 'found a starting word %s.' % word
