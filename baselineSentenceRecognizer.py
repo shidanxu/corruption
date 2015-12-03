@@ -74,7 +74,7 @@ def sentence_index(paragraph):
             current_sentence = []
         else:
             x = re.split(unicode('\s+'), x)
-
+            x = filter(None, x)
             current_sentence= x
 
     if current_sentence:
