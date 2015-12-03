@@ -62,7 +62,7 @@ BIAODIAN = (unicode('。', 'utf-8'), unicode('；', 'utf-8'),unicode('，', 'utf
 
 def sentence_index(paragraph):
     sentences = re.split(unicode('(。|；|，|：|？|\n)', 'utf-8'), paragraph, flags=re.UNICODE)
-
+    print "\n\n\nFIRST SENTENCE: ", sentences[0]
     new_sentences = []
     current_sentence = []
     for x in sentences:
@@ -72,10 +72,13 @@ def sentence_index(paragraph):
             current_sentence.append(x)
             new_sentences.append(current_sentence)
             current_sentence = []
+            print "NEW SENTENCE NOW: ", '\n'.join(' '.join(sentence) for sentence in new_sentences)
+
         else:
             x = re.split(unicode('\s+'), x)
             x = filter(None, x)
-            current_sentence= x
+            current_sentence = x
+            print "Current Sentence: ", " ".join(current_sentence)
 
     if current_sentence:
         new_sentences.append(current_sentence)
@@ -218,6 +221,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
         return [start, stop]
     else:
         print 'entity %s not recovered!' % entity_word
+        exit(0)
         return -1, -1
 '''
 def align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos):
