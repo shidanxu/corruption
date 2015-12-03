@@ -73,12 +73,14 @@ def sentence_index(paragraph):
             new_sentences.append(current_sentence)
             current_sentence = []
         else:
-            current_sentence.append(x)
+            x = re.split(unicode('\s+'), x)
+
+            current_sentence= x
 
     if current_sentence:
         new_sentences.append(current_sentence)
     print 'new sentence: ', new_sentences
-    print 'new_sentences = ', '\n'.join(''.join(sentence) for sentence in new_sentences)
+    print 'new_sentences = ', '\n'.join(' '.join(sentence) for sentence in new_sentences)
 
     word_list = []
     start = 0
@@ -90,14 +92,15 @@ def sentence_index(paragraph):
         # sentenceToWords = filter(None, sentenceToWords)
         if sentence:
             stop += len(sentence)
-            print "sentenceToWords: ", sentence
+            print "sentence: ", sentence
             sentence_anchor.append([start, stop])
             word_list.extend(sentence)
             # new_sentences.append(sentenceToWords)
             assert(word_list[sentence_anchor[-1][0]:sentence_anchor[-1][1]]==sentence)
             start += len(sentence)
     # word_list = re.split('\s+', paragraph, flags=re.UNICODE)
-    print "word list:="
+    print "word list[24:25]="
+    print word_list[24:25]
     print " ".join(word_list)
 
     return word_list, new_sentences, sentence_anchor
