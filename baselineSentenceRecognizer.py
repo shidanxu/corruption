@@ -84,7 +84,7 @@ def sentence_index(paragraph):
 
     word_list = []
     start = 0
-    stop = 1
+    stop = 0
     sentence_anchor = []
     # new_sentences = []
     for sentence in new_sentences:
@@ -103,6 +103,10 @@ def sentence_index(paragraph):
     print word_list[24:25]
     print " ".join(word_list)
 
+    print "\n\n\n\nAligning checkup: word_list, new_sentences, sentence_anchor"
+    for ii, s1 in enumerate(new_sentences):
+        print "word_list: ", word_list[sentence_anchor[ii][0] : sentence_anchor[ii][1]]
+        print "Sentence: ", s1
     return word_list, new_sentences, sentence_anchor
 
 def annotate_paragraph(paragraph):
@@ -175,7 +179,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
     entity_word = ner_words[start]
     for ii in range(start+1,stop):
         entity_word += ner_words[ii]
-    # print '\nentity_word=',entity_word
+    print '\nentity_word=',entity_word
 
     start = old_pos
     stop = start
@@ -185,7 +189,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
         # print 'start=', start,'; len of word_list=', len(word_list)
         word = word_list[start]
         if word in entity_word:
-            # print 'found a starting word %s.' % word
+            print 'found a starting word %s.' % word
             stop = start + 1
             string = word
             if entity_word in string:
@@ -200,7 +204,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
                 if entity_word in string:
                     flag = 0
         elif entity_word in word:
-            # print 'found a word %s containing the entity.' % word
+            print 'found a word %s containing the entity.' % word
             flag = 0
             string = word
             stop = start+1
@@ -211,12 +215,12 @@ def align_words(ner_words, anchor, word_list, old_pos):
             flag = -1
             break
     if flag==0:
-        # print 'entity %s recovered as %s.' % (entity_word, string)
+        print 'entity %s recovered as %s.' % (entity_word, string)
         return [start, stop]
     else:
-        # print 'entity %s not recovered!' % entity_word
+        print 'entity %s not recovered!' % entity_word
         return -1, -1
-
+'''
 def align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos):
     start = anchor[0]
     stop = anchor[1]
@@ -302,7 +306,7 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, o
     print 'recovered the entity_word at ', start, stop, 'with displace=', displace, ' word=', tmp
 
     return [start, stop], displace
-
+'''
 
 def test_baselineRecognizer1(path):
     for filename in os.listdir(path):
@@ -418,8 +422,8 @@ if __name__ == '__main__':
             outputfilename = filename[:-4] + ".ann.machine"
 
             outputDict = test_baselineRecognizer(path, filename)
-            print "\n\n\n\noutputDict:"
-            print outputDict
+            # print "\n\n\n\noutputDict:"
+            # print outputDict
             print "\n\n\n"
             output(outputDict, path+outputfilename)
             break
