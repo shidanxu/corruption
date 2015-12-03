@@ -16,10 +16,10 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
         if filename.endswith('.machine'):
             document = json.load(f)['content']
         else:
-            document = f.read()
+            document = unicode(f.read(), 'utf-8')
         
 
-        
+        print "type of document " + filename, " :", type(document)
 
         # print document
         listtags = document.split("\n")
@@ -59,6 +59,7 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
 
         for index in dictionary:
             name = list(dictionary[index]['Person'])[0]
+            name = name.replace(" ", "")
             outputDict[name] = {}
             for key in dictionary[index]:
                 if key != 'Person':
