@@ -75,6 +75,12 @@ def sentence_index(paragraph):
             print "NEW SENTENCE NOW: ", '\n'.join(' '.join(sentence) for sentence in new_sentences)
 
         else:
+            if current_sentence:
+                current_sentence.extend(unicode('。', 'utf-8'))
+                print "\n\nCurrent Sentence ends without a period: ", " ".join(current_sentence)
+                new_sentences.append(current_sentence)
+                current_sentence = []
+                continue
             x = re.split(unicode('\s+'), x)
             x = filter(None, x)
             current_sentence = x
@@ -187,11 +193,11 @@ def align_words(ner_words, anchor, word_list, old_pos):
     stop = start
     flag = 1
     string = ''
+    print 'start=', start,'; word=', word_list[start:start+3]
     while flag:
-        print 'start=', start,'; word=', word_list[start]
         word = word_list[start]
         if word in entity_word:
-            print 'found a starting word %s.' % word
+            # print 'found a starting word %s.' % word
             stop = start + 1
             string = word
             if entity_word in string:
@@ -217,7 +223,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
             flag = -1
             break
     if flag==0:
-        print 'entity %s recovered as %s.' % (entity_word, string)
+        print 'entity %s recovered as %s. at %d-%d' % (entity_word, string, start, stop)
         return [start, stop]
     else:
         print 'entity %s not recovered!' % entity_word
@@ -416,10 +422,10 @@ def output(outputDict, filename):
         json.dump(data, f)
 
 if __name__ == '__main__':
-    filename = "L_R_1994_4643.txt"
     path = "./corruption annotated data/"
 
-    for filename in os.listdir(path):
+    for fnamee in os.listdir(path):
+        filename = "L_R_1990_3399.txt"
         print 'filename=', filename
         if filename.endswith(".txt"):
             outputfilename = filename[:-4] + ".ann.machine"
