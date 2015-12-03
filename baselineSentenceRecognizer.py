@@ -62,34 +62,36 @@ BIAODIAN = (unicode('。', 'utf-8'), unicode('；', 'utf-8'),unicode('，', 'utf
 
 def sentence_index(paragraph):
     sentences = re.split(unicode('(。|；|，|：|？|\n)', 'utf-8'), paragraph, flags=re.UNICODE)
-    print "\n\n\nFIRST SENTENCE: ", sentences[0]
+    # print "\n\n\nFIRST SENTENCE: ", sentences[0]
     new_sentences = []
     current_sentence = []
     for x in sentences:
+        # print "WOrking on X=", x.strip()
         if not x.strip():
             continue
         if x in BIAODIAN:
             current_sentence.append(x)
             new_sentences.append(current_sentence)
             current_sentence = []
-            print "NEW SENTENCE NOW: ", '\n'.join(' '.join(sentence) for sentence in new_sentences)
+            # print "NEW SENTENCE NOW: ", '\n'.join(' '.join(sentence) for sentence in new_sentences)
 
         else:
             if current_sentence:
+                # print "current_sentence:", current_sentence
                 current_sentence.extend(unicode('。', 'utf-8'))
-                print "\n\nCurrent Sentence ends without a period: ", " ".join(current_sentence)
+                # print "\n\nCurrent Sentence ends without a period: ", " ".join(current_sentence)
                 new_sentences.append(current_sentence)
-                current_sentence = []
+                current_sentence = filter(None, re.split(unicode('\s+'), x))
                 continue
             x = re.split(unicode('\s+'), x)
             x = filter(None, x)
             current_sentence = x
-            print "Current Sentence: ", " ".join(current_sentence)
+            # print "Current Sentence: ", " ".join(current_sentence)
 
     if current_sentence:
         new_sentences.append(current_sentence)
-    print 'new sentence: ', new_sentences
-    print 'new_sentences = ', '\n'.join(' '.join(sentence) for sentence in new_sentences)
+    # print 'new sentence: ', new_sentences
+    # print 'new_sentences = ', '\n'.join(' '.join(sentence) for sentence in new_sentences)
 
     word_list = []
     start = 0
@@ -101,21 +103,22 @@ def sentence_index(paragraph):
         # sentenceToWords = filter(None, sentenceToWords)
         if sentence:
             stop += len(sentence)
-            print "sentence: ", sentence
+            # print "sentence: ", sentence
             sentence_anchor.append([start, stop])
             word_list.extend(sentence)
             # new_sentences.append(sentenceToWords)
             assert(word_list[sentence_anchor[-1][0]:sentence_anchor[-1][1]]==sentence)
             start += len(sentence)
     # word_list = re.split('\s+', paragraph, flags=re.UNICODE)
-    print "word list[24:25]="
-    print word_list[24:25]
-    print " ".join(word_list)
+    print "word list="
+    # print word_list[24:25]
+    print "\n".join(word_list)
 
-    print "\n\n\n\nAligning checkup: word_list, new_sentences, sentence_anchor"
+    # print "\n\n\n\nAligning checkup: word_list, new_sentences, sentence_anchor"
     for ii, s1 in enumerate(new_sentences):
-        print "word_list: ", word_list[sentence_anchor[ii][0] : sentence_anchor[ii][1]]
-        print "Sentence: ", s1
+        # print "word_list: ", word_list[sentence_anchor[ii][0] : sentence_anchor[ii][1]]
+        # print "Sentence: ", s1
+        pass
     return word_list, new_sentences, sentence_anchor
 
 def annotate_paragraph(paragraph):
@@ -193,11 +196,11 @@ def align_words(ner_words, anchor, word_list, old_pos):
     stop = start
     flag = 1
     string = ''
-    print 'start=', start,'; word=', word_list[start:start+3]
+    print 'start=', start,'; word=', word_list[start]
     while flag:
         word = word_list[start]
         if word in entity_word:
-            # print 'found a starting word %s.' % word
+            print 'found a starting word %s.' % word
             stop = start + 1
             string = word
             if entity_word in string:
@@ -207,15 +210,19 @@ def align_words(ner_words, anchor, word_list, old_pos):
                     flag = -1
                     break
                 string += word_list[stop]
-                # print 'now using word %s.' % string
+                print 'now using word %s.' % string
                 stop += 1
                 if entity_word in string:
                     flag = 0
         elif entity_word in word:
             print 'found a word %s containing the entity.' % word
+
             flag = 0
             string = word
             stop = start+1
+        else:
+            print 'this word is not matched: ', word
+
         if flag==0:
             break
         start += 1
