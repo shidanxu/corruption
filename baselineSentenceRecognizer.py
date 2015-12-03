@@ -247,6 +247,8 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
     print '\nentity_word=',entity_word
     print 'ner_words anchor=', anchor
     # ind = -1
+    start = -1
+    stop = -1
     for ii in sentence_anchor:
 
         if ii[1]<old_pos:
@@ -264,52 +266,54 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
         print 'current_sentence: ', current_sentence_str
         if entity_word in current_sentence_str:
             # do something;
+            ind = 0
+            index = [ind]
+            pos = ind
+            char_ind = current_sentence_str.index(entity_word)
+            for jj in range(small+1,ii[1]):
+                # print 'looping over the remaining part of the sentence. jj=', jj
+                # current_sentence += word_list[jj]
+                pos+=len(word_list[jj-1])
+                index.append(pos)
+            # print 'index=', index
+            # print 'current_sentence=', current_sentence
+            start = 0
+            stop = 0
+            ll=len(entity_word)
+            print 'll=',ll
+            tmp_str = ''
+            for pos, jj in enumerate(index):
+                # pos is the index of word in this sentence. starting from 0.
+                # jj is the character index of pos_th word in this sentence.
+                # print 'old_pos-ii[0], pos, jj=', old_pos-ii[0], pos, ',', jj
+                if jj>char_ind:
+                    tmp_str += current_sentence[pos-1]
+                    start = ii[0]+pos-1
+                    stop = start+1
+                    newpos = pos
+                    while True:
+                        if entity_word in tmp_str:
+                            break
+                        tmp_str += current_sentence[newpos]
+                        newpos += 1
+                        stop += 1
+                if jj==char_ind:
+                    tmp_str = current_sentence[pos]
+                    start = ii[0]+pos
+                    stop = start+1
+                    newpos = pos+1
+                    while True:
+                        if entity_word in tmp_str:
+                            break
+                        tmp_str += current_sentence[newpos]
+                        newpos += 1
+                        stop += 1
+
         else:
             continue
-
-        ind = 0
-        index = [ind]
-        pos = ind
-        char_ind = current_sentence_str.index(entity_word)
-        for jj in range(small+1,ii[1]):
-            # print 'looping over the remaining part of the sentence. jj=', jj
-            # current_sentence += word_list[jj]
-            pos+=len(word_list[jj-1])
-            index.append(pos)
-        # print 'index=', index
-        # print 'current_sentence=', current_sentence
-        start = 0
-        stop = 0
-        ll=len(entity_word)
-        print 'll=',ll
-        tmp_str = ''
-        for pos, jj in enumerate(index):
-            # pos is the index of word in this sentence. starting from 0.
-            # jj is the character index of pos_th word in this sentence.
-            # print 'old_pos-ii[0], pos, jj=', old_pos-ii[0], pos, ',', jj
-            if jj>char_ind:
-                tmp_str += current_sentence[pos-1]
-                start = ii[0]+pos-1
-                stop = start+1
-                newpos = pos
-                while True:
-                    if entity_word in tmp_str:
-                        break
-                    tmp_str += current_sentence[newpos]
-                    newpos += 1
-                    stop += 1
-            if jj==char_ind:
-                tmp_str = current_sentence[pos]
-                start = ii[0]+pos
-                stop = start+1
-                newpos = pos+1
-                while True:
-                    if entity_word in tmp_str:
-                        break
-                    tmp_str += current_sentence[newpos]
-                    newpos += 1
-                    stop += 1
-
+    if start<0:
+        print "entity_word %s not recovered!" % entity_word
+        return [start, stop]
     print 'recovered the entity_word at ', start, stop, ' word=', tmp
 
     return [start, stop]
