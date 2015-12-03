@@ -173,8 +173,8 @@ def annotate_paragraph(paragraph):
         # print "\n\ntag = ", tag
         # print "anchor = ", anchor
         # print "type of anchor=", type(anchor)
-        # anchor, displace = align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos)
-        anchor = align_words(ner_words, anchor, word_list, old_pos)
+        anchor = align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos)
+        # anchor = align_words(ner_words, anchor, word_list, old_pos)
         if tag=="person_name":
             print "\nfound person_name. anchor=", anchor,
         if anchor[1]!=-1:
@@ -236,8 +236,8 @@ def align_words(ner_words, anchor, word_list, old_pos):
         print 'entity %s not recovered!' % entity_word
         exit(0)
         return -1, -1
-'''
-def align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, old_pos):
+# '''
+def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
     start = anchor[0]
     stop = anchor[1]
     search_range = 5
@@ -245,84 +245,75 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, displace, o
     for ii in range(start+1,stop):
         entity_word += ner_words[ii]
     print '\nentity_word=',entity_word
-    print 'displace=', displace
     print 'ner_words anchor=', anchor
     # ind = -1
     for ii in sentence_anchor:
-        # print 'temp sentence_anchor:', ii
-        if old_pos>0:
-            if ii[1]<=old_pos:
-                continue
-        if ii[1]-displace+search_range<stop:
+
+        if ii[1]<old_pos:
             continue
-        if ii[0]-displace-search_range>start:
-            continue
-        # print 'found the corresponding sentence, anchor=',ii
-        current_sentence = word_list[ii[0]]
         small = ii[0]
-        if old_pos>=ii[0]:
+        # print 'temp sentence_anchor:', ii
+        # print 'found the corresponding sentence, anchor=',ii
+        if ii[0]<old_pos:
             small = old_pos
-        # print 'small=', small
-        current_sentence = word_list[small]
+            current_sentence = word_list[old_pos:ii[1]]
+        else:
+            current_sentence = word_list[ii[0]:ii[1]]
+
+        current_sentence_str = ''.join(current_sentence)
+        print 'current_sentence: ', current_sentence_str
+        if entity_word in current_sentence_str:
+            # do something;
+        else:
+            continue
+
         ind = 0
-        for jj in range(ii[0], small):
-            ind+=len(word_list[jj])
-        # print 'the old_pos ind=', ind
         index = [ind]
         pos = ind
-        # print 'len of word_list=', len(word_list)
+        char_ind = current_sentence_str.index(entity_word)
         for jj in range(small+1,ii[1]):
             # print 'looping over the remaining part of the sentence. jj=', jj
-            current_sentence += word_list[jj]
+            # current_sentence += word_list[jj]
             pos+=len(word_list[jj-1])
             index.append(pos)
         # print 'index=', index
         # print 'current_sentence=', current_sentence
-        total_ind = current_sentence.find(entity_word)
-        # print 'find function returns ', total_ind
-        if total_ind==-1:
-            print "named entity %s not recovered in the sentence!" % entity_word
-            continue
-        total_ind += ind
-        # total_ind is the ind of character in this sentence.
         start = 0
         stop = 0
         ll=len(entity_word)
         print 'll=',ll
-        start_flag = 0
+        tmp_str = ''
         for pos, jj in enumerate(index):
-            if old_pos>ii[0]:
-                pos = pos + old_pos - ii[0]
-            # pos is the index of word in this sentence. starting from the old_pos-ii[0] count.
+            # pos is the index of word in this sentence. starting from 0.
             # jj is the character index of pos_th word in this sentence.
             # print 'old_pos-ii[0], pos, jj=', old_pos-ii[0], pos, ',', jj
-            if start_flag==0 and jj>total_ind:
-                start = pos-1
-                start_flag=1
-                # print 'found start=', start
-                continue
-            if jj>=total_ind+ll:
-                stop=pos-1
-                # print 'found stop=', stop
-                break
-        if stop==0:
-            start = ii[1]-1
-            stop = ii[1]
-        else:
-            start += ii[0]
-            stop += ii[0]
-        displace = (start + stop - (anchor[0]+anchor[1]))/2
-        break
-    if total_ind==-1:
-        # print 'ind==-1!'
-        return [-1,-1], displace
-    tmp = ''
-    for word in word_list[start:stop]:
-        tmp += word
-    print 'recovered the entity_word at ', start, stop, 'with displace=', displace, ' word=', tmp
+            if jj>char_ind:
+                tmp_str += current_sentence[pos-1]
+                start = ii[0]+pos-1
+                stop = start+1
+                newpos = pos
+                while True:
+                    if entity_word in tmp_str:
+                        break
+                    tmp_str += current_sentence[newpos]
+                    newpos += 1
+                    stop += 1
+            if jj==char_ind:
+                tmp_str = current_sentence[pos]
+                start = ii[0]+pos
+                stop = start+1
+                newpos = pos+1
+                while True:
+                    if entity_word in tmp_str:
+                        break
+                    tmp_str += current_sentence[newpos]
+                    newpos += 1
+                    stop += 1
 
-    return [start, stop], displace
-'''
+    print 'recovered the entity_word at ', start, stop, ' word=', tmp
+
+    return [start, stop]
+# '''
 
 def test_baselineRecognizer1(path):
     for filename in os.listdir(path):
