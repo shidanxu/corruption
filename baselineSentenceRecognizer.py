@@ -58,57 +58,48 @@ def labelSentence(sentence):
         print sentence, max(d, key = d.get)
     return max(d, key=d.get)
 
+BIAODIAN = (unicode('。', 'utf-8'), unicode('；', 'utf-8'),unicode('，', 'utf-8'),unicode('：', 'utf-8'),unicode('？', 'utf-8'),)
 
 def sentence_index(paragraph):
-    sentences = re.split(unicode('(。|；|，|：|、|？|\n)', 'utf-8'), paragraph, flags=re.UNICODE)
+    sentences = re.split(unicode('(。|；|，|：|？|\n)', 'utf-8'), paragraph, flags=re.UNICODE)
 
+    new_sentences = []
+    current_sentence = []
+    for x in sentences:
+        if not x.strip():
+            continue
+        if x in BIAODIAN:
+            current_sentence.append(x)
+            new_sentences.append(current_sentence)
+            current_sentence = []
+        else:
+            current_sentence.append(x)
+
+    if current_sentence:
+        new_sentences.append(current_sentence)
+    print 'new sentence: ', new_sentences
+    print 'new_sentences = ', '\n'.join(''.join(sentence) for sentence in new_sentences)
 
     word_list = []
-    for sentence in sentences:
-        sentenceToWords = re.split('\s+', sentence, flags = re.UNICODE)
-        word_list.extend(sentenceToWords)
+    start = 0
+    stop = 1
+    sentence_anchor = []
+    # new_sentences = []
+    for sentence in new_sentences:
+        # sentenceToWords = re.split('\s+', sentence, flags = re.UNICODE)
+        # sentenceToWords = filter(None, sentenceToWords)
+        if sentence:
+            stop += len(sentence)
+            print "sentenceToWords: ", sentence
+            sentence_anchor.append([start, stop])
+            word_list.extend(sentence)
+            # new_sentences.append(sentenceToWords)
+            assert(word_list[sentence_anchor[-1][0]:sentence_anchor[-1][1]]==sentence)
+            start += len(sentence)
     # word_list = re.split('\s+', paragraph, flags=re.UNICODE)
     print "word list:="
     print " ".join(word_list)
 
-    # for each in word_list:
-        # if len(each) == 1:
-            # print "This word: " + each
-    # Here the spaces cause sentence anchor to be off
-    sentence_anchor = []
-    start = 0
-    stop = 0
-    new_sentences = []
-    for sentence in sentences:
-        split_sentence = re.split('\s+', sentence, flags=re.UNICODE)
-        # split_sentence = [item.strip() for item in split_sentence]
-        split_sentence = filter(None, split_sentence)
-        if not split_sentence:
-            continue
-        # print "split_sentence=", " ".join(split_sentence)
-        new_sentences.append("".join(split_sentence))
-        stop += len(split_sentence)
-        # stop += 1
-
-        print word_list[start], type(word_list[start])
-        print word_list[start][0]
-        while word_list[start][0] != sentence.strip()[0]:
-            print "aaaaaaaaa: ", word_list[start][0], sentence.strip()[0]
-            raw_input()
-            start -= 1
-            stop -= 1
-        
-        anchor = [start, stop]
-        assert word_list[anchor[0]][0] == sentence.strip()[0], [word_list[anchor[0]], sentence.strip()[0]]
-        
-        while word_list[stop-1][-1] != sentence.strip()[-1]:
-            # print word_list[stop-1][-1], sentence.strip()[-1]
-            stop -= 1
-
-        assert word_list[anchor[1] - 1][-1] == sentence.strip()[-1], [word_list[anchor[1]-1][-1], sentence.strip()[-1]]
-        sentence_anchor.append(anchor)
-        start = stop+1
-    print 'new_sentences = ', ''.join(new_sentences)
     return word_list, new_sentences, sentence_anchor
 
 def annotate_paragraph(paragraph):
@@ -144,7 +135,7 @@ def annotate_paragraph(paragraph):
 
         # print "ii = ", ii
         # print "sentence =", sentence
-        # print "by anchor= ", 
+        # print "by anchor= ",
         # for item in word_list[anchor[0] : anchor[1]]:
             # print item
         # print "anchor = ", anchor
@@ -419,6 +410,7 @@ if __name__ == '__main__':
     path = "./corruption annotated data/"
 
     for filename in os.listdir(path):
+        print 'filename=', filename
         if filename.endswith(".txt"):
             outputfilename = filename[:-4] + ".ann.machine"
 
