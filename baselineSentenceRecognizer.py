@@ -31,7 +31,7 @@ AMOUNT_REGEX = re.compile(amount_regex_string, flags = re.UNICODE)
 
 def labelSentence(sentence):
     try:
-        sentence = unicode(sentence, 'utf-8')
+        sentence = ' '.join(sentence)
     except Exception, e:
         pass
     crimeScore = 0
