@@ -249,8 +249,10 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
     # ind = -1
     start = -1
     stop = -1
+    match_flag = 0
     for ii in sentence_anchor:
-
+        if match_flag:
+            break
         if ii[1]<old_pos:
             continue
         small = ii[0]
@@ -263,7 +265,7 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
             current_sentence = word_list[ii[0]:ii[1]]
 
         current_sentence_str = ''.join(current_sentence)
-        print 'current_sentence: ', current_sentence_str
+        # print 'current_sentence: ', current_sentence_str
         if entity_word in current_sentence_str:
             # do something;
             ind = 0
@@ -279,42 +281,55 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
             # print 'current_sentence=', current_sentence
             start = 0
             stop = 0
+            # print 'char_ind=', char_ind
             ll=len(entity_word)
-            print 'll=',ll
+            # print 'll=',ll
             tmp_str = ''
             for pos, jj in enumerate(index):
+                if match_flag:
+                    # print '\n\nmatch_flag=1, break from index enumeration.'
+                    # print 'start=',start,', stop=',stop
+                    break
                 # pos is the index of word in this sentence. starting from 0.
                 # jj is the character index of pos_th word in this sentence.
                 # print 'old_pos-ii[0], pos, jj=', old_pos-ii[0], pos, ',', jj
+                # print 'pos=%d, jj=%d' % (pos, jj)
                 if jj>char_ind:
+                    print 'jj>char_ind'
                     tmp_str += current_sentence[pos-1]
                     start = ii[0]+pos-1
                     stop = start+1
                     newpos = pos
                     while True:
                         if entity_word in tmp_str:
+                            match_flag = 1
                             break
                         tmp_str += current_sentence[newpos]
                         newpos += 1
                         stop += 1
                 if jj==char_ind:
+                    # print 'jj==char_ind'
                     tmp_str = current_sentence[pos]
                     start = ii[0]+pos
                     stop = start+1
                     newpos = pos+1
                     while True:
+                        # print 'tmp_str=', tmp_str
                         if entity_word in tmp_str:
+                            # print 'entity_word in tmp_str'
+                            match_flag = 1
                             break
+                        # print 'entity_word not in tmp_str'
                         tmp_str += current_sentence[newpos]
                         newpos += 1
                         stop += 1
-
         else:
             continue
     if start<0:
-        print "entity_word %s not recovered!" % entity_word
+        print "\n\n\nentity_word %s not recovered!\n\n\n\n" % entity_word
+        exit(0)
         return [start, stop]
-    print 'recovered the entity_word at ', start, stop, ' word=', tmp
+    print '\nrecovered the entity_word at ', start, stop, ' word=', tmp_str, '\n'
 
     return [start, stop]
 # '''
