@@ -70,19 +70,44 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
 # This baseline specifies whether we want the element or the set element to be compared to
 def maxScore(element, compareSet, baseline):
     comparisonScores = []
+
+    # Remove spaces for comparison
+    element = "".join(element.split())
     lengthLongest = len(element)
     for item in compareSet:
+        # Remove spaces for comparison
+        item = "".join(item.split())
         # if baseline == 0:
             # lengthLongest = len(item)
         # else:
             # lengthLongest = len(element)
 
+
         s = difflib.SequenceMatcher(None, element, item)
         m = s.find_longest_match(0, len(element), 0, len(item))
+
+        # print "Comparing: ", item, element, min(1.0, float(m.size) / lengthLongest)
 
         comparisonScores.append(min(1.0, float(m.size) / lengthLongest))
 
     # print comparisonScores
+    return max(comparisonScores)
+
+def maxScoreEntire(element, setOfSet):
+    comparisonScores = []
+    element = "".join(element.split())
+    lengthLongest = len(element)
+
+    for dictionary in setOfSet:
+        for key, value in setOfSet[dictionary].iteritems():
+            # value is a set
+            for item in value:
+                s = difflib.SequenceMatcher(None, element, item)
+                m = s.find_longest_match(0, len(element), 0, len(item))
+
+                # print "Comparing MAX Entire: ", item, element, min(1.0, float(m.size) / lengthLongest)
+                comparisonScores.append(min(1.0, float(m.size) / lengthLongest))
+    # print "\n"
     return max(comparisonScores)
 
 
@@ -156,7 +181,24 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
                         # totalScore += int(humanDict[person][item] == machineDict[person][item])
     precisionScore = totalScore / possibleScore
 
-    return recallScore, precisionScore
+
+    totalScore = 0.0
+    possibleScore = 0.0
+    for person in humanDict:
+        possibleScore += len(humanDict[person])
+        
+        for item in humanDict[person]:
+            total = len(humanDict[person][item])
+            hit = 0.0
+            for element in humanDict[person][item]:
+                hit += maxScoreEntire(element, machineDict)
+            totalScore += hit / total
+            # print "add this many pts:", hit, total, hit/total
+
+    infoExtractionRecall = totalScore / possibleScore
+
+
+    return recallScore, precisionScore, infoExtractionRecall
 
 if __name__ == '__main__':
     foldername = "corruption annotated data/"
@@ -177,4 +219,5 @@ if __name__ == '__main__':
     print scores
     print "AVG Recall: ", sum([pair[0] for pair in scores]) / len(scores)
     print "AVG Precision: ", sum([pair[1] for pair in scores]) / len(scores)
+    print "AVG Extraction Recall: ", sum([pair[2] for pair in scores]) / len(scores)
     # print(evaluate(file1, file2))
