@@ -70,11 +70,12 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
 # This baseline specifies whether we want the element or the set element to be compared to
 def maxScore(element, compareSet, baseline):
     comparisonScores = []
+    lengthLongest = len(element)
     for item in compareSet:
-        if baseline == 0:
-            lengthLongest = len(item)
-        else:
-            lengthLongest = len(element)
+        # if baseline == 0:
+            # lengthLongest = len(item)
+        # else:
+            # lengthLongest = len(element)
 
         s = difflib.SequenceMatcher(None, element, item)
         m = s.find_longest_match(0, len(element), 0, len(item))
@@ -102,18 +103,26 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
     #   for item in humanDict[person]:
     #       print item, humanDict[person][item]
 
+    # 每一个UROP找到的人 总分是行数
     for person in humanDict:
         possibleScore += len(humanDict[person])
+        # 如果这个人机器也找到了
         if person in machineDict:
+            # 如果所有数据相等 直接给分
             if machineDict[person] == humanDict[person]:
                 totalScore += len(humanDict[person])
             else:
+                # 每个UROP找到的entry
                 for item in humanDict[person]:
+                    # 如果机器也找到了
                     if item in machineDict[person]:
                         # Here want approximate matching
                         # humanDict[person][item] is a Set
+                        # 总分等于人类找到的行数
                         total = len(humanDict[person][item])
+                        # print "total is:", total
                         hit = 0.0
+                        # 对人类找到的每一行 机器找到的最好结果是几分 机器／人类长度
                         for element in humanDict[person][item]:
                             hit += maxScore(element, machineDict[person][item], 0)
                         totalScore += hit / total
@@ -124,16 +133,22 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
     totalScore = 0.0
     possibleScore = 0.0
 
+    # 对每个机器找到的人
     for person in machineDict:
         possibleScore += len(machineDict[person])
+        # 如果人类也找到了这个人
         if person in humanDict:
             if machineDict[person] == humanDict[person]:
                 totalScore += len(humanDict[person])
             else:
+                # 对于机器找到的所有关于这个人的信息
                 for item in machineDict[person]:
+                    # 如果人类也有
                     if item in humanDict[person]:
+                        # 看机器总共几行
                         total = len(machineDict[person][item])
                         hit = 0.0
+                        # 看机器的每一行有多少用
                         for element in machineDict[person][item]:
                             hit += maxScore(element, humanDict[person][item], 1)
 
@@ -141,7 +156,7 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
                         # totalScore += int(humanDict[person][item] == machineDict[person][item])
     precisionScore = totalScore / possibleScore
 
-    return precisionScore, recallScore
+    return recallScore, precisionScore
 
 if __name__ == '__main__':
     foldername = "corruption annotated data/"
@@ -160,6 +175,6 @@ if __name__ == '__main__':
 
     # Prints scores list, average precision, avg recall
     print scores
-    print "AVG Precision: ", sum([pair[0] for pair in scores]) / len(scores)
-    print "AVG Recall: ", sum([pair[1] for pair in scores]) / len(scores)
+    print "AVG Recall: ", sum([pair[0] for pair in scores]) / len(scores)
+    print "AVG Precision: ", sum([pair[1] for pair in scores]) / len(scores)
     # print(evaluate(file1, file2))
