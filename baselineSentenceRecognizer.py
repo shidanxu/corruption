@@ -176,7 +176,7 @@ def annotate_paragraph(paragraph):
         anchor = align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos)
         # anchor = align_words(ner_words, anchor, word_list, old_pos)
         if tag=="person_name":
-            print "\nfound person_name. anchor=", anchor,
+            print "found person_name %s. anchor=%d-%d\n\n" % (''.join(word_list[anchor[0]:anchor[1]]), anchor[0], anchor[1])
         if anchor[1]!=-1:
             annotation_dict[tag].append(anchor)
             old_pos = anchor[1]
@@ -245,21 +245,24 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
     for ii in range(start+1,stop):
         entity_word += ner_words[ii]
     print '\nentity_word=',entity_word
-    print 'ner_words anchor=', anchor
     # ind = -1
     start = -1
     stop = -1
     match_flag = 0
+
+    # if old_pos>896:
+    #     exit(0)
     for ii in sentence_anchor:
         if match_flag:
             break
-        if ii[1]<old_pos:
+        if ii[1]<=old_pos:
             continue
         small = ii[0]
         # print 'temp sentence_anchor:', ii
         # print 'found the corresponding sentence, anchor=',ii
         if ii[0]<old_pos:
             small = old_pos
+            # print "starting from word %s at %d:\n" % (word_list[old_pos], old_pos)
             current_sentence = word_list[old_pos:ii[1]]
         else:
             current_sentence = word_list[ii[0]:ii[1]]
@@ -293,35 +296,36 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
                 # pos is the index of word in this sentence. starting from 0.
                 # jj is the character index of pos_th word in this sentence.
                 # print 'old_pos-ii[0], pos, jj=', old_pos-ii[0], pos, ',', jj
-                # print 'pos=%d, jj=%d' % (pos, jj)
+                # print 'ii[0]=%d, pos=%d, jj=%d' % (ii[0],pos, jj)
                 if jj>char_ind:
-                    print 'jj>char_ind'
-                    tmp_str += current_sentence[pos-1]
-                    start = ii[0]+pos-1
+                    # print 'jj>char_ind'
+                    start = small+pos-1
                     stop = start+1
-                    newpos = pos
+                    tmp_str = ''.join(word_list[start:stop])
                     while True:
+                        # print 'tmp_str=', tmp_str
+                        # print 'word_list[start:stop]=%d-%d:%s' % (start, stop, ''.join(word_list[start:stop]))
                         if entity_word in tmp_str:
+                            # print 'entity_word in tmp_str'
                             match_flag = 1
                             break
-                        tmp_str += current_sentence[newpos]
-                        newpos += 1
+                        tmp_str += word_list[stop]
                         stop += 1
                 if jj==char_ind:
                     # print 'jj==char_ind'
-                    tmp_str = current_sentence[pos]
-                    start = ii[0]+pos
+                    start = small+pos
                     stop = start+1
-                    newpos = pos+1
+                    tmp_str = ''.join(word_list[start:stop])
                     while True:
                         # print 'tmp_str=', tmp_str
+                        # print 'word_list[start:stop]=%d-%d:%s' % (start, stop, ''.join(word_list[start:stop]))
+                        # print 'its repr = ', repr(''.join(word_list[start:stop]))
                         if entity_word in tmp_str:
                             # print 'entity_word in tmp_str'
                             match_flag = 1
                             break
                         # print 'entity_word not in tmp_str'
-                        tmp_str += current_sentence[newpos]
-                        newpos += 1
+                        tmp_str += word_list[stop]
                         stop += 1
         else:
             continue
@@ -329,7 +333,7 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
         print "\n\n\nentity_word %s not recovered!\n\n\n\n" % entity_word
         exit(0)
         return [start, stop]
-    print '\nrecovered the entity_word at ', start, stop, ' word=', tmp_str, '\n'
+    print '\nrecovered the entity_word at ', start, stop, ' word=', ''.join(word_list[start:stop]), '\n'
 
     return [start, stop]
 # '''
