@@ -19,4 +19,5 @@ EVAL_TAGS = (
     'Money_Person',
     'Punish',
     'Position',
+    'Time'
     )

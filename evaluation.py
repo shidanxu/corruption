@@ -91,10 +91,12 @@ def maxScore(element, compareSet, baseline):
         comparisonScores.append(min(1.0, float(m.size) / lengthLongest))
 
     # print comparisonScores
+    # print "\n"
     return max(comparisonScores)
 
 def maxScoreEntire(element, setOfSet):
     comparisonScores = []
+    # Clean up string
     element = "".join(element.split())
     lengthLongest = len(element)
 
@@ -102,6 +104,8 @@ def maxScoreEntire(element, setOfSet):
         for key, value in setOfSet[dictionary].iteritems():
             # value is a set
             for item in value:
+                # First clean up
+                item = ''.join(item.split())
                 s = difflib.SequenceMatcher(None, element, item)
                 m = s.find_longest_match(0, len(element), 0, len(item))
 

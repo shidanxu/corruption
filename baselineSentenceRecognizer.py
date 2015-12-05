@@ -25,9 +25,12 @@ amount_regex_string = unicode('(\d+|[一二三四五六七八九十]+)[\.]?(\d+|
 amount_regex_string += unicode('|共计折合|茅台酒','utf-8')
 amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','utf-8')
 
+time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下午|上午|傍晚|凌晨][ ]?(\d+[ ]?时)?([ ]?[\d+]分)?([ ]?[\d+]秒)?[左右]?)?', 'utf-8')
+
 PUNISH_REGEX = re.compile(punish_regex_string, flags = re.UNICODE)
 CRIME_REGEX = re.compile(crime_regex_string, flags = re.UNICODE)
 AMOUNT_REGEX = re.compile(amount_regex_string, flags = re.UNICODE)
+TIME_REGEX = re.compile(time_regex_string, flags = re.UNICODE)
 
 def labelSentence(sentence):
     try:
@@ -37,14 +40,12 @@ def labelSentence(sentence):
     crimeScore = 0
     punishmentScore = 0
     amountScore = 0
+    timeScore = 0
     unknownScore = 0.99
     # words = sentence.split(" ")
     # for word in words:
 
     # print "sentence=", sentence
-    crimes = []
-    punishes = []
-    amounts = []
 
     word_tag_monotone = []
 
@@ -52,35 +53,32 @@ def labelSentence(sentence):
         found = re.search(CRIME_REGEX, sentence)
         print "Crime found: ", found.group()
         crimeScore += len(found.group())
-        # crimes.append(found.group())
-        # word_tag_monotone.append((found.group(), found.span(), "Crime"))
         word_tag_monotone.append((found.group(), "Crime"))
+    
     if re.search(PUNISH_REGEX, sentence):
         found = re.search(PUNISH_REGEX, sentence)
         print "Punish found: ", found.group()
         punishmentScore += len(found.group())
-        # punishes.append(found.group())
-
-        # word_tag_monotone.append((found.group(), found.span(), "Punish"))
         word_tag_monotone.append((found.group(), "Punish"))
+
     if re.search(AMOUNT_REGEX, sentence):
         found = re.search(AMOUNT_REGEX, sentence)
         print "Amount found: ", found.group()
         amountScore += len(found.group())
-        # amounts.append(found.group())
-
-        # word_tag_monotone.append((found.group(), found.span(), "Money_Person"))
         word_tag_monotone.append((found.group(), "Money_Person"))
-
-    tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'unknown': unknownScore}
+    
+    if re.search(TIME_REGEX, sentence):
+        found = re.search(TIME_REGEX, sentence)
+        print "Time found: ", found.group()
+        timeScore += len(found.group())
+        word_tag_monotone.append((found.group(), "Time"))
+    
+    tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'Time': timeScore,'unknown': unknownScore}
+    
     if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
         print sentence, max(tagScoreDict, key = tagScoreDict.get)
 
 
-    tagMatchDict = {}
-    tagMatchDict['Crime'] = crimes
-    tagMatchDict['Punish'] = punishes
-    tagMatchDict['Money_Person'] = amounts
     print word_tag_monotone
 
     # print crimes, punishes, amounts
