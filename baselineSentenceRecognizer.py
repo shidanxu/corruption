@@ -41,6 +41,7 @@ def labelSentence(sentence):
     # words = sentence.split(" ")
     # for word in words:
 
+    # print "sentence=", sentence
     crimes = []
     punishes = []
     amounts = []
@@ -51,14 +52,14 @@ def labelSentence(sentence):
         found = re.search(CRIME_REGEX, sentence)
         print "Crime found: ", found.group()
         crimeScore += len(found.group())
-        crimes.append(found.group())
+        # crimes.append(found.group())
         # word_tag_monotone.append((found.group(), found.span(), "Crime"))
         word_tag_monotone.append((found.group(), "Crime"))
     if re.search(PUNISH_REGEX, sentence):
         found = re.search(PUNISH_REGEX, sentence)
         print "Punish found: ", found.group()
         punishmentScore += len(found.group())
-        punishes.append(found.group())
+        # punishes.append(found.group())
 
         # word_tag_monotone.append((found.group(), found.span(), "Punish"))
         word_tag_monotone.append((found.group(), "Punish"))
@@ -66,7 +67,7 @@ def labelSentence(sentence):
         found = re.search(AMOUNT_REGEX, sentence)
         print "Amount found: ", found.group()
         amountScore += len(found.group())
-        amounts.append(found.group())
+        # amounts.append(found.group())
 
         # word_tag_monotone.append((found.group(), found.span(), "Money_Person"))
         word_tag_monotone.append((found.group(), "Money_Person"))
@@ -138,9 +139,9 @@ def sentence_index(paragraph):
             assert(word_list[sentence_anchor[-1][0]:sentence_anchor[-1][1]]==sentence)
             start += len(sentence)
     # word_list = re.split('\s+', paragraph, flags=re.UNICODE)
-    print "word list="
+    # print "word list="
     # print word_list[24:25]
-    print "\n".join(word_list)
+    # print "\n".join(word_list)
 
     # print "\n\n\n\nAligning checkup: word_list, new_sentences, sentence_anchor"
     for ii, s1 in enumerate(new_sentences):
@@ -164,25 +165,34 @@ def annotate_paragraph(paragraph):
     for tag in TAGS:
         annotation_dict[tag]=[]
 
-
     for ii, sentence in enumerate(sentences):
+        print ii, len(sentences)
         # print 'sentence=', sentence
         # print 'encoded:', [sentence]
         anchor = sentence_anchor[ii]
 
         # tag = labelSentence(sentence)
         tagScoreDict, tagged_items = labelSentence(sentence)
+        print "tagged_items:", tagged_items
+        print "sentence:", sentence
         if max(tagScoreDict, key = tagScoreDict.get) == 'unknown':
             continue
         else:
+            print "IM HERE!!!"
             old_pos = anchor[0]
             for item in tagged_items:
+                print "DEALING WITH ITEM: ", item
                 entity_word = item[0]
                 tag = item[1]
+
+                print "ENTITY WORD: ", entity_word, "TAG: ", tag
                 tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
+                
+                print "TAG_ANCHOR: ", tag_anchor
                 if tag_anchor[1]!=-1:
                     annotation_dict[tag].append(tag_anchor)
                     old_pos = tag_anchor[1]
+            print "I FINISHED!!"
 
     ner_results = recognize_names(paragraph)
     name_entities = ner_results['entity']
@@ -262,7 +272,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
         return -1, -1
 # '''
 
-def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor):
+def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=None):
     if anchor:
         start = anchor[0]
         stop = anchor[1]
