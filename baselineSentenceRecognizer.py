@@ -45,34 +45,45 @@ def labelSentence(sentence):
     punishes = []
     amounts = []
 
+    word_tag_monotone = []
+
     if re.search(CRIME_REGEX, sentence):
         found = re.search(CRIME_REGEX, sentence)
         print "Crime found: ", found.group()
         crimeScore += len(found.group())
         crimes.append(found.group())
+        # word_tag_monotone.append((found.group(), found.span(), "Crime"))
+        word_tag_monotone.append((found.group(), "Crime"))
     if re.search(PUNISH_REGEX, sentence):
         found = re.search(PUNISH_REGEX, sentence)
         print "Punish found: ", found.group()
         punishmentScore += len(found.group())
         punishes.append(found.group())
+
+        # word_tag_monotone.append((found.group(), found.span(), "Punish"))
+        word_tag_monotone.append((found.group(), "Punish"))
     if re.search(AMOUNT_REGEX, sentence):
         found = re.search(AMOUNT_REGEX, sentence)
         print "Amount found: ", found.group()
         amountScore += len(found.group())
         amounts.append(found.group())
+
+        # word_tag_monotone.append((found.group(), found.span(), "Money_Person"))
+        word_tag_monotone.append((found.group(), "Money_Person"))
+
     tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'unknown': unknownScore}
     if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
         print sentence, max(tagScoreDict, key = tagScoreDict.get)
 
     
     tagMatchDict = {}
-    tagMatchDict['crimes'] = crimes
-    tagMatchDict['punishes'] = punishes
-    tagMatchDict['amounts'] = amounts
-    
+    tagMatchDict['Crime'] = crimes
+    tagMatchDict['Punish'] = punishes
+    tagMatchDict['Money_Person'] = amounts
+    print word_tag_monotone
     # print crimes, punishes, amounts
     # return max(tagScoreDict, key=tagScoreDict.get)
-    return tagScoreDict, tagMatchDict
+    return tagScoreDict, word_tag_monotone
 
 BIAODIAN = (unicode('。', 'utf-8'), unicode('；', 'utf-8'),unicode('，', 'utf-8'),unicode('：', 'utf-8'),unicode('？', 'utf-8'),)
 
@@ -157,7 +168,7 @@ def annotate_paragraph(paragraph):
         # print 'sentence=', sentence
         # print 'encoded:', [sentence]
         anchor = sentence_anchor[ii]
-        
+
         # tag = labelSentence(sentence)
         tagScoreDict, tagMatchDict = labelSentence(sentence)
         if tag=="unknown":
