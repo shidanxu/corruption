@@ -13,7 +13,7 @@ import json
 # 2. punishment
 # 3. amount
 # 4. unknown
-punish_regex_string = unicode('有期徒刑 (\d+|[一二三四五六七八九十]+)年|缓刑 (\d+|[一二三四五六七八九十]+)年', 'utf-8')
+punish_regex_string = unicode('有期徒刑(\d+|[一二三四五六七八九十]+)年|缓刑(\d+|[一二三四五六七八九十]+)年', 'utf-8')
 punish_regex_string += unicode('|(\d+|[一二三四五六七八九十]+)年 有期徒刑','utf-8')
 punish_regex_string += unicode('|死刑|死缓|开除公职|依法逮捕|双规|没收个人财产|剥夺政治权利(终身|(\d+|[一二三四五六七八九十]+)年)+','utf-8')
 punish_regex_string += unicode('|免去|开除|撤销','utf-8')
@@ -21,7 +21,7 @@ punish_regex_string += unicode('|免去|开除|撤销','utf-8')
 crime_regex_string = unicode('诈骗罪|经济犯罪|挪用公款|盗窃|贿赂|贪污|行贿|销赃|贪污受贿|假捐赠|倒卖|走私|索贿|报复陷害','utf-8')
 crime_regex_string += unicode('|失职|渎职|以权谋私|嫖娼','utf-8')
 
-amount_regex_string = unicode('(\d+|[一二三四五六七八九十]+)[ ]?[多|余]?[万|千|个|十|百|亿]+[余]?[美|日|欧|港]?元','utf-8')
+amount_regex_string = unicode('(\d+|[一二三四五六七八九十]+)[\.]?(\d+|[一二三四五六七八九十]+)?[ ]?[多|余]?[万|千|个|十|百|亿]+[余]?[美|日|欧|港]?元','utf-8')
 amount_regex_string += unicode('|共计折合|茅台酒','utf-8')
 amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','utf-8')
 
@@ -41,22 +41,38 @@ def labelSentence(sentence):
     # words = sentence.split(" ")
     # for word in words:
 
+    crimes = []
+    punishes = []
+    amounts = []
+
     if re.search(CRIME_REGEX, sentence):
         found = re.search(CRIME_REGEX, sentence)
-        # print found.group()
+        print "Crime found: ", found.group()
         crimeScore += len(found.group())
+        crimes.append(found.group())
     if re.search(PUNISH_REGEX, sentence):
         found = re.search(PUNISH_REGEX, sentence)
-        # print found.group()
+        print "Punish found: ", found.group()
         punishmentScore += len(found.group())
+        punishes.append(found.group())
     if re.search(AMOUNT_REGEX, sentence):
         found = re.search(AMOUNT_REGEX, sentence)
-        # print found.group()
+        print "Amount found: ", found.group()
         amountScore += len(found.group())
-    d = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'unknown': unknownScore}
-    if max(d, key = d.get) != 'unknown':
-        print sentence, max(d, key = d.get)
-    return max(d, key=d.get)
+        amounts.append(found.group())
+    tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'unknown': unknownScore}
+    if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
+        print sentence, max(tagScoreDict, key = tagScoreDict.get)
+
+    
+    tagMatchDict = {}
+    tagMatchDict['crimes'] = crimes
+    tagMatchDict['punishes'] = punishes
+    tagMatchDict['amounts'] = amounts
+    
+    # print crimes, punishes, amounts
+    # return max(tagScoreDict, key=tagScoreDict.get)
+    return tagScoreDict, tagMatchDict
 
 BIAODIAN = (unicode('。', 'utf-8'), unicode('；', 'utf-8'),unicode('，', 'utf-8'),unicode('：', 'utf-8'),unicode('？', 'utf-8'),)
 
@@ -141,7 +157,9 @@ def annotate_paragraph(paragraph):
         # print 'sentence=', sentence
         # print 'encoded:', [sentence]
         anchor = sentence_anchor[ii]
-        tag = labelSentence(sentence)
+        
+        # tag = labelSentence(sentence)
+        tagScoreDict, tagMatchDict = labelSentence(sentence)
         if tag=="unknown":
             # print "tag=unknown"
             continue
@@ -176,7 +194,8 @@ def annotate_paragraph(paragraph):
         anchor = align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos)
         # anchor = align_words(ner_words, anchor, word_list, old_pos)
         if tag=="person_name":
-            print "found person_name %s. anchor=%d-%d\n\n" % (''.join(word_list[anchor[0]:anchor[1]]), anchor[0], anchor[1])
+            # print "found person_name %s. anchor=%d-%d\n\n" % (''.join(word_list[anchor[0]:anchor[1]]), anchor[0], anchor[1])
+            pass
         if anchor[1]!=-1:
             annotation_dict[tag].append(anchor)
             old_pos = anchor[1]
@@ -190,17 +209,17 @@ def align_words(ner_words, anchor, word_list, old_pos):
     entity_word = ner_words[start]
     for ii in range(start+1,stop):
         entity_word += ner_words[ii]
-    print '\nentity_word=',entity_word
+    # print '\nentity_word=',entity_word
 
     start = old_pos
     stop = start
     flag = 1
     string = ''
-    print 'start=', start,'; word=', word_list[start]
+    # print 'start=', start,'; word=', word_list[start]
     while flag:
         word = word_list[start]
         if word in entity_word:
-            print 'found a starting word %s.' % word
+            # print 'found a starting word %s.' % word
             stop = start + 1
             string = word
             if entity_word in string:
@@ -244,7 +263,7 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
     entity_word = ner_words[start]
     for ii in range(start+1,stop):
         entity_word += ner_words[ii]
-    print '\nentity_word=',entity_word
+    # print '\nentity_word=',entity_word
     # ind = -1
     start = -1
     stop = -1
@@ -330,10 +349,10 @@ def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
         else:
             continue
     if start<0:
-        print "\n\n\nentity_word %s not recovered!\n\n\n\n" % entity_word
+        # print "\n\n\nentity_word %s not recovered!\n\n\n\n" % entity_word
         exit(0)
         return [start, stop]
-    print '\nrecovered the entity_word at ', start, stop, ' word=', ''.join(word_list[start:stop]), '\n'
+    # print '\nrecovered the entity_word at ', start, stop, ' word=', ''.join(word_list[start:stop]), '\n'
 
     return [start, stop]
 # '''
@@ -445,9 +464,11 @@ def output(outputDict, filename):
 if __name__ == '__main__':
     path = "./corruption annotated data/"
 
-    for fnamee in os.listdir(path):
-        filename = "L_R_1990_3399.txt"
+    count = 1
+    for filename in os.listdir(path):
+        # filename = "L_R_1990_3399.txt"
         print 'filename=', filename
+
         if filename.endswith(".txt"):
             outputfilename = filename[:-4] + ".ann.machine"
 
@@ -456,6 +477,7 @@ if __name__ == '__main__':
             # print outputDict
             print "\n\n\n"
             output(outputDict, path+outputfilename)
+            # count += 1
             break
         # raw_input()
 
