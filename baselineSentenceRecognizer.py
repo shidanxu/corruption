@@ -27,10 +27,13 @@ amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','ut
 
 time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下午|上午|傍晚|凌晨][ ]?(\d+[ ]?时)?([ ]?[\d+]分)?([ ]?[\d+]秒)?[左右]?)?', 'utf-8')
 
+
 PUNISH_REGEX = re.compile(punish_regex_string, flags = re.UNICODE)
 CRIME_REGEX = re.compile(crime_regex_string, flags = re.UNICODE)
 AMOUNT_REGEX = re.compile(amount_regex_string, flags = re.UNICODE)
 TIME_REGEX = re.compile(time_regex_string, flags = re.UNICODE)
+
+
 
 def labelSentence(sentence):
     try:
@@ -72,8 +75,8 @@ def labelSentence(sentence):
         print "Time found: ", found.group()
         timeScore += len(found.group())
         word_tag_monotone.append((found.group(), "Time"))
-    
-    tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'Time': timeScore,'unknown': unknownScore}
+
+    tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'Time': timeScore, 'unknown': unknownScore}
     
     if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
         print sentence, max(tagScoreDict, key = tagScoreDict.get)
@@ -483,6 +486,7 @@ def output(outputDict, filename):
 if __name__ == '__main__':
     path = "./corruption annotated data/"
 
+    
     count = 5
     for filename in os.listdir(path):
         # filename = "L_R_1990_3399.txt"
