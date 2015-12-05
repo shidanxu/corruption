@@ -12,6 +12,7 @@ TAGS = (
     'location',
     'org_name',
     'product_name',
+    'person_posittion',
     )
 
 EVAL_TAGS = (
