@@ -281,7 +281,7 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
         for ii in range(start+1,stop):
             entity_word += ner_words[ii]
     else:
-        entity_word = ner_words
+        entity_word = re.sub('\s+','', ner_words)
     # print '\nentity_word=',entity_word
     # ind = -1
     start = -1
