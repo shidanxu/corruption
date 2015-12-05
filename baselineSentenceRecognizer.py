@@ -21,7 +21,7 @@ punish_regex_string += unicode('|免去|开除|撤销','utf-8')
 crime_regex_string = unicode('诈骗罪|经济犯罪|挪用公款|盗窃|贿赂|贪污|行贿|销赃|贪污受贿|假捐赠|倒卖|走私|索贿|报复陷害','utf-8')
 crime_regex_string += unicode('|失职|渎职|以权谋私|嫖娼','utf-8')
 
-amount_regex_string = unicode('(\d+|[一二三四五六七八九十]+)[\.]?(\d+|[一二三四五六七八九十]+)?[ ]?[多|余]?[万|千|个|十|百|亿]+[余]?[美|日|欧|港]?元','utf-8')
+amount_regex_string = unicode('(\d+|[一二三四五六七八九十]+)[\.]?(\d+|[一二三四五六七八九十]+)?[ ]?[多|余]?[万|千|个|十|百|亿]+[多|余]?[美|日|欧|港]?元','utf-8')
 amount_regex_string += unicode('|共计折合|茅台酒','utf-8')
 amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','utf-8')
 
@@ -306,9 +306,11 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
             current_sentence = word_list[ii[0]:ii[1]]
 
         current_sentence_str = ''.join(current_sentence)
-        # print 'current_sentence: ', current_sentence_str
+        print 'current_sentence: ', current_sentence_str
         if entity_word in current_sentence_str:
             # do something;
+
+            print "Entity word contained in current_sentence_str!!!!"
             ind = 0
             index = [ind]
             pos = ind
@@ -483,10 +485,12 @@ def output(outputDict, filename):
 if __name__ == '__main__':
     path = "./corruption annotated data/"
 
-    count = 1
+    count = 5
     for filename in os.listdir(path):
         # filename = "L_R_1990_3399.txt"
         print 'filename=', filename
+        if count == 0:
+            break
 
         if filename.endswith(".txt"):
             outputfilename = filename[:-4] + ".ann.machine"
@@ -496,8 +500,7 @@ if __name__ == '__main__':
             # print outputDict
             print "\n\n\n"
             output(outputDict, path+outputfilename)
-            # count += 1
-            break
+            count -= 1
         # raw_input()
 
 
