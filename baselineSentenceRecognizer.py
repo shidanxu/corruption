@@ -75,12 +75,13 @@ def labelSentence(sentence):
     if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
         print sentence, max(tagScoreDict, key = tagScoreDict.get)
 
-    
+
     tagMatchDict = {}
     tagMatchDict['Crime'] = crimes
     tagMatchDict['Punish'] = punishes
     tagMatchDict['Money_Person'] = amounts
     print word_tag_monotone
+
     # print crimes, punishes, amounts
     # return max(tagScoreDict, key=tagScoreDict.get)
     return tagScoreDict, word_tag_monotone
@@ -170,25 +171,18 @@ def annotate_paragraph(paragraph):
         anchor = sentence_anchor[ii]
 
         # tag = labelSentence(sentence)
-        tagScoreDict, tagMatchDict = labelSentence(sentence)
-        if tag=="unknown":
-            # print "tag=unknown"
+        tagScoreDict, tagged_items = labelSentence(sentence)
+        if max(tagScoreDict, key = tagScoreDict.get) == 'unknown':
             continue
         else:
-            pass
-            # print "tag=", tag
-        # print "\n\ntag = ", tag
-        # print "anchor = ", anchor
-        # print "type of anchor=", type(anchor)
-
-        # print "ii = ", ii
-        # print "sentence =", sentence
-        # print "by anchor= ",
-        # for item in word_list[anchor[0] : anchor[1]]:
-            # print item
-        # print "anchor = ", anchor
-        # print "tag =", tag
-        annotation_dict[tag].append(anchor)
+            old_pos = anchor[0]
+            for item in tagged_items:
+                entity_word = item[0]
+                tag = item[1]
+                tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
+                if tag_anchor[1]!=-1:
+                    annotation_dict[tag].append(tag_anchor)
+                    old_pos = tag_anchor[1]
 
     ner_results = recognize_names(paragraph)
     name_entities = ner_results['entity']
@@ -202,7 +196,7 @@ def annotate_paragraph(paragraph):
         # print "\n\ntag = ", tag
         # print "anchor = ", anchor
         # print "type of anchor=", type(anchor)
-        anchor = align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos)
+        anchor = align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor)
         # anchor = align_words(ner_words, anchor, word_list, old_pos)
         if tag=="person_name":
             # print "found person_name %s. anchor=%d-%d\n\n" % (''.join(word_list[anchor[0]:anchor[1]]), anchor[0], anchor[1])
@@ -267,13 +261,17 @@ def align_words(ner_words, anchor, word_list, old_pos):
         exit(0)
         return -1, -1
 # '''
-def align_words_debug(ner_words, anchor, word_list, sentence_anchor, old_pos):
-    start = anchor[0]
-    stop = anchor[1]
-    search_range = 5
-    entity_word = ner_words[start]
-    for ii in range(start+1,stop):
-        entity_word += ner_words[ii]
+
+def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor):
+    if anchor:
+        start = anchor[0]
+        stop = anchor[1]
+        search_range = 5
+        entity_word = ner_words[start]
+        for ii in range(start+1,stop):
+            entity_word += ner_words[ii]
+    else:
+        entity_word = ner_words
     # print '\nentity_word=',entity_word
     # ind = -1
     start = -1
