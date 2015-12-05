@@ -187,7 +187,7 @@ def annotate_paragraph(paragraph):
 
                 print "ENTITY WORD: ", entity_word, "TAG: ", tag
                 tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
-                
+
                 print "TAG_ANCHOR: ", tag_anchor
                 if tag_anchor[1]!=-1:
                     annotation_dict[tag].append(tag_anchor)
@@ -368,8 +368,8 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
         else:
             continue
     if start<0:
-        # print "\n\n\nentity_word %s not recovered!\n\n\n\n" % entity_word
-        exit(0)
+        print "\n\n\nentity_word %s not recovered!\n\n\n\n" % entity_word
+        # exit(0)
         return [start, stop]
     # print '\nrecovered the entity_word at ', start, stop, ' word=', ''.join(word_list[start:stop]), '\n'
 
