@@ -27,15 +27,25 @@ amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','ut
 
 time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下午|上午|傍晚|凌晨][ ]?(\d+[ ]?时)?([ ]?[\d+]分)?([ ]?[\d+]秒)?[左右]?)?', 'utf-8')
 
-good_regex_string = unicode('|记者|法官|检察长|纪委书记|法院院长|通讯员|','utf-8')
+good_position_regex_string = unicode('记者|法官|检察长|纪委书记|法院院长|通讯员|','utf-8')
+neutral_position_regex_string = unicode('', 'utf-8')
+bad_position_regex_string = unicode('特派员|办事员|收款员|', 'utf-8')
 
-position_regex_string = good_regex_string
-position_regex_string += unicode('|局长|书记|','utf-8')
+bad_position_regex_string += unicode('([副]?(局长|书记|党支部书记|市委书记|市长|县委书记|县长','utf-8')
+bad_position_regex_string += unicode('|股长|地委书记|厅长|省长|省委书记|区长|区委书记','utf-8')
+bad_position_regex_string += unicode('|秘书长|秘书|部长|常委|预算员|社长|科长|部长|总经理|董事长|主任|处长))','utf-8')
+
+
+
+# position regex includes good and bad
+
+position_regex_string = good_position_regex_string + bad_position_regex_string
 
 PUNISH_REGEX = re.compile(punish_regex_string, flags = re.UNICODE)
 CRIME_REGEX = re.compile(crime_regex_string, flags = re.UNICODE)
 AMOUNT_REGEX = re.compile(amount_regex_string, flags = re.UNICODE)
 TIME_REGEX = re.compile(time_regex_string, flags = re.UNICODE)
+POSITION_REGEX = re.compile(position_regex_string, flags = re.UNICODE)
 
 
 
@@ -48,6 +58,7 @@ def labelSentence(sentence):
     punishmentScore = 0
     amountScore = 0
     timeScore = 0
+    positionScore = 0
     unknownScore = 0.99
     # words = sentence.split(" ")
     # for word in words:
@@ -58,36 +69,42 @@ def labelSentence(sentence):
 
     if re.search(CRIME_REGEX, sentence):
         found = re.search(CRIME_REGEX, sentence)
-        print "Crime found: ", found.group()
+        # print "Crime found: ", found.group()
         crimeScore += len(found.group())
         word_tag_monotone.append((found.group(), "Crime"))
 
     if re.search(PUNISH_REGEX, sentence):
         found = re.search(PUNISH_REGEX, sentence)
-        print "Punish found: ", found.group()
+        # print "Punish found: ", found.group()
         punishmentScore += len(found.group())
         word_tag_monotone.append((found.group(), "Punish"))
 
     if re.search(AMOUNT_REGEX, sentence):
         found = re.search(AMOUNT_REGEX, sentence)
-        print "Amount found: ", found.group()
+        # print "Amount found: ", found.group()
         amountScore += len(found.group())
         word_tag_monotone.append((found.group(), "Money_Person"))
 
     if re.search(TIME_REGEX, sentence):
         found = re.search(TIME_REGEX, sentence)
-        print "Time found: ", found.group()
+        # print "Time found: ", found.group()
         timeScore += len(found.group())
         word_tag_monotone.append((found.group(), "Time"))
 
+    if re.search(POSITION_REGEX, sentence):
+        found = re.search(POSITION_REGEX, sentence)
+        print "Position found: ", found.group()
+        positionScore += len(found.group())
+        word_tag_monotone.append((found.group(), "Position"))
 
-    tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'Time': timeScore,'unknown': unknownScore}
 
-    if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
-        print sentence, max(tagScoreDict, key = tagScoreDict.get)
+    tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'Time': timeScore, 'Position': positionScore, 'unknown': unknownScore}
+
+    # if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
+    #     print sentence, max(tagScoreDict, key = tagScoreDict.get)
 
 
-    print word_tag_monotone
+    # print word_tag_monotone
 
     # print crimes, punishes, amounts
     # return max(tagScoreDict, key=tagScoreDict.get)
@@ -172,33 +189,33 @@ def annotate_paragraph(paragraph):
         annotation_dict[tag]=[]
 
     for ii, sentence in enumerate(sentences):
-        print ii, len(sentences)
+        # print ii, len(sentences)
         # print 'sentence=', sentence
         # print 'encoded:', [sentence]
         anchor = sentence_anchor[ii]
 
         # tag = labelSentence(sentence)
         tagScoreDict, tagged_items = labelSentence(sentence)
-        print "tagged_items:", tagged_items
-        print "sentence:", sentence
+        # print "tagged_items:", tagged_items
+        # print "sentence:", sentence
         if max(tagScoreDict, key = tagScoreDict.get) == 'unknown':
             continue
         else:
-            print "IM HERE!!!"
+            # print "IM HERE!!!"
             old_pos = anchor[0]
             for item in tagged_items:
-                print "DEALING WITH ITEM: ", item
+                # print "DEALING WITH ITEM: ", item
                 entity_word = item[0]
                 tag = item[1]
 
-                print "ENTITY WORD: ", entity_word, "TAG: ", tag
+                # print "ENTITY WORD: ", entity_word, "TAG: ", tag
                 tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
 
-                print "TAG_ANCHOR: ", tag_anchor
+                # print "TAG_ANCHOR: ", tag_anchor
                 if tag_anchor[1]!=-1:
                     annotation_dict[tag].append(tag_anchor)
                     old_pos = tag_anchor[1]
-            print "I FINISHED!!"
+            # print "I FINISHED!!"
 
     ner_results = recognize_names(paragraph)
     name_entities = ner_results['entity']
@@ -312,11 +329,11 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
             current_sentence = word_list[ii[0]:ii[1]]
 
         current_sentence_str = ''.join(current_sentence)
-        print 'current_sentence: ', current_sentence_str
+        # print 'current_sentence: ', current_sentence_str
         if entity_word in current_sentence_str:
             # do something;
 
-            print "Entity word contained in current_sentence_str!!!!"
+            # print "Entity word contained in current_sentence_str!!!!"
             ind = 0
             index = [ind]
             pos = ind
@@ -417,10 +434,14 @@ def test_baselineRecognizer(path, filename):
         print paragraph
         # for paragraph in paragraphs:
         annotation_dict, word_list = annotate_paragraph(paragraph)
+        if len(annotation_dict['person_name']) == 0:
+            return -1
+
         persons_ind = [0]*len(annotation_dict['person_name'])
         # print "\n\nannotation_dict=", annotation_dict
         # print "\n\nwords:\n", word_list
         ind = 0
+
         for ii, anchor in enumerate(annotation_dict['person_name']):
             print 'anchor=', anchor
             name = word_list[anchor[0]:anchor[1]]
@@ -433,6 +454,7 @@ def test_baselineRecognizer(path, filename):
                 ind += 1
             else:
                 persons_ind[ii] = persons.index(name)
+
         # print "annotation_dict", annotation_dict.keys()
         for tag in EVAL_TAGS:
             anchors = annotation_dict[tag]
@@ -492,7 +514,7 @@ if __name__ == '__main__':
     path = "./corruption annotated data/"
 
     
-    count = 5
+    count = 8
     for filename in os.listdir(path):
         # filename = "L_R_1990_3399.txt"
         print 'filename=', filename
@@ -503,6 +525,8 @@ if __name__ == '__main__':
             outputfilename = filename[:-4] + ".ann.machine"
 
             outputDict = test_baselineRecognizer(path, filename)
+            if outputDict == -1:
+                continue
             # print "\n\n\n\noutputDict:"
             # print outputDict
             print "\n\n\n"

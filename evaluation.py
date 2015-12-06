@@ -11,6 +11,7 @@ import json
 def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position']):
     dictionary = {}
     outputDict = {}
+    print "WORKING ON FILE: ", filename
     with open(filename, 'r') as f:
         document = []
         if filename.endswith('.machine'):
@@ -58,6 +59,9 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
                         dictionary[tagIndex][tagType] = Set([value])
 
         for index in dictionary:
+            print "DICTIONARY[INDEX]: ", list(dictionary[index])
+            if 'Person' not in dictionary[index]:
+                return -1
             name = list(dictionary[index]['Person'])[0]
             name = name.replace(" ", "")
             outputDict[name] = {}
@@ -125,6 +129,10 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
     humanDict = process(human)
     machineDict = process(machine)
+
+    if humanDict == -1 or machineDict == -1:
+        return -1
+
 
     # print humanDict
     # for person in humanDict:
@@ -216,7 +224,8 @@ if __name__ == '__main__':
     for filename in filesInFolder:
         if filename.endswith(".ann"):
             if filename + suffix in filesInFolder:
-                scores.append(evaluate(foldername + filename, foldername + filename+suffix))
+                if evaluate(foldername + filename, foldername + filename+suffix) != -1:
+                    scores.append(evaluate(foldername + filename, foldername + filename+suffix))
 
 
     # Prints scores list, average precision, avg recall
