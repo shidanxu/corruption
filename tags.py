@@ -20,5 +20,10 @@ EVAL_TAGS = (
     'Money_Person',
     'Punish',
     'Position',
-    'Time'
+    'Time',
+    'location',
     )
+
+# BOSON_TO_US = (
+#     'location': ''
+#     )
