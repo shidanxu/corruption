@@ -8,7 +8,7 @@ import json
 
 # This method returns the tags in a file in the format
 # dictionary['Shidan'] = {'Crime': '贪污', 'Punish': '无期徒刑'}
-def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position']):
+def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position', 'Time', 'location', 'Province', 'City']):
     dictionary = {}
     outputDict = {}
     print "WORKING ON FILE: ", filename
@@ -26,7 +26,7 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
         listtags = document.split("\n")
         for item in listtags:
             print item
-        print "\n\n"
+        print "\n"
         # print listtags
         # print "type of document", type(document)
         
@@ -59,7 +59,7 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
                         dictionary[tagIndex][tagType] = Set([value])
 
         for index in dictionary:
-            print "DICTIONARY[INDEX]: ", list(dictionary[index])
+            # print "DICTIONARY[INDEX]: ", list(dictionary[index])
             if 'Person' not in dictionary[index]:
                 return -1
             name = list(dictionary[index]['Person'])[0]
@@ -68,7 +68,19 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
             for key in dictionary[index]:
                 if key != 'Person':
                     outputDict[name][key] = dictionary[index][key]
-
+            
+            # The human annotation may have location in separate entries, we combine them
+            location = ""
+            if 'Province' in dictionary[index]:
+                print "Found province: ", ''.join(list(dictionary[index]['Province']))
+                location += ''.join(list(dictionary[index]['Province']))
+            if 'City' in dictionary[index]:
+                print "Found city: ", ''.join(list(dictionary[index]['City']))
+                location += ''.join(list(dictionary[index]['City']))
+            if location != "":
+                print "Corrected Location: ", location
+                outputDict[name]['location'] = location
+    print "\n"
     return outputDict
 
 # This baseline specifies whether we want the element or the set element to be compared to
@@ -158,6 +170,7 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
                         # 总分等于人类找到的行数
                         total = len(humanDict[person][item])
                         # print "total is:", total
+                        # print "item is:", item
                         hit = 0.0
                         # 对人类找到的每一行 机器找到的最好结果是几分 机器／人类长度
                         for element in humanDict[person][item]:
