@@ -29,11 +29,11 @@ time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下�
 
 good_position_regex_string = unicode('记者|法官|检察长|纪委书记|法院院长|通讯员|','utf-8')
 neutral_position_regex_string = unicode('', 'utf-8')
-bad_position_regex_string = unicode('特派员|办事员|收款员|', 'utf-8')
+bad_position_regex_string = unicode('特派员|办事员|收款员|会计|出纳', 'utf-8')
 
 bad_position_regex_string += unicode('([副]?(局长|书记|党支部书记|市委书记|市长|县委书记|县长','utf-8')
 bad_position_regex_string += unicode('|股长|地委书记|厅长|省长|省委书记|区长|区委书记','utf-8')
-bad_position_regex_string += unicode('|秘书长|秘书|部长|常委|预算员|社长|科长|部长|经理|总经理|董事长|主任|处长))','utf-8')
+bad_position_regex_string += unicode('|秘书长|秘书|部长|常委|预算员|社长|科长|部长|经理|总经理|董事长|主任|处长|厂长))','utf-8')
 
 
 
