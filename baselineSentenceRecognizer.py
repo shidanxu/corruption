@@ -36,7 +36,6 @@ bad_position_regex_string += unicode('|股长|地委书记|厅长|省长|省委�
 bad_position_regex_string += unicode('|秘书长|秘书|部长|常委|预算员|社长|科长|部长|经理|总经理|董事长|主任|处长|厂长))','utf-8')
 
 
-
 # position regex includes good and bad
 
 position_regex_string = good_position_regex_string + bad_position_regex_string
@@ -47,7 +46,7 @@ AMOUNT_REGEX = re.compile(amount_regex_string, flags = re.UNICODE)
 TIME_REGEX = re.compile(time_regex_string, flags = re.UNICODE)
 POSITION_REGEX = re.compile(position_regex_string, flags = re.UNICODE)
 
-
+GOOD_REGEX = re.compile(good_position_regex_string, flags=re.UNICODE)
 
 def labelSentence(sentence):
     try:
@@ -105,7 +104,8 @@ def labelSentence(sentence):
 
     word_tag_monotone = sorted(word_tag_monotone, key = lambda x: x[1][0])
 
-    # print word_tag_monotone
+    for item in word_tag_monotone:
+        print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
 
     output_monotone = [[item[0], item[2]] for item in word_tag_monotone]
     # print output_monotone
@@ -208,18 +208,18 @@ def annotate_paragraph(paragraph):
             # print "IM HERE!!!"
             old_pos = anchor[0]
             for item in tagged_items:
-                print "DEALING WITH ITEM: ", item
+                # print "DEALING WITH ITEM: ", item
                 entity_word = item[0]
                 tag = item[1]
 
-                print "ENTITY WORD: ", entity_word, "TAG: ", tag
+                # print "ENTITY WORD: ", entity_word, "TAG: ", tag
                 tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
 
-                print "TAG_ANCHOR: ", tag_anchor
+                # print "TAG_ANCHOR: ", tag_anchor
                 if tag_anchor[1]!=-1:
                     annotation_dict[tag].append(tag_anchor)
                     old_pos = tag_anchor[1]
-            print "I FINISHED!!"
+            # print "I FINISHED!!"
 
     ner_results = recognize_names(paragraph)
     name_entities = ner_results['entity']
@@ -295,7 +295,7 @@ def align_words(ner_words, anchor, word_list, old_pos):
         return [start, stop]
     else:
         print 'entity %s not recovered!' % entity_word
-        exit(0)
+        # exit(0)
         return -1, -1
 # '''
 
@@ -333,7 +333,7 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
             current_sentence = word_list[ii[0]:ii[1]]
 
         current_sentence_str = ''.join(current_sentence)
-        print 'current_sentence: ', current_sentence_str
+        # print 'current_sentence: ', current_sentence_str
         if entity_word in current_sentence_str:
             # do something;
 
@@ -459,6 +459,8 @@ def test_baselineRecognizer(path, filename):
             else:
                 persons_ind[ii] = persons.index(name)
 
+        new_annotation_dict = annotation_dict
+
         anchors = annotation_dict['Position']
         for anchor in anchors:
             newlist = []
@@ -474,6 +476,9 @@ def test_baselineRecognizer(path, filename):
             name = persons[persons_ind[ind]]
             if 'Position' not in outputDict[name]:
                 outputDict[name]['Position']=[]
+                if re.search(GOOD_REGEX, newlist):
+                    print 'found a good man: ', newlist
+                    del new_annotation_dict['person_name'][ind]
             print "\n\ncurrent name=", name, '; at ', annotation_dict['person_name'][ind]
             print 'found position =', newlist, '; at ', anchor
 
@@ -497,7 +502,7 @@ def test_baselineRecognizer(path, filename):
                     newlist.append(x)
                     # print x
                 newlist = ''.join(newlist)
-                ind = calculate_dist(anchor, annotation_dict['person_name'])
+                ind = calculate_dist(anchor, new_annotation_dict['person_name'])
                 name = persons[persons_ind[ind]]
                 # print "\n\ncurrent outputDict[name]=", outputDict[name]
                 if tag not in outputDict[name]:
