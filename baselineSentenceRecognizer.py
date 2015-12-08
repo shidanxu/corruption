@@ -466,10 +466,10 @@ def test_baselineRecognizer(path, filename):
         ind = 0
 
         for ii, anchor in enumerate(annotation_dict['person_name']):
-            print 'anchor=', anchor
+            # print 'anchor=', anchor
             name = word_list[anchor[0]:anchor[1]]
             name = ''.join(name)
-            print 'name=', name, '\n'
+            # print 'name=', name, '\n'
             if name not in persons:
                 persons.append(name)
                 outputDict[name]={}
@@ -497,17 +497,23 @@ def test_baselineRecognizer(path, filename):
             if 'Position' not in outputDict[name]:
                 outputDict[name]['Position']=[]
                 if re.search(GOOD_REGEX, newlist):
-                    print 'found a good man: ', newlist
-                    good_man_list.append(newlist)
-            print "current name=", name, '; at ', annotation_dict['person_name'][ind]
-            print 'found position =', newlist, '; at ', anchor, '\n\n'
+                    # print 'found a good man: ', newlist
+                    good_man_list.append(name)
+            # print "current name=", name, '; at ', annotation_dict['person_name'][ind]
+            # print 'found position =', newlist, '; at ', anchor, '\n\n'
 
             outputDict[name]['Position'].append((anchor,newlist))
 
         good_man_list = set(good_man_list)
+        for x in good_man_list:
+            print x
+        raw_input()
         for ii, ind in enumerate(persons_ind):
-            if persons[ind] in good_man_list:
+            # print '\n\nnow person is ', persons[persons_ind[ind]]
+            if persons[persons_ind[ind]] in good_man_list:
+                # print 'this person is a goodman.'
                 new_annotation_dict['person_name'][ii]=None
+
 
         for ii,x in enumerate(new_annotation_dict['person_name']):
             if x is not None:
@@ -542,8 +548,8 @@ def test_baselineRecognizer(path, filename):
                     exit(0)
                     # raw_input()
                 name = persons[persons_ind[ind]]
-                print 'ER = ', newlist
-                print 'name=', name
+                # print 'ER = ', newlist
+                # print 'name=', name
                 # print "\n\ncurrent outputDict[name]=", outputDict[name]
                 if tag not in outputDict[name]:
                     # print '\n\ntag=', tag
