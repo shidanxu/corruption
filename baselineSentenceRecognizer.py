@@ -455,6 +455,25 @@ def test_baselineRecognizer(path, filename):
             else:
                 persons_ind[ii] = persons.index(name)
 
+        anchors = annotation_dict['Position']
+        for anchor in anchors:
+            newlist = []
+            for x in word_list[anchor[0]:anchor[1]]:
+                try:
+                    x = unicode(x,'utf-8')
+                except Exception, e:
+                    pass
+                newlist.append(x)
+                # print x
+            newlist = ''.join(newlist)
+            ind = calculate_dist(anchor, annotation_dict['person_name'])
+            name = persons[persons_ind[ind]]
+            if 'Position' not in outputDict[name]:
+                outputDict[name]['Position']=[]
+            print "\n\ncurrent name=", name
+            print 'found position =', newlist
+            outputDict[name]['Position'].append((anchor,newlist))
+
         # print "annotation_dict", annotation_dict.keys()
         for tag in EVAL_TAGS:
             anchors = annotation_dict[tag]
@@ -513,7 +532,7 @@ def output(outputDict, filename):
 if __name__ == '__main__':
     path = "./corruption annotated data/"
 
-    
+
     count = 8
     for filename in os.listdir(path):
         # filename = "L_R_1990_3399.txt"
