@@ -446,9 +446,9 @@ def test_baselineRecognizer(path, filename):
             print 'anchor=', anchor
             name = word_list[anchor[0]:anchor[1]]
             name = ''.join(name)
+            print 'name=', name, '\n'
             if name not in persons:
                 persons.append(name)
-                print 'new name=', name
                 outputDict[name]={}
                 persons_ind[ii] = ind
                 ind += 1
@@ -470,8 +470,9 @@ def test_baselineRecognizer(path, filename):
             name = persons[persons_ind[ind]]
             if 'Position' not in outputDict[name]:
                 outputDict[name]['Position']=[]
-            print "\n\ncurrent name=", name
-            print 'found position =', newlist
+            print "\n\ncurrent name=", name, '; at ', annotation_dict['person_name'][ind]
+            print 'found position =', newlist, '; at ', anchor
+
             outputDict[name]['Position'].append((anchor,newlist))
 
         # print "annotation_dict", annotation_dict.keys()

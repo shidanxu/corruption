@@ -13,7 +13,7 @@ def bosonNer(text, sensitivity):
     return nlp.ner(text, sensitivity)
 
 def recognize_names(original_text):
-    result = bosonNer(original_text, 3)
+    result = bosonNer(original_text, 2)
     print "result from boson:"
     string = ' '.join(result[0]['word'])
     print "segmentation:", string
