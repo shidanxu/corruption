@@ -509,6 +509,10 @@ def test_baselineRecognizer(path, filename):
             if persons[ind] in good_man_list:
                 new_annotation_dict['person_name'][ii]=None
 
+        for ii,x in enumerate(new_annotation_dict['person_name']):
+            if x is not None:
+                print persons[persons_ind[ii]]
+        print '\n\n'
         # new_annotation_dict['person_name'] = filter(None, new_annotation_dict['person_name'])
 
         # print "annotation_dict", annotation_dict.keys()
@@ -538,6 +542,8 @@ def test_baselineRecognizer(path, filename):
                     exit(0)
                     # raw_input()
                 name = persons[persons_ind[ind]]
+                print 'ER = ', newlist
+                print 'name=', name
                 # print "\n\ncurrent outputDict[name]=", outputDict[name]
                 if tag not in outputDict[name]:
                     # print '\n\ntag=', tag
