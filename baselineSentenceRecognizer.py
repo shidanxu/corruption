@@ -204,18 +204,18 @@ def annotate_paragraph(paragraph):
             # print "IM HERE!!!"
             old_pos = anchor[0]
             for item in tagged_items:
-                # print "DEALING WITH ITEM: ", item
+                print "DEALING WITH ITEM: ", item
                 entity_word = item[0]
                 tag = item[1]
 
-                # print "ENTITY WORD: ", entity_word, "TAG: ", tag
+                print "ENTITY WORD: ", entity_word, "TAG: ", tag
                 tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
 
-                # print "TAG_ANCHOR: ", tag_anchor
+                print "TAG_ANCHOR: ", tag_anchor
                 if tag_anchor[1]!=-1:
                     annotation_dict[tag].append(tag_anchor)
                     old_pos = tag_anchor[1]
-            # print "I FINISHED!!"
+            print "I FINISHED!!"
 
     ner_results = recognize_names(paragraph)
     name_entities = ner_results['entity']
@@ -329,7 +329,7 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
             current_sentence = word_list[ii[0]:ii[1]]
 
         current_sentence_str = ''.join(current_sentence)
-        # print 'current_sentence: ', current_sentence_str
+        print 'current_sentence: ', current_sentence_str
         if entity_word in current_sentence_str:
             # do something;
 
@@ -394,7 +394,7 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
             continue
     if start<0:
         print "\n\n\nentity_word %s not recovered!\n\n\n\n" % entity_word
-        # exit(0)
+        exit(0)
         return [start, stop]
     # print '\nrecovered the entity_word at ', start, stop, ' word=', ''.join(word_list[start:stop]), '\n'
 
