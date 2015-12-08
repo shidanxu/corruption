@@ -477,7 +477,12 @@ def test_baselineRecognizer(path, filename):
                 ind += 1
             else:
                 persons_ind[ii] = persons.index(name)
+            print 'persons_ind[%d]=%d, name is %s' % (ii, persons_ind[ii], persons[persons_ind[ii]])
 
+        print 'persons:'
+        for name in persons:
+            print name
+        # exit(0)
         new_annotation_dict = copy.deepcopy(annotation_dict)
 
         anchors = annotation_dict['Position']
@@ -507,13 +512,14 @@ def test_baselineRecognizer(path, filename):
         good_man_list = set(good_man_list)
         for x in good_man_list:
             print x
-        raw_input()
+        # raw_input()
         for ii, ind in enumerate(persons_ind):
-            # print '\n\nnow person is ', persons[persons_ind[ind]]
-            if persons[persons_ind[ind]] in good_man_list:
+            # print '\n\nnow person is ', persons[ind]
+            if persons[ind] in good_man_list:
                 # print 'this person is a goodman.'
                 new_annotation_dict['person_name'][ii]=None
 
+        # exit(0)
 
         for ii,x in enumerate(new_annotation_dict['person_name']):
             if x is not None:
@@ -523,6 +529,8 @@ def test_baselineRecognizer(path, filename):
 
         # print "annotation_dict", annotation_dict.keys()
         for tag in EVAL_TAGS:
+            if tag=="Position":
+                continue
             anchors = annotation_dict[tag]
             # print "tag=", tag
             # print "anchors=", anchors
@@ -558,6 +566,10 @@ def test_baselineRecognizer(path, filename):
                 outputDict[name][tag].append((anchor,newlist))
                 # print newlist
                 # print word_list[anchor[0]:anchor[1]]
+
+    for name in good_man_list:
+        del outputDict[name]
+
     return outputDict
 
 def output(outputDict, filename):
