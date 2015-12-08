@@ -437,9 +437,11 @@ def test_baselineRecognizer1(path):
                                 print line, labelSentence(line)
 
 def calculate_dist(anchor, list_anchors):
-    scores = [0]*len(list_anchors)
+    scores = [10000]*len(list_anchors)
     mean_pos0 = sum(anchor)/2.0
     for ii, person_anchor in enumerate(list_anchors):
+        if person_anchor is None:
+            continue
         mean_pos = sum(person_anchor)/2.0
         score = (mean_pos-mean_pos0)*(mean_pos-mean_pos0)
         scores[ii] = score
@@ -479,6 +481,7 @@ def test_baselineRecognizer(path, filename):
         new_annotation_dict = copy.deepcopy(annotation_dict)
 
         anchors = annotation_dict['Position']
+        good_man_list = []
         for anchor in anchors:
             newlist = []
             for x in word_list[anchor[0]:anchor[1]]:
@@ -495,14 +498,18 @@ def test_baselineRecognizer(path, filename):
                 outputDict[name]['Position']=[]
                 if re.search(GOOD_REGEX, newlist):
                     print 'found a good man: ', newlist
-                    new_annotation_dict['person_name'][ind]=None
+                    good_man_list.append(newlist)
             print "current name=", name, '; at ', annotation_dict['person_name'][ind]
             print 'found position =', newlist, '; at ', anchor, '\n\n'
 
             outputDict[name]['Position'].append((anchor,newlist))
 
-        # new_annotation_dict['person_name'] = {k:v for (k,v) in new_annotation_dict['person_name'].iteritems() if v != None}
-        new_annotation_dict['person_name'] = filter(None, new_annotation_dict['person_name'])
+        good_man_list = set(good_man_list)
+        for ii, ind in enumerate(persons_ind):
+            if persons[ind] in good_man_list:
+                new_annotation_dict['person_name'][ii]=None
+
+        # new_annotation_dict['person_name'] = filter(None, new_annotation_dict['person_name'])
 
         # print "annotation_dict", annotation_dict.keys()
         for tag in EVAL_TAGS:
