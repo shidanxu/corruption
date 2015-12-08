@@ -7,6 +7,7 @@ import re
 from parse_text import recognize_names
 from tags import TAGS, EVAL_TAGS
 import json
+import copy
 
 # label the sentence with 1 of the following 3
 # 1. crime
@@ -475,7 +476,7 @@ def test_baselineRecognizer(path, filename):
             else:
                 persons_ind[ii] = persons.index(name)
 
-        new_annotation_dict = annotation_dict
+        new_annotation_dict = copy.deepcopy(annotation_dict)
 
         anchors = annotation_dict['Position']
         for anchor in anchors:
@@ -494,11 +495,14 @@ def test_baselineRecognizer(path, filename):
                 outputDict[name]['Position']=[]
                 if re.search(GOOD_REGEX, newlist):
                     print 'found a good man: ', newlist
-                    del new_annotation_dict['person_name'][ind]
-            print "\n\ncurrent name=", name, '; at ', annotation_dict['person_name'][ind]
-            print 'found position =', newlist, '; at ', anchor
+                    new_annotation_dict['person_name'][ind]=None
+            print "current name=", name, '; at ', annotation_dict['person_name'][ind]
+            print 'found position =', newlist, '; at ', anchor, '\n\n'
 
             outputDict[name]['Position'].append((anchor,newlist))
+
+        # new_annotation_dict['person_name'] = {k:v for (k,v) in new_annotation_dict['person_name'].iteritems() if v != None}
+        new_annotation_dict['person_name'] = filter(None, new_annotation_dict['person_name'])
 
         # print "annotation_dict", annotation_dict.keys()
         for tag in EVAL_TAGS:
@@ -518,7 +522,14 @@ def test_baselineRecognizer(path, filename):
                     newlist.append(x)
                     # print x
                 newlist = ''.join(newlist)
-                ind = calculate_dist(anchor, new_annotation_dict['person_name'])
+                try:
+                    ind = calculate_dist(anchor, new_annotation_dict['person_name'])
+                except Exception, e:
+                    print e
+                    print 'new_annotation_dict: ', new_annotation_dict['person_name']
+                    print 'original annotation_dict: ', annotation_dict['person_name']
+                    exit(0)
+                    # raw_input()
                 name = persons[persons_ind[ind]]
                 # print "\n\ncurrent outputDict[name]=", outputDict[name]
                 if tag not in outputDict[name]:
