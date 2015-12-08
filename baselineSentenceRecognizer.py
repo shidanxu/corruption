@@ -27,7 +27,7 @@ amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','ut
 
 time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下午|上午|傍晚|凌晨][ ]?(\d+[ ]?时)?([ ]?[\d+]分)?([ ]?[\d+]秒)?[左右]?)?', 'utf-8')
 
-good_position_regex_string = unicode('记者|法官|检察长|纪委书记|法院院长|通讯员|','utf-8')
+good_position_regex_string = unicode('记者|法官|检察长|纪委书记|法院院长|通讯员','utf-8')
 neutral_position_regex_string = unicode('', 'utf-8')
 bad_position_regex_string = unicode('特派员|办事员|收款员|会计|出纳|', 'utf-8')
 
@@ -38,7 +38,7 @@ bad_position_regex_string += unicode('|秘书长|秘书|部长|常委|预算员|
 
 # position regex includes good and bad
 
-position_regex_string = good_position_regex_string + bad_position_regex_string
+position_regex_string = good_position_regex_string + "|" +  bad_position_regex_string
 
 PUNISH_REGEX = re.compile(punish_regex_string, flags = re.UNICODE)
 CRIME_REGEX = re.compile(crime_regex_string, flags = re.UNICODE)
