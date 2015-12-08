@@ -33,7 +33,7 @@ bad_position_regex_string = unicode('特派员|办事员|收款员|', 'utf-8')
 
 bad_position_regex_string += unicode('([副]?(局长|书记|党支部书记|市委书记|市长|县委书记|县长','utf-8')
 bad_position_regex_string += unicode('|股长|地委书记|厅长|省长|省委书记|区长|区委书记','utf-8')
-bad_position_regex_string += unicode('|秘书长|秘书|部长|常委|预算员|社长|科长|部长|总经理|董事长|主任|处长))','utf-8')
+bad_position_regex_string += unicode('|秘书长|秘书|部长|常委|预算员|社长|科长|部长|经理|总经理|董事长|主任|处长))','utf-8')
 
 
 
