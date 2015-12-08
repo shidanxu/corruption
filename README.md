@@ -33,3 +33,12 @@ recall, precision, f1 compared to annotated.
 
 3. Record 6.864 lecture SHIDAN
 
+
+
+1. 并列关系
+2. distance分数在同一句里
+3. output合并set	Shidan
+4. evaluation模糊	Shidan
+5. evaluation score distribution visualization	Shidan
+6. 整理extraction contribution
+7. summarize problems
