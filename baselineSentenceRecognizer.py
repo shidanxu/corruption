@@ -68,33 +68,47 @@ def labelSentence(sentence):
 
     if re.search(CRIME_REGEX, sentence):
         found = re.search(CRIME_REGEX, sentence)
-        # print "Crime found: ", found.group()
-        crimeScore += len(found.group())
-        word_tag_monotone.append((found.group(), found.span(), "Crime"))
+        allfound = re.finditer(CRIME_REGEX, sentence)
+        for found in allfound:
+            print "Crime found: ", found.group()
+            crimeScore += len(found.group())
+            word_tag_monotone.append((found.group(), found.span(), "Crime"))
 
     if re.search(PUNISH_REGEX, sentence):
         found = re.search(PUNISH_REGEX, sentence)
-        # print "Punish found: ", found.group()
-        punishmentScore += len(found.group())
-        word_tag_monotone.append((found.group(), found.span(), "Punish"))
+        allfound = re.finditer(PUNISH_REGEX, sentence)
+
+        for found in allfound:
+            print "Punish found: ", found.group()
+            punishmentScore += len(found.group())
+            word_tag_monotone.append((found.group(), found.span(), "Punish"))
 
     if re.search(AMOUNT_REGEX, sentence):
         found = re.search(AMOUNT_REGEX, sentence)
-        # print "Amount found: ", found.group()
-        amountScore += len(found.group())
-        word_tag_monotone.append((found.group(), found.span(), "Money_Person"))
+        allfound = re.finditer(AMOUNT_REGEX, sentence)
+
+        for found in allfound:
+            print "Amount found: ", found.group()
+            amountScore += len(found.group())
+            word_tag_monotone.append((found.group(), found.span(), "Money_Person"))
 
     if re.search(TIME_REGEX, sentence):
         found = re.search(TIME_REGEX, sentence)
-        # print "Time found: ", found.group()
-        timeScore += len(found.group())
-        word_tag_monotone.append((found.group(), found.span(), "Time"))
+        allfound = re.finditer(TIME_REGEX, sentence)
+
+        for found in allfound:
+            print "Time found: ", found.group()
+            timeScore += len(found.group())
+            word_tag_monotone.append((found.group(), found.span(), "Time"))
 
     if re.search(POSITION_REGEX, sentence):
         found = re.search(POSITION_REGEX, sentence)
-        print "Position found: ", found.group()
-        positionScore += len(found.group())
-        word_tag_monotone.append((found.group(), found.span(), "Position"))
+        allfound = re.finditer(POSITION_REGEX, sentence)
+
+        for found in allfound:
+            print "Position found: ", found.group()
+            positionScore += len(found.group())
+            word_tag_monotone.append((found.group(), found.span(), "Position"))
 
 
     tagScoreDict = {'Crime': crimeScore, 'Punish': punishmentScore, 'Money_Person': amountScore, 'Time': timeScore, 'Position': positionScore, 'unknown': unknownScore}
@@ -104,11 +118,12 @@ def labelSentence(sentence):
 
     word_tag_monotone = sorted(word_tag_monotone, key = lambda x: x[1][0])
 
-    for item in word_tag_monotone:
-        print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
+    # print word_tag_monotone
 
     output_monotone = [[item[0], item[2]] for item in word_tag_monotone]
     # print output_monotone
+    for item in word_tag_monotone:
+        print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
 
     # print crimes, punishes, amounts
     # return max(tagScoreDict, key=tagScoreDict.get)
@@ -398,7 +413,8 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
             continue
     if start<0:
         print "\n\n\nentity_word %s not recovered!\n\n\n\n" % entity_word
-        exit(0)
+        # exit(0)
+        # raw_input()
         return [start, stop]
     # print '\nrecovered the entity_word at ', start, stop, ' word=', ''.join(word_list[start:stop]), '\n'
 
@@ -576,8 +592,4 @@ if __name__ == '__main__':
     #             except Exception, e:
     #                 pass
     #             print word
-
-
-
-
 
