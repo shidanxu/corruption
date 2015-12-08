@@ -22,7 +22,11 @@ punish_regex_string += unicode('|免去|开除|撤销','utf-8')
 crime_regex_string = unicode('诈骗罪|贪污受贿|经济犯罪|挪用公款|盗窃|贿赂|贪污|行贿|销赃|受贿|假捐赠|倒卖|走私|索贿|报复陷害','utf-8')
 crime_regex_string += unicode('|失职|渎职|以权谋私|嫖娼','utf-8')
 
-amount_regex_string = unicode('((\d+|[一二三四五六七八九十]+)[\.]?(\d+|[一二三四五六七八九十]+)?[ ]?[多余]?[ ]?[万千个十百亿]*[多余]?[美|日|欧|港]?元)','utf-8')
+amount_regex_string = unicode('(美金|港币|人民币|日元|欧元)?[ ]?((\d+|[一二三四五六七八九十]+)[\.]?(\d+|[一二三四五六七八九十]+)?[ ]?[多余]?[ ]?[万千个十百亿]*[多余]?[ ]?[美|日|欧|港]?元)','utf-8')
+amount_regex_string += unicode('|(美金|港币|[美日欧]!元)[数]?[万千个十百亿]+[元]?','utf-8')
+amount_regex_string += unicode('|(美金|港币|[美日欧]!元)((\d+|[一二三四五六七八九十]+)[万千个十百亿]+)+[元]?','utf-8')
+
+
 amount_regex_string += unicode('|共计折合|茅台酒','utf-8')
 amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','utf-8')
 
