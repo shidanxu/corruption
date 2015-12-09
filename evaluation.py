@@ -91,7 +91,7 @@ def maxScore(element, compareSet, baseline):
     # Remove spaces for comparison
     element = "".join(element.split())
     lengthLongest = len(element)
-    print "element is:", element
+    # print "element is:", element
     if len(element) == 0:
         return 0
     for item in compareSet:
@@ -120,7 +120,7 @@ def maxScoreEntire(element, setOfSet):
     element = "".join(element.split())
     lengthLongest = len(element)
 
-    print "element is:", element
+    # print "element is:", element
     if len(element) == 0:
         return 0
 
@@ -209,7 +209,7 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
                         # 看机器总共几行
                         total = len(machineDict[person][item])
                         hit = 0.0
-                        # 看机器的每一行有多少用
+                        # 看机器的每一行 是不是真的阳性
                         for element in machineDict[person][item]:
                             hit += maxScore(element, humanDict[person][item], 1)
 
@@ -218,6 +218,7 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
     precisionScore = totalScore / possibleScore
 
 
+    # 宽泛的recall
     totalScore = 0.0
     possibleScore = 0.0
     for person in humanDict:
@@ -237,8 +238,27 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
     infoExtractionRecall = totalScore / possibleScore
 
+    # 宽泛的precision
+    totalScore = 0.0
+    possibleScore = 0.0
+    for person in machineDict:
+        # 1 extra pt for finding the person
+        possibleScore += len(machineDict[person]) + 1
 
-    return recallScore, precisionScore, infoExtractionRecall
+        if person in humanDict:
+            totalScore += 1
+        
+        for item in machineDict[person]:
+            total = len(machineDict[person][item])
+            hit = 0.0
+            for element in machineDict[person][item]:
+                hit += maxScoreEntire(element, humanDict)
+            totalScore += hit / total
+            # print "add this many pts:", hit, total, hit/total
+
+    infoExtractionPrecision = totalScore / possibleScore
+
+    return recallScore, precisionScore, infoExtractionRecall, infoExtractionPrecision
 
 if __name__ == '__main__':
     foldername = "corruption annotated data/"
@@ -258,16 +278,28 @@ if __name__ == '__main__':
 
     # Prints scores list, average precision, avg recall
     print scores
-    print "AVG Recall: ", sum([pair[0] for pair in scores]) / len(scores)
-    print "AVG Precision: ", sum([pair[1] for pair in scores]) / len(scores)
-    print "AVG Extraction Recall: ", sum([pair[2] for pair in scores]) / len(scores)
-    
-    # Plotting
-    xvalues = [pair[0] for pair in scores]
-    yvalues = [pair[1] for pair in scores]
+    strict_recall = sum([pair[0] for pair in scores]) / len(scores)
+    strict_precision = sum([pair[1] for pair in scores]) / len(scores)
+    extraction_recall = sum([pair[2] for pair in scores]) / len(scores)
+    extraction_precision = sum([pair[3] for pair in scores]) / len(scores)
+    print "AVG Recall: ", strict_recall
+    print "AVG Precision: ", strict_precision
+    print "AVG Extraction Recall: ", extraction_recall
+    print "AVG Extraction Precision: ", extraction_precision
+    print "Normalized Precision: ", strict_precision / extraction_precision
+    print "Normalized Recall: ", strict_recall / extraction_recall
 
+    # Plotting
+    xvalues = [pair[0] / pair[2] for pair in scores]
+    yvalues = [pair[1] / pair[3] for pair in scores]
+
+    fig, ax = plt.subplots()
     plt.plot(xvalues, yvalues, 'ro')
-    plt.xlabel('Recall')
-    plt.ylabel('Precision')
+    plt.xlabel('Recall Normalized')
+    plt.ylabel('Precision Normalized')
+
+    plt.plot([0, 1], [0, 1])
+    plt.plot([0, 1], [1,1], 'b--')
+
     plt.show()
     
