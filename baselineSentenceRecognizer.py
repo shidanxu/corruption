@@ -604,13 +604,13 @@ def output(outputDict, filename):
 if __name__ == '__main__':
     path = "./corruption annotated data/"
 
-
-    count = 100
+    # count = 50
+    count = 0
     for filename in os.listdir(path):
         # filename = "L_R_1990_3438.txt"
         print 'filename=', filename
-        if count == 0:
-            break
+        # if count == 0:
+            # break
 
         if filename.endswith(".txt"):
             outputfilename = filename[:-4] + ".ann.machine"
@@ -622,9 +622,12 @@ if __name__ == '__main__':
             # print outputDict
             print "\n\n\n"
             output(outputDict, path+outputfilename)
-            count -= 1
+            # count -= 1
+            count += 1
+
         # raw_input()
 
+    print 'total # of articles: ', count
 
     # with open(path + filename, 'r') as f:
     #     paragraph = f.read()
