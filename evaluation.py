@@ -154,13 +154,15 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
     # 每一个UROP找到的人 总分是行数
     for person in humanDict:
-        possibleScore += len(humanDict[person])
+        # 1 Extra point for finding the person
+        possibleScore += len(humanDict[person]) + 1
         # 如果这个人机器也找到了
         if person in machineDict:
             # 如果所有数据相等 直接给分
             if machineDict[person] == humanDict[person]:
-                totalScore += len(humanDict[person])
+                totalScore += len(humanDict[person]) + 1
             else:
+                totalScore += 1
                 # 每个UROP找到的entry
                 for item in humanDict[person]:
                     # 如果机器也找到了
@@ -185,13 +187,14 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
     # 对每个机器找到的人
     for person in machineDict:
-        possibleScore += len(machineDict[person])
+        possibleScore += len(machineDict[person]) + 1
         # 如果人类也找到了这个人
         if person in humanDict:
             if machineDict[person] == humanDict[person]:
-                totalScore += len(humanDict[person])
+                totalScore += len(humanDict[person]) + 1
             else:
                 # 对于机器找到的所有关于这个人的信息
+                totalScore += 1
                 for item in machineDict[person]:
                     # 如果人类也有
                     if item in humanDict[person]:
@@ -210,7 +213,11 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
     totalScore = 0.0
     possibleScore = 0.0
     for person in humanDict:
-        possibleScore += len(humanDict[person])
+        # 1 extra pt for finding the person
+        possibleScore += len(humanDict[person]) + 1
+
+        if person in machineDict:
+            totalScore += 1
         
         for item in humanDict[person]:
             total = len(humanDict[person][item])
