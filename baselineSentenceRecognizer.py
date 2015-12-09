@@ -605,7 +605,7 @@ if __name__ == '__main__':
     path = "./corruption annotated data/"
 
 
-    count = 50
+    count = 100
     for filename in os.listdir(path):
         # filename = "L_R_1990_3438.txt"
         print 'filename=', filename
