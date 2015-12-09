@@ -8,8 +8,9 @@ from bosonnlp import BosonNLP
 from sets import Set
 
 
+token1 = "O8M_j1Nd.4200.wIlhsL46w9-C"
 def bosonNer(text, sensitivity):
-    nlp = BosonNLP('O8M_j1Nd.4200.wIlhsL46w9-C')
+    nlp = BosonNLP('qJWJc-f3.4334.MamzfHZ-9wUL')
     return nlp.ner(text, sensitivity)
 
 def recognize_names(original_text):
