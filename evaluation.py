@@ -5,6 +5,7 @@ from sets import Set
 import difflib
 import os
 import json
+import matplotlib.pyplot as plt
 
 # This method returns the tags in a file in the format
 # dictionary['Shidan'] = {'Crime': '贪污', 'Punish': '无期徒刑'}
@@ -90,6 +91,9 @@ def maxScore(element, compareSet, baseline):
     # Remove spaces for comparison
     element = "".join(element.split())
     lengthLongest = len(element)
+    print "element is:", element
+    if len(element) == 0:
+        return 0
     for item in compareSet:
         # Remove spaces for comparison
         item = "".join(item.split())
@@ -115,6 +119,10 @@ def maxScoreEntire(element, setOfSet):
     # Clean up string
     element = "".join(element.split())
     lengthLongest = len(element)
+
+    print "element is:", element
+    if len(element) == 0:
+        return 0
 
     for dictionary in setOfSet:
         for key, value in setOfSet[dictionary].iteritems():
@@ -253,4 +261,13 @@ if __name__ == '__main__':
     print "AVG Recall: ", sum([pair[0] for pair in scores]) / len(scores)
     print "AVG Precision: ", sum([pair[1] for pair in scores]) / len(scores)
     print "AVG Extraction Recall: ", sum([pair[2] for pair in scores]) / len(scores)
-    # print(evaluate(file1, file2))
+    
+    # Plotting
+    xvalues = [pair[0] for pair in scores]
+    yvalues = [pair[1] for pair in scores]
+
+    plt.plot(xvalues, yvalues, 'ro')
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.show()
+    
