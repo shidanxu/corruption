@@ -42,3 +42,7 @@ recall, precision, f1 compared to annotated.
 5. evaluation score distribution visualization	Shidan
 6. 整理extraction contribution
 7. summarize problems
+
+
+Bad annotations
+2004 9286
