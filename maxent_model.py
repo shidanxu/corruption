@@ -196,45 +196,17 @@ class MyTrainer(object):
 
         return time_anchors, all_tags
 
-    def predict_tag(self, time_anchor, word_list):
+    def predict_tag(self, time_anchor):
+        features_disc = self.gen_feature_disc(time_anchor)
+        features_crime = self.gen_feature_crime(time_anchor)
+
+        return self.mylr_disc.predict(features_disc), self.mylr_crime.predict(features_crime)
+
+
+    def analyse_file(self, word_list, sentences, sentences_anchor):
         self.myrecognizer.word_list = word_list
-        self.myrecognizer.time_anchors =
-        features = self.gen_feature2()
-        return self.mylr.predict(features)
-
-    def test2(self):
-        pass
-
-    def run2(self):
-        identest, list_tokenstest = self.read_tagfile(self.test_file)
-        for ii, sentence in enumerate(list_tokenstest):
-            splitted_tokens = self.split_tokens(sentence)
-            l = len(splitted_tokens)
-            # f.write(identest[ii])
-            print identest[ii][:-1]
-            tagged_sentence = ''
-            for kk, pair in enumerate(splitted_tokens):
-                splitted_pair = self.split_pair(pair)
-                word=splitted_pair[0]
-                # tags[kk]=splitted_pair[1]
-                if kk==0:
-                    # f1 = self.feature1(word)
-                    # f2 = self.feature2(word)
-                    # f3 = self.feature3(word)
-                    # feature_vector = [f1, f2, f3, 0, 0]
-                    feature_vector = [0, 0, 0]
-                    new_tag = self.mylr.predict(feature_vector)[0]
-                else:
-                    new_tag = self.greedy2(word1, word, tag1)[1]
-                    # print "new_tag=", new_tag
-                word1 = word
-                tag1 = new_tag
-                if new_tag=="GENE":
-                    new_tag = "GENE1"
-                tagged_sentence += word + "_" + new_tag+" "
-            print tagged_sentence
-            # if ii>4:
-            #     break
+        self.myrecognizer.sentences = sentences
+        self.myrecognizer.sentences_anchor = sentences_anchor
 
 
 def main():
