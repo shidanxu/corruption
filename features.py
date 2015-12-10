@@ -113,3 +113,39 @@ def findAllFiles(directory = "./corruption annotated data/"):
                 files.append((filename[:-4]+".txt", filename))
     print files
     return files
+
+# Returns the found tag in annotation file
+def tagTime(year, time_anchor, annotation_file, fields = ['Year_Disc', 'Year_Crime']):
+    # First process the annotaiton file
+    annotated_times = []
+    with open(annotation_file, 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            if line.strip():
+                tagType, value = "", ""
+                
+                try:
+                    tag, tagType, value = line.split("\t")
+                    tagType = tagType.split(" ")[0]
+                    tagIndex, tagType = int(tagType[:1]), tagType[1:]
+                    print "tagIndex: ", tagIndex
+                    if tagType in fields:
+                        annotated_times.append((tagIndex, tagType, value))
+                except Exception, e:
+                    print e
+                    # tagType, value = line.split("\t")
+                    # tagType = tagType.split(" ")[0]
+                    # tagIndex, tagType = int(tagType[:1]), tagType[1:]
+
+    print annotated_times
+
+    # Only keep current year
+    annotated_times = [(tagIndex, tagType, value, abs(tagIndex[0] - time_anchor[0])) if value == year for (tagIndex, tagType, value) in annotation_times]
+
+    if annotation_times == []:
+        print "Found tag: None ", year
+        return "None"
+    else:
+        tagReturn = min(annotation_times, key=lambda x: x[-1])[2]
+        print "Found tag: ", tagReturn
+        return tagReturn
