@@ -143,7 +143,7 @@ class MyTrainer(object):
                 self.myrecognizer.sentences_anchor = sentences_anchor
 
 # get the time_anchors:
-                time_anchors, all_tags = self.get_time_anchors(word_list, sentences, sentences_anchor)
+                time_anchors, all_tags = self.get_time_anchors_train(word_list, sentences, sentences_anchor)
                 self.myrecognizer.time_anchors = time_anchors
 # append the feature vectors and tags to self.**
                 for ii, time_anchor in enumerate(time_anchors):
@@ -166,7 +166,7 @@ class MyTrainer(object):
         self.mylr_crime.fit(self.feature_vector_crime, self.all_tags_crime)
         self.mylr_disc.fit(self.feature_vector_disc, self.all_tags_disc)
 
-    def get_time_anchors(self, word_list, sentences, sentences_anchor):
+    def get_time_anchors_train(self, word_list, sentences, sentences_anchor):
         time_anchors = []
         all_tags = []
         for ii, sentence in enumerate(sentences):
@@ -196,6 +196,33 @@ class MyTrainer(object):
 
         return time_anchors, all_tags
 
+    def get_time_anchors_test(self, word_list, sentences, sentences_anchor):
+
+        time_anchors = []
+        for ii, sentence in enumerate(sentences):
+            anchor = sentence_anchor[ii]
+            tagScoreDict, tagged_items = labelTime(sentence)
+            if max(tagScoreDict, key = tagScoreDict.get) == 'unknown':
+                continue
+            else:
+                # print "IM HERE!!!"
+                old_pos = anchor[0]
+                for item in tagged_items:
+                    # print "DEALING WITH ITEM: ", item
+                    entity_word = item[0]
+                    tag = item[1]
+
+                    # print "ENTITY WORD: ", entity_word, "TAG: ", tag
+                    tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
+
+                    # print "TAG_ANCHOR: ", tag_anchor
+                    if tag_anchor[1]!=-1:
+                        time_anchors.append(tag_anchor)
+                        old_pos = tag_anchor[1]
+                # print "I FINISHED!!"
+
+        return time_anchors
+
     def predict_tag(self, time_anchor):
         features_disc = self.gen_feature_disc(time_anchor)
         features_crime = self.gen_feature_crime(time_anchor)
@@ -203,39 +230,17 @@ class MyTrainer(object):
         return self.mylr_disc.predict(features_disc), self.mylr_crime.predict(features_crime)
 
 
-    def analyse_file(self, word_list, sentences, sentences_anchor):
+    def analyse_time(self, word_list, sentences, sentences_anchor):
         self.myrecognizer.word_list = word_list
-        self.myrecognizer.sentences = sentences
         self.myrecognizer.sentences_anchor = sentences_anchor
+        time_anchors = self.get_time_anchors_test(word_list, sentences, sentences_anchor)
+        self.myrecognizer.time_anchors = time_anchors
+        tags = []
+        for time_anchor in time_anchors:
+            tag1, tag2 = self.predict_tag(time_anchor)
+            if tag1=="None":
+                tags.append((time_anchor,tag2))
+            else:
+                tags.append((time_anchor,tag1))
+        return tags
 
-
-def main():
-    n=0 # the length of my memory
-    myrecognizer = MyRecognizer()
-
-    training_file = sys.argv[1]
-    test_file = sys.argv[2]
-    mode = sys.argv[3]
-
-    myrecognizer.mode = mode
-    myrecognizer.test_file = test_file
-    if mode!="1":
-        myrecognizer.n_mem = 1
-        myrecognizer.n_features = 3
-    else:
-        myrecognizer.n_mem = 0
-        myrecognizer.n_features = 3
-    myrecognizer.train(training_file)
-    # print myrecognizer.mylr.coef_
-    myrecognizer.train_dev()
-    myrecognizer.train_train()
-    if mode=="1":
-        myrecognizer.run1()
-    if mode=="2":
-        myrecognizer.run2()
-        # myrecognizer.test2()
-    if mode=="3":
-        myrecognizer.run2()
-
-if __name__ == '__main__':
-    main()
