@@ -1,7 +1,9 @@
 import dateparser
 
-caughtKeywords = [unicode('逮捕', 'utf-8'), ]
-reportKeywords = [unicode('举报', 'utf-8'), ]
+caughtKeywords = ['逮捕', '破获', '捉拿归案', '反映']
+caughtKeywords = [unicode(item, 'utf-8') for item in caughtKeywords]
+reportKeywords = ['举报', '揭露', '报案', '告发', '上访', '揭发', '状告', '申冤']
+reportKeywords = [unicode(item, 'utf-8') for item in reportKeywords]
 
 crime_regex_string = unicode('诈骗罪|贪污受贿|经济犯罪|挪用公款|盗窃|贿赂|贪污|行贿|销赃|受贿|假捐赠|倒卖|走私|索贿|报复陷害','utf-8')
 crime_regex_string += unicode('|失职|渎职|以权谋私|嫖娼','utf-8')
