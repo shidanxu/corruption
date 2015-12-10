@@ -101,63 +101,57 @@ class MyTrainer(object):
         self.mylr_disc = linear_model.LogisticRegression()
         self.feature_vector_crime = []
         self.feature_vector_disc = []
+        self.all_tags_crime = []
+        self.all_tags_disc = []
+        self.myrecognizer = MyRecognizer()
 
     def gen_feature_disc(self, time_anchor):
         feature_vector = npy.zeros(self.n_features_disc)
 
-        for ii, feature in enumerate(myrecognizer.disc_features):
-            feature_vector[ii]=feature(time_anchor)
+        feature_vector[0]=self.myrecognizer.feature1(time_anchor)
+        feature_vector[1]=self.myrecognizer.feature2(time_anchor)
+        feature_vector[2]=self.myrecognizer.feature3(time_anchor)
+        feature_vector[3]=self.myrecognizer.feature4(time_anchor)
+        feature_vector[4]=self.myrecognizer.feature5(time_anchor)
+        feature_vector[5]=self.myrecognizer.feature6(time_anchor)
+        feature_vector[6]=self.myrecognizer.feature7(time_anchor)
+
+        return feature_vector
 
     def gen_feature_crime(self, time_anchor):
         feature_vector = npy.zeros(self.n_features_crime)
 
-        for ii, feature in enumerate(myrecognizer.crime_features):
-            feature_vector[ii]=feature(time_anchor)
+        feature_vector[0]=self.myrecognizer.feature1(time_anchor)
+        feature_vector[1]=self.myrecognizer.feature2(time_anchor)
+        feature_vector[2]=self.myrecognizer.feature3(time_anchor)
+        feature_vector[3]=self.myrecognizer.feature4(time_anchor)
+        feature_vector[4]=self.myrecognizer.feature5(time_anchor)
+        feature_vector[5]=self.myrecognizer.feature6(time_anchor)
+        feature_vector[6]=self.myrecognizer.feature7(time_anchor)
+
+        return feature_vector
 
     def train(self, filedir):
-        for tmpfile in filedir:
-            with open(path + filename, 'r') as f:
+        path = './corruption annotated data/'
+        for ftxt, fann in findAllFiles():
+            with open(path + ftxt, 'r') as f:
                 paragraph = f.read()
                 paragraph = unicode(paragraph, 'utf-8')
                 # for paragraph in paragraphs:
                 word_list, sentences, sentences_anchor = sentence_index(paragraph)
+                self.myrecognizer.word_list = word_list
+                self.myrecognizer.sentences_anchor = sentences_anchor
+
 # get the time_anchors:
-                for ii, sentence in enumerate(sentences):
-                    # print ii, len(sentences)
-                    # print 'sentence=', sentence
-                    # print 'encoded:', [sentence]
-                    anchor = sentence_anchor[ii]
-
-                    # tag = labelSentence(sentence)
-                    tagScoreDict, tagged_items = labelTime(sentence)
-                    # print "tagged_items:", tagged_items
-                    # print "sentence:", sentence
-                    if max(tagScoreDict, key = tagScoreDict.get) == 'unknown':
-                        continue
-                    else:
-                        # print "IM HERE!!!"
-                        old_pos = anchor[0]
-                        for item in tagged_items:
-                            # print "DEALING WITH ITEM: ", item
-                            entity_word = item[0]
-                            tag = item[1]
-
-                            # print "ENTITY WORD: ", entity_word, "TAG: ", tag
-                            tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
-
-                            # print "TAG_ANCHOR: ", tag_anchor
-                            if tag_anchor[1]!=-1:
-                                time_anchors.append(tag_anchor)
-                                old_pos = tag_anchor[1]
-                        # print "I FINISHED!!"
-# time_anchors got
-
+                time_anchors, all_tags = self.get_time_anchors(word_list, sentences, sentences_anchor)
+                self.myrecognizer.time_anchors = time_anchors
+# append the feature vectors and tags to self.**
                 for ii, time_anchor in enumerate(time_anchors):
                     tmp_feature_vector_crime = self.gen_feature_crime(time_anchor)
                     tmp_feature_vector_disc = self.gen_feature_disc(time_anchor)
                     self.feature_vector_disc.append(tmp_feature_vector_disc)
                     self.feature_vector_crime.append(tmp_feature_vector_crime)
-                    curr_tag = tags[ii]
+                    curr_tag = all_tags[ii]
                     if curr_tag=="Year_Disc":
                         self.all_tags_disc.append(curr_tag)
                         self.all_tags_crime.append('None')
@@ -167,21 +161,45 @@ class MyTrainer(object):
                     else:
                         self.all_tags_disc.append('None')
                         self.all_tags_crime.append('None')
+
+# now fit
         self.mylr_crime.fit(self.feature_vector_crime, self.all_tags_crime)
         self.mylr_disc.fit(self.feature_vector_disc, self.all_tags_disc)
 
+    def get_time_anchors(self, word_list, sentences, sentences_anchor):
+        time_anchors = []
+        all_tags = []
+        for ii, sentence in enumerate(sentences):
+            anchor = sentence_anchor[ii]
+            tagScoreDict, tagged_items = labelTime(sentence)
+            if max(tagScoreDict, key = tagScoreDict.get) == 'unknown':
+                continue
+            else:
+                # print "IM HERE!!!"
+                old_pos = anchor[0]
+                for item in tagged_items:
+                    # print "DEALING WITH ITEM: ", item
+                    entity_word = item[0]
+                    tag = item[1]
 
-    def train_dev(self):
-        self.train(self.dev_file)
+                    # print "ENTITY WORD: ", entity_word, "TAG: ", tag
+                    tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
 
-    def train_train(self):
-        self.train(self.train_file)
+                    # print "TAG_ANCHOR: ", tag_anchor
+                    if tag_anchor[1]!=-1:
+                        time_anchors.append(tag_anchor)
+                        old_pos = tag_anchor[1]
+                # print "I FINISHED!!"
+                    year = re.match('.*年', entity_word)
+                    tmptag = tagTime(year, tag_anchor, path+fann)
+                    all_tags.append(tmptag)
 
+        return time_anchors, all_tags
 
-        return feature_vector
-
-    def greedy2(self,word1, word2, tag):
-        features = self.gen_feature2(1, 2, [word1, word2],[tag])
+    def predict_tag(self, time_anchor, word_list):
+        self.myrecognizer.word_list = word_list
+        self.myrecognizer.time_anchors =
+        features = self.gen_feature2()
         return self.mylr.predict(features)
 
     def test2(self):
