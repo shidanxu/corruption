@@ -8,6 +8,7 @@ from parse_text import recognize_names
 from tags import TAGS, EVAL_TAGS
 import json
 import copy
+import nltk
 
 # label the sentence with 1 of the following 3
 # 1. crime
@@ -30,7 +31,9 @@ amount_regex_string += unicode('|(英镑|美金|港币|[美日欧]!元)((\d+|[�
 amount_regex_string += unicode('|共计折合|茅台酒','utf-8')
 amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','utf-8')
 
-time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下午|上午|傍晚|凌晨][ ]?(\d+[ ]?时)?([ ]?[\d+]分)?([ ]?[\d+]秒)?[左右]?)?', 'utf-8')
+# time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下午|上午|傍晚|凌晨][ ]?(\d+[ ]?时)?([ ]?[\d+]分)?([ ]?[\d+]秒)?[左右]?)?', 'utf-8')
+time_regex_string = unicode('((\d{4}|[一二三四五六七八九十]{4})[ ]?年[ ]?)', 'utf-8')
+
 
 good_position_regex_string = unicode('记者|副检察长|纪委副书记|法院副院长|法官|检察长|纪委书记|法院院长|通讯员','utf-8')
 neutral_position_regex_string = unicode('', 'utf-8')
@@ -75,7 +78,7 @@ def labelSentence(sentence):
         found = re.search(CRIME_REGEX, sentence)
         allfound = re.finditer(CRIME_REGEX, sentence)
         for found in allfound:
-            print "Crime found: ", found.group()
+            # print "Crime found: ", found.group()
             crimeScore += len(found.group())
             word_tag_monotone.append((found.group(), found.span(), "Crime"))
 
@@ -84,7 +87,7 @@ def labelSentence(sentence):
         allfound = re.finditer(PUNISH_REGEX, sentence)
 
         for found in allfound:
-            print "Punish found: ", found.group()
+            # print "Punish found: ", found.group()
             punishmentScore += len(found.group())
             word_tag_monotone.append((found.group(), found.span(), "Punish"))
 
@@ -93,7 +96,7 @@ def labelSentence(sentence):
         allfound = re.finditer(AMOUNT_REGEX, sentence)
 
         for found in allfound:
-            print "Amount found: ", found.group()
+            # print "Amount found: ", found.group()
             amountScore += len(found.group())
             word_tag_monotone.append((found.group(), found.span(), "Money_Person"))
 
@@ -111,7 +114,7 @@ def labelSentence(sentence):
         allfound = re.finditer(POSITION_REGEX, sentence)
 
         for found in allfound:
-            print "Position found: ", found.group()
+            # print "Position found: ", found.group()
             positionScore += len(found.group())
             word_tag_monotone.append((found.group(), found.span(), "Position"))
 
@@ -128,11 +131,54 @@ def labelSentence(sentence):
     output_monotone = [[item[0], item[2]] for item in word_tag_monotone]
     # print output_monotone
     for item in word_tag_monotone:
-        print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
-
+        # print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
+        pass
     # print crimes, punishes, amounts
     # return max(tagScoreDict, key=tagScoreDict.get)
     return tagScoreDict, output_monotone
+
+def labelTime(sentence):
+    try:
+        sentence = ' '.join(sentence)
+    except Exception, e:
+        pass
+
+    timeScore = 0
+    unknownScore = 0.99
+
+    # print "sentence=", sentence
+
+    word_tag_monotone = []
+
+    
+    if re.search(TIME_REGEX, sentence):
+        found = re.search(TIME_REGEX, sentence)
+        allfound = re.finditer(TIME_REGEX, sentence)
+
+        for found in allfound:
+            print "Time found: ", found.group()
+            timeScore += len(found.group())
+            word_tag_monotone.append((found.group(), found.span(), "Time"))
+
+
+    tagScoreDict = {'Time': timeScore, 'unknown': unknownScore}
+
+    # if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
+    #     print sentence, max(tagScoreDict, key = tagScoreDict.get)
+
+    word_tag_monotone = sorted(word_tag_monotone, key = lambda x: x[1][0])
+
+    # print word_tag_monotone
+
+    output_monotone = [[item[0], item[2]] for item in word_tag_monotone]
+    # print output_monotone
+    for item in word_tag_monotone:
+        # print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
+        pass
+    # print crimes, punishes, amounts
+    # return max(tagScoreDict, key=tagScoreDict.get)
+    return tagScoreDict, output_monotone
+
 
 BIAODIAN = (unicode('。', 'utf-8'), unicode('；', 'utf-8'),unicode('，', 'utf-8'),unicode('：', 'utf-8'),unicode('？', 'utf-8'),)
 
@@ -167,7 +213,7 @@ def sentence_index(paragraph):
     if current_sentence:
         new_sentences.append(current_sentence)
     # print 'new sentence: ', new_sentences
-    # print 'new_sentences = ', '\n'.join(' '.join(sentence) for sentence in new_sentences)
+    print 'new_sentences = ', '\n'.join(' '.join(sentence) for sentence in new_sentences)
 
     word_list = []
     start = 0
@@ -481,11 +527,12 @@ def test_baselineRecognizer(path, filename):
                 ind += 1
             else:
                 persons_ind[ii] = persons.index(name)
-            print 'persons_ind[%d]=%d, name is %s' % (ii, persons_ind[ii], persons[persons_ind[ii]])
+            # print 'persons_ind[%d]=%d, name is %s' % (ii, persons_ind[ii], persons[persons_ind[ii]])
 
-        print 'persons:'
+        # print 'persons:'
         for name in persons:
-            print name
+            # print name
+            pass
         # exit(0)
         new_annotation_dict = copy.deepcopy(annotation_dict)
 
@@ -515,7 +562,8 @@ def test_baselineRecognizer(path, filename):
 
         good_man_list = set(good_man_list)
         for x in good_man_list:
-            print x
+            # print x
+            pass
         # raw_input()
         for ii, ind in enumerate(persons_ind):
             # print '\n\nnow person is ', persons[ind]
@@ -527,8 +575,9 @@ def test_baselineRecognizer(path, filename):
 
         for ii,x in enumerate(new_annotation_dict['person_name']):
             if x is not None:
-                print persons[persons_ind[ii]]
-        print '\n\n'
+                # print persons[persons_ind[ii]]
+                pass
+        # print '\n\n'
         # new_annotation_dict['person_name'] = filter(None, new_annotation_dict['person_name'])
 
         # print "annotation_dict", annotation_dict.keys()
@@ -604,13 +653,13 @@ def output(outputDict, filename):
 if __name__ == '__main__':
     path = "./corruption annotated data/"
 
-    # count = 50
-    count = 0
+    count = 1
+    # count = 0
     for filename in os.listdir(path):
         # filename = "L_R_1990_3438.txt"
         print 'filename=', filename
-        # if count == 0:
-            # break
+        if count == 0:
+            break
 
         if filename.endswith(".txt"):
             outputfilename = filename[:-4] + ".ann.machine"
@@ -622,8 +671,8 @@ if __name__ == '__main__':
             # print outputDict
             print "\n\n\n"
             output(outputDict, path+outputfilename)
-            # count -= 1
-            count += 1
+            count -= 1
+            # count += 1
 
         # raw_input()
 
