@@ -24,6 +24,7 @@ def isStartOfArticle(time_anchor, sentences_anchor):
 def nearCaughtKeywords(time_anchor, sentences_anchor, word_list):
     sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
     sentence = [eachWord.strip() for eachWord in sentence]
+    sentence = ''.join(sentence)
     for word in caughtKeywords:
         if word in sentence:
             return True
@@ -32,6 +33,7 @@ def nearCaughtKeywords(time_anchor, sentences_anchor, word_list):
 def nearReportKeywords(time_anchor, sentences_anchor, word_list):
     sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
     sentence = [eachWord.strip() for eachWord in sentence]
+    sentence = ''.join(sentence)
     for word in reportKeywords:
         if word in sentence:
             return True
@@ -40,6 +42,7 @@ def nearReportKeywords(time_anchor, sentences_anchor, word_list):
 def nearCrime(time_anchor, sentences_anchor, word_list):
     sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
     sentence = [eachWord.strip() for eachWord in sentence]
+    sentence = ''.join(sentence)
     if re.search(CRIME_REGEX, sentence):
         print "time near crime"
         return True
@@ -56,18 +59,44 @@ def timeSentenceByItself(time, time_anchor, sentences_anchor, word_list):
     return False
 
 def earliestTime(time, times):
-    parsedTimes = [dateparser.parse(thisTime) for thisTime in times]
-    print "parsedTimes:=", parsedTimes
+    parsedTimes = []
+    try:
+        parsedTimes = [dateparser.parse(thisTime) for thisTime in times]
+        parsedTimes = filter(None, parsedTimes)
+    except Exception:
+        return False
+    # print "parsedTimes:=", parsedTimes
 
-    myTime = dateparser.parse(time)
+    try:
+        myTime = dateparser.parse(time)
+    except Exception:
+        return False
+
+    if parsedTimes == []:
+        return False
+    if myTime == None:
+        return False
 
     return min(parsedTimes) == myTime
 
 def latestTime(time, times):
-    parsedTimes = [dateparser.parse(thisTime) for thisTime in times]
-    print "parsedTimes:=", parsedTimes
+    parsedTimes = []
+    try:
+        parsedTimes = [dateparser.parse(thisTime) for thisTime in times]
+        parsedTimes = filter(None, parsedTimes)
+    except Exception:
+        return False
+    # print "parsedTimes:=", parsedTimes
 
-    myTime = dateparser.parse(time)
+    try:
+        myTime = dateparser.parse(time)
+    except Exception:
+        return False
+
+    if parsedTimes == []:
+        return False
+    if myTime == None:
+        return False
 
     return max(parsedTimes) == myTime
 
@@ -79,17 +108,24 @@ def findCompleteSentence(time_anchor, sentences_anchor, word_list):
             head = ii
             completeSentence = [sent_anchor[0], sent_anchor[1]]
             jj = ii
-            while not word_list[completeSentence[-1]].endswith(("。", "？")):
-            # while not word_list[completeSentence[-1]].endswith((unicode("。", 'utf-8'), unicode("？", 'utf-8'))):
-                jj+=1
-                sent_anchor = sentences_anchor[jj]
-                completeSentence[-1] = sent_anchor[1]
-            jj = ii
-            while not word_list[completeSentence[0]-1].endswith(("。", "？")):
-            # while not word_list[completeSentence[0]-1].endswith((unicode('。', 'utf-8'), unicode('？', 'utf-8'))):
-                jj -=1
-                sent_anchor = sentences_anchor[jj]
-                completeSentence[0] = sent_anchor[0]
+            # while not word_list[completeSentence[-1]].endswith(("。", "？")):
+            if ii != len(sentences_anchor):
+                # print "len(word_list):", len(word_list)
+                # print "sentence:", ''.join(word_list[sent_anchor[0] : sent_anchor[1]])
+                
+                while not word_list[completeSentence[1]-1].endswith((unicode("。", 'utf-8'), unicode("？", 'utf-8'))):
+                    # print "completeSentence[1]: ", completeSentence[1]
+                    # print "wrod list:", word_list[68]
+                    jj+=1
+                    sent_anchor = sentences_anchor[jj]
+                    completeSentence[-1] = sent_anchor[1]
+            if ii != 0:
+                jj = ii
+                # while not word_list[completeSentence[0]-1].endswith(("。", "？")):
+                while not word_list[completeSentence[0]-1].endswith((unicode('。', 'utf-8'), unicode('？', 'utf-8'))):
+                    jj -=1
+                    sent_anchor = sentences_anchor[jj]
+                    completeSentence[0] = sent_anchor[0]
             break
     return word_list[completeSentence[0] : completeSentence[1]]
 
