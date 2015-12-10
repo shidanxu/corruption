@@ -22,38 +22,38 @@ def isStartOfArticle(time_anchor, sentences_anchor):
 # nearCaughtKeywords check whether time is within the same sentence of some keywords
 # that indicate caught time
 def nearCaughtKeywords(time_anchor, sentences_anchor, word_list):
-	sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
-	sentence = [eachWord.strip() for eachWord in sentence]
-	for word in caughtKeywords:
-		if word in sentence:
-			return True
+    sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
+    sentence = [eachWord.strip() for eachWord in sentence]
+    for word in caughtKeywords:
+        if word in sentence:
+            return True
     return False
 
 def nearReportKeywords(time_anchor, sentences_anchor, word_list):
-	sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
-	sentence = [eachWord.strip() for eachWord in sentence]
-	for word in reportKeywords:
-		if word in sentence:
-			return True
+    sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
+    sentence = [eachWord.strip() for eachWord in sentence]
+    for word in reportKeywords:
+        if word in sentence:
+            return True
     return False
 
 def nearCrime(time_anchor, sentences_anchor, word_list):
-	sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
-	sentence = [eachWord.strip() for eachWord in sentence]
-	if re.search(CRIME_REGEX, sentence):
-		print "time near crime"
+    sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
+    sentence = [eachWord.strip() for eachWord in sentence]
+    if re.search(CRIME_REGEX, sentence):
+        print "time near crime"
         return True
     return False
 
 def timeSentenceByItself(time, time_anchor, sentences_anchor, word_list):
-	sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
-	sentence = [eachWord.strip() for eachWord in sentence]
-	sentence = ''.join(sentence)
-	time = ''.join([item.strip() for item in time.split()])
+    sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
+    sentence = [eachWord.strip() for eachWord in sentence]
+    sentence = ''.join(sentence)
+    time = ''.join([item.strip() for item in time.split()])
 
-	if time.strip() == sentence.strip():
-		return True
-	return False
+    if time.strip() == sentence.strip():
+        return True
+    return False
 
 def earliestTime(time, times):
     parsedTimes = [dateparser.parse(thisTime) for thisTime in times]
@@ -73,29 +73,29 @@ def latestTime(time, times):
 
 # returns the anchors of complete sentence in word list
 def findCompleteSentence(time_anchor, sentences_anchor, word_list):
-	completeSentence = []
-	for ii, sent_anchor in enumerate(sentences_anchor):
-		if time_anchor[1] <= sent_anchor[1]:
-			head = ii
-			completeSentence = [sent_anchor[0], sent_anchor[1]]
-			jj = ii
-			while not word_list[completeSentence[-1]].endswith(("。", "？")):
-			# while not word_list[completeSentence[-1]].endswith((unicode("。", 'utf-8'), unicode("？", 'utf-8'))):
-				jj+=1
-				sent_anchor = sentences_anchor[jj]
-				completeSentence[-1] = sent_anchor[1]
-			jj = ii
-			while not word_list[completeSentence[0]-1].endswith(("。", "？")):
-			# while not word_list[completeSentence[0]-1].endswith((unicode('。', 'utf-8'), unicode('？', 'utf-8'))):
-				jj -=1
-				sent_anchor = sentences_anchor[jj]
-				completeSentence[0] = sent_anchor[0]
-			break
-	return word_list[completeSentence[0] : completeSentence[1]]
+    completeSentence = []
+    for ii, sent_anchor in enumerate(sentences_anchor):
+        if time_anchor[1] <= sent_anchor[1]:
+            head = ii
+            completeSentence = [sent_anchor[0], sent_anchor[1]]
+            jj = ii
+            while not word_list[completeSentence[-1]].endswith(("。", "？")):
+            # while not word_list[completeSentence[-1]].endswith((unicode("。", 'utf-8'), unicode("？", 'utf-8'))):
+                jj+=1
+                sent_anchor = sentences_anchor[jj]
+                completeSentence[-1] = sent_anchor[1]
+            jj = ii
+            while not word_list[completeSentence[0]-1].endswith(("。", "？")):
+            # while not word_list[completeSentence[0]-1].endswith((unicode('。', 'utf-8'), unicode('？', 'utf-8'))):
+                jj -=1
+                sent_anchor = sentences_anchor[jj]
+                completeSentence[0] = sent_anchor[0]
+            break
+    return word_list[completeSentence[0] : completeSentence[1]]
 
 def isStartOfTimePeriod(time1_anchor, time2_anchor, sentences_anchor, word_list):
-	sentence1 = findCompleteSentence(time1_anchor, sentences_anchor, word_list)
-	sentence2 = findCompleteSentence(time2_anchor, sentences_anchor, word_list)
-	if sentence1 == sentence2:
-		return (time1_anchor[1] - time2_anchor[0]) <= 2
-	return False
+    sentence1 = findCompleteSentence(time1_anchor, sentences_anchor, word_list)
+    sentence2 = findCompleteSentence(time2_anchor, sentences_anchor, word_list)
+    if sentence1 == sentence2:
+        return (time1_anchor[1] - time2_anchor[0]) <= 2
+    return False

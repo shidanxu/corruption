@@ -282,13 +282,16 @@ def tagTime(year, time_anchor, annotation_file, fields = ['Year_Disc', 'Year_Cri
     print annotated_times
 
     # Only keep current year
-    annotated_times = [(tagIndex, tagType, value, abs(tagIndex[0] - time_anchor[0])) if value == year for (tagIndex, tagType, value) in annotation_times]
-
-    if annotation_times == []:
+    output = []
+    for (tagIndex, tagType, value) in annotation_times:
+    	if value == year:
+    		output.append((tagIndex, tagType, value, abs(tagIndex[0] - time_anchor[0])))
+    
+    if output == []:
         print "Found tag: None ", year
         return "None"
     else:
-        tagReturn = min(annotation_times, key=lambda x: x[-1])[2]
+        tagReturn = min(output, key=lambda x: x[-1])[2]
         print "Found tag: ", tagReturn
         return tagReturn
 
@@ -557,33 +560,33 @@ class MyRecognizer(object):
             return 0
 
     def feature2(self,time_anchor):
-        if features.nearCaughtKeywords(time_anchor, self.sentences_anchor, self.word_list)
+        if features.nearCaughtKeywords(time_anchor, self.sentences_anchor, self.word_list):
             return 1
         else:
             return 0
 
     def feature3(self,time_anchor):
-        if features.nearReportKeywords(time_anchor, self.sentences_anchor, self.word_list)
+        if features.nearReportKeywords(time_anchor, self.sentences_anchor, self.word_list):
             return 1
         else:
             return 0
 
     def feature4(self,time_anchor):
-        if features.nearCrime(time_anchor, self.sentences_anchor, self.word_list)
+        if features.nearCrime(time_anchor, self.sentences_anchor, self.word_list):
             return 1
         else:
             return 0
 
     def feature5(self,time_anchor):
         time = ''.join(self.word_list[time_anchor[0]:time_anchor[1]])
-        if features.timeSentenceByItself(time, time_anchor, self.sentences_anchor, self.word_list)
+        if features.timeSentenceByItself(time, time_anchor, self.sentences_anchor, self.word_list):
             return 1
         else:
             return 0
 
     def feature6(self,time_anchor):
         time = ''.join(self.word_list[time_anchor[0]:time_anchor[1]])
-        if features.earliestTime(time, times)
+        if features.earliestTime(time, times):
             return 1
         else:
             return 0
@@ -601,7 +604,7 @@ class MyRecognizer(object):
             return 0
         ind = self.time_anchors.index(time_anchor)
         time2_anchor = self.time_anchors[ind+1]
-        if features.isStartOfTimePeriod(time1_anchor, time2_anchor, self.sentences_anchor, self.word_list)
+        if features.isStartOfTimePeriod(time1_anchor, time2_anchor, self.sentences_anchor, self.word_list):
             return 1
         else:
             return 0
@@ -610,9 +613,8 @@ class MyRecognizer(object):
 
 class MyTrainer(object):
     """docstring for MyTrainer"""
-    def __init__(self, arg):
+    def __init__(self):
         super(MyTrainer, self).__init__()
-        self.arg = arg
         self.n_features_disc = 7
         self.n_features_crime = 7
         self.mylr_crime = linear_model.LogisticRegression()
