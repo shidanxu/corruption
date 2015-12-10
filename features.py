@@ -14,7 +14,7 @@ def isStartOfArticle(time_anchor, sentences_anchor):
 
 # nearCaughtKeywords check whether time is within the same sentence of some keywords
 # that indicate caught time
-def nearCaughtKeywords(time, time_anchor, sentences_anchor, word_list):
+def nearCaughtKeywords(time_anchor, sentences_anchor, word_list):
 	sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
 	sentence = [eachWord.strip() for eachWord in sentence]
 	for word in caughtKeywords:
@@ -23,7 +23,7 @@ def nearCaughtKeywords(time, time_anchor, sentences_anchor, word_list):
 
 	return False
 
-def nearReporttKeywords(time, time_anchor, sentences_anchor, word_list):
+def nearReportKeywords(time_anchor, sentences_anchor, word_list):
 	sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
 	sentence = [eachWord.strip() for eachWord in sentence]
 	for word in reportKeywords:
@@ -32,7 +32,7 @@ def nearReporttKeywords(time, time_anchor, sentences_anchor, word_list):
 
 	return False
 
-def nearCrime(time, time_anchor, sentences_anchor, word_list):
+def nearCrime(time_anchor, sentences_anchor, word_list):
 	sentence = findCompleteSentence(time_anchor, sentences_anchor, word_list)
 	sentence = [eachWord.strip() for eachWord in sentence]
 	if re.search(CRIME_REGEX, sentence):
@@ -45,7 +45,7 @@ def timeSentenceByItself(time, time_anchor, sentences_anchor, word_list):
 	sentence = [eachWord.strip() for eachWord in sentence]
 	sentence = ''.join(sentence)
 	time = ''.join([item.strip() for item in time.split()])
-	
+
 	if time.strip() == sentence.strip():
 		return True
 	return False
@@ -74,7 +74,7 @@ def findCompleteSentence(time_anchor, sentences_anchor, word_list):
 			head = ii
 			completeSentence = [sent_anchor[0], sent_anchor[1]]
 			jj = ii
-			while not word_list[completeSentence[-1]].endswith(("。", "？")):	
+			while not word_list[completeSentence[-1]].endswith(("。", "？")):
 			# while not word_list[completeSentence[-1]].endswith((unicode("。", 'utf-8'), unicode("？", 'utf-8'))):
 				jj+=1
 				sent_anchor = sentences_anchor[jj]
@@ -88,9 +88,9 @@ def findCompleteSentence(time_anchor, sentences_anchor, word_list):
 			break
 	return word_list[completeSentence[0] : completeSentence[1]]
 
-def timePeriod(time1_anchor, time2_anchor, time_anchor, sentences_anchor, word_list):
+def isStartOfTimePeriod(time1_anchor, time2_anchor, sentences_anchor, word_list):
 	sentence1 = findCompleteSentence(time1_anchor, sentences_anchor, word_list)
 	sentence2 = findCompleteSentence(time2_anchor, sentences_anchor, word_list)
 	if sentence1 == sentence2:
-		return min(abs(time1_anchor[0] - time2_anchor[1]), abs(time2_anchor[0] - time1_anchor[1])) <= 2
+		return (time1_anchor[1] - time2_anchor[0]) <= 2
 	return False
