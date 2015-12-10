@@ -137,6 +137,49 @@ def labelSentence(sentence):
     # return max(tagScoreDict, key=tagScoreDict.get)
     return tagScoreDict, output_monotone
 
+def labelTime(sentence):
+    try:
+        sentence = ' '.join(sentence)
+    except Exception, e:
+        pass
+
+    timeScore = 0
+    unknownScore = 0.99
+
+    # print "sentence=", sentence
+
+    word_tag_monotone = []
+
+    
+    if re.search(TIME_REGEX, sentence):
+        found = re.search(TIME_REGEX, sentence)
+        allfound = re.finditer(TIME_REGEX, sentence)
+
+        for found in allfound:
+            print "Time found: ", found.group()
+            timeScore += len(found.group())
+            word_tag_monotone.append((found.group(), found.span(), "Time"))
+
+
+    tagScoreDict = {'Time': timeScore, 'unknown': unknownScore}
+
+    # if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
+    #     print sentence, max(tagScoreDict, key = tagScoreDict.get)
+
+    word_tag_monotone = sorted(word_tag_monotone, key = lambda x: x[1][0])
+
+    # print word_tag_monotone
+
+    output_monotone = [[item[0], item[2]] for item in word_tag_monotone]
+    # print output_monotone
+    for item in word_tag_monotone:
+        # print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
+        pass
+    # print crimes, punishes, amounts
+    # return max(tagScoreDict, key=tagScoreDict.get)
+    return tagScoreDict, output_monotone
+
+
 BIAODIAN = (unicode('。', 'utf-8'), unicode('；', 'utf-8'),unicode('，', 'utf-8'),unicode('：', 'utf-8'),unicode('？', 'utf-8'),)
 
 def sentence_index(paragraph):
