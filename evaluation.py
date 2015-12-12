@@ -9,10 +9,11 @@ import matplotlib.pyplot as plt
 
 # This method returns the tags in a file in the format
 # dictionary['Shidan'] = {'Crime': '贪污', 'Punish': '无期徒刑'}
-def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position', 'Time', 'location', 'Province', 'City']):
+def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position', 'Time', 'location', 'Province', 'City'], printing=False):
     dictionary = {}
     outputDict = {}
-    print "WORKING ON FILE: ", filename
+    if printing:
+        print "WORKING ON FILE: ", filename
     with open(filename, 'r') as f:
         document = []
         if filename.endswith('.machine'):
@@ -20,14 +21,15 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
         else:
             document = unicode(f.read(), 'utf-8')
         
-
-        print "type of document " + filename, " :", type(document)
+        if printing:
+            print "type of document " + filename, " :", type(document)
 
         # print document
         listtags = document.split("\n")
-        for item in listtags:
-            print item
-        print "\n"
+        if printing:
+            for item in listtags:
+                print item
+            print "\n"
         # print listtags
         # print "type of document", type(document)
         
@@ -73,15 +75,17 @@ def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Po
             # The human annotation may have location in separate entries, we combine them
             location = ""
             if 'Province' in dictionary[index]:
-                print "Found province: ", ''.join(list(dictionary[index]['Province']))
+                # print "Found province: ", ''.join(list(dictionary[index]['Province']))
                 location += ''.join(list(dictionary[index]['Province']))
             if 'City' in dictionary[index]:
-                print "Found city: ", ''.join(list(dictionary[index]['City']))
+                # print "Found city: ", ''.join(list(dictionary[index]['City']))
                 location += ''.join(list(dictionary[index]['City']))
             if location != "":
-                print "Corrected Location: ", location
+                # print "Corrected Location: ", location
                 outputDict[name]['location'] = location
-    print "\n"
+    if printing:
+        print "\n\n\n"
+
     return outputDict
 
 # This baseline specifies whether we want the element or the set element to be compared to
@@ -140,15 +144,15 @@ def maxScoreEntire(element, setOfSet):
 
 
 
-def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position']):
+def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position'], printing = False):
     # Calculate a precision score and a recall score
     # recall: exact matches in humanDict that are also in machineDict
     # Precision: line exact matches in machineDict that are also found in humanDict
     totalScore = 0.0
     possibleScore = 0.0
 
-    humanDict = process(human)
-    machineDict = process(machine)
+    humanDict = process(human, printing = printing)
+    machineDict = process(machine, printing = printing)
 
     if humanDict == -1 or machineDict == -1:
         return -1
@@ -188,6 +192,8 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
                         totalScore += hit / total
 
                         # totalScore += int(humanDict[person][item] == machineDict[person][item])
+    if possibleScore == 0:
+        return -1
     recallScore = totalScore / possibleScore
 
     totalScore = 0.0
@@ -215,6 +221,9 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
                         totalScore += hit / total
                         # totalScore += int(humanDict[person][item] == machineDict[person][item])
+    
+    if possibleScore == 0:
+        return -1
     precisionScore = totalScore / possibleScore
 
 
@@ -236,6 +245,8 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
             totalScore += hit / total
             # print "add this many pts:", hit, total, hit/total
 
+    if possibleScore == 0:
+        return -1
     infoExtractionRecall = totalScore / possibleScore
 
     # 宽泛的precision
@@ -256,9 +267,14 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
             totalScore += hit / total
             # print "add this many pts:", hit, total, hit/total
 
+    if possibleScore == 0:
+        return -1
+
     infoExtractionPrecision = totalScore / possibleScore
 
     return recallScore, precisionScore, infoExtractionRecall, infoExtractionPrecision
+
+
 
 if __name__ == '__main__':
     foldername = "corruption annotated data/"
@@ -272,10 +288,18 @@ if __name__ == '__main__':
     for filename in filesInFolder:
         if filename.endswith(".ann"):
             if filename + suffix in filesInFolder:
-                if evaluate(foldername + filename, foldername + filename+suffix) != -1:
-                    scores.append(evaluate(foldername + filename, foldername + filename+suffix))
-
-
+                try:
+                    evaluationValues = evaluate(foldername + filename, foldername + filename+suffix)
+                    if evaluationValues != -1: 
+                        if min(evaluationValues) > 0.5:
+                            print evaluationValues
+                            evaluate(foldername + filename, foldername + filename+suffix, printing = True)
+                        else:
+                            scores.append(evaluationValues)
+                except Exception, e:
+                    print e
+                    continue
+                
     # Prints scores list, average precision, avg recall
     print scores
     strict_recall = sum([pair[0] for pair in scores]) / len(scores)
@@ -293,13 +317,31 @@ if __name__ == '__main__':
     xvalues = [pair[0] / pair[2] for pair in scores]
     yvalues = [pair[1] / pair[3] for pair in scores]
 
-    fig, ax = plt.subplots()
+    plt.subplot(2,2, 1)
     plt.plot(xvalues, yvalues, 'ro')
     plt.xlabel('Recall Normalized')
     plt.ylabel('Precision Normalized')
 
     plt.plot([0, 1], [0, 1])
     plt.plot([0, 1], [1,1], 'b--')
+
+    plt.subplot(2, 2, 2)
+
+    n_bins = 20
+    strict_recall_output = [pair[0] for pair in scores]
+    plt.hist(strict_recall_output, n_bins)
+
+    plt.subplot(2, 2, 3)
+
+    n_bins = 20
+    strict_precision_output = [pair[1] for pair in scores]
+    plt.hist(strict_precision_output, n_bins)
+
+    plt.subplot(2, 2, 4)
+
+    n_bins = 20
+    extraction_recall_output = [pair[2] for pair in scores]
+    plt.hist(extraction_recall_output, n_bins)
 
     plt.show()
     

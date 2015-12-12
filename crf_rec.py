@@ -5,7 +5,7 @@ import codecs
 import re
 import nltk
 import pycrfsuite
-
+import os
 
 punish_regex_string = unicode('有期徒刑(\d+|[一二三四五六七八九十]+)年|缓刑(\d+|[一二三四五六七八九十]+)年', 'utf-8')
 punish_regex_string += unicode('|(\d+|[一二三四五六七八九十]+)年 有期徒刑','utf-8')
@@ -52,22 +52,30 @@ GOOD_REGEX = re.compile(good_position_regex_string, flags=re.UNICODE)
 
 def mytrain():
     # mycrftagger = CRFTagger()
-    train_sents = read_traindata("L_R_1990_3420.txt.train")
+
+    X_train = []
+    Y_train = []
+    foldername = "corruption annotated data/"
+
+    filesInFolder = os.listdir(foldername)
+    for filename in filesInFolder:
+        if filename.endswith(".train"):
+            train_sents = read_traindata(filename)
 
     
-    # print mytrainingData
+            # print mytrainingData
 
 
-    # Turn training set to feature X
-    X_train = [sent2features(train_sents)]
-    # print X_train, len(X_train)
-    print "\n\n\n\n\n\n"
-    for item in X_train[0]:
-        if 'regex_time=1' in item:
-            print item
-    print "DONe.\n\n\n"
-    Y_train = [[getY(each) for each in train_sents]]
-    # print Y_train, len(Y_train)
+            # Turn training set to feature X
+            X_train.append(sent2features(train_sents))
+            # print X_train, len(X_train)
+            # print "\n\n\n\n\n\n"
+            # for item in X_train[0]:
+            #     if 'regex_time=1' in item:
+            #         print item
+            # print "DONe.\n\n\n"
+            Y_train.append([getY(each) for each in train_sents])
+            # print Y_train, len(Y_train)
 
     trainer = pycrfsuite.Trainer(verbose=False)
     for xseq, yseq in zip(X_train, Y_train):
@@ -134,7 +142,7 @@ def feature3(preword_tuple, word_tuple, nextword_tuple):
     nextxt, nextag = nextword_tuple
 
     if re.search(AMOUNT_REGEX, pretxt+txt+nextxt):
-        print "word is:", word_tuple, ". Feature 3 is 1"
+        # print "word is:", word_tuple, ". Feature 3 is 1"
         return "1"
     return "0"
 
@@ -144,7 +152,7 @@ def feature4(preword_tuple, word_tuple, nextword_tuple):
     nextxt, nextag = nextword_tuple
 
     if re.search(TIME_REGEX, pretxt+txt+nextxt):
-        print "word is:", word_tuple, ". Feature 4 is 1"
+        # print "word is:", word_tuple, ". Feature 4 is 1"
         return "1"
     return "0"
 
@@ -154,7 +162,7 @@ def feature5(preword_tuple, word_tuple, nextword_tuple):
     nextxt, nextag = nextword_tuple
 
     if re.search(POSITION_REGEX, pretxt+txt+nextxt):
-        print "word is:", word_tuple, ". Feature 5 is 1"
+        # print "word is:", word_tuple, ". Feature 5 is 1"
         return "1"
     return "0"
 
