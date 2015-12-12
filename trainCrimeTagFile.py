@@ -15,7 +15,7 @@ def tagTxt(ftxt, fann, path = './corruption annotated data/'):
             for char in document:
                 # print "HAHAHAHAHHAHA", type(char), char
                 chars.append(char)
-                alltags.append(0)
+                alltags.append("Unknown")
                 # exit(0)
             print "Length of chars", len(chars)
 
@@ -52,7 +52,7 @@ def tagTxt(ftxt, fann, path = './corruption annotated data/'):
     words = []
     with codecs.open(path + ftxt, 'r', encoding='utf-8') as txt:
         words = re.split(r"(\s+)", txt.read())
-        words = [(word, 0, 0, 0) for word in words]
+        words = [(word, "Unknown", 0, 0) for word in words]
 
         currentLength = 0
         for ii in range(len(words)):
