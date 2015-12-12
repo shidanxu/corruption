@@ -3,6 +3,7 @@
 
 import codecs
 import re
+import os
 
 def tagTxt(ftxt, fann, path = './corruption annotated data/'):
     chars = []
@@ -121,4 +122,16 @@ def tagTxt(ftxt, fann, path = './corruption annotated data/'):
 
 
 if __name__ == '__main__':
-    tagTxt("L_R_1990_3420.txt", "L_R_1990_3420.ann")
+    foldername = "corruption annotated data/"
+    # file1 = "corruption annotated data/L_R_1990_3420.ann"
+    # file2 = "corruption annotated data/L_R_1990_3420_mod.machine"
+
+    suffix = ".machine"
+
+    filesInFolder = os.listdir(foldername)
+    for filename in filesInFolder:
+        if filename.endswith(".ann"):
+            try:
+                tagTxt(filename[:-4]+".txt", filename)
+            except Exception:
+                continue
