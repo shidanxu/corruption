@@ -20,7 +20,9 @@ EVAL_TAGS = (
     'Money_Person',
     'Punish',
     'Position',
-    'Time',
+    # 'Time',
+    'Year_Crime',
+    'Year_Disc',
     'location',
     )
 

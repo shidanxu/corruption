@@ -5,6 +5,7 @@ from sets import Set
 import difflib
 import os
 import json
+import matplotlib.pyplot as plt
 
 # This method returns the tags in a file in the format
 # dictionary['Shidan'] = {'Crime': '贪污', 'Punish': '无期徒刑'}
@@ -90,6 +91,9 @@ def maxScore(element, compareSet, baseline):
     # Remove spaces for comparison
     element = "".join(element.split())
     lengthLongest = len(element)
+    # print "element is:", element
+    if len(element) == 0:
+        return 0
     for item in compareSet:
         # Remove spaces for comparison
         item = "".join(item.split())
@@ -115,6 +119,10 @@ def maxScoreEntire(element, setOfSet):
     # Clean up string
     element = "".join(element.split())
     lengthLongest = len(element)
+
+    # print "element is:", element
+    if len(element) == 0:
+        return 0
 
     for dictionary in setOfSet:
         for key, value in setOfSet[dictionary].iteritems():
@@ -154,13 +162,15 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
     # 每一个UROP找到的人 总分是行数
     for person in humanDict:
-        possibleScore += len(humanDict[person])
+        # 1 Extra point for finding the person
+        possibleScore += len(humanDict[person]) + 1
         # 如果这个人机器也找到了
         if person in machineDict:
             # 如果所有数据相等 直接给分
             if machineDict[person] == humanDict[person]:
-                totalScore += len(humanDict[person])
+                totalScore += len(humanDict[person]) + 1
             else:
+                totalScore += 1
                 # 每个UROP找到的entry
                 for item in humanDict[person]:
                     # 如果机器也找到了
@@ -185,20 +195,21 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
     # 对每个机器找到的人
     for person in machineDict:
-        possibleScore += len(machineDict[person])
+        possibleScore += len(machineDict[person]) + 1
         # 如果人类也找到了这个人
         if person in humanDict:
             if machineDict[person] == humanDict[person]:
-                totalScore += len(humanDict[person])
+                totalScore += len(humanDict[person]) + 1
             else:
                 # 对于机器找到的所有关于这个人的信息
+                totalScore += 1
                 for item in machineDict[person]:
                     # 如果人类也有
                     if item in humanDict[person]:
                         # 看机器总共几行
                         total = len(machineDict[person][item])
                         hit = 0.0
-                        # 看机器的每一行有多少用
+                        # 看机器的每一行 是不是真的阳性
                         for element in machineDict[person][item]:
                             hit += maxScore(element, humanDict[person][item], 1)
 
@@ -207,10 +218,15 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
     precisionScore = totalScore / possibleScore
 
 
+    # 宽泛的recall
     totalScore = 0.0
     possibleScore = 0.0
     for person in humanDict:
-        possibleScore += len(humanDict[person])
+        # 1 extra pt for finding the person
+        possibleScore += len(humanDict[person]) + 1
+
+        if person in machineDict:
+            totalScore += 1
         
         for item in humanDict[person]:
             total = len(humanDict[person][item])
@@ -222,8 +238,27 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
     infoExtractionRecall = totalScore / possibleScore
 
+    # 宽泛的precision
+    totalScore = 0.0
+    possibleScore = 0.0
+    for person in machineDict:
+        # 1 extra pt for finding the person
+        possibleScore += len(machineDict[person]) + 1
 
-    return recallScore, precisionScore, infoExtractionRecall
+        if person in humanDict:
+            totalScore += 1
+        
+        for item in machineDict[person]:
+            total = len(machineDict[person][item])
+            hit = 0.0
+            for element in machineDict[person][item]:
+                hit += maxScoreEntire(element, humanDict)
+            totalScore += hit / total
+            # print "add this many pts:", hit, total, hit/total
+
+    infoExtractionPrecision = totalScore / possibleScore
+
+    return recallScore, precisionScore, infoExtractionRecall, infoExtractionPrecision
 
 if __name__ == '__main__':
     foldername = "corruption annotated data/"
@@ -243,7 +278,28 @@ if __name__ == '__main__':
 
     # Prints scores list, average precision, avg recall
     print scores
-    print "AVG Recall: ", sum([pair[0] for pair in scores]) / len(scores)
-    print "AVG Precision: ", sum([pair[1] for pair in scores]) / len(scores)
-    print "AVG Extraction Recall: ", sum([pair[2] for pair in scores]) / len(scores)
-    # print(evaluate(file1, file2))
+    strict_recall = sum([pair[0] for pair in scores]) / len(scores)
+    strict_precision = sum([pair[1] for pair in scores]) / len(scores)
+    extraction_recall = sum([pair[2] for pair in scores]) / len(scores)
+    extraction_precision = sum([pair[3] for pair in scores]) / len(scores)
+    print "AVG Recall: ", strict_recall
+    print "AVG Precision: ", strict_precision
+    print "AVG Extraction Recall: ", extraction_recall
+    print "AVG Extraction Precision: ", extraction_precision
+    print "Normalized Precision: ", strict_precision / extraction_precision
+    print "Normalized Recall: ", strict_recall / extraction_recall
+
+    # Plotting
+    xvalues = [pair[0] / pair[2] for pair in scores]
+    yvalues = [pair[1] / pair[3] for pair in scores]
+
+    fig, ax = plt.subplots()
+    plt.plot(xvalues, yvalues, 'ro')
+    plt.xlabel('Recall Normalized')
+    plt.ylabel('Precision Normalized')
+
+    plt.plot([0, 1], [0, 1])
+    plt.plot([0, 1], [1,1], 'b--')
+
+    plt.show()
+    

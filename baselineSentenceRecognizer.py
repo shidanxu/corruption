@@ -8,6 +8,10 @@ from parse_text import recognize_names
 from tags import TAGS, EVAL_TAGS
 import json
 import copy
+from sklearn import linear_model
+import features
+import numpy as npy
+
 
 # label the sentence with 1 of the following 3
 # 1. crime
@@ -22,11 +26,17 @@ punish_regex_string += unicode('|免去|开除|撤销','utf-8')
 crime_regex_string = unicode('诈骗罪|贪污受贿|经济犯罪|挪用公款|盗窃|贿赂|贪污|行贿|销赃|受贿|假捐赠|倒卖|走私|索贿|报复陷害','utf-8')
 crime_regex_string += unicode('|失职|渎职|以权谋私|嫖娼','utf-8')
 
-amount_regex_string = unicode('((\d+|[一二三四五六七八九十]+)[\.]?(\d+|[一二三四五六七八九十]+)?[ ]?[多余]?[ ]?[万千个十百亿]*[多余]?[美|日|欧|港]?元)','utf-8')
+amount_regex_string = unicode('(英镑|美金|港币|人民币|日元|欧元)?[ ]?((\d+|[一二三四五六七八九十]+)[\.]?(\d+|[一二三四五六七八九十]+)?[ ]?[多余]?[ ]?[万千个十百亿]*[多余]?[ ]?[美|日|欧|港]?元)','utf-8')
+amount_regex_string += unicode('|(英镑|美金|港币|[美日欧]!元)[数]?[万千个十百亿]+[元]?','utf-8')
+amount_regex_string += unicode('|(英镑|美金|港币|[美日欧]!元)((\d+|[一二三四五六七八九十]+)[万千个十百亿]+)+[元]?','utf-8')
+
+
 amount_regex_string += unicode('|共计折合|茅台酒','utf-8')
 amount_regex_string += unicode('|数[万千个十百亿]+[美日欧港]?元','utf-8')
 
-time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下午|上午|傍晚|凌晨][ ]?(\d+[ ]?时)?([ ]?[\d+]分)?([ ]?[\d+]秒)?[左右]?)?', 'utf-8')
+# time_regex_string = unicode('(\d+[ ]?年[ ]?\d+[ ]?月[ ]?\d+[ ]?日)+([ ]?[下午|上午|傍晚|凌晨][ ]?(\d+[ ]?时)?([ ]?[\d+]分)?([ ]?[\d+]秒)?[左右]?)?', 'utf-8')
+time_regex_string = unicode('((\d{4}|[一二三四五六七八九十]{4})[ ]?年[ ]?)', 'utf-8')
+
 
 good_position_regex_string = unicode('记者|副检察长|纪委副书记|法院副院长|法官|检察长|纪委书记|法院院长|通讯员','utf-8')
 neutral_position_regex_string = unicode('', 'utf-8')
@@ -71,7 +81,7 @@ def labelSentence(sentence):
         found = re.search(CRIME_REGEX, sentence)
         allfound = re.finditer(CRIME_REGEX, sentence)
         for found in allfound:
-            print "Crime found: ", found.group()
+            # print "Crime found: ", found.group()
             crimeScore += len(found.group())
             word_tag_monotone.append((found.group(), found.span(), "Crime"))
 
@@ -80,7 +90,7 @@ def labelSentence(sentence):
         allfound = re.finditer(PUNISH_REGEX, sentence)
 
         for found in allfound:
-            print "Punish found: ", found.group()
+            # print "Punish found: ", found.group()
             punishmentScore += len(found.group())
             word_tag_monotone.append((found.group(), found.span(), "Punish"))
 
@@ -89,25 +99,25 @@ def labelSentence(sentence):
         allfound = re.finditer(AMOUNT_REGEX, sentence)
 
         for found in allfound:
-            print "Amount found: ", found.group()
+            # print "Amount found: ", found.group()
             amountScore += len(found.group())
             word_tag_monotone.append((found.group(), found.span(), "Money_Person"))
 
-    if re.search(TIME_REGEX, sentence):
-        found = re.search(TIME_REGEX, sentence)
-        allfound = re.finditer(TIME_REGEX, sentence)
+    # if re.search(TIME_REGEX, sentence):
+    #     found = re.search(TIME_REGEX, sentence)
+    #     allfound = re.finditer(TIME_REGEX, sentence)
 
-        for found in allfound:
-            print "Time found: ", found.group()
-            timeScore += len(found.group())
-            word_tag_monotone.append((found.group(), found.span(), "Time"))
+    #     for found in allfound:
+    #         print "Time found: ", found.group()
+    #         timeScore += len(found.group())
+    #         word_tag_monotone.append((found.group(), found.span(), "Time"))
 
     if re.search(POSITION_REGEX, sentence):
         found = re.search(POSITION_REGEX, sentence)
         allfound = re.finditer(POSITION_REGEX, sentence)
 
         for found in allfound:
-            print "Position found: ", found.group()
+            # print "Position found: ", found.group()
             positionScore += len(found.group())
             word_tag_monotone.append((found.group(), found.span(), "Position"))
 
@@ -124,8 +134,50 @@ def labelSentence(sentence):
     output_monotone = [[item[0], item[2]] for item in word_tag_monotone]
     # print output_monotone
     for item in word_tag_monotone:
-        print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
+        # print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
+        pass
+    # print crimes, punishes, amounts
+    # return max(tagScoreDict, key=tagScoreDict.get)
+    return tagScoreDict, output_monotone
 
+def labelTime(sentence):
+    try:
+        sentence = ' '.join(sentence)
+    except Exception, e:
+        pass
+
+    timeScore = 0
+    unknownScore = 0.99
+
+    # print "sentence=", sentence
+
+    word_tag_monotone = []
+
+
+    if re.search(TIME_REGEX, sentence):
+        found = re.search(TIME_REGEX, sentence)
+        allfound = re.finditer(TIME_REGEX, sentence)
+
+        for found in allfound:
+            print "Time found: ", found.group()
+            timeScore += len(found.group())
+            word_tag_monotone.append((found.group(), found.span(), "Time"))
+
+
+    tagScoreDict = {'Time': timeScore, 'unknown': unknownScore}
+
+    # if max(tagScoreDict, key = tagScoreDict.get) != 'unknown':
+    #     print sentence, max(tagScoreDict, key = tagScoreDict.get)
+
+    word_tag_monotone = sorted(word_tag_monotone, key = lambda x: x[1][0])
+
+    # print word_tag_monotone
+
+    output_monotone = [[item[0], item[2]] for item in word_tag_monotone]
+    # print output_monotone
+    for item in word_tag_monotone:
+        # print ''.join(item[0]) + "; " + str(item[1][0]) + ", " + str(item[1][1]) + " " + " ".join(item[2]) + "\n"
+        pass
     # print crimes, punishes, amounts
     # return max(tagScoreDict, key=tagScoreDict.get)
     return tagScoreDict, output_monotone
@@ -193,6 +245,66 @@ def sentence_index(paragraph):
         pass
     return word_list, new_sentences, sentence_anchor
 
+def findAllFiles(limit=450, directory = "./corruption annotated data/"):
+    filesInFolder = os.listdir(directory)
+    files = []
+    for filename in filesInFolder:
+        if filename.endswith(".ann"):
+            if filename[:-4]+".txt" in filesInFolder:
+            	limit -= 1
+                # This file has both .txt and .ann
+                files.append((filename[:-4]+".txt", filename))
+                if limit == 0:
+                	break
+    print files
+    return files
+
+# Returns the found tag in annotation file
+def tagTime(year, time_anchor, annotation_file, fields = ['Year_Disc', 'Year_Crime']):
+    # First process the annotaiton file
+    print "year: ", year
+    annotated_times = []
+    with open(annotation_file, 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            if line.strip():
+                tagType, value = "", ""
+
+                try:
+                    tag, tagType, value = line.split("\t")
+                    anchorIndex = tagType.split(" ")[1:]
+                    anchorIndex = [int(item) for item in anchorIndex]
+                    tagType = tagType.split(" ")[0]
+                    tagIndex, tagType = int(tagType[:1]), tagType[1:]
+                    # print "tagIndex: ", tagIndex
+                    if tagType in fields:
+                        annotated_times.append((anchorIndex, tagType, value))
+                except Exception, e:
+                    print e
+                    # tagType, value = line.split("\t")
+                    # tagType = tagType.split(" ")[0]
+                    # tagIndex, tagType = int(tagType[:1]), tagType[1:]
+
+    print "Annotated times: ", annotated_times
+
+    # Only keep current year
+    output = []
+    for (anchorIndex, tagType, value) in annotated_times:
+    	# print unicode(value.strip(), 'utf-8')
+    	# print year
+    	# print anchorIndex
+    	if unicode(value.strip(), 'utf-8') == year:
+    		# print "YEAR IS NOW EQUAL!!!"
+    		output.append((anchorIndex, tagType, value.strip(), abs(anchorIndex[0] - time_anchor[0])))
+    
+    if output == []:
+        # print "Found tag: None ", year
+        return "None"
+    else:
+        tagReturn = min(output, key=lambda x: x[-1])[1]
+        print "Found tag: ", tagReturn
+        return tagReturn
+
 def annotate_paragraph(paragraph):
     print "\n\nin annotate_paragraph\n"
     word_list, sentences, sentence_anchor = sentence_index(paragraph)
@@ -258,7 +370,7 @@ def annotate_paragraph(paragraph):
             annotation_dict[tag].append(anchor)
             old_pos = anchor[1]
 
-    return annotation_dict, word_list
+    return annotation_dict, word_list, sentences, sentence_anchor
 
 def align_words(ner_words, anchor, word_list, old_pos):
     start = anchor[0]
@@ -422,6 +534,258 @@ def align_words_debug(word_list, sentence_anchor, old_pos, ner_words, anchor=Non
     return [start, stop]
 # '''
 
+# the time anaylse part:
+TimeTags = (
+    'Year_Crime',
+    'Year_Disc',
+    'None',
+    )
+
+class MyRecognizer(object):
+    """docstring for MyRecognizer"""
+    def __init__(self, word_list=None, sentences_anchor=None, time_anchors=None):
+        super(MyRecognizer, self).__init__()
+        self.word_list = word_list
+        self.sentences_anchor = sentences_anchor
+        self.time_anchors = time_anchors
+        self.crime_features = self.tolist()
+        self.disc_features = self.tolist()
+
+    def tolist(self):
+        d=[]
+        d.append(self.feature1)
+        d.append(self.feature2)
+        d.append(self.feature3)
+        d.append(self.feature4)
+        d.append(self.feature5)
+        # d.append(self.feature6)
+        # d.append(self.feature7)
+        return d
+
+# the feature functions:
+    def feature1(self, time_anchor):
+        if features.isStartOfArticle(time_anchor, self.sentences_anchor):
+            return 1
+        else:
+            return 0
+
+    def feature2(self,time_anchor):
+        if features.nearCaughtKeywords(time_anchor, self.sentences_anchor, self.word_list):
+            return 1
+        else:
+            return 0
+
+    def feature3(self,time_anchor):
+        if features.nearReportKeywords(time_anchor, self.sentences_anchor, self.word_list):
+            return 1
+        else:
+            return 0
+
+    def feature4(self,time_anchor):
+        if features.nearCrime(time_anchor, self.sentences_anchor, self.word_list):
+            return 1
+        else:
+            return 0
+
+    def feature5(self,time_anchor):
+        time = ''.join(self.word_list[time_anchor[0]:time_anchor[1]])
+        if features.timeSentenceByItself(time, time_anchor, self.sentences_anchor, self.word_list):
+            return 1
+        else:
+            return 0
+
+    def feature6(self,time_anchor):
+        time = ''.join(self.word_list[time_anchor[0]:time_anchor[1]])
+        times = [''.join(self.word_list[anchor[0]:anchor[1]]) for anchor in self.time_anchors]
+        if features.earliestTime(time, times):
+            return 1
+        else:
+            return 0
+
+    def feature7(self,time_anchor):
+        time = ''.join(self.word_list[time_anchor[0]:time_anchor[1]])
+        times = [''.join(self.word_list[anchor[0]:anchor[1]]) for anchor in self.time_anchors]
+        
+        if features.latestTime(time, times):
+            return 1
+        else:
+            return 0
+
+    def feature8(self, time_anchor):
+        lasttime_anchor = self.time_anchors[-1]
+        if time_anchor==lasttime_anchor:
+            return 0
+        ind = self.time_anchors.index(time_anchor)
+        time2_anchor = self.time_anchors[ind+1]
+        if features.isStartOfTimePeriod(time1_anchor, time2_anchor, self.sentences_anchor, self.word_list):
+            return 1
+        else:
+            return 0
+#######################################
+
+
+class MyTrainer(object):
+    """docstring for MyTrainer"""
+    def __init__(self):
+        super(MyTrainer, self).__init__()
+        self.n_features_disc = 5
+        self.n_features_crime = 5
+        self.mylr_crime = linear_model.LogisticRegression()
+        self.mylr_disc = linear_model.LogisticRegression()
+        self.feature_vector_crime = []
+        self.feature_vector_disc = []
+        self.all_tags_crime = []
+        self.all_tags_disc = []
+        self.myrecognizer = MyRecognizer()
+
+    def gen_feature_disc(self, time_anchor):
+        feature_vector = npy.zeros(self.n_features_disc)
+
+        feature_vector[0]=self.myrecognizer.feature1(time_anchor)
+        feature_vector[1]=self.myrecognizer.feature2(time_anchor)
+        feature_vector[2]=self.myrecognizer.feature3(time_anchor)
+        feature_vector[3]=self.myrecognizer.feature4(time_anchor)
+        feature_vector[4]=self.myrecognizer.feature5(time_anchor)
+        # feature_vector[5]=self.myrecognizer.feature6(time_anchor)
+        # feature_vector[6]=self.myrecognizer.feature7(time_anchor)
+
+        return feature_vector
+
+    def gen_feature_crime(self, time_anchor):
+        feature_vector = npy.zeros(self.n_features_crime)
+
+        feature_vector[0]=self.myrecognizer.feature1(time_anchor)
+        feature_vector[1]=self.myrecognizer.feature2(time_anchor)
+        feature_vector[2]=self.myrecognizer.feature3(time_anchor)
+        feature_vector[3]=self.myrecognizer.feature4(time_anchor)
+        feature_vector[4]=self.myrecognizer.feature5(time_anchor)
+        # feature_vector[5]=self.myrecognizer.feature6(time_anchor)
+        # feature_vector[6]=self.myrecognizer.feature7(time_anchor)
+
+        return feature_vector
+
+    def train(self):
+        path = './corruption annotated data/'
+        for ftxt, fann in findAllFiles():
+            with open(path + ftxt, 'r') as f:
+                paragraph = f.read()
+                paragraph = unicode(paragraph, 'utf-8')
+                # for paragraph in paragraphs:
+                word_list, sentences, sentences_anchor = sentence_index(paragraph)
+                self.myrecognizer.word_list = word_list
+                self.myrecognizer.sentences_anchor = sentences_anchor
+
+                # get the time_anchors:
+                time_anchors, all_tags = self.get_time_anchors_train(word_list, sentences, sentences_anchor, fann)
+                self.myrecognizer.time_anchors = time_anchors
+                # append the feature vectors and tags to self.**
+                for ii, time_anchor in enumerate(time_anchors):
+                    tmp_feature_vector_crime = self.gen_feature_crime(time_anchor)
+                    tmp_feature_vector_disc = self.gen_feature_disc(time_anchor)
+                    self.feature_vector_disc.append(tmp_feature_vector_disc)
+                    self.feature_vector_crime.append(tmp_feature_vector_crime)
+                    curr_tag = all_tags[ii]
+                    if curr_tag=="Year_Disc":
+                    	# print "IM YEAR DISC"
+                        self.all_tags_disc.append(curr_tag)
+                        self.all_tags_crime.append('None')
+                    elif curr_tag=="Year_Crime":
+                    	# print "IM YEAR CRIME"
+                        self.all_tags_disc.append('None')
+                        self.all_tags_crime.append(curr_tag)
+                    else:
+                    	# print "I SUCK"
+                        self.all_tags_disc.append('None')
+                        self.all_tags_crime.append('None')
+        # now fit
+        print "all tags disc: ", self.all_tags_disc
+        print "all tags crime: ", self.all_tags_crime
+
+        self.mylr_crime.fit(self.feature_vector_crime, self.all_tags_crime)
+        self.mylr_disc.fit(self.feature_vector_disc, self.all_tags_disc)
+
+    def get_time_anchors_train(self, word_list, sentences, sentence_anchor, fann, path = './corruption annotated data/'):
+        time_anchors = []
+        all_tags = []
+        for ii, sentence in enumerate(sentences):
+            anchor = sentence_anchor[ii]
+            tagScoreDict, tagged_items = labelTime(sentence)
+            if max(tagScoreDict, key = tagScoreDict.get) == 'unknown':
+                continue
+            else:
+                # print "IM HERE!!!"
+                old_pos = anchor[0]
+                for item in tagged_items:
+                    # print "DEALING WITH ITEM: ", item
+                    entity_word = item[0]
+                    tag = item[1]
+
+                    # print "ENTITY WORD: ", entity_word, "TAG: ", tag
+                    tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
+
+                    # print "TAG_ANCHOR: ", tag_anchor
+                    if tag_anchor[1]!=-1:
+                        time_anchors.append(tag_anchor)
+                        old_pos = tag_anchor[1]
+                # print "I FINISHED!!"
+                    year = re.search(unicode('(?P<name>.*年)', 'utf-8'), entity_word)
+                    if year:
+                    	year = year.group('name')
+                    tmptag = tagTime(year, tag_anchor, path+fann)
+                    all_tags.append(tmptag)
+
+        return time_anchors, all_tags
+
+    def get_time_anchors_test(self, word_list, sentences, sentence_anchor):
+
+        time_anchors = []
+        for ii, sentence in enumerate(sentences):
+            anchor = sentence_anchor[ii]
+            tagScoreDict, tagged_items = labelTime(sentence)
+            if max(tagScoreDict, key = tagScoreDict.get) == 'unknown':
+                continue
+            else:
+                # print "IM HERE!!!"
+                old_pos = anchor[0]
+                for item in tagged_items:
+                    # print "DEALING WITH ITEM: ", item
+                    entity_word = item[0]
+                    tag = item[1]
+
+                    # print "ENTITY WORD: ", entity_word, "TAG: ", tag
+                    tag_anchor = align_words_debug(word_list, sentence_anchor, old_pos, entity_word)
+
+                    # print "TAG_ANCHOR: ", tag_anchor
+                    if tag_anchor[1]!=-1:
+                        time_anchors.append(tag_anchor)
+                        old_pos = tag_anchor[1]
+                # print "I FINISHED!!"
+
+        return time_anchors
+
+    def predict_tag(self, time_anchor):
+        features_disc = self.gen_feature_disc(time_anchor)
+        features_crime = self.gen_feature_crime(time_anchor)
+
+        return self.mylr_disc.predict(features_disc), self.mylr_crime.predict(features_crime)
+
+
+    def analyse_time(self, word_list, sentences, sentences_anchor):
+        self.myrecognizer.word_list = word_list
+        self.myrecognizer.sentences_anchor = sentences_anchor
+        time_anchors = self.get_time_anchors_test(word_list, sentences, sentences_anchor)
+        self.myrecognizer.time_anchors = time_anchors
+        tags = []
+        for time_anchor in time_anchors:
+            tag1, tag2 = self.predict_tag(time_anchor)
+            if tag1=="None":
+                tags.append((time_anchor,tag2))
+            else:
+                tags.append((time_anchor,tag1))
+        return tags
+
+# main part
+
 def test_baselineRecognizer1(path):
     for filename in os.listdir(path):
         if filename.endswith(".txt"):
@@ -448,17 +812,31 @@ def calculate_dist(anchor, list_anchors):
     mean_score = min(scores)
     return scores.index(mean_score)
 
-def test_baselineRecognizer(path, filename):
+def test_baselineRecognizer(path, filename, mytrainer):
     outputDict = {}
     persons = []
     with open(path + filename, 'r') as f:
         paragraph = f.read()
         paragraph = unicode(paragraph, 'utf-8')
-        print paragraph
+        # print paragraph
         # for paragraph in paragraphs:
-        annotation_dict, word_list = annotate_paragraph(paragraph)
+        annotation_dict, word_list, sentences, sentences_anchor = annotate_paragraph(paragraph)
         if len(annotation_dict['person_name']) == 0:
             return -1
+
+        time_analysis = mytrainer.analyse_time(word_list, sentences, sentences_anchor)
+        
+        for time_tag in time_analysis:
+            time_anchor = time_tag[0]
+            tmptag = time_tag[1]
+            if tmptag=="None":
+                continue
+            if tmptag=="Year_Crime":
+            	print "FOUND a CRIME:", time_anchor, "\n"
+                annotation_dict['Year_Crime'].append(time_anchor)
+            if tmptag=="Year_Disc":
+            	print "FOUND a Disc:", time_anchor, "\n"
+                annotation_dict['Year_Disc'].append(time_anchor)
 
         persons_ind = [0]*len(annotation_dict['person_name'])
         # print "\n\nannotation_dict=", annotation_dict
@@ -477,7 +855,13 @@ def test_baselineRecognizer(path, filename):
                 ind += 1
             else:
                 persons_ind[ii] = persons.index(name)
+            # print 'persons_ind[%d]=%d, name is %s' % (ii, persons_ind[ii], persons[persons_ind[ii]])
 
+        # print 'persons:'
+        for name in persons:
+            # print name
+            pass
+        # exit(0)
         new_annotation_dict = copy.deepcopy(annotation_dict)
 
         anchors = annotation_dict['Position']
@@ -506,23 +890,28 @@ def test_baselineRecognizer(path, filename):
 
         good_man_list = set(good_man_list)
         for x in good_man_list:
-            print x
-        raw_input()
+            # print x
+            pass
+        # raw_input()
         for ii, ind in enumerate(persons_ind):
-            # print '\n\nnow person is ', persons[persons_ind[ind]]
-            if persons[persons_ind[ind]] in good_man_list:
+            # print '\n\nnow person is ', persons[ind]
+            if persons[ind] in good_man_list:
                 # print 'this person is a goodman.'
                 new_annotation_dict['person_name'][ii]=None
 
+        # exit(0)
 
         for ii,x in enumerate(new_annotation_dict['person_name']):
             if x is not None:
-                print persons[persons_ind[ii]]
-        print '\n\n'
+                # print persons[persons_ind[ii]]
+                pass
+        # print '\n\n'
         # new_annotation_dict['person_name'] = filter(None, new_annotation_dict['person_name'])
 
         # print "annotation_dict", annotation_dict.keys()
         for tag in EVAL_TAGS:
+            if tag=="Position":
+                continue
             anchors = annotation_dict[tag]
             # print "tag=", tag
             # print "anchors=", anchors
@@ -558,6 +947,10 @@ def test_baselineRecognizer(path, filename):
                 outputDict[name][tag].append((anchor,newlist))
                 # print newlist
                 # print word_list[anchor[0]:anchor[1]]
+
+    for name in good_man_list:
+        del outputDict[name]
+
     return outputDict
 
 def output(outputDict, filename):
@@ -588,18 +981,24 @@ def output(outputDict, filename):
 if __name__ == '__main__':
     path = "./corruption annotated data/"
 
+    count = 20
+    # count = 0
+    mytrainer = MyTrainer()
+    mytrainer.train()
+    print "TRAINING FINISHED!!!!!!"
+    # print "feature vec crime: ",mytrainer.feature_vector_crime
+    # print "feature vec disc: ",mytrainer.feature_vector_disc
 
-    count = 1
+    # exit(0)
     for filename in os.listdir(path):
-        filename = "L_R_1990_3438.txt"
+        # filename = "L_R_1990_3438.txt"
         print 'filename=', filename
         if count == 0:
             break
 
         if filename.endswith(".txt"):
             outputfilename = filename[:-4] + ".ann.machine"
-
-            outputDict = test_baselineRecognizer(path, filename)
+            outputDict = test_baselineRecognizer(path, filename, mytrainer)
             if outputDict == -1:
                 continue
             # print "\n\n\n\noutputDict:"
@@ -607,8 +1006,11 @@ if __name__ == '__main__':
             print "\n\n\n"
             output(outputDict, path+outputfilename)
             count -= 1
+            # count += 1
+
         # raw_input()
 
+    print 'total # of articles: ', count
 
     # with open(path + filename, 'r') as f:
     #     paragraph = f.read()
