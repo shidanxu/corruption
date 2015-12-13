@@ -136,7 +136,14 @@ def mytrain(mode=None, nn=None, ntest=1):
 
     print 'ntest=',ntest
     # X_test = X_train
-    pred = tagger.tag(X_test[ntest])
+    # pred = tagger.tag(X_test[ntest])
+    pred = []
+    for ii, testFile in enumerate(X_test):
+        pred.extend(tagger.tag(testFile))
+
+    gold = []
+    for jj, goldFile in enumerate(Y_test):
+        gold.extend(goldFile)
 
     print type(pred), len(pred)
     print pred
@@ -145,12 +152,15 @@ def mytrain(mode=None, nn=None, ntest=1):
     # print 'finish enumerate.\n'
     
 
-    print "Predicted:\n", ' '.join(pred)
+    # print "Predicted:\n", ' '.join(pred[0])
 
-    print "Correct:\n", ' '.join([item for item in Y_test[ntest]]), len(Y_test[ntest])
+    # print "Correct:\n", ' '.join([item for item in Y_test[0]]), len(Y_test[0])
 
 
-    print(our_classification_report([Y_test[ntest]], [pred]))
+    # for y, pre in zip(Y_test, pred):
+        # print(our_classification_report(y, pre))
+    print(our_classification_report([gold], [pred]))
+    print "Lambda = 0.003"
 
 
 def our_classification_report(y_true, y_pred):
@@ -165,11 +175,11 @@ def our_classification_report(y_true, y_pred):
     y_true_combined = lb.fit_transform(list(chain.from_iterable(y_true)))
     y_pred_combined = lb.transform(list(chain.from_iterable(y_pred)))
 
-    print "Y_true combined", y_true_combined
-    print "Y_pred combined", y_pred_combined
+    # print "Y_true combined", y_true_combined
+    # print "Y_pred combined", y_pred_combined
         
     tagset = set(lb.classes_)
-    print "tagset: ", tagset
+    # print "tagset: ", tagset
     tagset = sorted(tagset)
     class_indices = {cls: idx for idx, cls in enumerate(lb.classes_)}
     

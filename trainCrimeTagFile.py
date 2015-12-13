@@ -5,8 +5,9 @@ import codecs
 import re
 import os
 import baselineSentenceRecognizer
+import random
 
-def tagTxt(ftxt, fann, path = './corruption annotated data/'):
+def tagTxt(ftxt, fann, path = './corruption annotated data/', threshold = 0.003):
     chars = []
     alltags = []
     word_list = []
@@ -122,13 +123,19 @@ def tagTxt(ftxt, fann, path = './corruption annotated data/'):
     print words
     relevantSentences = []
     for [start, end] in sentence_anchor:
+        found = False
+
         sentence = words[start:end]
         print "This sentence is: ", ''.join([word[0] for word in sentence])
         for (word, tag, start, end) in sentence:
             if tag != "0":
                 # any nonzero tag makes us want the sentence
                 relevantSentences.extend(sentence)
+                found = True
                 break
+        if not found:
+            if random.random() < threshold:
+                relevantSentences.extend(sentence)
 
 
 
@@ -162,4 +169,5 @@ if __name__ == '__main__':
                 tagTxt(filename[:-4]+".txt", filename)
             except Exception, e:
                 print e
+                raw_input()
                 continue
