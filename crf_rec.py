@@ -52,11 +52,13 @@ GOOD_REGEX = re.compile(good_position_regex_string, flags=re.UNICODE)
 
 
 
-def mytrain(mode, nn=None, ntest=1):
+def mytrain(mode=None, nn=None, ntest=1):
     # mycrftagger = CRFTagger()
     # print 'nn=',nn
     X_train = []
     Y_train = []
+    X_test = []
+    Y_test = []
     foldername = "corruption annotated data/"
 
     filesInFolder = os.listdir(foldername)
@@ -67,25 +69,37 @@ def mytrain(mode, nn=None, ntest=1):
             train_sents = read_traindata(filename)
             # print 'train_sents[0]=', train_sents[0]
             # exit(0)
-            # print mytrainingData
 
             # Turn training set to feature X
             X_train.extend([sent2features(s) for s in train_sents])
-            # print X_train, len(X_train)
-            # print "\n\n\n\n\n\n"
-            # for item in X_train[0]:
-            #     if 'regex_time=1' in item:
-            #         print item
-            # print "DONe.\n\n\n"
+            # print 'X_train:',X_train, len(X_train)
             for sent in train_sents:
                 # print 'sent=',sent
                 Y_train.append([getY(each) for each in sent])
-            # Y_train.append([getY(each) for each in train_sents])
+            # print 'Y_train:',Y_train,len(Y_train)
+
+            # tempy = Y_train[0]
+            # for jj, item in enumerate(tempy):
+            #     if item!=u'0':
+            #         print 'y not 0: ', item
+            #         print X_train[0][jj]
+
             # exit(0)
             if nn!=None:
                 if ii>=nn:
                     break
-    print 'Y_train=', Y_train, len(Y_train)
+        if filename.endswith(".train.full"):
+            test_sents = read_traindata(filename)
+            # print 'train_sents[0]=', train_sents[0]
+            # exit(0)
+
+            # Turn training set to feature X
+            X_test.extend([sent2features(s) for s in test_sents])
+            # print 'X_train:',X_train, len(X_train)
+            for sent in test_sents:
+                # print 'sent=',sent
+                Y_test.append([getY(each) for each in sent])
+
 
     trainer = pycrfsuite.Trainer(verbose=True)
     for xseq, yseq in zip(X_train, Y_train):
@@ -101,6 +115,9 @@ def mytrain(mode, nn=None, ntest=1):
         testfname = 'output.crfModel.test'+str(nn)
     if mode=="test":
         trainer.train(testfname)
+    else:
+        # trainer.train('output.crfModel')
+        pass
 
     tagger = pycrfsuite.Tagger()
 
@@ -115,7 +132,7 @@ def mytrain(mode, nn=None, ntest=1):
     # exit(0)
 
     print 'ntest=',ntest
-    X_test = X_train
+    # X_test = X_train
     pred = tagger.tag(X_test[ntest])
 
     print type(pred), len(pred)
@@ -123,7 +140,7 @@ def mytrain(mode, nn=None, ntest=1):
     # for ii, item in enumerate(pred):
     #     print type(item), item, ii
     # print 'finish enumerate.\n'
-    print "Correct:", ' '.join([item for item in Y_train[ntest]])
+    print "Correct:", ' '.join([item for item in Y_test[ntest]])
 
 
 
@@ -133,87 +150,87 @@ def word2features(preword, word, wordnext):
     features.extend(["regex_time="+feature4(preword, word, wordnext), "regex_position="+feature5(preword, word, wordnext)])
     features.append("feature6"+"="+feature6(preword, word, wordnext))
     features.append("feature7"+"="+feature7(preword, word, wordnext))
-    # features.append("feature8"+"="+feature8(preword, word, wordnext))
-    # features.append("feature9"+"="+feature9(preword, word, wordnext))
-    # features.append("feature10"+"="+feature10(preword, word, wordnext))
-    # features.append("feature11"+"="+feature11(preword, word, wordnext))
-    # features.append("feature12"+"="+feature12(preword, word, wordnext))
-    # features.append("feature13"+"="+feature13(preword, word, wordnext))
-    # features.append("feature14"+"="+feature14(preword, word, wordnext))
-    # features.append("feature15"+"="+feature15(preword, word, wordnext))
-    # features.append("feature16"+"="+feature16(preword, word, wordnext))
-    # features.append("feature17"+"="+feature17(preword, word, wordnext))
-    # features.append("feature18"+"="+feature18(preword, word, wordnext))
-    # features.append("feature19"+"="+feature19(preword, word, wordnext))
-    # features.append("feature20"+"="+feature20(preword, word, wordnext))
-    # features.append("feature21"+"="+feature21(preword, word, wordnext))
-    # features.append("feature22"+"="+feature22(preword, word, wordnext))
-    # features.append("feature23"+"="+feature23(preword, word, wordnext))
-    # features.append("feature24"+"="+feature24(preword, word, wordnext))
-    # features.append("feature25"+"="+feature25(preword, word, wordnext))
-    # features.append("feature26"+"="+feature26(preword, word, wordnext))
-    # features.append("feature27"+"="+feature27(preword, word, wordnext))
-    # features.append("feature28"+"="+feature28(preword, word, wordnext))
-    # features.append("feature29"+"="+feature29(preword, word, wordnext))
-    # features.append("feature30"+"="+feature30(preword, word, wordnext))
-    # features.append("feature31"+"="+feature31(preword, word, wordnext))
-    # features.append("feature32"+"="+feature32(preword, word, wordnext))
-    # features.append("feature33"+"="+feature33(preword, word, wordnext))
-    # features.append("feature34"+"="+feature34(preword, word, wordnext))
-    # features.append("feature35"+"="+feature35(preword, word, wordnext))
-    # features.append("feature36"+"="+feature36(preword, word, wordnext))
-    # features.append("feature37"+"="+feature37(preword, word, wordnext))
-    # features.append("feature38"+"="+feature38(preword, word, wordnext))
-    # features.append("feature39"+"="+feature39(preword, word, wordnext))
-    # features.append("feature40"+"="+feature40(preword, word, wordnext))
-    # features.append("feature41"+"="+feature41(preword, word, wordnext))
-    # features.append("feature42"+"="+feature42(preword, word, wordnext))
-    # features.append("feature43"+"="+feature43(preword, word, wordnext))
-    # features.append("feature44"+"="+feature44(preword, word, wordnext))
-    # features.append("feature45"+"="+feature45(preword, word, wordnext))
-    # features.append("feature46"+"="+feature46(preword, word, wordnext))
-    # features.append("feature47"+"="+feature47(preword, word, wordnext))
-    # features.append("feature48"+"="+feature48(preword, word, wordnext))
-    # features.append("feature49"+"="+feature49(preword, word, wordnext))
-    # features.append("feature50"+"="+feature50(preword, word, wordnext))
-    # features.append("feature51"+"="+feature51(preword, word, wordnext))
-    # features.append("feature52"+"="+feature52(preword, word, wordnext))
-    # features.append("feature53"+"="+feature53(preword, word, wordnext))
-    # features.append("feature54"+"="+feature54(preword, word, wordnext))
-    # features.append("feature55"+"="+feature55(preword, word, wordnext))
-    # features.append("feature56"+"="+feature56(preword, word, wordnext))
-    # features.append("feature57"+"="+feature57(preword, word, wordnext))
-    # features.append("feature58"+"="+feature58(preword, word, wordnext))
-    # features.append("feature59"+"="+feature59(preword, word, wordnext))
-    # features.append("feature60"+"="+feature60(preword, word, wordnext))
-    # features.append("feature61"+"="+feature61(preword, word, wordnext))
-    # features.append("feature62"+"="+feature62(preword, word, wordnext))
-    # features.append("feature63"+"="+feature63(preword, word, wordnext))
-    # features.append("feature64"+"="+feature64(preword, word, wordnext))
-    # features.append("feature65"+"="+feature65(preword, word, wordnext))
-    # features.append("feature66"+"="+feature66(preword, word, wordnext))
-    # features.append("feature67"+"="+feature67(preword, word, wordnext))
-    # features.append("feature68"+"="+feature68(preword, word, wordnext))
-    # features.append("feature69"+"="+feature69(preword, word, wordnext))
-    # features.append("feature70"+"="+feature70(preword, word, wordnext))
-    # features.append("feature71"+"="+feature71(preword, word, wordnext))
-    # features.append("feature72"+"="+feature72(preword, word, wordnext))
-    # features.append("feature73"+"="+feature73(preword, word, wordnext))
-    # features.append("feature74"+"="+feature74(preword, word, wordnext))
-    # features.append("feature75"+"="+feature75(preword, word, wordnext))
-    # features.append("feature76"+"="+feature76(preword, word, wordnext))
-    # features.append("feature77"+"="+feature77(preword, word, wordnext))
-    # features.append("feature78"+"="+feature78(preword, word, wordnext))
-    # features.append("feature79"+"="+feature79(preword, word, wordnext))
-    # features.append("feature80"+"="+feature80(preword, word, wordnext))
-    # features.append("feature81"+"="+feature81(preword, word, wordnext))
-    # features.append("feature82"+"="+feature82(preword, word, wordnext))
-    # features.append("feature83"+"="+feature83(preword, word, wordnext))
-    # features.append("feature84"+"="+feature84(preword, word, wordnext))
-    # features.append("feature85"+"="+feature85(preword, word, wordnext))
-    # features.append("feature86"+"="+feature86(preword, word, wordnext))
-    # features.append("feature87"+"="+feature87(preword, word, wordnext))
-    # features.append("feature88"+"="+feature88(preword, word, wordnext))
+    features.append("feature8"+"="+feature8(preword, word, wordnext))
+    features.append("feature9"+"="+feature9(preword, word, wordnext))
+    features.append("feature10"+"="+feature10(preword, word, wordnext))
+    features.append("feature11"+"="+feature11(preword, word, wordnext))
+    features.append("feature12"+"="+feature12(preword, word, wordnext))
+    features.append("feature13"+"="+feature13(preword, word, wordnext))
+    features.append("feature14"+"="+feature14(preword, word, wordnext))
+    features.append("feature15"+"="+feature15(preword, word, wordnext))
+    features.append("feature16"+"="+feature16(preword, word, wordnext))
+    features.append("feature17"+"="+feature17(preword, word, wordnext))
+    features.append("feature18"+"="+feature18(preword, word, wordnext))
+    features.append("feature19"+"="+feature19(preword, word, wordnext))
+    features.append("feature20"+"="+feature20(preword, word, wordnext))
+    features.append("feature21"+"="+feature21(preword, word, wordnext))
+    features.append("feature22"+"="+feature22(preword, word, wordnext))
+    features.append("feature23"+"="+feature23(preword, word, wordnext))
+    features.append("feature24"+"="+feature24(preword, word, wordnext))
+    features.append("feature25"+"="+feature25(preword, word, wordnext))
+    features.append("feature26"+"="+feature26(preword, word, wordnext))
+    features.append("feature27"+"="+feature27(preword, word, wordnext))
+    features.append("feature28"+"="+feature28(preword, word, wordnext))
+    features.append("feature29"+"="+feature29(preword, word, wordnext))
+    features.append("feature30"+"="+feature30(preword, word, wordnext))
+    features.append("feature31"+"="+feature31(preword, word, wordnext))
+    features.append("feature32"+"="+feature32(preword, word, wordnext))
+    features.append("feature33"+"="+feature33(preword, word, wordnext))
+    features.append("feature34"+"="+feature34(preword, word, wordnext))
+    features.append("feature35"+"="+feature35(preword, word, wordnext))
+    features.append("feature36"+"="+feature36(preword, word, wordnext))
+    features.append("feature37"+"="+feature37(preword, word, wordnext))
+    features.append("feature38"+"="+feature38(preword, word, wordnext))
+    features.append("feature39"+"="+feature39(preword, word, wordnext))
+    features.append("feature40"+"="+feature40(preword, word, wordnext))
+    features.append("feature41"+"="+feature41(preword, word, wordnext))
+    features.append("feature42"+"="+feature42(preword, word, wordnext))
+    features.append("feature43"+"="+feature43(preword, word, wordnext))
+    features.append("feature44"+"="+feature44(preword, word, wordnext))
+    features.append("feature45"+"="+feature45(preword, word, wordnext))
+    features.append("feature46"+"="+feature46(preword, word, wordnext))
+    features.append("feature47"+"="+feature47(preword, word, wordnext))
+    features.append("feature48"+"="+feature48(preword, word, wordnext))
+    features.append("feature49"+"="+feature49(preword, word, wordnext))
+    features.append("feature50"+"="+feature50(preword, word, wordnext))
+    features.append("feature51"+"="+feature51(preword, word, wordnext))
+    features.append("feature52"+"="+feature52(preword, word, wordnext))
+    features.append("feature53"+"="+feature53(preword, word, wordnext))
+    features.append("feature54"+"="+feature54(preword, word, wordnext))
+    features.append("feature55"+"="+feature55(preword, word, wordnext))
+    features.append("feature56"+"="+feature56(preword, word, wordnext))
+    features.append("feature57"+"="+feature57(preword, word, wordnext))
+    features.append("feature58"+"="+feature58(preword, word, wordnext))
+    features.append("feature59"+"="+feature59(preword, word, wordnext))
+    features.append("feature60"+"="+feature60(preword, word, wordnext))
+    features.append("feature61"+"="+feature61(preword, word, wordnext))
+    features.append("feature62"+"="+feature62(preword, word, wordnext))
+    features.append("feature63"+"="+feature63(preword, word, wordnext))
+    features.append("feature64"+"="+feature64(preword, word, wordnext))
+    features.append("feature65"+"="+feature65(preword, word, wordnext))
+    features.append("feature66"+"="+feature66(preword, word, wordnext))
+    features.append("feature67"+"="+feature67(preword, word, wordnext))
+    features.append("feature68"+"="+feature68(preword, word, wordnext))
+    features.append("feature69"+"="+feature69(preword, word, wordnext))
+    features.append("feature70"+"="+feature70(preword, word, wordnext))
+    features.append("feature71"+"="+feature71(preword, word, wordnext))
+    features.append("feature72"+"="+feature72(preword, word, wordnext))
+    features.append("feature73"+"="+feature73(preword, word, wordnext))
+    features.append("feature74"+"="+feature74(preword, word, wordnext))
+    features.append("feature75"+"="+feature75(preword, word, wordnext))
+    features.append("feature76"+"="+feature76(preword, word, wordnext))
+    features.append("feature77"+"="+feature77(preword, word, wordnext))
+    features.append("feature78"+"="+feature78(preword, word, wordnext))
+    features.append("feature79"+"="+feature79(preword, word, wordnext))
+    features.append("feature80"+"="+feature80(preword, word, wordnext))
+    features.append("feature81"+"="+feature81(preword, word, wordnext))
+    features.append("feature82"+"="+feature82(preword, word, wordnext))
+    features.append("feature83"+"="+feature83(preword, word, wordnext))
+    features.append("feature84"+"="+feature84(preword, word, wordnext))
+    features.append("feature85"+"="+feature85(preword, word, wordnext))
+    features.append("feature86"+"="+feature86(preword, word, wordnext))
+    features.append("feature87"+"="+feature87(preword, word, wordnext))
+    features.append("feature88"+"="+feature88(preword, word, wordnext))
 
     # print features
     return features
