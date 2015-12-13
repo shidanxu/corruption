@@ -8,6 +8,9 @@ import pycrfsuite
 import os
 import sys
 from collections import Counter
+from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.preprocessing import LabelBinarizer
+from itertools import chain
 
 punish_regex_string = unicode('有期徒刑(\d+|[一二三四五六七八九十]+)年|缓刑(\d+|[一二三四五六七八九十]+)年', 'utf-8')
 punish_regex_string += unicode('|(\d+|[一二三四五六七八九十]+)年 有期徒刑','utf-8')
@@ -140,9 +143,42 @@ def mytrain(mode=None, nn=None, ntest=1):
     # for ii, item in enumerate(pred):
     #     print type(item), item, ii
     # print 'finish enumerate.\n'
-    print "Correct:", ' '.join([item for item in Y_test[ntest]])
+    
+
+    print "Predicted:\n", ' '.join(pred)
+
+    print "Correct:\n", ' '.join([item for item in Y_test[ntest]]), len(Y_test[ntest])
 
 
+    print(our_classification_report([Y_test[ntest]], [pred]))
+
+
+def our_classification_report(y_true, y_pred):
+    """
+    Classification report for a list of BIO-encoded sequences.
+    It computes token-level metrics and discards "O" labels.
+    
+    Note that it requires scikit-learn 0.15+ (or a version from github master)
+    to calculate averages properly!
+    """
+    lb = LabelBinarizer()
+    y_true_combined = lb.fit_transform(list(chain.from_iterable(y_true)))
+    y_pred_combined = lb.transform(list(chain.from_iterable(y_pred)))
+
+    print "Y_true combined", y_true_combined
+    print "Y_pred combined", y_pred_combined
+        
+    tagset = set(lb.classes_)
+    print "tagset: ", tagset
+    tagset = sorted(tagset)
+    class_indices = {cls: idx for idx, cls in enumerate(lb.classes_)}
+    
+    return classification_report(
+        y_true_combined,
+        y_pred_combined,
+        labels = [class_indices[cls] for cls in tagset],
+        target_names = tagset
+    )
 
 
 def word2features(preword, word, wordnext):
