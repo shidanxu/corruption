@@ -4,14 +4,21 @@
 import codecs
 import re
 import os
+import baselineSentenceRecognizer
 
 def tagTxt(ftxt, fann, path = './corruption annotated data/'):
     chars = []
     alltags = []
+    word_list = []
+    new_sentences = []
+    sentence_anchor = []
+
+
     with codecs.open(path + ftxt, 'r', encoding='utf-8') as txt:
         with codecs.open(path + fann, 'r', encoding='utf-8') as ann:
 
             document = txt.read()
+            word_list, new_sentences, sentence_anchor = baselineSentenceRecognizer.sentence_index(document)
             # print "original encoding: ", soup.originalEncoding
             for char in document:
                 # print "HAHAHAHAHHAHA", type(char), char
@@ -113,11 +120,20 @@ def tagTxt(ftxt, fann, path = './corruption annotated data/'):
 
 
     print words
+    for [start, end] in sentence_anchor:
+
+
+
     with codecs.open(path + ftxt + ".train", 'w', encoding='utf-8') as writeFile:
-        for (word, tag, start, end) in words:
-            if word.split():
-                tag = str(tag)
-                writeFile.write(word + "\t" + tag + "\n")
+        with codecs.open(path + ftxt + ".train.full", 'w', encoding='utf-8') as writeFile2:
+
+            for (word, tag, start, end) in words:
+                if word.split():
+                    tag = str(tag)
+                    writeFile2.write(word + "\t" + tag + "\n")
+
+                    if tag!="0":
+                        writeFile.write(word + "\t" + tag + "\n")
 
 
 
