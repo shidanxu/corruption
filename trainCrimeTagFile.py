@@ -118,9 +118,19 @@ def tagTxt(ftxt, fann, path = './corruption annotated data/'):
                             words[ii] = (word, tag, start, end)
 
 
-
+    # Here we only want the words in the tagged sentences
     print words
+    relevantSentences = []
     for [start, end] in sentence_anchor:
+        sentence = words[start:end]
+        print "This sentence is: ", ''.join([word[0] for word in sentence])
+        for (word, tag, start, end) in sentence:
+            if tag != "0":
+                # any nonzero tag makes us want the sentence
+                relevantSentences.extend(sentence)
+                break
+
+
 
 
 
@@ -131,23 +141,25 @@ def tagTxt(ftxt, fann, path = './corruption annotated data/'):
                 if word.split():
                     tag = str(tag)
                     writeFile2.write(word + "\t" + tag + "\n")
-
-                    if tag!="0":
-                        writeFile.write(word + "\t" + tag + "\n")
+            
+            print relevantSentences
+            # raw_input()
+            for (word, tag, start, end) in relevantSentences:
+                if word.split():
+                    tag = str(tag)
+                    writeFile.write(word + "\t" + tag + "\n")
 
 
 
 if __name__ == '__main__':
     foldername = "corruption annotated data/"
-    # file1 = "corruption annotated data/L_R_1990_3420.ann"
-    # file2 = "corruption annotated data/L_R_1990_3420_mod.machine"
 
-    suffix = ".machine"
 
     filesInFolder = os.listdir(foldername)
     for filename in filesInFolder:
         if filename.endswith(".ann"):
             try:
                 tagTxt(filename[:-4]+".txt", filename)
-            except Exception:
+            except Exception, e:
+                print e
                 continue
