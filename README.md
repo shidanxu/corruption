@@ -20,7 +20,7 @@ Other files are of lesser importance, but we are happy to explain if necessary.
 Best Wishes, 
 Shidan & Tingtao
 
-#########################
+=============================================================
 The following are work flows and thought process, please ignore.
 
 NER - 分人名
