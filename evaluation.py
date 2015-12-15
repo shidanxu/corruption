@@ -6,6 +6,7 @@ import difflib
 import os
 import json
 import matplotlib.pyplot as plt
+import math
 
 # This method returns the tags in a file in the format
 # dictionary['Shidan'] = {'Crime': '贪污', 'Punish': '无期徒刑'}
@@ -404,6 +405,11 @@ if __name__ == '__main__':
     print "AVG Precision Position: ", precisionPosition
     print "AVG Precision Punish: ", precisionPunish
     print "AVG Precision Money: ", precisionMoney
+
+    print "AVG F1 Crime: ", math.sqrt(precisionCrime * recallCrime)
+    print "AVG F1 Position: ", math.sqrt(precisionPosition * recallPosition)
+    print "AVG F1 Punish: ", math.sqrt(precisionPunish * recallPunish)
+    print "AVG F1 Money: ", math.sqrt(precisionMoney * recallMoney)
     # print "AVG Recall Year_Disc: ", recallYearD
 
 
