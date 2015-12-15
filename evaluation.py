@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 # This method returns the tags in a file in the format
 # dictionary['Shidan'] = {'Crime': '贪污', 'Punish': '无期徒刑'}
-def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position', 'Time', 'location', 'Province', 'City'], printing=False):
+def process(filename, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position', 'Time', 'location', 'Province', 'City', 'Year_Disc', 'Year_Crime'], printing=False):
     dictionary = {}
     outputDict = {}
     if printing:
@@ -144,12 +144,16 @@ def maxScoreEntire(element, setOfSet):
 
 
 
-def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position'], printing = False):
+def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punish', 'Position', 'Year_Disc', 'Year_Crime'], printing = False):
     # Calculate a precision score and a recall score
     # recall: exact matches in humanDict that are also in machineDict
     # Precision: line exact matches in machineDict that are also found in humanDict
     totalScore = 0.0
     possibleScore = 0.0
+
+    recallTagScoreDict = {}
+    precisionTagScoreDict = {}
+
 
     humanDict = process(human, printing = printing)
     machineDict = process(machine, printing = printing)
@@ -272,7 +276,56 @@ def evaluate(human, machine, fields = ['Person', 'Crime', 'Money_Person', 'Punis
 
     infoExtractionPrecision = totalScore / possibleScore
 
-    return recallScore, precisionScore, infoExtractionRecall, infoExtractionPrecision
+
+
+    # Per tag recall
+    for person in humanDict:
+        # 1 Extra point for finding the person
+        possibleScore += len(humanDict[person]) + 1
+        # 如果这个人机器也找到了
+        if person in machineDict:
+            # 如果所有数据相等 直接给分
+            totalScore += 1
+            # 每个UROP找到的entry
+            for item in humanDict[person]:
+                if item not in recallTagScoreDict:
+                    recallTagScoreDict[item] = {"possibleScore": 0.0, "score": 0.0}
+                
+                recallTagScoreDict[item]["possibleScore"] += len(humanDict[person][item])
+
+                if item in machineDict[person]:
+                    hit = 0.0
+                    for element in humanDict[person][item]:
+                        hit += maxScore(element, machineDict[person][item], 0)
+                    recallTagScoreDict[item]["score"] += hit
+                    
+    # Per tag precision
+    for person in machineDict:
+        # 1 Extra point for finding the person
+        possibleScore += len(machineDict[person]) + 1
+        # 如果这个人机器也找到了
+        if person in humanDict:
+            # 如果所有数据相等 直接给分
+            totalScore += 1
+            # 每个UROP找到的entry
+            for item in machineDict[person]:
+                if item not in precisionTagScoreDict:
+                    precisionTagScoreDict[item] = {"possibleScore": 0.0, "score": 0.0}
+                
+                precisionTagScoreDict[item]["possibleScore"] += len(machineDict[person][item])
+
+                if item in humanDict[person]:
+                    hit = 0.0
+                    for element in machineDict[person][item]:
+                        hit += maxScore(element, humanDict[person][item], 0)
+                    precisionTagScoreDict[item]["score"] += hit
+                    
+             
+   
+
+
+
+    return recallScore, precisionScore, infoExtractionRecall, infoExtractionPrecision, recallTagScoreDict, precisionTagScoreDict
 
 
 
@@ -306,12 +359,53 @@ if __name__ == '__main__':
     strict_precision = sum([pair[1] for pair in scores]) / len(scores)
     extraction_recall = sum([pair[2] for pair in scores]) / len(scores)
     extraction_precision = sum([pair[3] for pair in scores]) / len(scores)
+    recallTagDict = [pair[4] for pair in scores]
+    precisionTagDict = [pair[5] for pair in scores]
+
+    recallCrimeDict = [dictItem for dictItem in recallTagDict if u'Crime' in dictItem]
+    recallCrime = sum([dictItem[u'Crime']['score'] /dictItem[u'Crime']['possibleScore'] for dictItem in recallCrimeDict]) / len(recallCrimeDict)
+    
+    recallPositionDict = [dictItem for dictItem in recallTagDict if u'Position' in dictItem]
+    recallPosition = sum([dictItem[u'Position']['score'] /dictItem[u'Position']['possibleScore'] for dictItem in recallPositionDict]) / len(recallPositionDict)
+    
+    recallPunishDict = [dictItem for dictItem in recallTagDict if u'Punish' in dictItem]
+    recallPunish = sum([dictItem[u'Punish']['score'] /dictItem[u'Punish']['possibleScore'] for dictItem in recallPunishDict]) / len(recallPunishDict)
+    
+    recallMoneyDict = [dictItem for dictItem in recallTagDict if u'Money_Person' in dictItem]
+    recallMoney = sum([dictItem[u'Money_Person']['score'] /dictItem[u'Money_Person']['possibleScore'] for dictItem in recallMoneyDict]) / len(recallMoneyDict)
+    
+    precisionCrimeDict = [dictItem for dictItem in precisionTagDict if u'Crime' in dictItem]
+    precisionCrime = sum([dictItem[u'Crime']['score'] /dictItem[u'Crime']['possibleScore'] for dictItem in precisionCrimeDict]) / len(precisionCrimeDict)
+    
+    precisionPositionDict = [dictItem for dictItem in precisionTagDict if u'Position' in dictItem]
+    precisionPosition = sum([dictItem[u'Position']['score'] /dictItem[u'Position']['possibleScore'] for dictItem in precisionPositionDict]) / len(precisionPositionDict)
+    
+    precisionPunishDict = [dictItem for dictItem in precisionTagDict if u'Punish' in dictItem]
+    precisionPunish = sum([dictItem[u'Punish']['score'] /dictItem[u'Punish']['possibleScore'] for dictItem in precisionPunishDict]) / len(precisionPunishDict)
+    
+    precisionMoneyDict = [dictItem for dictItem in precisionTagDict if u'Money_Person' in dictItem]
+    precisionMoney = sum([dictItem[u'Money_Person']['score'] /dictItem[u'Money_Person']['possibleScore'] for dictItem in precisionMoneyDict]) / len(precisionMoneyDict)
+    
+
     print "AVG Recall: ", strict_recall
     print "AVG Precision: ", strict_precision
     print "AVG Extraction Recall: ", extraction_recall
     print "AVG Extraction Precision: ", extraction_precision
     print "Normalized Precision: ", strict_precision / extraction_precision
     print "Normalized Recall: ", strict_recall / extraction_recall
+
+
+    print "AVG Recall Crime: ", recallCrime
+    print "AVG Recall Position: ", recallPosition
+    print "AVG Recall Punish: ", recallPunish
+    print "AVG Recall Money: ", recallMoney
+
+    print "AVG Precision Crime: ", precisionCrime
+    print "AVG Precision Position: ", precisionPosition
+    print "AVG Precision Punish: ", precisionPunish
+    print "AVG Precision Money: ", precisionMoney
+    # print "AVG Recall Year_Disc: ", recallYearD
+
 
     # Plotting
     xvalues = [pair[0] / pair[2] for pair in scores]

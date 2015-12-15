@@ -7,7 +7,7 @@ import os
 import baselineSentenceRecognizer
 import random
 
-def tagTxt(ftxt, fann, path = './corruption annotated data/', threshold = 0.003):
+def tagTxt(ftxt, fann, path = './corruption annotated data/', threshold = 0.01):
     chars = []
     alltags = []
     word_list = []
@@ -169,5 +169,5 @@ if __name__ == '__main__':
                 tagTxt(filename[:-4]+".txt", filename)
             except Exception, e:
                 print e
-                raw_input()
+                # raw_input()
                 continue

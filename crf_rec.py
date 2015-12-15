@@ -138,6 +138,7 @@ def mytrain(mode=None, nn=None, ntest=1):
     # X_test = X_train
     # pred = tagger.tag(X_test[ntest])
     pred = []
+    print "length of xtest: ", len(X_test)
     for ii, testFile in enumerate(X_test):
         pred.extend(tagger.tag(testFile))
 
@@ -146,7 +147,7 @@ def mytrain(mode=None, nn=None, ntest=1):
         gold.extend(goldFile)
 
     print type(pred), len(pred)
-    print pred
+    # print pred
     # for ii, item in enumerate(pred):
     #     print type(item), item, ii
     # print 'finish enumerate.\n'
@@ -160,7 +161,7 @@ def mytrain(mode=None, nn=None, ntest=1):
     # for y, pre in zip(Y_test, pred):
         # print(our_classification_report(y, pre))
     print(our_classification_report([gold], [pred]))
-    print "Lambda = 0.003"
+    print "Lambda = 0.01"
 
 
 def our_classification_report(y_true, y_pred):
