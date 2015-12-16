@@ -17,6 +17,8 @@ parse_text.py is how we connect to BosonNLP
 
 Other files are of lesser importance, but we are happy to explain if necessary.
 
+864Final.pptx is our presentation on Thursday.
+
 Best Wishes, 
 Shidan & Tingtao
 
